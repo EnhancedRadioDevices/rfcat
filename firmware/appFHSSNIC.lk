@@ -1,0 +1,24 @@
+-muwx
+-i appFHSSNIC.ihx
+-M
+-Y
+-b HOME = 0x0000
+-b XSEG = 0xf000
+-b PSEG = 0xf000
+-b ISEG = 0x0000
+-b BSEG = 0x0000
+-k c:\Program Files (x86)\SDCC\bin\..\lib\small
+-l mcs51
+-l libsdcc
+-l libint
+-l liblong
+-l libfloat
+appFHSSNIC.rel
+cc1110_spicom.rel
+chipcon_usbdebug.rel
+chipcon_dma.rel
+cc1111rf.rel
+global.rel
+cc1111_aes.rel
+
+-e

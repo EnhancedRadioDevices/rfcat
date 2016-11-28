@@ -1,0 +1,1077 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CABS                                00000000    00000000 =           0. bytes (ABS,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000000  _p0IntHandler                   
+C:   00000000  _registerCb_ep5                 
+C:   00000000  l_CABS                          
+C:   00000000  l_GSINIT1                       
+C:   00000000  l_GSINIT5                       
+C:   00000000  l_IABS                          
+C:   00000000  l_ISEG                          
+C:   00000000  l_PSEG                          
+C:   00000000  l_REG_BANK_1                    
+C:   00000000  l_REG_BANK_2                    
+C:   00000000  l_REG_BANK_3                    
+C:   00000000  l_RSEG                          
+C:   00000000  l_RSEG0                         
+C:   00000000  l_RSEG1                         
+C:   00000000  l_XABS                          
+C:   00000000  l__CODE                         
+C:   00000000  s_BSEG                          
+C:   00000000  s_CABS                          
+C:   00000000  s_DSEG                          
+C:   00000000  s_HOME                          
+C:   00000000  s_IABS                          
+C:   00000000  s_ISEG                          
+C:   00000000  s_REG_BANK_0                    
+C:   00000000  s_RSEG                          
+C:   00000000  s_RSEG0                         
+C:   00000000  s_RSEG1                         
+C:   00000000  s_XABS                          
+C:   00000001  l_BIT_BANK                      
+C:   00000001  l_BSEG                          
+C:   00000001  l_BSEG_BYTES                    
+C:   00000003  l_GSFINAL                       
+C:   00000003  l_GSINIT0                       
+C:   00000008  l_REG_BANK_0                    
+C:   00000008  s_REG_BANK_1                    
+C:   0000000A  l_GSINIT2                       
+C:   0000000B  l_OSEG                          
+C:   00000010  s_REG_BANK_2                    
+C:   00000017  l_XINIT                         
+C:   00000017  l_XISEG                         
+C:   00000018  s_REG_BANK_3                    
+C:   0000001D  l_GSINIT                        
+C:   00000020  s_BSEG_BYTES                    
+C:   00000020  s__CODE                         
+C:   00000021  s_BIT_BANK                      
+C:   00000022  l_GSINIT3                       
+C:   00000022  s_OSEG                          
+C:   0000002A  l_GSINIT4                       
+C:   0000002D  s_SSEG                          
+C:   0000007E  l_DSEG                          
+C:   00000089  l_HOME                          
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CABS                                00000000    00000000 =           0. bytes (ABS,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000089  s_GSINIT0                       
+C:   0000008C  s_GSINIT1                       
+C:   0000008C  s_GSINIT2                       
+C:   00000096  s_GSINIT3                       
+C:   000000B8  s_GSINIT4                       
+C:   000000D3  l_SSEG                          
+C:   000000E2  s_GSINIT                        
+C:   000000E2  s_GSINIT5                       
+C:   000000FF  s_GSFINAL                       
+C:   00000100  l_IRAM                          
+C:   00000102  s_CSEG                          
+C:   0000011E  l_CONST                         
+C:   00000BCA  l_XSEG                          
+C:   00002553  l_CSEG                          
+C:   00002655  s_CONST                         
+C:   00002773  s_XINIT                         
+C:   0000F000  s_PSEG                          
+C:   0000F000  s_XSEG                          
+C:   0000FBCA  s_XISEG                         
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           _startup
+     00000080  _P0                                cc1111_aes
+     00000080  _P0_0                              cc1111_aes
+     00000081  _P0_1                              cc1111_aes
+     00000081  _SP                                cc1111_aes
+     00000082  _DPL0                              cc1111_aes
+     00000082  _P0_2                              cc1111_aes
+     00000083  _DPH0                              cc1111_aes
+     00000083  _P0_3                              cc1111_aes
+     00000084  _DPL1                              cc1111_aes
+     00000084  _P0_4                              cc1111_aes
+     00000085  _DPH1                              cc1111_aes
+     00000085  _P0_5                              cc1111_aes
+     00000086  _P0_6                              cc1111_aes
+     00000086  _U0CSR                             cc1111_aes
+     00000087  _P0_7                              cc1111_aes
+     00000087  _PCON                              cc1111_aes
+     00000088  _IT0                               cc1111_aes
+     00000088  _TCON                              cc1111_aes
+     00000089  _P0IFG                             cc1111_aes
+     00000089  _RFTXRXIF                          cc1111_aes
+     0000008A  _IT1                               cc1111_aes
+     0000008A  _P1IFG                             cc1111_aes
+     0000008B  _P2IFG                             cc1111_aes
+     0000008B  _URX0IF                            cc1111_aes
+     0000008C  _PICTL                             cc1111_aes
+     0000008D  _ADCIF                             cc1111_aes
+     0000008D  _P1IEN                             cc1111_aes
+     0000008E  __SFR8E                            cc1111_aes
+     0000008F  _P0INP                             cc1111_aes
+     0000008F  _URX1IF                            cc1111_aes
+     00000090  _P1                                cc1111_aes
+     00000090  _P1_0                              cc1111_aes
+     00000091  _P1_1                              cc1111_aes
+     00000091  _RFIM                              cc1111_aes
+     00000092  _DPS                               cc1111_aes
+     00000092  _P1_2                              cc1111_aes
+     00000093  _MPAGE                             cc1111_aes
+     00000093  _P1_3                              cc1111_aes
+     00000093  __XPAGE                            cc1111_aes
+     00000094  _P1_4                              cc1111_aes
+     00000094  __SFR94                            cc1111_aes
+     00000095  _P1_5                              cc1111_aes
+     00000095  __SFR95                            cc1111_aes
+     00000096  _P1_6                              cc1111_aes
+     00000096  __SFR96                            cc1111_aes
+     00000097  _P1_7                              cc1111_aes
+     00000097  __SFR97                            cc1111_aes
+     00000098  _ENCIF_0                           cc1111_aes
+     00000098  _S0CON                             cc1111_aes
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000099  _ENCIF_1                           cc1111_aes
+     00000099  __SFR99                            cc1111_aes
+     0000009A  _IEN2                              cc1111_aes
+     0000009B  _S1CON                             cc1111_aes
+     0000009C  _T2CT                              cc1111_aes
+     0000009D  _T2PR                              cc1111_aes
+     0000009E  _T2CTL                             cc1111_aes
+     0000009F  __SFR9F                            cc1111_aes
+     000000A0  _P2                                cc1111_aes
+     000000A0  _P2_0                              cc1111_aes
+     000000A1  _P2_1                              cc1111_aes
+     000000A1  _WORIRQ                            cc1111_aes
+     000000A2  _P2_2                              cc1111_aes
+     000000A2  _WORCTRL                           cc1111_aes
+     000000A3  _P2_3                              cc1111_aes
+     000000A3  _WOREVT0                           cc1111_aes
+     000000A4  _P2_4                              cc1111_aes
+     000000A4  _WOREVT1                           cc1111_aes
+     000000A5  _P2_5                              cc1111_aes
+     000000A5  _WORTIME0                          cc1111_aes
+     000000A6  _P2_6                              cc1111_aes
+     000000A6  _WORTIME1                          cc1111_aes
+     000000A7  _P2_7                              cc1111_aes
+     000000A7  __SFRA7                            cc1111_aes
+     000000A8  _IEN0                              cc1111_aes
+     000000A8  _RFTXRXIE                          cc1111_aes
+     000000A9  _ADCIE                             cc1111_aes
+     000000A9  _IP0                               cc1111_aes
+     000000AA  _URX0IE                            cc1111_aes
+     000000AA  __SFRAA                            cc1111_aes
+     000000AB  _FWT                               cc1111_aes
+     000000AB  _URX1IE                            cc1111_aes
+     000000AC  _ENCIE                             cc1111_aes
+     000000AC  _FADDRL                            cc1111_aes
+     000000AD  _FADDRH                            cc1111_aes
+     000000AD  _STIE                              cc1111_aes
+     000000AE  _FCTL                              cc1111_aes
+     000000AF  _EA                                cc1111_aes
+     000000AF  _FWDATA                            cc1111_aes
+     000000B0  __SFRB0                            cc1111_aes
+     000000B1  _ENCDI                             cc1111_aes
+     000000B2  _ENCDO                             cc1111_aes
+     000000B3  _ENCCS                             cc1111_aes
+     000000B4  _ADCCON1                           cc1111_aes
+     000000B5  _ADCCON2                           cc1111_aes
+     000000B6  _ADCCON3                           cc1111_aes
+     000000B7  __SFRB7                            cc1111_aes
+     000000B8  _DMAIE                             cc1111_aes
+     000000B8  _IEN1                              cc1111_aes
+     000000B9  _IP1                               cc1111_aes
+     000000B9  _T1IE                              cc1111_aes
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000BA  _ADCL                              cc1111_aes
+     000000BA  _T2IE                              cc1111_aes
+     000000BB  _ADCH                              cc1111_aes
+     000000BB  _T3IE                              cc1111_aes
+     000000BC  _RNDL                              cc1111_aes
+     000000BC  _T4IE                              cc1111_aes
+     000000BD  _P0IE                              cc1111_aes
+     000000BD  _RNDH                              cc1111_aes
+     000000BE  _SLEEP                             cc1111_aes
+     000000BF  __SFRBF                            cc1111_aes
+     000000C0  _DMAIF                             cc1111_aes
+     000000C0  _IRCON                             cc1111_aes
+     000000C1  _T1IF                              cc1111_aes
+     000000C1  _U0DBUF                            cc1111_aes
+     000000C2  _T2IF                              cc1111_aes
+     000000C2  _U0BAUD                            cc1111_aes
+     000000C3  _T3IF                              cc1111_aes
+     000000C3  __SFRC3                            cc1111_aes
+     000000C4  _T4IF                              cc1111_aes
+     000000C4  _U0UCR                             cc1111_aes
+     000000C5  _P0IF                              cc1111_aes
+     000000C5  _U0GCR                             cc1111_aes
+     000000C6  _CLKCON                            cc1111_aes
+     000000C7  _MEMCTR                            cc1111_aes
+     000000C7  _STIF                              cc1111_aes
+     000000C8  __SFRC8                            cc1111_aes
+     000000C9  _WDCTL                             cc1111_aes
+     000000CA  _T3CNT                             cc1111_aes
+     000000CB  _T3CTL                             cc1111_aes
+     000000CC  _T3CCTL0                           cc1111_aes
+     000000CD  _T3CC0                             cc1111_aes
+     000000CE  _T3CCTL1                           cc1111_aes
+     000000CF  _T3CC1                             cc1111_aes
+     000000D0  _P                                 cc1111_aes
+     000000D0  _PSW                               cc1111_aes
+     000000D1  _DMAIRQ                            cc1111_aes
+     000000D1  _F1                                cc1111_aes
+     000000D2  _DMA1CFGL                          cc1111_aes
+     000000D2  _OV                                cc1111_aes
+     000000D3  _DMA1CFGH                          cc1111_aes
+     000000D3  _RS0                               cc1111_aes
+     000000D4  _DMA0CFGL                          cc1111_aes
+     000000D4  _RS1                               cc1111_aes
+     000000D5  _DMA0CFGH                          cc1111_aes
+     000000D5  _F0                                cc1111_aes
+     000000D6  _AC                                cc1111_aes
+     000000D6  _DMAARM                            cc1111_aes
+     000000D7  _CY                                cc1111_aes
+     000000D7  _DMAREQ                            cc1111_aes
+     000000D8  _T3OVFIF                           cc1111_aes
+     000000D8  _TIMIF                             cc1111_aes
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000D9  _RFD                               cc1111_aes
+     000000D9  _T3CH0IF                           cc1111_aes
+     000000DA  _T1CC0L                            cc1111_aes
+     000000DA  _T3CH1IF                           cc1111_aes
+     000000DB  _T1CC0H                            cc1111_aes
+     000000DB  _T4OVFIF                           cc1111_aes
+     000000DC  _T1CC1L                            cc1111_aes
+     000000DC  _T4CH0IF                           cc1111_aes
+     000000DD  _T1CC1H                            cc1111_aes
+     000000DD  _T4CH1IF                           cc1111_aes
+     000000DE  _OVFIM                             cc1111_aes
+     000000DE  _T1CC2L                            cc1111_aes
+     000000DF  _T1CC2H                            cc1111_aes
+     000000E0  _ACC                               cc1111_aes
+     000000E0  _ACC_0                             cc1111_aes
+     000000E1  _ACC_1                             cc1111_aes
+     000000E1  _RFST                              cc1111_aes
+     000000E2  _ACC_2                             cc1111_aes
+     000000E2  _T1CNTL                            cc1111_aes
+     000000E3  _ACC_3                             cc1111_aes
+     000000E3  _T1CNTH                            cc1111_aes
+     000000E4  _ACC_4                             cc1111_aes
+     000000E4  _T1CTL                             cc1111_aes
+     000000E5  _ACC_5                             cc1111_aes
+     000000E5  _T1CCTL0                           cc1111_aes
+     000000E6  _ACC_6                             cc1111_aes
+     000000E6  _T1CCTL1                           cc1111_aes
+     000000E7  _ACC_7                             cc1111_aes
+     000000E7  _T1CCTL2                           cc1111_aes
+     000000E8  _IRCON2                            cc1111_aes
+     000000E8  _P2IF                              cc1111_aes
+     000000E8  _USBIF                             cc1111_aes
+     000000E9  _RFIF                              cc1111_aes
+     000000E9  _UTX0IF                            cc1111_aes
+     000000EA  _T4CNT                             cc1111_aes
+     000000EA  _UTX1IF                            cc1111_aes
+     000000EB  _P1IF                              cc1111_aes
+     000000EB  _T4CTL                             cc1111_aes
+     000000EC  _T4CCTL0                           cc1111_aes
+     000000EC  _WDTIF                             cc1111_aes
+     000000ED  _T4CC0                             cc1111_aes
+     000000EE  _T4CCTL1                           cc1111_aes
+     000000EF  _T4CC1                             cc1111_aes
+     000000F0  _B                                 cc1111_aes
+     000000F0  _B_0                               cc1111_aes
+     000000F1  _B_1                               cc1111_aes
+     000000F1  _PERCFG                            cc1111_aes
+     000000F2  _ADCCFG                            cc1111_aes
+     000000F2  _B_2                               cc1111_aes
+     000000F3  _B_3                               cc1111_aes
+     000000F3  _P0SEL                             cc1111_aes
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000F4  _B_4                               cc1111_aes
+     000000F4  _P1SEL                             cc1111_aes
+     000000F5  _B_5                               _gptrget
+     000000F5  _P2SEL                             cc1111_aes
+     000000F6  _B_6                               _gptrget
+     000000F6  _P1INP                             cc1111_aes
+     000000F7  _B_7                               _gptrget
+     000000F7  _P2INP                             cc1111_aes
+     000000F8  _ACTIVE                            cc1111_aes
+     000000F8  _U1CSR                             cc1111_aes
+     000000F9  _TX_BYTE                           cc1111_aes
+     000000F9  _U1DBUF                            cc1111_aes
+     000000FA  _RX_BYTE                           cc1111_aes
+     000000FA  _U1BAUD                            cc1111_aes
+     000000FB  _ERR                               cc1111_aes
+     000000FB  _U1UCR                             cc1111_aes
+     000000FC  _FE                                cc1111_aes
+     000000FC  _U1GCR                             cc1111_aes
+     000000FD  _P0DIR                             cc1111_aes
+     000000FD  _SLAVE                             cc1111_aes
+     000000FE  _P1DIR                             cc1111_aes
+     000000FE  _RE                                cc1111_aes
+     000000FF  _MODE                              cc1111_aes
+     000000FF  _P2DIR                             cc1111_aes
+     0000DE00  _USBADDR                           cc1111_aes
+     0000DE01  _USBPOW                            cc1111_aes
+     0000DE02  _USBIIF                            cc1111_aes
+     0000DE04  _USBOIF                            cc1111_aes
+     0000DE06  _USBCIF                            cc1111_aes
+     0000DE07  _USBIIE                            cc1111_aes
+     0000DE09  _USBOIE                            cc1111_aes
+     0000DE0B  _USBCIE                            cc1111_aes
+     0000DE0C  _USBFRML                           cc1111_aes
+     0000DE0D  _USBFRMH                           cc1111_aes
+     0000DE0E  _USBINDEX                          cc1111_aes
+     0000DE10  _USBMAXI                           cc1111_aes
+     0000DE11  _USBCS0                            cc1111_aes
+     0000DE11  _USBCSIL                           cc1111_aes
+     0000DE12  _USBCSIH                           cc1111_aes
+     0000DE13  _USBMAXO                           cc1111_aes
+     0000DE14  _USBCSOL                           cc1111_aes
+     0000DE15  _USBCSOH                           cc1111_aes
+     0000DE16  _USBCNT0                           cc1111_aes
+     0000DE16  _USBCNTL                           cc1111_aes
+     0000DE17  _USBCNTH                           cc1111_aes
+     0000DE20  _USBF0                             cc1111_aes
+     0000DE22  _USBF1                             cc1111_aes
+     0000DE24  _USBF2                             cc1111_aes
+     0000DE26  _USBF3                             cc1111_aes
+     0000DE28  _USBF4                             cc1111_aes
+     0000DE2A  _USBF5                             cc1111_aes
+ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000DF00  _SYNC1                             cc1111_aes
+     0000DF01  _SYNC0                             cc1111_aes
+     0000DF02  _MDMCTRL0H                         cc1111_aes
+     0000DF02  _PKTLEN                            cc1111_aes
+     0000DF03  _PKTCTRL1                          cc1111_aes
+     0000DF04  _PKTCTRL0                          cc1111_aes
+     0000DF05  _ADDR                              cc1111_aes
+     0000DF06  _CHANNR                            cc1111_aes
+     0000DF07  _FSCTRL1                           cc1111_aes
+     0000DF08  _FSCTRL0                           cc1111_aes
+     0000DF09  _FREQ2                             cc1111_aes
+     0000DF0A  _FREQ1                             cc1111_aes
+     0000DF0B  _FREQ0                             cc1111_aes
+     0000DF0C  _MDMCFG4                           cc1111_aes
+     0000DF0D  _MDMCFG3                           cc1111_aes
+     0000DF0E  _MDMCFG2                           cc1111_aes
+     0000DF0F  _MDMCFG1                           cc1111_aes
+     0000DF10  _MDMCFG0                           cc1111_aes
+     0000DF11  _DEVIATN                           cc1111_aes
+     0000DF12  _MCSM2                             cc1111_aes
+     0000DF13  _MCSM1                             cc1111_aes
+     0000DF14  _MCSM0                             cc1111_aes
+     0000DF15  _FOCCFG                            cc1111_aes
+     0000DF16  _BSCFG                             cc1111_aes
+     0000DF17  _AGCCTRL2                          cc1111_aes
+     0000DF18  _AGCCTRL1                          cc1111_aes
+     0000DF19  _AGCCTRL0                          cc1111_aes
+     0000DF1A  _FREND1                            cc1111_aes
+     0000DF1B  _FREND0                            cc1111_aes
+     0000DF1C  _FSCAL3                            cc1111_aes
+     0000DF1D  _FSCAL2                            cc1111_aes
+     0000DF1E  _FSCAL1                            cc1111_aes
+     0000DF1F  _FSCAL0                            cc1111_aes
+     0000DF20  __XREGDF20                         cc1111_aes
+     0000DF21  __XREGDF21                         cc1111_aes
+     0000DF22  __XREGDF22                         cc1111_aes
+     0000DF23  _TEST2                             cc1111_aes
+     0000DF24  _TEST1                             cc1111_aes
+     0000DF25  _TEST0                             cc1111_aes
+     0000DF26  __XREGDF26                         cc1111_aes
+     0000DF27  _PA_TABLE7                         cc1111_aes
+     0000DF28  _PA_TABLE6                         cc1111_aes
+     0000DF29  _PA_TABLE5                         cc1111_aes
+     0000DF2A  _PA_TABLE4                         cc1111_aes
+     0000DF2B  _PA_TABLE3                         cc1111_aes
+     0000DF2C  _PA_TABLE2                         cc1111_aes
+     0000DF2D  _PA_TABLE1                         cc1111_aes
+     0000DF2E  _PA_TABLE0                         cc1111_aes
+     0000DF2F  _IOCFG2                            cc1111_aes
+     0000DF30  _IOCFG1                            cc1111_aes
+     0000DF31  _IOCFG0                            cc1111_aes
+ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000DF32  __XREGDF32                         cc1111_aes
+     0000DF33  __XREGDF33                         cc1111_aes
+     0000DF34  __XREGDF34                         cc1111_aes
+     0000DF35  __XREGDF35                         cc1111_aes
+     0000DF36  _PARTNUM                           cc1111_aes
+     0000DF37  _VERSION                           cc1111_aes
+     0000DF38  _FREQEST                           cc1111_aes
+     0000DF39  _LQI                               cc1111_aes
+     0000DF3A  _RSSI                              cc1111_aes
+     0000DF3B  _MARCSTATE                         cc1111_aes
+     0000DF3C  _PKTSTATUS                         cc1111_aes
+     0000DF3D  _VCO_VC_DAC                        cc1111_aes
+     0000DF40  _I2SCFG0                           cc1111_aes
+     0000DF41  _I2SCFG1                           cc1111_aes
+     0000DF42  _I2SDATL                           cc1111_aes
+     0000DF43  _I2SDATH                           cc1111_aes
+     0000DF44  _I2SWCNT                           cc1111_aes
+     0000DF45  _I2SSTAT                           cc1111_aes
+     0000DF46  _I2SCLKF0                          cc1111_aes
+     0000DF47  _I2SCLKF1                          cc1111_aes
+     0000DF48  _I2SCLKF2                          cc1111_aes
+     0000DF80  __NA_P0                            cc1111_aes
+     0000DF81  __NA_SP                            cc1111_aes
+     0000DF82  __NA_DPL0                          cc1111_aes
+     0000DF83  __NA_DPH0                          cc1111_aes
+     0000DF84  __NA_DPL1                          cc1111_aes
+     0000DF85  __NA_DPH1                          cc1111_aes
+     0000DF86  _X_U0CSR                           cc1111_aes
+     0000DF87  __NA_PCON                          cc1111_aes
+     0000DF88  __NA_TCON                          cc1111_aes
+     0000DF89  _X_P0IFG                           cc1111_aes
+     0000DF8A  _X_P1IFG                           cc1111_aes
+     0000DF8B  _X_P2IFG                           cc1111_aes
+     0000DF8C  _X_PICTL                           cc1111_aes
+     0000DF8D  _X_P1IEN                           cc1111_aes
+     0000DF8E  __X_SFR8E                          cc1111_aes
+     0000DF8F  _X_P0INP                           cc1111_aes
+     0000DF90  __NA_P1                            cc1111_aes
+     0000DF91  _X_RFIM                            cc1111_aes
+     0000DF92  __NA_DPS                           cc1111_aes
+     0000DF93  _X_MPAGE                           cc1111_aes
+     0000DF94  __X_SFR94                          cc1111_aes
+     0000DF95  __X_SFR95                          cc1111_aes
+     0000DF96  __X_SFR96                          cc1111_aes
+     0000DF97  __X_SFR97                          cc1111_aes
+     0000DF98  __NA_S0CON                         cc1111_aes
+     0000DF99  __X_SFR99                          cc1111_aes
+     0000DF9A  __NA_IEN2                          cc1111_aes
+     0000DF9B  __NA_S1CON                         cc1111_aes
+     0000DF9C  _X_T2CT                            cc1111_aes
+     0000DF9D  _X_T2PR                            cc1111_aes
+ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000DF9E  _X_T2CTL                           cc1111_aes
+     0000DF9F  __X_SFR9F                          cc1111_aes
+     0000DFA0  __NA_P2                            cc1111_aes
+     0000DFA1  _X_WORIRQ                          cc1111_aes
+     0000DFA2  _X_WORCTRL                         cc1111_aes
+     0000DFA3  _X_WOREVT0                         cc1111_aes
+     0000DFA4  _X_WOREVT1                         cc1111_aes
+     0000DFA5  _X_WORTIME0                        cc1111_aes
+     0000DFA6  _X_WORTIME1                        cc1111_aes
+     0000DFA7  __X_SFRA7                          cc1111_aes
+     0000DFA8  __NA_IEN0                          cc1111_aes
+     0000DFA9  __NA_IP0                           cc1111_aes
+     0000DFAA  __X_SFRAA                          cc1111_aes
+     0000DFAB  _X_FWT                             cc1111_aes
+     0000DFAC  _X_FADDRL                          cc1111_aes
+     0000DFAD  _X_FADDRH                          cc1111_aes
+     0000DFAE  _X_FCTL                            cc1111_aes
+     0000DFAF  _X_FWDATA                          cc1111_aes
+     0000DFB0  __X_SFRB0                          cc1111_aes
+     0000DFB1  _X_ENCDI                           cc1111_aes
+     0000DFB2  _X_ENCDO                           cc1111_aes
+     0000DFB3  _X_ENCCS                           cc1111_aes
+     0000DFB4  _X_ADCCON1                         cc1111_aes
+     0000DFB5  _X_ADCCON2                         cc1111_aes
+     0000DFB6  _X_ADCCON3                         cc1111_aes
+     0000DFB7  __X_SFRB7                          cc1111_aes
+     0000DFB8  __NA_IEN1                          cc1111_aes
+     0000DFB9  __NA_IP1                           cc1111_aes
+     0000DFBA  _X_ADCL                            cc1111_aes
+     0000DFBB  _X_ADCH                            cc1111_aes
+     0000DFBC  _X_RNDL                            cc1111_aes
+     0000DFBD  _X_RNDH                            cc1111_aes
+     0000DFBE  _X_SLEEP                           cc1111_aes
+     0000DFBF  __X_SFRBF                          cc1111_aes
+     0000DFC0  __NA_IRCON                         cc1111_aes
+     0000DFC1  _X_U0DBUF                          cc1111_aes
+     0000DFC2  _X_U0BAUD                          cc1111_aes
+     0000DFC3  __X_SFRC3                          cc1111_aes
+     0000DFC4  _X_U0UCR                           cc1111_aes
+     0000DFC5  _X_U0GCR                           cc1111_aes
+     0000DFC6  _X_CLKCON                          cc1111_aes
+     0000DFC7  _X_MEMCTR                          cc1111_aes
+     0000DFC8  __X_SFRC8                          cc1111_aes
+     0000DFC9  _X_WDCTL                           cc1111_aes
+     0000DFCA  _X_T3CNT                           cc1111_aes
+     0000DFCB  _X_T3CTL                           cc1111_aes
+     0000DFCC  _X_T3CCTL0                         cc1111_aes
+     0000DFCD  _X_T3CC0                           cc1111_aes
+     0000DFCE  _X_T3CCTL1                         cc1111_aes
+     0000DFCF  _X_T3CC1                           cc1111_aes
+     0000DFD0  __NA_PSW                           cc1111_aes
+ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000DFD1  _X_DMAIRQ                          cc1111_aes
+     0000DFD2  _X_DMA1CFGL                        cc1111_aes
+     0000DFD3  _X_DMA1CFGH                        cc1111_aes
+     0000DFD4  _X_DMA0CFGL                        cc1111_aes
+     0000DFD5  _X_DMA0CFGH                        cc1111_aes
+     0000DFD6  _X_DMAARM                          cc1111_aes
+     0000DFD7  _X_DMAREQ                          cc1111_aes
+     0000DFD8  _X_TIMIF                           cc1111_aes
+     0000DFD9  _X_RFD                             cc1111_aes
+     0000DFDA  _X_T1CC0L                          cc1111_aes
+     0000DFDB  _X_T1CC0H                          cc1111_aes
+     0000DFDC  _X_T1CC1L                          cc1111_aes
+     0000DFDD  _X_T1CC1H                          cc1111_aes
+     0000DFDE  _X_T1CC2L                          cc1111_aes
+     0000DFDF  _X_T1CC2H                          cc1111_aes
+     0000DFE0  __NA_ACC                           cc1111_aes
+     0000DFE1  _X_RFST                            cc1111_aes
+     0000DFE2  _X_T1CNTL                          cc1111_aes
+     0000DFE3  _X_T1CNTH                          cc1111_aes
+     0000DFE4  _X_T1CTL                           cc1111_aes
+     0000DFE5  _X_T1CCTL0                         cc1111_aes
+     0000DFE6  _X_T1CCTL1                         cc1111_aes
+     0000DFE7  _X_T1CCTL2                         cc1111_aes
+     0000DFE8  __NA_IRCON2                        cc1111_aes
+     0000DFE9  _X_RFIF                            cc1111_aes
+     0000DFEA  _X_T4CNT                           cc1111_aes
+     0000DFEB  _X_T4CTL                           cc1111_aes
+     0000DFEC  _X_T4CCTL0                         cc1111_aes
+     0000DFED  _X_T4CC0                           cc1111_aes
+     0000DFEE  _X_T4CCTL1                         cc1111_aes
+     0000DFEF  _X_T4CC1                           cc1111_aes
+     0000DFF0  __NA_B                             cc1111_aes
+     0000DFF1  _X_PERCFG                          cc1111_aes
+     0000DFF2  _X_ADCCFG                          cc1111_aes
+     0000DFF3  _X_P0SEL                           cc1111_aes
+     0000DFF4  _X_P1SEL                           cc1111_aes
+     0000DFF5  _X_P2SEL                           cc1111_aes
+     0000DFF6  _X_P1INP                           cc1111_aes
+     0000DFF7  _X_P2INP                           cc1111_aes
+     0000DFF8  _X_U1CSR                           cc1111_aes
+     0000DFF9  _X_U1DBUF                          cc1111_aes
+     0000DFFA  _X_U1BAUD                          cc1111_aes
+     0000DFFB  _X_U1UCR                           cc1111_aes
+     0000DFFC  _X_U1GCR                           cc1111_aes
+     0000DFFD  _X_P0DIR                           cc1111_aes
+     0000DFFE  _X_P1DIR                           cc1111_aes
+     0000DFFF  _X_P2DIR                           cc1111_aes
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+BSEG_BYTES                          00000020    00000001 =           1. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+REG_BANK_0                          00000000    00000008 =           8. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 14.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+BIT_BANK                            00000021    00000001 =           1. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 15.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+DSEG                                00000000    0000007E =         126. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000008  _input_size                        cc1110_spicom
+     00000009  _input_head_idx                    cc1110_spicom
+     0000000A  _input_tail_idx                    cc1110_spicom
+     0000000B  _output_size                       cc1110_spicom
+     0000000C  _output_head_idx                   cc1110_spicom
+     0000000D  _output_tail_idx                   cc1110_spicom
+     0000000E  _serial_data_available             cc1110_spicom
+     0000000F  _spi_mode                          cc1110_spicom
+     00000010  _master_send_size                  cc1110_spicom
+     00000011  _slave_send_size                   cc1110_spicom
+     00000012  _txdata_PARM_2                     cc1110_spicom
+     00000013  _txdata_PARM_3                     cc1110_spicom
+     00000015  _txdata_PARM_4                     cc1110_spicom
+     00000017  _dma_channels                      chipcon_dma
+     00000019  _rfif                              cc1111rf
+     0000001D  _blink_binary_baby_lsb_PARM_2      global
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 16.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+OSEG                                00000022    0000000B =          11. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000022  __gptrput_PARM_2                   _gptrput
+     00000022  __modsint_PARM_2                   _moduint
+     00000022  __moduint_PARM_2                   _moduint
+     00000022  __mulint_PARM_2                    _mulint
+     00000022  _memcpy_PARM_2                     _memcpy
+     00000022  _memset_PARM_2                     _memset
+     00000022  _strncmp_PARM_3                    global
+     00000023  _memset_PARM_3                     _memset
+     00000025  _memcpy_PARM_3                     _memcpy
+ASxxxx Linker V03.00 + NoICE + sdld,  page 17.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+SSEG                                0000002D    000000D3 =         211. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000002D  __start__stack                     appFHSSNIC
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+XSEG                                0000F000    00000BCA =        3018. bytes (REL,CON,XDATA)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+D:   0000F000  _g_Channels                        appFHSSNIC
+D:   0000F370  _g_NIC_ID                          appFHSSNIC
+D:   0000F372  _g_txMsgQueue                      appFHSSNIC
+D:   0000F557  _transmit_long_PARM_2              appFHSSNIC
+D:   0000F559  _transmit_long_PARM_3              appFHSSNIC
+D:   0000F55C  _MAC_tx_PARM_2                     appFHSSNIC
+D:   0000F565  _MAC_rx_handle_PARM_2              appFHSSNIC
+D:   0000F583  _processbuffer                     appFHSSNIC
+D:   0000F584  _chan_table                        appFHSSNIC
+D:   0000F586  _spi_input_buf                     cc1110_spicom
+D:   0000F662  _spi_output_buf                    cc1110_spicom
+D:   0000F74C  _dma_configs                       chipcon_dma
+D:   0000F764  _rfRxCurrentBuffer                 cc1111rf
+D:   0000F765  _rfrxbuf                           cc1111rf
+D:   0000FB65  _rfRxCounter                       cc1111rf
+D:   0000FB69  _rfRxProcessed                     cc1111rf
+D:   0000FB6B  _rftxbuf                           cc1111rf
+D:   0000FB6D  _txTotal                           cc1111rf
+D:   0000FB6F  _rf_status                         cc1111rf
+D:   0000FB70  _rf_MAC_timer                      cc1111rf
+D:   0000FB72  _rf_tLastRecv                      cc1111rf
+D:   0000FB74  _macdata                           cc1111rf
+D:   0000FB89  _transmit_PARM_2                   cc1111rf
+D:   0000FB8B  _transmit_PARM_3                   cc1111rf
+D:   0000FB8D  _transmit_PARM_4                   cc1111rf
+D:   0000FB92  _byte_shuffle_PARM_2               cc1111rf
+D:   0000FB94  _byte_shuffle_PARM_3               cc1111rf
+D:   0000FB98  _lastCode                          global
+D:   0000FB9A  _clock                             global
+D:   0000FB9E  _strncmp_PARM_2                    global
+D:   0000FBA4  _aesdmai                           cc1111_aes
+D:   0000FBA6  _aesdmao                           cc1111_aes
+D:   0000FBA8  _aesdmachani                       cc1111_aes
+D:   0000FBA9  _aesdmaarmi                        cc1111_aes
+D:   0000FBAA  _aesdmachano                       cc1111_aes
+D:   0000FBAB  _aesdmaarmo                        cc1111_aes
+D:   0000FBAC  _setAES_PARM_2                     cc1111_aes
+D:   0000FBAD  _setAES_PARM_3                     cc1111_aes
+D:   0000FBB0  _padAES_PARM_2                     cc1111_aes
+D:   0000FBB4  _encAES_PARM_2                     cc1111_aes
+D:   0000FBB6  _encAES_PARM_3                     cc1111_aes
+D:   0000FBB8  _encAES_PARM_4                     cc1111_aes
+D:   0000FBBB  _decAES_PARM_2                     cc1111_aes
+D:   0000FBBD  _decAES_PARM_3                     cc1111_aes
+D:   0000FBBF  _decAES_PARM_4                     cc1111_aes
+D:   0000FBC2  _doAES_PARM_2                      cc1111_aes
+D:   0000FBC4  _doAES_PARM_3                      cc1111_aes
+D:   0000FBC6  _doAES_PARM_4                      cc1111_aes
+D:   0000FBC7  _doAES_PARM_5                      cc1111_aes
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+XISEG                               0000FBCA    00000017 =          23. bytes (REL,CON,XDATA)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+D:   0000FBCA  _rfRxInfMode                       cc1111rf
+D:   0000FBCB  _rfRxTotalRXLen                    cc1111rf
+D:   0000FBCD  _rfRxLargeLen                      cc1111rf
+D:   0000FBCF  _rfTxCurBufIdx                     cc1111rf
+D:   0000FBD0  _rfTxBufCount                      cc1111rf
+D:   0000FBD1  _rfTxCounter                       cc1111rf
+D:   0000FBD3  _rfTxRepeatCounter                 cc1111rf
+D:   0000FBD5  _rfTxBufferEnd                     cc1111rf
+D:   0000FBD7  _rfTxRepeatLen                     cc1111rf
+D:   0000FBD9  _rfTxRepeatOffset                  cc1111rf
+D:   0000FBDB  _rfTxTotalTXLen                    cc1111rf
+D:   0000FBDD  _rfTxInfMode                       cc1111rf
+D:   0000FBDE  _rfAESMode                         cc1111rf
+D:   0000FBDF  _rfAmpMode                         cc1111rf
+D:   0000FBE0  _bRepeatMode                       cc1111rf
+ASxxxx Linker V03.00 + NoICE + sdld,  page 20.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+HOME                                00000000    00000089 =         137. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000086  __sdcc_program_startup             appFHSSNIC
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 21.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT0                             00000089    00000003 =           3. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000089  __sdcc_gsinit_startup              
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 22.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT2                             0000008C    0000000A =          10. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 23.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT3                             00000096    00000022 =          34. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000096  __mcs51_genXINIT                   
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 24.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT4                             000000B8    0000002A =          42. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000000B8  __mcs51_genRAMCLEAR                
+C:   000000BE  __mcs51_genXRAMCLEAR               
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 25.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT                              000000E2    0000001D =          29. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 26.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSFINAL                             000000FF    00000003 =           3. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 27.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                00000102    00002553 =        9555. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000102  _PHY_set_channel                   appFHSSNIC
+C:   00000131  _MAC_initChannels                  appFHSSNIC
+C:   00000183  _begin_hopping                     appFHSSNIC
+C:   0000019D  _stop_hopping                      appFHSSNIC
+C:   000001A5  _transmit_long                     appFHSSNIC
+C:   0000034A  _MAC_tx                            appFHSSNIC
+C:   00000529  _MAC_sync                          appFHSSNIC
+C:   000005CF  _MAC_stop_sync                     appFHSSNIC
+C:   000005E9  _MAC_become_master                 appFHSSNIC
+C:   00000604  _MAC_do_Master_scanny_thingy       appFHSSNIC
+C:   0000062B  _MAC_set_chanidx                   appFHSSNIC
+C:   00000653  _MAC_set_NIC_ID                    appFHSSNIC
+C:   0000066F  _MAC_rx_handle                     appFHSSNIC
+C:   00000670  _MAC_getNextChannel                appFHSSNIC
+C:   000006AB  _t2IntHandler                      appFHSSNIC
+C:   00000985  _t3IntHandler                      appFHSSNIC
+C:   00000986  _init_FHSS                         appFHSSNIC
+C:   000009E7  _init_MAC                          appFHSSNIC
+C:   000009EA  _appMainInit                       appFHSSNIC
+C:   00000A0E  _appMainLoop                       appFHSSNIC
+C:   00000E0E  _appHandleEP5                      appFHSSNIC
+C:   00000E12  _appHandleEP0OUTdone               appFHSSNIC
+C:   00000E13  _appHandleEP0OUT                   appFHSSNIC
+C:   00000E14  _appHandleEP0                      appFHSSNIC
+C:   00000E18  _appInitRf                         appFHSSNIC
+C:   00000F30  _initBoard                         appFHSSNIC
+C:   00000F36  _main                              appFHSSNIC
+C:   00000F68  _rx1_isr                           cc1110_spicom
+C:   00000FEE  _tx1_isr                           cc1110_spicom
+C:   00001052  _vcom_flush                        cc1110_spicom
+C:   00001053  _vcom_putchar                      cc1110_spicom
+C:   00001083  _vcom_pollchar                     cc1110_spicom
+C:   0000109A  _vcom_getchar                      cc1110_spicom
+C:   000010C5  _vcom_enable                       cc1110_spicom
+C:   000010D9  _vcom_disable                      cc1110_spicom
+C:   000010F1  _initUSB                           cc1110_spicom
+C:   00001129  _usbProcessEvents                  cc1110_spicom
+C:   0000112A  _vcom_readline                     cc1110_spicom
+C:   00001163  _vcom_putstr                       cc1110_spicom
+C:   000011BB  _usb_up                            cc1110_spicom
+C:   000011BE  _vcom_down                         cc1110_spicom
+C:   000011C1  _txdata                            cc1110_spicom
+C:   000011E8  _usbIntHandler                     cc1110_spicom
+C:   000011E9  _waitForUSBsetup                   cc1110_spicom
+C:   000011EA  _debugx                            chipcon_usbdebug
+C:   0000122B  _debug                             chipcon_usbdebug
+C:   0000126D  _debughex                          chipcon_usbdebug
+C:   00001288  _debughex16                        chipcon_usbdebug
+C:   000012A8  _debughex32                        chipcon_usbdebug
+C:   000012D2  _initDMA                           chipcon_dma
+ASxxxx Linker V03.00 + NoICE + sdld,  page 28.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                00000102    00002553 =        9555. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000012FC  _getDMA                            chipcon_dma
+C:   0000131C  _setFreq                           cc1111rf
+C:   0000138C  _resetRFSTATE                      cc1111rf
+C:   000013B1  _RxMode                            cc1111rf
+C:   000013D2  _TxMode                            cc1111rf
+C:   000013FB  _IdleMode                          cc1111rf
+C:   00001434  _init_RF                           cc1111rf
+C:   0000148D  _waitRSSI                          cc1111rf
+C:   000014C2  _transmit                          cc1111rf
+C:   000017DA  _startRX                           cc1111rf
+C:   00001826  _RepeaterStart                     cc1111rf
+C:   0000182D  _RepeaterStop                      cc1111rf
+C:   00001833  _rfTxRxIntHandler                  cc1111rf
+C:   00001B57  _rfIntHandler                      cc1111rf
+C:   00001D89  _byte_shuffle                      cc1111rf
+C:   00001DDE  _sleepMillis                       global
+C:   00001E0C  _sleepMicros                       global
+C:   00001E2A  _blink_binary_baby_lsb             global
+C:   00001EAA  _strncmp                           global
+C:   00001F2C  _clock_init                        global
+C:   00001F58  _io_init                           global
+C:   00001F5E  _t1IntHandler                      global
+C:   00001F85  _initAES                           cc1111_aes
+C:   00002080  _setAES                            cc1111_aes
+C:   000020D8  _padAES                            cc1111_aes
+C:   00002112  _encAES                            cc1111_aes
+C:   0000215B  _decAES                            cc1111_aes
+C:   000021A5  _doAES                             cc1111_aes
+C:   00002297  ___fsmul                           _fsmul
+C:   0000233A  fsgetargs                          _fsget2args
+C:   00002368  fs_normalize_a                     _fsnormalize
+C:   0000239B  _memset                            _memset
+C:   000023BA  _memcpy                            _memcpy
+C:   0000240F  ___ulong2fs                        _ulong2fs
+C:   00002418  ulong2fs_doit                      _ulong2fs
+C:   00002422  ___fs2ulong                        _fs2ulong
+C:   00002424  fs2ulong_begin                     _fs2ulong
+C:   00002449  fsgetarg                           _fsget1arg
+C:   0000245B  __gptrput                          _gptrput
+C:   00002476  __mulint                           _mulint
+C:   00002476  __mulint_dummy                     _mulint
+C:   00002493  __moduint                          _moduint
+C:   000024E0  fs_round_and_return                _fsreturnval
+C:   000024F8  fs_zerocheck_return                _fsreturnval
+C:   00002501  fs_return_zero                     _fsreturnval
+C:   00002509  fs_direct_return                   _fsreturnval
+C:   00002517  fs_return_inf                      _fsreturnval
+C:   00002524  fs_return_nan                      _fsreturnval
+C:   0000252F  ___fsdiv                           _fsdiv
+C:   000025F2  __gptrget                          _gptrget
+C:   0000260E  fs_rshift_a                        _fsrshift
+ASxxxx Linker V03.00 + NoICE + sdld,  page 29.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                00000102    00002553 =        9555. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00002651  __sdcc_external_startup            _startup
+ASxxxx Linker V03.00 + NoICE + sdld,  page 30.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CONST                               00002655    0000011E =         286. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 31.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+XINIT                               00002773    00000017 =          23. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 32.
+
+Files Linked                              [ module(s) ]
+
+appFHSSNIC.rel                            [  ]
+cc1110_spicom.rel                         [  ]
+chipcon_usbdebug.rel                      [  ]
+chipcon_dma.rel                           [  ]
+cc1111rf.rel                              [  ]
+global.rel                                [  ]
+cc1111_aes.rel                            [  ]
+
+
+Libraries Linked                          [ object file ]
+
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libfloat.lib
+                                          [ _fsmul.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libfloat.lib
+                                          [ _fsget2args.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/mcs51.lib
+                                          [ crtclear.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libfloat.lib
+                                          [ _fsnormalize.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ _memset.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ _memcpy.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/mcs51.lib
+                                          [ crtxinit.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libfloat.lib
+                                          [ _ulong2fs.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libfloat.lib
+                                          [ _fs2ulong.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libfloat.lib
+                                          [ _fsget1arg.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ _gptrput.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libint.lib
+                                          [ _mulint.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libint.lib
+                                          [ _moduint.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/mcs51.lib
+                                          [ crtxclear.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libfloat.lib
+                                          [ _fsreturnval.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libfloat.lib
+                                          [ _fsdiv.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/mcs51.lib
+                                          [ crtstart.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ _gptrget.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libfloat.lib
+                                          [ _fsrshift.rel ]
+c:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ _startup.rel ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 33.
+
+User Base Address Definitions
+
+HOME = 0x0000
+XSEG = 0xf000
+PSEG = 0xf000
+ISEG = 0x0000
+BSEG = 0x0000
+
+
+?ASlink-Warning-Undefined Global '_registerCb_ep5' referenced by module 'appFHSSNIC'
+
+?ASlink-Warning-Undefined Global '_p0IntHandler' referenced by module 'appFHSSNIC'

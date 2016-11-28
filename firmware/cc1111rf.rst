@@ -1,0 +1,3243 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
+                                      4 ; This file was generated Fri Nov 18 22:30:57 2016
+                                      5 ;--------------------------------------------------------
+                                      6 	.module cc1111rf
+                                      7 	.optsdcc -mmcs51 --model-small
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _RepeaterStop
+                                     13 	.globl _RepeaterStart
+                                     14 	.globl _setFreq
+                                     15 	.globl _memset
+                                     16 	.globl _decAES
+                                     17 	.globl _encAES
+                                     18 	.globl _padAES
+                                     19 	.globl _appInitRf
+                                     20 	.globl _usbProcessEvents
+                                     21 	.globl _sleepMicros
+                                     22 	.globl _USBIF
+                                     23 	.globl _MODE
+                                     24 	.globl _RE
+                                     25 	.globl _SLAVE
+                                     26 	.globl _FE
+                                     27 	.globl _ERR
+                                     28 	.globl _RX_BYTE
+                                     29 	.globl _TX_BYTE
+                                     30 	.globl _ACTIVE
+                                     31 	.globl _B_7
+                                     32 	.globl _B_6
+                                     33 	.globl _B_5
+                                     34 	.globl _B_4
+                                     35 	.globl _B_3
+                                     36 	.globl _B_2
+                                     37 	.globl _B_1
+                                     38 	.globl _B_0
+                                     39 	.globl _WDTIF
+                                     40 	.globl _P1IF
+                                     41 	.globl _UTX1IF
+                                     42 	.globl _UTX0IF
+                                     43 	.globl _P2IF
+                                     44 	.globl _ACC_7
+                                     45 	.globl _ACC_6
+                                     46 	.globl _ACC_5
+                                     47 	.globl _ACC_4
+                                     48 	.globl _ACC_3
+                                     49 	.globl _ACC_2
+                                     50 	.globl _ACC_1
+                                     51 	.globl _ACC_0
+                                     52 	.globl _OVFIM
+                                     53 	.globl _T4CH1IF
+                                     54 	.globl _T4CH0IF
+                                     55 	.globl _T4OVFIF
+                                     56 	.globl _T3CH1IF
+                                     57 	.globl _T3CH0IF
+                                     58 	.globl _T3OVFIF
+                                     59 	.globl _CY
+                                     60 	.globl _AC
+                                     61 	.globl _F0
+                                     62 	.globl _RS1
+                                     63 	.globl _RS0
+                                     64 	.globl _OV
+                                     65 	.globl _F1
+                                     66 	.globl _P
+                                     67 	.globl _STIF
+                                     68 	.globl _P0IF
+                                     69 	.globl _T4IF
+                                     70 	.globl _T3IF
+                                     71 	.globl _T2IF
+                                     72 	.globl _T1IF
+                                     73 	.globl _DMAIF
+                                     74 	.globl _P0IE
+                                     75 	.globl _T4IE
+                                     76 	.globl _T3IE
+                                     77 	.globl _T2IE
+                                     78 	.globl _T1IE
+                                     79 	.globl _DMAIE
+                                     80 	.globl _EA
+                                     81 	.globl _STIE
+                                     82 	.globl _ENCIE
+                                     83 	.globl _URX1IE
+                                     84 	.globl _URX0IE
+                                     85 	.globl _ADCIE
+                                     86 	.globl _RFTXRXIE
+                                     87 	.globl _P2_7
+                                     88 	.globl _P2_6
+                                     89 	.globl _P2_5
+                                     90 	.globl _P2_4
+                                     91 	.globl _P2_3
+                                     92 	.globl _P2_2
+                                     93 	.globl _P2_1
+                                     94 	.globl _P2_0
+                                     95 	.globl _ENCIF_1
+                                     96 	.globl _ENCIF_0
+                                     97 	.globl _P1_7
+                                     98 	.globl _P1_6
+                                     99 	.globl _P1_5
+                                    100 	.globl _P1_4
+                                    101 	.globl _P1_3
+                                    102 	.globl _P1_2
+                                    103 	.globl _P1_1
+                                    104 	.globl _P1_0
+                                    105 	.globl _URX1IF
+                                    106 	.globl _ADCIF
+                                    107 	.globl _URX0IF
+                                    108 	.globl _IT1
+                                    109 	.globl _RFTXRXIF
+                                    110 	.globl _IT0
+                                    111 	.globl _P0_7
+                                    112 	.globl _P0_6
+                                    113 	.globl _P0_5
+                                    114 	.globl _P0_4
+                                    115 	.globl _P0_3
+                                    116 	.globl _P0_2
+                                    117 	.globl _P0_1
+                                    118 	.globl _P0_0
+                                    119 	.globl _P2DIR
+                                    120 	.globl _P1DIR
+                                    121 	.globl _P0DIR
+                                    122 	.globl _U1GCR
+                                    123 	.globl _U1UCR
+                                    124 	.globl _U1BAUD
+                                    125 	.globl _U1DBUF
+                                    126 	.globl _U1CSR
+                                    127 	.globl _P2INP
+                                    128 	.globl _P1INP
+                                    129 	.globl _P2SEL
+                                    130 	.globl _P1SEL
+                                    131 	.globl _P0SEL
+                                    132 	.globl _ADCCFG
+                                    133 	.globl _PERCFG
+                                    134 	.globl _B
+                                    135 	.globl _T4CC1
+                                    136 	.globl _T4CCTL1
+                                    137 	.globl _T4CC0
+                                    138 	.globl _T4CCTL0
+                                    139 	.globl _T4CTL
+                                    140 	.globl _T4CNT
+                                    141 	.globl _RFIF
+                                    142 	.globl _IRCON2
+                                    143 	.globl _T1CCTL2
+                                    144 	.globl _T1CCTL1
+                                    145 	.globl _T1CCTL0
+                                    146 	.globl _T1CTL
+                                    147 	.globl _T1CNTH
+                                    148 	.globl _T1CNTL
+                                    149 	.globl _RFST
+                                    150 	.globl _ACC
+                                    151 	.globl _T1CC2H
+                                    152 	.globl _T1CC2L
+                                    153 	.globl _T1CC1H
+                                    154 	.globl _T1CC1L
+                                    155 	.globl _T1CC0H
+                                    156 	.globl _T1CC0L
+                                    157 	.globl _RFD
+                                    158 	.globl _TIMIF
+                                    159 	.globl _DMAREQ
+                                    160 	.globl _DMAARM
+                                    161 	.globl _DMA0CFGH
+                                    162 	.globl _DMA0CFGL
+                                    163 	.globl _DMA1CFGH
+                                    164 	.globl _DMA1CFGL
+                                    165 	.globl _DMAIRQ
+                                    166 	.globl _PSW
+                                    167 	.globl _T3CC1
+                                    168 	.globl _T3CCTL1
+                                    169 	.globl _T3CC0
+                                    170 	.globl _T3CCTL0
+                                    171 	.globl _T3CTL
+                                    172 	.globl _T3CNT
+                                    173 	.globl _WDCTL
+                                    174 	.globl __SFRC8
+                                    175 	.globl _MEMCTR
+                                    176 	.globl _CLKCON
+                                    177 	.globl _U0GCR
+                                    178 	.globl _U0UCR
+                                    179 	.globl __SFRC3
+                                    180 	.globl _U0BAUD
+                                    181 	.globl _U0DBUF
+                                    182 	.globl _IRCON
+                                    183 	.globl __SFRBF
+                                    184 	.globl _SLEEP
+                                    185 	.globl _RNDH
+                                    186 	.globl _RNDL
+                                    187 	.globl _ADCH
+                                    188 	.globl _ADCL
+                                    189 	.globl _IP1
+                                    190 	.globl _IEN1
+                                    191 	.globl __SFRB7
+                                    192 	.globl _ADCCON3
+                                    193 	.globl _ADCCON2
+                                    194 	.globl _ADCCON1
+                                    195 	.globl _ENCCS
+                                    196 	.globl _ENCDO
+                                    197 	.globl _ENCDI
+                                    198 	.globl __SFRB0
+                                    199 	.globl _FWDATA
+                                    200 	.globl _FCTL
+                                    201 	.globl _FADDRH
+                                    202 	.globl _FADDRL
+                                    203 	.globl _FWT
+                                    204 	.globl __SFRAA
+                                    205 	.globl _IP0
+                                    206 	.globl _IEN0
+                                    207 	.globl __SFRA7
+                                    208 	.globl _WORTIME1
+                                    209 	.globl _WORTIME0
+                                    210 	.globl _WOREVT1
+                                    211 	.globl _WOREVT0
+                                    212 	.globl _WORCTRL
+                                    213 	.globl _WORIRQ
+                                    214 	.globl _P2
+                                    215 	.globl __SFR9F
+                                    216 	.globl _T2CTL
+                                    217 	.globl _T2PR
+                                    218 	.globl _T2CT
+                                    219 	.globl _S1CON
+                                    220 	.globl _IEN2
+                                    221 	.globl __SFR99
+                                    222 	.globl _S0CON
+                                    223 	.globl __SFR97
+                                    224 	.globl __SFR96
+                                    225 	.globl __SFR95
+                                    226 	.globl __SFR94
+                                    227 	.globl __XPAGE
+                                    228 	.globl _MPAGE
+                                    229 	.globl _DPS
+                                    230 	.globl _RFIM
+                                    231 	.globl _P1
+                                    232 	.globl _P0INP
+                                    233 	.globl __SFR8E
+                                    234 	.globl _P1IEN
+                                    235 	.globl _PICTL
+                                    236 	.globl _P2IFG
+                                    237 	.globl _P1IFG
+                                    238 	.globl _P0IFG
+                                    239 	.globl _TCON
+                                    240 	.globl _PCON
+                                    241 	.globl _U0CSR
+                                    242 	.globl _DPH1
+                                    243 	.globl _DPL1
+                                    244 	.globl _DPH0
+                                    245 	.globl _DPL0
+                                    246 	.globl _SP
+                                    247 	.globl _P0
+                                    248 	.globl _bRepeatMode
+                                    249 	.globl _rfAmpMode
+                                    250 	.globl _rfAESMode
+                                    251 	.globl _rfTxInfMode
+                                    252 	.globl _rfTxTotalTXLen
+                                    253 	.globl _rfTxRepeatOffset
+                                    254 	.globl _rfTxRepeatLen
+                                    255 	.globl _rfTxBufferEnd
+                                    256 	.globl _rfTxRepeatCounter
+                                    257 	.globl _rfTxCounter
+                                    258 	.globl _rfTxBufCount
+                                    259 	.globl _rfTxCurBufIdx
+                                    260 	.globl _rfRxLargeLen
+                                    261 	.globl _rfRxTotalRXLen
+                                    262 	.globl _rfRxInfMode
+                                    263 	.globl _byte_shuffle_PARM_3
+                                    264 	.globl _byte_shuffle_PARM_2
+                                    265 	.globl _transmit_PARM_4
+                                    266 	.globl _transmit_PARM_3
+                                    267 	.globl _transmit_PARM_2
+                                    268 	.globl _macdata
+                                    269 	.globl _rf_tLastRecv
+                                    270 	.globl _rf_MAC_timer
+                                    271 	.globl _rf_status
+                                    272 	.globl _txTotal
+                                    273 	.globl _rftxbuf
+                                    274 	.globl _rfRxProcessed
+                                    275 	.globl _rfRxCounter
+                                    276 	.globl _rfrxbuf
+                                    277 	.globl _rfRxCurrentBuffer
+                                    278 	.globl _USBF5
+                                    279 	.globl _USBF4
+                                    280 	.globl _USBF3
+                                    281 	.globl _USBF2
+                                    282 	.globl _USBF1
+                                    283 	.globl _USBF0
+                                    284 	.globl _USBCNTH
+                                    285 	.globl _USBCNTL
+                                    286 	.globl _USBCNT0
+                                    287 	.globl _USBCSOH
+                                    288 	.globl _USBCSOL
+                                    289 	.globl _USBMAXO
+                                    290 	.globl _USBCSIH
+                                    291 	.globl _USBCSIL
+                                    292 	.globl _USBCS0
+                                    293 	.globl _USBMAXI
+                                    294 	.globl _USBINDEX
+                                    295 	.globl _USBFRMH
+                                    296 	.globl _USBFRML
+                                    297 	.globl _USBCIE
+                                    298 	.globl _USBOIE
+                                    299 	.globl _USBIIE
+                                    300 	.globl _USBCIF
+                                    301 	.globl _USBOIF
+                                    302 	.globl _USBIIF
+                                    303 	.globl _USBPOW
+                                    304 	.globl _USBADDR
+                                    305 	.globl _X_P2DIR
+                                    306 	.globl _X_P1DIR
+                                    307 	.globl _X_P0DIR
+                                    308 	.globl _X_U1GCR
+                                    309 	.globl _X_U1UCR
+                                    310 	.globl _X_U1BAUD
+                                    311 	.globl _X_U1DBUF
+                                    312 	.globl _X_U1CSR
+                                    313 	.globl _X_P2INP
+                                    314 	.globl _X_P1INP
+                                    315 	.globl _X_P2SEL
+                                    316 	.globl _X_P1SEL
+                                    317 	.globl _X_P0SEL
+                                    318 	.globl _X_ADCCFG
+                                    319 	.globl _X_PERCFG
+                                    320 	.globl __NA_B
+                                    321 	.globl _X_T4CC1
+                                    322 	.globl _X_T4CCTL1
+                                    323 	.globl _X_T4CC0
+                                    324 	.globl _X_T4CCTL0
+                                    325 	.globl _X_T4CTL
+                                    326 	.globl _X_T4CNT
+                                    327 	.globl _X_RFIF
+                                    328 	.globl __NA_IRCON2
+                                    329 	.globl _X_T1CCTL2
+                                    330 	.globl _X_T1CCTL1
+                                    331 	.globl _X_T1CCTL0
+                                    332 	.globl _X_T1CTL
+                                    333 	.globl _X_T1CNTH
+                                    334 	.globl _X_T1CNTL
+                                    335 	.globl _X_RFST
+                                    336 	.globl __NA_ACC
+                                    337 	.globl _X_T1CC2H
+                                    338 	.globl _X_T1CC2L
+                                    339 	.globl _X_T1CC1H
+                                    340 	.globl _X_T1CC1L
+                                    341 	.globl _X_T1CC0H
+                                    342 	.globl _X_T1CC0L
+                                    343 	.globl _X_RFD
+                                    344 	.globl _X_TIMIF
+                                    345 	.globl _X_DMAREQ
+                                    346 	.globl _X_DMAARM
+                                    347 	.globl _X_DMA0CFGH
+                                    348 	.globl _X_DMA0CFGL
+                                    349 	.globl _X_DMA1CFGH
+                                    350 	.globl _X_DMA1CFGL
+                                    351 	.globl _X_DMAIRQ
+                                    352 	.globl __NA_PSW
+                                    353 	.globl _X_T3CC1
+                                    354 	.globl _X_T3CCTL1
+                                    355 	.globl _X_T3CC0
+                                    356 	.globl _X_T3CCTL0
+                                    357 	.globl _X_T3CTL
+                                    358 	.globl _X_T3CNT
+                                    359 	.globl _X_WDCTL
+                                    360 	.globl __X_SFRC8
+                                    361 	.globl _X_MEMCTR
+                                    362 	.globl _X_CLKCON
+                                    363 	.globl _X_U0GCR
+                                    364 	.globl _X_U0UCR
+                                    365 	.globl __X_SFRC3
+                                    366 	.globl _X_U0BAUD
+                                    367 	.globl _X_U0DBUF
+                                    368 	.globl __NA_IRCON
+                                    369 	.globl __X_SFRBF
+                                    370 	.globl _X_SLEEP
+                                    371 	.globl _X_RNDH
+                                    372 	.globl _X_RNDL
+                                    373 	.globl _X_ADCH
+                                    374 	.globl _X_ADCL
+                                    375 	.globl __NA_IP1
+                                    376 	.globl __NA_IEN1
+                                    377 	.globl __X_SFRB7
+                                    378 	.globl _X_ADCCON3
+                                    379 	.globl _X_ADCCON2
+                                    380 	.globl _X_ADCCON1
+                                    381 	.globl _X_ENCCS
+                                    382 	.globl _X_ENCDO
+                                    383 	.globl _X_ENCDI
+                                    384 	.globl __X_SFRB0
+                                    385 	.globl _X_FWDATA
+                                    386 	.globl _X_FCTL
+                                    387 	.globl _X_FADDRH
+                                    388 	.globl _X_FADDRL
+                                    389 	.globl _X_FWT
+                                    390 	.globl __X_SFRAA
+                                    391 	.globl __NA_IP0
+                                    392 	.globl __NA_IEN0
+                                    393 	.globl __X_SFRA7
+                                    394 	.globl _X_WORTIME1
+                                    395 	.globl _X_WORTIME0
+                                    396 	.globl _X_WOREVT1
+                                    397 	.globl _X_WOREVT0
+                                    398 	.globl _X_WORCTRL
+                                    399 	.globl _X_WORIRQ
+                                    400 	.globl __NA_P2
+                                    401 	.globl __X_SFR9F
+                                    402 	.globl _X_T2CTL
+                                    403 	.globl _X_T2PR
+                                    404 	.globl _X_T2CT
+                                    405 	.globl __NA_S1CON
+                                    406 	.globl __NA_IEN2
+                                    407 	.globl __X_SFR99
+                                    408 	.globl __NA_S0CON
+                                    409 	.globl __X_SFR97
+                                    410 	.globl __X_SFR96
+                                    411 	.globl __X_SFR95
+                                    412 	.globl __X_SFR94
+                                    413 	.globl _X_MPAGE
+                                    414 	.globl __NA_DPS
+                                    415 	.globl _X_RFIM
+                                    416 	.globl __NA_P1
+                                    417 	.globl _X_P0INP
+                                    418 	.globl __X_SFR8E
+                                    419 	.globl _X_P1IEN
+                                    420 	.globl _X_PICTL
+                                    421 	.globl _X_P2IFG
+                                    422 	.globl _X_P1IFG
+                                    423 	.globl _X_P0IFG
+                                    424 	.globl __NA_TCON
+                                    425 	.globl __NA_PCON
+                                    426 	.globl _X_U0CSR
+                                    427 	.globl __NA_DPH1
+                                    428 	.globl __NA_DPL1
+                                    429 	.globl __NA_DPH0
+                                    430 	.globl __NA_DPL0
+                                    431 	.globl __NA_SP
+                                    432 	.globl __NA_P0
+                                    433 	.globl _I2SCLKF2
+                                    434 	.globl _I2SCLKF1
+                                    435 	.globl _I2SCLKF0
+                                    436 	.globl _I2SSTAT
+                                    437 	.globl _I2SWCNT
+                                    438 	.globl _I2SDATH
+                                    439 	.globl _I2SDATL
+                                    440 	.globl _I2SCFG1
+                                    441 	.globl _I2SCFG0
+                                    442 	.globl _VCO_VC_DAC
+                                    443 	.globl _PKTSTATUS
+                                    444 	.globl _MARCSTATE
+                                    445 	.globl _RSSI
+                                    446 	.globl _LQI
+                                    447 	.globl _FREQEST
+                                    448 	.globl _VERSION
+                                    449 	.globl _PARTNUM
+                                    450 	.globl __XREGDF35
+                                    451 	.globl __XREGDF34
+                                    452 	.globl __XREGDF33
+                                    453 	.globl __XREGDF32
+                                    454 	.globl _IOCFG0
+                                    455 	.globl _IOCFG1
+                                    456 	.globl _IOCFG2
+                                    457 	.globl _PA_TABLE0
+                                    458 	.globl _PA_TABLE1
+                                    459 	.globl _PA_TABLE2
+                                    460 	.globl _PA_TABLE3
+                                    461 	.globl _PA_TABLE4
+                                    462 	.globl _PA_TABLE5
+                                    463 	.globl _PA_TABLE6
+                                    464 	.globl _PA_TABLE7
+                                    465 	.globl __XREGDF26
+                                    466 	.globl _TEST0
+                                    467 	.globl _TEST1
+                                    468 	.globl _TEST2
+                                    469 	.globl __XREGDF22
+                                    470 	.globl __XREGDF21
+                                    471 	.globl __XREGDF20
+                                    472 	.globl _FSCAL0
+                                    473 	.globl _FSCAL1
+                                    474 	.globl _FSCAL2
+                                    475 	.globl _FSCAL3
+                                    476 	.globl _FREND0
+                                    477 	.globl _FREND1
+                                    478 	.globl _AGCCTRL0
+                                    479 	.globl _AGCCTRL1
+                                    480 	.globl _AGCCTRL2
+                                    481 	.globl _BSCFG
+                                    482 	.globl _FOCCFG
+                                    483 	.globl _MCSM0
+                                    484 	.globl _MCSM1
+                                    485 	.globl _MCSM2
+                                    486 	.globl _DEVIATN
+                                    487 	.globl _MDMCFG0
+                                    488 	.globl _MDMCFG1
+                                    489 	.globl _MDMCFG2
+                                    490 	.globl _MDMCFG3
+                                    491 	.globl _MDMCFG4
+                                    492 	.globl _FREQ0
+                                    493 	.globl _FREQ1
+                                    494 	.globl _FREQ2
+                                    495 	.globl _FSCTRL0
+                                    496 	.globl _FSCTRL1
+                                    497 	.globl _CHANNR
+                                    498 	.globl _ADDR
+                                    499 	.globl _PKTCTRL0
+                                    500 	.globl _PKTCTRL1
+                                    501 	.globl _PKTLEN
+                                    502 	.globl _SYNC0
+                                    503 	.globl _SYNC1
+                                    504 	.globl _MDMCTRL0H
+                                    505 	.globl _rfif
+                                    506 	.globl _resetRFSTATE
+                                    507 	.globl _RxMode
+                                    508 	.globl _TxMode
+                                    509 	.globl _IdleMode
+                                    510 	.globl _init_RF
+                                    511 	.globl _waitRSSI
+                                    512 	.globl _transmit
+                                    513 	.globl _startRX
+                                    514 	.globl _rfTxRxIntHandler
+                                    515 	.globl _rfIntHandler
+                                    516 	.globl _byte_shuffle
+                                    517 ;--------------------------------------------------------
+                                    518 ; special function registers
+                                    519 ;--------------------------------------------------------
+                                    520 	.area RSEG    (ABS,DATA)
+      000000                        521 	.org 0x0000
+                           000080   522 _P0	=	0x0080
+                           000081   523 _SP	=	0x0081
+                           000082   524 _DPL0	=	0x0082
+                           000083   525 _DPH0	=	0x0083
+                           000084   526 _DPL1	=	0x0084
+                           000085   527 _DPH1	=	0x0085
+                           000086   528 _U0CSR	=	0x0086
+                           000087   529 _PCON	=	0x0087
+                           000088   530 _TCON	=	0x0088
+                           000089   531 _P0IFG	=	0x0089
+                           00008A   532 _P1IFG	=	0x008a
+                           00008B   533 _P2IFG	=	0x008b
+                           00008C   534 _PICTL	=	0x008c
+                           00008D   535 _P1IEN	=	0x008d
+                           00008E   536 __SFR8E	=	0x008e
+                           00008F   537 _P0INP	=	0x008f
+                           000090   538 _P1	=	0x0090
+                           000091   539 _RFIM	=	0x0091
+                           000092   540 _DPS	=	0x0092
+                           000093   541 _MPAGE	=	0x0093
+                           000093   542 __XPAGE	=	0x0093
+                           000094   543 __SFR94	=	0x0094
+                           000095   544 __SFR95	=	0x0095
+                           000096   545 __SFR96	=	0x0096
+                           000097   546 __SFR97	=	0x0097
+                           000098   547 _S0CON	=	0x0098
+                           000099   548 __SFR99	=	0x0099
+                           00009A   549 _IEN2	=	0x009a
+                           00009B   550 _S1CON	=	0x009b
+                           00009C   551 _T2CT	=	0x009c
+                           00009D   552 _T2PR	=	0x009d
+                           00009E   553 _T2CTL	=	0x009e
+                           00009F   554 __SFR9F	=	0x009f
+                           0000A0   555 _P2	=	0x00a0
+                           0000A1   556 _WORIRQ	=	0x00a1
+                           0000A2   557 _WORCTRL	=	0x00a2
+                           0000A3   558 _WOREVT0	=	0x00a3
+                           0000A4   559 _WOREVT1	=	0x00a4
+                           0000A5   560 _WORTIME0	=	0x00a5
+                           0000A6   561 _WORTIME1	=	0x00a6
+                           0000A7   562 __SFRA7	=	0x00a7
+                           0000A8   563 _IEN0	=	0x00a8
+                           0000A9   564 _IP0	=	0x00a9
+                           0000AA   565 __SFRAA	=	0x00aa
+                           0000AB   566 _FWT	=	0x00ab
+                           0000AC   567 _FADDRL	=	0x00ac
+                           0000AD   568 _FADDRH	=	0x00ad
+                           0000AE   569 _FCTL	=	0x00ae
+                           0000AF   570 _FWDATA	=	0x00af
+                           0000B0   571 __SFRB0	=	0x00b0
+                           0000B1   572 _ENCDI	=	0x00b1
+                           0000B2   573 _ENCDO	=	0x00b2
+                           0000B3   574 _ENCCS	=	0x00b3
+                           0000B4   575 _ADCCON1	=	0x00b4
+                           0000B5   576 _ADCCON2	=	0x00b5
+                           0000B6   577 _ADCCON3	=	0x00b6
+                           0000B7   578 __SFRB7	=	0x00b7
+                           0000B8   579 _IEN1	=	0x00b8
+                           0000B9   580 _IP1	=	0x00b9
+                           0000BA   581 _ADCL	=	0x00ba
+                           0000BB   582 _ADCH	=	0x00bb
+                           0000BC   583 _RNDL	=	0x00bc
+                           0000BD   584 _RNDH	=	0x00bd
+                           0000BE   585 _SLEEP	=	0x00be
+                           0000BF   586 __SFRBF	=	0x00bf
+                           0000C0   587 _IRCON	=	0x00c0
+                           0000C1   588 _U0DBUF	=	0x00c1
+                           0000C2   589 _U0BAUD	=	0x00c2
+                           0000C3   590 __SFRC3	=	0x00c3
+                           0000C4   591 _U0UCR	=	0x00c4
+                           0000C5   592 _U0GCR	=	0x00c5
+                           0000C6   593 _CLKCON	=	0x00c6
+                           0000C7   594 _MEMCTR	=	0x00c7
+                           0000C8   595 __SFRC8	=	0x00c8
+                           0000C9   596 _WDCTL	=	0x00c9
+                           0000CA   597 _T3CNT	=	0x00ca
+                           0000CB   598 _T3CTL	=	0x00cb
+                           0000CC   599 _T3CCTL0	=	0x00cc
+                           0000CD   600 _T3CC0	=	0x00cd
+                           0000CE   601 _T3CCTL1	=	0x00ce
+                           0000CF   602 _T3CC1	=	0x00cf
+                           0000D0   603 _PSW	=	0x00d0
+                           0000D1   604 _DMAIRQ	=	0x00d1
+                           0000D2   605 _DMA1CFGL	=	0x00d2
+                           0000D3   606 _DMA1CFGH	=	0x00d3
+                           0000D4   607 _DMA0CFGL	=	0x00d4
+                           0000D5   608 _DMA0CFGH	=	0x00d5
+                           0000D6   609 _DMAARM	=	0x00d6
+                           0000D7   610 _DMAREQ	=	0x00d7
+                           0000D8   611 _TIMIF	=	0x00d8
+                           0000D9   612 _RFD	=	0x00d9
+                           0000DA   613 _T1CC0L	=	0x00da
+                           0000DB   614 _T1CC0H	=	0x00db
+                           0000DC   615 _T1CC1L	=	0x00dc
+                           0000DD   616 _T1CC1H	=	0x00dd
+                           0000DE   617 _T1CC2L	=	0x00de
+                           0000DF   618 _T1CC2H	=	0x00df
+                           0000E0   619 _ACC	=	0x00e0
+                           0000E1   620 _RFST	=	0x00e1
+                           0000E2   621 _T1CNTL	=	0x00e2
+                           0000E3   622 _T1CNTH	=	0x00e3
+                           0000E4   623 _T1CTL	=	0x00e4
+                           0000E5   624 _T1CCTL0	=	0x00e5
+                           0000E6   625 _T1CCTL1	=	0x00e6
+                           0000E7   626 _T1CCTL2	=	0x00e7
+                           0000E8   627 _IRCON2	=	0x00e8
+                           0000E9   628 _RFIF	=	0x00e9
+                           0000EA   629 _T4CNT	=	0x00ea
+                           0000EB   630 _T4CTL	=	0x00eb
+                           0000EC   631 _T4CCTL0	=	0x00ec
+                           0000ED   632 _T4CC0	=	0x00ed
+                           0000EE   633 _T4CCTL1	=	0x00ee
+                           0000EF   634 _T4CC1	=	0x00ef
+                           0000F0   635 _B	=	0x00f0
+                           0000F1   636 _PERCFG	=	0x00f1
+                           0000F2   637 _ADCCFG	=	0x00f2
+                           0000F3   638 _P0SEL	=	0x00f3
+                           0000F4   639 _P1SEL	=	0x00f4
+                           0000F5   640 _P2SEL	=	0x00f5
+                           0000F6   641 _P1INP	=	0x00f6
+                           0000F7   642 _P2INP	=	0x00f7
+                           0000F8   643 _U1CSR	=	0x00f8
+                           0000F9   644 _U1DBUF	=	0x00f9
+                           0000FA   645 _U1BAUD	=	0x00fa
+                           0000FB   646 _U1UCR	=	0x00fb
+                           0000FC   647 _U1GCR	=	0x00fc
+                           0000FD   648 _P0DIR	=	0x00fd
+                           0000FE   649 _P1DIR	=	0x00fe
+                           0000FF   650 _P2DIR	=	0x00ff
+                                    651 ;--------------------------------------------------------
+                                    652 ; special function bits
+                                    653 ;--------------------------------------------------------
+                                    654 	.area RSEG    (ABS,DATA)
+      000000                        655 	.org 0x0000
+                           000080   656 _P0_0	=	0x0080
+                           000081   657 _P0_1	=	0x0081
+                           000082   658 _P0_2	=	0x0082
+                           000083   659 _P0_3	=	0x0083
+                           000084   660 _P0_4	=	0x0084
+                           000085   661 _P0_5	=	0x0085
+                           000086   662 _P0_6	=	0x0086
+                           000087   663 _P0_7	=	0x0087
+                           000088   664 _IT0	=	0x0088
+                           000089   665 _RFTXRXIF	=	0x0089
+                           00008A   666 _IT1	=	0x008a
+                           00008B   667 _URX0IF	=	0x008b
+                           00008D   668 _ADCIF	=	0x008d
+                           00008F   669 _URX1IF	=	0x008f
+                           000090   670 _P1_0	=	0x0090
+                           000091   671 _P1_1	=	0x0091
+                           000092   672 _P1_2	=	0x0092
+                           000093   673 _P1_3	=	0x0093
+                           000094   674 _P1_4	=	0x0094
+                           000095   675 _P1_5	=	0x0095
+                           000096   676 _P1_6	=	0x0096
+                           000097   677 _P1_7	=	0x0097
+                           000098   678 _ENCIF_0	=	0x0098
+                           000099   679 _ENCIF_1	=	0x0099
+                           0000A0   680 _P2_0	=	0x00a0
+                           0000A1   681 _P2_1	=	0x00a1
+                           0000A2   682 _P2_2	=	0x00a2
+                           0000A3   683 _P2_3	=	0x00a3
+                           0000A4   684 _P2_4	=	0x00a4
+                           0000A5   685 _P2_5	=	0x00a5
+                           0000A6   686 _P2_6	=	0x00a6
+                           0000A7   687 _P2_7	=	0x00a7
+                           0000A8   688 _RFTXRXIE	=	0x00a8
+                           0000A9   689 _ADCIE	=	0x00a9
+                           0000AA   690 _URX0IE	=	0x00aa
+                           0000AB   691 _URX1IE	=	0x00ab
+                           0000AC   692 _ENCIE	=	0x00ac
+                           0000AD   693 _STIE	=	0x00ad
+                           0000AF   694 _EA	=	0x00af
+                           0000B8   695 _DMAIE	=	0x00b8
+                           0000B9   696 _T1IE	=	0x00b9
+                           0000BA   697 _T2IE	=	0x00ba
+                           0000BB   698 _T3IE	=	0x00bb
+                           0000BC   699 _T4IE	=	0x00bc
+                           0000BD   700 _P0IE	=	0x00bd
+                           0000C0   701 _DMAIF	=	0x00c0
+                           0000C1   702 _T1IF	=	0x00c1
+                           0000C2   703 _T2IF	=	0x00c2
+                           0000C3   704 _T3IF	=	0x00c3
+                           0000C4   705 _T4IF	=	0x00c4
+                           0000C5   706 _P0IF	=	0x00c5
+                           0000C7   707 _STIF	=	0x00c7
+                           0000D0   708 _P	=	0x00d0
+                           0000D1   709 _F1	=	0x00d1
+                           0000D2   710 _OV	=	0x00d2
+                           0000D3   711 _RS0	=	0x00d3
+                           0000D4   712 _RS1	=	0x00d4
+                           0000D5   713 _F0	=	0x00d5
+                           0000D6   714 _AC	=	0x00d6
+                           0000D7   715 _CY	=	0x00d7
+                           0000D8   716 _T3OVFIF	=	0x00d8
+                           0000D9   717 _T3CH0IF	=	0x00d9
+                           0000DA   718 _T3CH1IF	=	0x00da
+                           0000DB   719 _T4OVFIF	=	0x00db
+                           0000DC   720 _T4CH0IF	=	0x00dc
+                           0000DD   721 _T4CH1IF	=	0x00dd
+                           0000DE   722 _OVFIM	=	0x00de
+                           0000E0   723 _ACC_0	=	0x00e0
+                           0000E1   724 _ACC_1	=	0x00e1
+                           0000E2   725 _ACC_2	=	0x00e2
+                           0000E3   726 _ACC_3	=	0x00e3
+                           0000E4   727 _ACC_4	=	0x00e4
+                           0000E5   728 _ACC_5	=	0x00e5
+                           0000E6   729 _ACC_6	=	0x00e6
+                           0000E7   730 _ACC_7	=	0x00e7
+                           0000E8   731 _P2IF	=	0x00e8
+                           0000E9   732 _UTX0IF	=	0x00e9
+                           0000EA   733 _UTX1IF	=	0x00ea
+                           0000EB   734 _P1IF	=	0x00eb
+                           0000EC   735 _WDTIF	=	0x00ec
+                           0000F0   736 _B_0	=	0x00f0
+                           0000F1   737 _B_1	=	0x00f1
+                           0000F2   738 _B_2	=	0x00f2
+                           0000F3   739 _B_3	=	0x00f3
+                           0000F4   740 _B_4	=	0x00f4
+                           0000F5   741 _B_5	=	0x00f5
+                           0000F6   742 _B_6	=	0x00f6
+                           0000F7   743 _B_7	=	0x00f7
+                           0000F8   744 _ACTIVE	=	0x00f8
+                           0000F9   745 _TX_BYTE	=	0x00f9
+                           0000FA   746 _RX_BYTE	=	0x00fa
+                           0000FB   747 _ERR	=	0x00fb
+                           0000FC   748 _FE	=	0x00fc
+                           0000FD   749 _SLAVE	=	0x00fd
+                           0000FE   750 _RE	=	0x00fe
+                           0000FF   751 _MODE	=	0x00ff
+                           0000E8   752 _USBIF	=	0x00e8
+                                    753 ;--------------------------------------------------------
+                                    754 ; overlayable register banks
+                                    755 ;--------------------------------------------------------
+                                    756 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                        757 	.ds 8
+                                    758 ;--------------------------------------------------------
+                                    759 ; overlayable bit register bank
+                                    760 ;--------------------------------------------------------
+                                    761 	.area BIT_BANK	(REL,OVR,DATA)
+      000021                        762 bits:
+      000021                        763 	.ds 1
+                           008000   764 	b0 = bits[0]
+                           008100   765 	b1 = bits[1]
+                           008200   766 	b2 = bits[2]
+                           008300   767 	b3 = bits[3]
+                           008400   768 	b4 = bits[4]
+                           008500   769 	b5 = bits[5]
+                           008600   770 	b6 = bits[6]
+                           008700   771 	b7 = bits[7]
+                                    772 ;--------------------------------------------------------
+                                    773 ; internal ram data
+                                    774 ;--------------------------------------------------------
+                                    775 	.area DSEG    (DATA)
+      000019                        776 _rfif::
+      000019                        777 	.ds 1
+      00001A                        778 _transmit_sloc0_1_0:
+      00001A                        779 	.ds 2
+      00001C                        780 _rfIntHandler_encoffset_1_136:
+      00001C                        781 	.ds 1
+                                    782 ;--------------------------------------------------------
+                                    783 ; overlayable items in internal ram 
+                                    784 ;--------------------------------------------------------
+                                    785 ;--------------------------------------------------------
+                                    786 ; indirectly addressable internal ram data
+                                    787 ;--------------------------------------------------------
+                                    788 	.area ISEG    (DATA)
+                                    789 ;--------------------------------------------------------
+                                    790 ; absolute internal ram data
+                                    791 ;--------------------------------------------------------
+                                    792 	.area IABS    (ABS,DATA)
+                                    793 	.area IABS    (ABS,DATA)
+                                    794 ;--------------------------------------------------------
+                                    795 ; bit data
+                                    796 ;--------------------------------------------------------
+                                    797 	.area BSEG    (BIT)
+                                    798 ;--------------------------------------------------------
+                                    799 ; paged external ram data
+                                    800 ;--------------------------------------------------------
+                                    801 	.area PSEG    (PAG,XDATA)
+                                    802 ;--------------------------------------------------------
+                                    803 ; external ram data
+                                    804 ;--------------------------------------------------------
+                                    805 	.area XSEG    (XDATA)
+                           00DF02   806 _MDMCTRL0H	=	0xdf02
+                           00DF00   807 _SYNC1	=	0xdf00
+                           00DF01   808 _SYNC0	=	0xdf01
+                           00DF02   809 _PKTLEN	=	0xdf02
+                           00DF03   810 _PKTCTRL1	=	0xdf03
+                           00DF04   811 _PKTCTRL0	=	0xdf04
+                           00DF05   812 _ADDR	=	0xdf05
+                           00DF06   813 _CHANNR	=	0xdf06
+                           00DF07   814 _FSCTRL1	=	0xdf07
+                           00DF08   815 _FSCTRL0	=	0xdf08
+                           00DF09   816 _FREQ2	=	0xdf09
+                           00DF0A   817 _FREQ1	=	0xdf0a
+                           00DF0B   818 _FREQ0	=	0xdf0b
+                           00DF0C   819 _MDMCFG4	=	0xdf0c
+                           00DF0D   820 _MDMCFG3	=	0xdf0d
+                           00DF0E   821 _MDMCFG2	=	0xdf0e
+                           00DF0F   822 _MDMCFG1	=	0xdf0f
+                           00DF10   823 _MDMCFG0	=	0xdf10
+                           00DF11   824 _DEVIATN	=	0xdf11
+                           00DF12   825 _MCSM2	=	0xdf12
+                           00DF13   826 _MCSM1	=	0xdf13
+                           00DF14   827 _MCSM0	=	0xdf14
+                           00DF15   828 _FOCCFG	=	0xdf15
+                           00DF16   829 _BSCFG	=	0xdf16
+                           00DF17   830 _AGCCTRL2	=	0xdf17
+                           00DF18   831 _AGCCTRL1	=	0xdf18
+                           00DF19   832 _AGCCTRL0	=	0xdf19
+                           00DF1A   833 _FREND1	=	0xdf1a
+                           00DF1B   834 _FREND0	=	0xdf1b
+                           00DF1C   835 _FSCAL3	=	0xdf1c
+                           00DF1D   836 _FSCAL2	=	0xdf1d
+                           00DF1E   837 _FSCAL1	=	0xdf1e
+                           00DF1F   838 _FSCAL0	=	0xdf1f
+                           00DF20   839 __XREGDF20	=	0xdf20
+                           00DF21   840 __XREGDF21	=	0xdf21
+                           00DF22   841 __XREGDF22	=	0xdf22
+                           00DF23   842 _TEST2	=	0xdf23
+                           00DF24   843 _TEST1	=	0xdf24
+                           00DF25   844 _TEST0	=	0xdf25
+                           00DF26   845 __XREGDF26	=	0xdf26
+                           00DF27   846 _PA_TABLE7	=	0xdf27
+                           00DF28   847 _PA_TABLE6	=	0xdf28
+                           00DF29   848 _PA_TABLE5	=	0xdf29
+                           00DF2A   849 _PA_TABLE4	=	0xdf2a
+                           00DF2B   850 _PA_TABLE3	=	0xdf2b
+                           00DF2C   851 _PA_TABLE2	=	0xdf2c
+                           00DF2D   852 _PA_TABLE1	=	0xdf2d
+                           00DF2E   853 _PA_TABLE0	=	0xdf2e
+                           00DF2F   854 _IOCFG2	=	0xdf2f
+                           00DF30   855 _IOCFG1	=	0xdf30
+                           00DF31   856 _IOCFG0	=	0xdf31
+                           00DF32   857 __XREGDF32	=	0xdf32
+                           00DF33   858 __XREGDF33	=	0xdf33
+                           00DF34   859 __XREGDF34	=	0xdf34
+                           00DF35   860 __XREGDF35	=	0xdf35
+                           00DF36   861 _PARTNUM	=	0xdf36
+                           00DF37   862 _VERSION	=	0xdf37
+                           00DF38   863 _FREQEST	=	0xdf38
+                           00DF39   864 _LQI	=	0xdf39
+                           00DF3A   865 _RSSI	=	0xdf3a
+                           00DF3B   866 _MARCSTATE	=	0xdf3b
+                           00DF3C   867 _PKTSTATUS	=	0xdf3c
+                           00DF3D   868 _VCO_VC_DAC	=	0xdf3d
+                           00DF40   869 _I2SCFG0	=	0xdf40
+                           00DF41   870 _I2SCFG1	=	0xdf41
+                           00DF42   871 _I2SDATL	=	0xdf42
+                           00DF43   872 _I2SDATH	=	0xdf43
+                           00DF44   873 _I2SWCNT	=	0xdf44
+                           00DF45   874 _I2SSTAT	=	0xdf45
+                           00DF46   875 _I2SCLKF0	=	0xdf46
+                           00DF47   876 _I2SCLKF1	=	0xdf47
+                           00DF48   877 _I2SCLKF2	=	0xdf48
+                           00DF80   878 __NA_P0	=	0xdf80
+                           00DF81   879 __NA_SP	=	0xdf81
+                           00DF82   880 __NA_DPL0	=	0xdf82
+                           00DF83   881 __NA_DPH0	=	0xdf83
+                           00DF84   882 __NA_DPL1	=	0xdf84
+                           00DF85   883 __NA_DPH1	=	0xdf85
+                           00DF86   884 _X_U0CSR	=	0xdf86
+                           00DF87   885 __NA_PCON	=	0xdf87
+                           00DF88   886 __NA_TCON	=	0xdf88
+                           00DF89   887 _X_P0IFG	=	0xdf89
+                           00DF8A   888 _X_P1IFG	=	0xdf8a
+                           00DF8B   889 _X_P2IFG	=	0xdf8b
+                           00DF8C   890 _X_PICTL	=	0xdf8c
+                           00DF8D   891 _X_P1IEN	=	0xdf8d
+                           00DF8E   892 __X_SFR8E	=	0xdf8e
+                           00DF8F   893 _X_P0INP	=	0xdf8f
+                           00DF90   894 __NA_P1	=	0xdf90
+                           00DF91   895 _X_RFIM	=	0xdf91
+                           00DF92   896 __NA_DPS	=	0xdf92
+                           00DF93   897 _X_MPAGE	=	0xdf93
+                           00DF94   898 __X_SFR94	=	0xdf94
+                           00DF95   899 __X_SFR95	=	0xdf95
+                           00DF96   900 __X_SFR96	=	0xdf96
+                           00DF97   901 __X_SFR97	=	0xdf97
+                           00DF98   902 __NA_S0CON	=	0xdf98
+                           00DF99   903 __X_SFR99	=	0xdf99
+                           00DF9A   904 __NA_IEN2	=	0xdf9a
+                           00DF9B   905 __NA_S1CON	=	0xdf9b
+                           00DF9C   906 _X_T2CT	=	0xdf9c
+                           00DF9D   907 _X_T2PR	=	0xdf9d
+                           00DF9E   908 _X_T2CTL	=	0xdf9e
+                           00DF9F   909 __X_SFR9F	=	0xdf9f
+                           00DFA0   910 __NA_P2	=	0xdfa0
+                           00DFA1   911 _X_WORIRQ	=	0xdfa1
+                           00DFA2   912 _X_WORCTRL	=	0xdfa2
+                           00DFA3   913 _X_WOREVT0	=	0xdfa3
+                           00DFA4   914 _X_WOREVT1	=	0xdfa4
+                           00DFA5   915 _X_WORTIME0	=	0xdfa5
+                           00DFA6   916 _X_WORTIME1	=	0xdfa6
+                           00DFA7   917 __X_SFRA7	=	0xdfa7
+                           00DFA8   918 __NA_IEN0	=	0xdfa8
+                           00DFA9   919 __NA_IP0	=	0xdfa9
+                           00DFAA   920 __X_SFRAA	=	0xdfaa
+                           00DFAB   921 _X_FWT	=	0xdfab
+                           00DFAC   922 _X_FADDRL	=	0xdfac
+                           00DFAD   923 _X_FADDRH	=	0xdfad
+                           00DFAE   924 _X_FCTL	=	0xdfae
+                           00DFAF   925 _X_FWDATA	=	0xdfaf
+                           00DFB0   926 __X_SFRB0	=	0xdfb0
+                           00DFB1   927 _X_ENCDI	=	0xdfb1
+                           00DFB2   928 _X_ENCDO	=	0xdfb2
+                           00DFB3   929 _X_ENCCS	=	0xdfb3
+                           00DFB4   930 _X_ADCCON1	=	0xdfb4
+                           00DFB5   931 _X_ADCCON2	=	0xdfb5
+                           00DFB6   932 _X_ADCCON3	=	0xdfb6
+                           00DFB7   933 __X_SFRB7	=	0xdfb7
+                           00DFB8   934 __NA_IEN1	=	0xdfb8
+                           00DFB9   935 __NA_IP1	=	0xdfb9
+                           00DFBA   936 _X_ADCL	=	0xdfba
+                           00DFBB   937 _X_ADCH	=	0xdfbb
+                           00DFBC   938 _X_RNDL	=	0xdfbc
+                           00DFBD   939 _X_RNDH	=	0xdfbd
+                           00DFBE   940 _X_SLEEP	=	0xdfbe
+                           00DFBF   941 __X_SFRBF	=	0xdfbf
+                           00DFC0   942 __NA_IRCON	=	0xdfc0
+                           00DFC1   943 _X_U0DBUF	=	0xdfc1
+                           00DFC2   944 _X_U0BAUD	=	0xdfc2
+                           00DFC3   945 __X_SFRC3	=	0xdfc3
+                           00DFC4   946 _X_U0UCR	=	0xdfc4
+                           00DFC5   947 _X_U0GCR	=	0xdfc5
+                           00DFC6   948 _X_CLKCON	=	0xdfc6
+                           00DFC7   949 _X_MEMCTR	=	0xdfc7
+                           00DFC8   950 __X_SFRC8	=	0xdfc8
+                           00DFC9   951 _X_WDCTL	=	0xdfc9
+                           00DFCA   952 _X_T3CNT	=	0xdfca
+                           00DFCB   953 _X_T3CTL	=	0xdfcb
+                           00DFCC   954 _X_T3CCTL0	=	0xdfcc
+                           00DFCD   955 _X_T3CC0	=	0xdfcd
+                           00DFCE   956 _X_T3CCTL1	=	0xdfce
+                           00DFCF   957 _X_T3CC1	=	0xdfcf
+                           00DFD0   958 __NA_PSW	=	0xdfd0
+                           00DFD1   959 _X_DMAIRQ	=	0xdfd1
+                           00DFD2   960 _X_DMA1CFGL	=	0xdfd2
+                           00DFD3   961 _X_DMA1CFGH	=	0xdfd3
+                           00DFD4   962 _X_DMA0CFGL	=	0xdfd4
+                           00DFD5   963 _X_DMA0CFGH	=	0xdfd5
+                           00DFD6   964 _X_DMAARM	=	0xdfd6
+                           00DFD7   965 _X_DMAREQ	=	0xdfd7
+                           00DFD8   966 _X_TIMIF	=	0xdfd8
+                           00DFD9   967 _X_RFD	=	0xdfd9
+                           00DFDA   968 _X_T1CC0L	=	0xdfda
+                           00DFDB   969 _X_T1CC0H	=	0xdfdb
+                           00DFDC   970 _X_T1CC1L	=	0xdfdc
+                           00DFDD   971 _X_T1CC1H	=	0xdfdd
+                           00DFDE   972 _X_T1CC2L	=	0xdfde
+                           00DFDF   973 _X_T1CC2H	=	0xdfdf
+                           00DFE0   974 __NA_ACC	=	0xdfe0
+                           00DFE1   975 _X_RFST	=	0xdfe1
+                           00DFE2   976 _X_T1CNTL	=	0xdfe2
+                           00DFE3   977 _X_T1CNTH	=	0xdfe3
+                           00DFE4   978 _X_T1CTL	=	0xdfe4
+                           00DFE5   979 _X_T1CCTL0	=	0xdfe5
+                           00DFE6   980 _X_T1CCTL1	=	0xdfe6
+                           00DFE7   981 _X_T1CCTL2	=	0xdfe7
+                           00DFE8   982 __NA_IRCON2	=	0xdfe8
+                           00DFE9   983 _X_RFIF	=	0xdfe9
+                           00DFEA   984 _X_T4CNT	=	0xdfea
+                           00DFEB   985 _X_T4CTL	=	0xdfeb
+                           00DFEC   986 _X_T4CCTL0	=	0xdfec
+                           00DFED   987 _X_T4CC0	=	0xdfed
+                           00DFEE   988 _X_T4CCTL1	=	0xdfee
+                           00DFEF   989 _X_T4CC1	=	0xdfef
+                           00DFF0   990 __NA_B	=	0xdff0
+                           00DFF1   991 _X_PERCFG	=	0xdff1
+                           00DFF2   992 _X_ADCCFG	=	0xdff2
+                           00DFF3   993 _X_P0SEL	=	0xdff3
+                           00DFF4   994 _X_P1SEL	=	0xdff4
+                           00DFF5   995 _X_P2SEL	=	0xdff5
+                           00DFF6   996 _X_P1INP	=	0xdff6
+                           00DFF7   997 _X_P2INP	=	0xdff7
+                           00DFF8   998 _X_U1CSR	=	0xdff8
+                           00DFF9   999 _X_U1DBUF	=	0xdff9
+                           00DFFA  1000 _X_U1BAUD	=	0xdffa
+                           00DFFB  1001 _X_U1UCR	=	0xdffb
+                           00DFFC  1002 _X_U1GCR	=	0xdffc
+                           00DFFD  1003 _X_P0DIR	=	0xdffd
+                           00DFFE  1004 _X_P1DIR	=	0xdffe
+                           00DFFF  1005 _X_P2DIR	=	0xdfff
+                           00DE00  1006 _USBADDR	=	0xde00
+                           00DE01  1007 _USBPOW	=	0xde01
+                           00DE02  1008 _USBIIF	=	0xde02
+                           00DE04  1009 _USBOIF	=	0xde04
+                           00DE06  1010 _USBCIF	=	0xde06
+                           00DE07  1011 _USBIIE	=	0xde07
+                           00DE09  1012 _USBOIE	=	0xde09
+                           00DE0B  1013 _USBCIE	=	0xde0b
+                           00DE0C  1014 _USBFRML	=	0xde0c
+                           00DE0D  1015 _USBFRMH	=	0xde0d
+                           00DE0E  1016 _USBINDEX	=	0xde0e
+                           00DE10  1017 _USBMAXI	=	0xde10
+                           00DE11  1018 _USBCS0	=	0xde11
+                           00DE11  1019 _USBCSIL	=	0xde11
+                           00DE12  1020 _USBCSIH	=	0xde12
+                           00DE13  1021 _USBMAXO	=	0xde13
+                           00DE14  1022 _USBCSOL	=	0xde14
+                           00DE15  1023 _USBCSOH	=	0xde15
+                           00DE16  1024 _USBCNT0	=	0xde16
+                           00DE16  1025 _USBCNTL	=	0xde16
+                           00DE17  1026 _USBCNTH	=	0xde17
+                           00DE20  1027 _USBF0	=	0xde20
+                           00DE22  1028 _USBF1	=	0xde22
+                           00DE24  1029 _USBF2	=	0xde24
+                           00DE26  1030 _USBF3	=	0xde26
+                           00DE28  1031 _USBF4	=	0xde28
+                           00DE2A  1032 _USBF5	=	0xde2a
+      00F764                       1033 _rfRxCurrentBuffer::
+      00F764                       1034 	.ds 1
+      00F765                       1035 _rfrxbuf::
+      00F765                       1036 	.ds 1024
+      00FB65                       1037 _rfRxCounter::
+      00FB65                       1038 	.ds 4
+      00FB69                       1039 _rfRxProcessed::
+      00FB69                       1040 	.ds 2
+      00FB6B                       1041 _rftxbuf::
+      00FB6B                       1042 	.ds 2
+      00FB6D                       1043 _txTotal::
+      00FB6D                       1044 	.ds 2
+      00FB6F                       1045 _rf_status::
+      00FB6F                       1046 	.ds 1
+      00FB70                       1047 _rf_MAC_timer::
+      00FB70                       1048 	.ds 2
+      00FB72                       1049 _rf_tLastRecv::
+      00FB72                       1050 	.ds 2
+      00FB74                       1051 _macdata::
+      00FB74                       1052 	.ds 21
+      00FB89                       1053 _transmit_PARM_2:
+      00FB89                       1054 	.ds 2
+      00FB8B                       1055 _transmit_PARM_3:
+      00FB8B                       1056 	.ds 2
+      00FB8D                       1057 _transmit_PARM_4:
+      00FB8D                       1058 	.ds 2
+      00FB8F                       1059 _transmit_buf_1_96:
+      00FB8F                       1060 	.ds 2
+      00FB91                       1061 _transmit_encoffset_1_97:
+      00FB91                       1062 	.ds 1
+      00FB92                       1063 _byte_shuffle_PARM_2:
+      00FB92                       1064 	.ds 2
+      00FB94                       1065 _byte_shuffle_PARM_3:
+      00FB94                       1066 	.ds 2
+      00FB96                       1067 _byte_shuffle_buf_1_146:
+      00FB96                       1068 	.ds 2
+                                   1069 ;--------------------------------------------------------
+                                   1070 ; absolute external ram data
+                                   1071 ;--------------------------------------------------------
+                                   1072 	.area XABS    (ABS,XDATA)
+                                   1073 ;--------------------------------------------------------
+                                   1074 ; external initialized ram data
+                                   1075 ;--------------------------------------------------------
+                                   1076 	.area XISEG   (XDATA)
+      00FBCA                       1077 _rfRxInfMode::
+      00FBCA                       1078 	.ds 1
+      00FBCB                       1079 _rfRxTotalRXLen::
+      00FBCB                       1080 	.ds 2
+      00FBCD                       1081 _rfRxLargeLen::
+      00FBCD                       1082 	.ds 2
+      00FBCF                       1083 _rfTxCurBufIdx::
+      00FBCF                       1084 	.ds 1
+      00FBD0                       1085 _rfTxBufCount::
+      00FBD0                       1086 	.ds 1
+      00FBD1                       1087 _rfTxCounter::
+      00FBD1                       1088 	.ds 2
+      00FBD3                       1089 _rfTxRepeatCounter::
+      00FBD3                       1090 	.ds 2
+      00FBD5                       1091 _rfTxBufferEnd::
+      00FBD5                       1092 	.ds 2
+      00FBD7                       1093 _rfTxRepeatLen::
+      00FBD7                       1094 	.ds 2
+      00FBD9                       1095 _rfTxRepeatOffset::
+      00FBD9                       1096 	.ds 2
+      00FBDB                       1097 _rfTxTotalTXLen::
+      00FBDB                       1098 	.ds 2
+      00FBDD                       1099 _rfTxInfMode::
+      00FBDD                       1100 	.ds 1
+      00FBDE                       1101 _rfAESMode::
+      00FBDE                       1102 	.ds 1
+      00FBDF                       1103 _rfAmpMode::
+      00FBDF                       1104 	.ds 1
+      00FBE0                       1105 _bRepeatMode::
+      00FBE0                       1106 	.ds 1
+                                   1107 	.area HOME    (CODE)
+                                   1108 	.area GSINIT0 (CODE)
+                                   1109 	.area GSINIT1 (CODE)
+                                   1110 	.area GSINIT2 (CODE)
+                                   1111 	.area GSINIT3 (CODE)
+                                   1112 	.area GSINIT4 (CODE)
+                                   1113 	.area GSINIT5 (CODE)
+                                   1114 	.area GSINIT  (CODE)
+                                   1115 	.area GSFINAL (CODE)
+                                   1116 	.area CSEG    (CODE)
+                                   1117 ;--------------------------------------------------------
+                                   1118 ; global & static initialisations
+                                   1119 ;--------------------------------------------------------
+                                   1120 	.area HOME    (CODE)
+                                   1121 	.area GSINIT  (CODE)
+                                   1122 	.area GSFINAL (CODE)
+                                   1123 	.area GSINIT  (CODE)
+                                   1124 ;--------------------------------------------------------
+                                   1125 ; Home
+                                   1126 ;--------------------------------------------------------
+                                   1127 	.area HOME    (CODE)
+                                   1128 	.area HOME    (CODE)
+                                   1129 ;--------------------------------------------------------
+                                   1130 ; code
+                                   1131 ;--------------------------------------------------------
+                                   1132 	.area CSEG    (CODE)
+                                   1133 ;------------------------------------------------------------
+                                   1134 ;Allocation info for local variables in function 'setFreq'
+                                   1135 ;------------------------------------------------------------
+                                   1136 ;freq                      Allocated to registers r4 r5 r6 r7 
+                                   1137 ;num                       Allocated to registers r4 r5 r6 r7 
+                                   1138 ;------------------------------------------------------------
+                                   1139 ;	cc1111rf.c:56: void setFreq(u32 freq)
+                                   1140 ;	-----------------------------------------
+                                   1141 ;	 function setFreq
+                                   1142 ;	-----------------------------------------
+      00131C                       1143 _setFreq:
+                           000007  1144 	ar7 = 0x07
+                           000006  1145 	ar6 = 0x06
+                           000005  1146 	ar5 = 0x05
+                           000004  1147 	ar4 = 0x04
+                           000003  1148 	ar3 = 0x03
+                           000002  1149 	ar2 = 0x02
+                           000001  1150 	ar1 = 0x01
+                           000000  1151 	ar0 = 0x00
+                                   1152 ;	cc1111rf.c:61: num = freq * (0x10000 / 1000000.0) / PLATFORM_CLOCK_FREQ;
+      00131C 12 24 0F         [24] 1153 	lcall	___ulong2fs
+      00131F AC 82            [24] 1154 	mov	r4,dpl
+      001321 AD 83            [24] 1155 	mov	r5,dph
+      001323 AE F0            [24] 1156 	mov	r6,b
+      001325 FF               [12] 1157 	mov	r7,a
+      001326 C0 04            [24] 1158 	push	ar4
+      001328 C0 05            [24] 1159 	push	ar5
+      00132A C0 06            [24] 1160 	push	ar6
+      00132C C0 07            [24] 1161 	push	ar7
+      00132E 90 37 BD         [24] 1162 	mov	dptr,#0x37BD
+      001331 75 F0 86         [24] 1163 	mov	b,#0x86
+      001334 74 3D            [12] 1164 	mov	a,#0x3D
+      001336 12 22 97         [24] 1165 	lcall	___fsmul
+      001339 AC 82            [24] 1166 	mov	r4,dpl
+      00133B AD 83            [24] 1167 	mov	r5,dph
+      00133D AE F0            [24] 1168 	mov	r6,b
+      00133F FF               [12] 1169 	mov	r7,a
+      001340 E5 81            [12] 1170 	mov	a,sp
+      001342 24 FC            [12] 1171 	add	a,#0xfc
+      001344 F5 81            [12] 1172 	mov	sp,a
+      001346 E4               [12] 1173 	clr	a
+      001347 C0 E0            [24] 1174 	push	acc
+      001349 C0 E0            [24] 1175 	push	acc
+      00134B 74 C0            [12] 1176 	mov	a,#0xC0
+      00134D C0 E0            [24] 1177 	push	acc
+      00134F 74 41            [12] 1178 	mov	a,#0x41
+      001351 C0 E0            [24] 1179 	push	acc
+      001353 8C 82            [24] 1180 	mov	dpl,r4
+      001355 8D 83            [24] 1181 	mov	dph,r5
+      001357 8E F0            [24] 1182 	mov	b,r6
+      001359 EF               [12] 1183 	mov	a,r7
+      00135A 12 25 2F         [24] 1184 	lcall	___fsdiv
+      00135D AC 82            [24] 1185 	mov	r4,dpl
+      00135F AD 83            [24] 1186 	mov	r5,dph
+      001361 AE F0            [24] 1187 	mov	r6,b
+      001363 FF               [12] 1188 	mov	r7,a
+      001364 E5 81            [12] 1189 	mov	a,sp
+      001366 24 FC            [12] 1190 	add	a,#0xfc
+      001368 F5 81            [12] 1191 	mov	sp,a
+      00136A 8C 82            [24] 1192 	mov	dpl,r4
+      00136C 8D 83            [24] 1193 	mov	dph,r5
+      00136E 8E F0            [24] 1194 	mov	b,r6
+      001370 EF               [12] 1195 	mov	a,r7
+      001371 12 24 22         [24] 1196 	lcall	___fs2ulong
+      001374 AC 82            [24] 1197 	mov	r4,dpl
+      001376 AD 83            [24] 1198 	mov	r5,dph
+      001378 AE F0            [24] 1199 	mov	r6,b
+                                   1200 ;	cc1111rf.c:62: FREQ2 = num >> 16;
+      00137A 90 DF 09         [24] 1201 	mov	dptr,#_FREQ2
+      00137D EE               [12] 1202 	mov	a,r6
+      00137E F0               [24] 1203 	movx	@dptr,a
+                                   1204 ;	cc1111rf.c:63: FREQ1 = (num>>8) & 0xff;
+      00137F 8D 03            [24] 1205 	mov	ar3,r5
+      001381 90 DF 0A         [24] 1206 	mov	dptr,#_FREQ1
+      001384 EB               [12] 1207 	mov	a,r3
+      001385 F0               [24] 1208 	movx	@dptr,a
+                                   1209 ;	cc1111rf.c:64: FREQ0 = num & 0xff;
+      001386 90 DF 0B         [24] 1210 	mov	dptr,#_FREQ0
+      001389 EC               [12] 1211 	mov	a,r4
+      00138A F0               [24] 1212 	movx	@dptr,a
+      00138B 22               [24] 1213 	ret
+                                   1214 ;------------------------------------------------------------
+                                   1215 ;Allocation info for local variables in function 'resetRFSTATE'
+                                   1216 ;------------------------------------------------------------
+                                   1217 ;	cc1111rf.c:67: void resetRFSTATE(void)
+                                   1218 ;	-----------------------------------------
+                                   1219 ;	 function resetRFSTATE
+                                   1220 ;	-----------------------------------------
+      00138C                       1221 _resetRFSTATE:
+                                   1222 ;	cc1111rf.c:70: RFST = RFST_SIDLE; while ((MARCSTATE) != MARC_STATE_IDLE);
+      00138C 75 E1 04         [24] 1223 	mov	_RFST,#0x04
+      00138F                       1224 00101$:
+      00138F 90 DF 3B         [24] 1225 	mov	dptr,#_MARCSTATE
+      001392 E0               [24] 1226 	movx	a,@dptr
+      001393 FF               [12] 1227 	mov	r7,a
+      001394 BF 01 F8         [24] 1228 	cjne	r7,#0x01,00101$
+                                   1229 ;	cc1111rf.c:72: RFST = rf_status;
+      001397 90 FB 6F         [24] 1230 	mov	dptr,#_rf_status
+      00139A E0               [24] 1231 	movx	a,@dptr
+      00139B F5 E1            [12] 1232 	mov	_RFST,a
+                                   1233 ;	cc1111rf.c:73: while (rf_status != RFST_SIDLE && MARCSTATE == MARC_STATE_IDLE)
+      00139D                       1234 00105$:
+      00139D 90 FB 6F         [24] 1235 	mov	dptr,#_rf_status
+      0013A0 E0               [24] 1236 	movx	a,@dptr
+      0013A1 FF               [12] 1237 	mov	r7,a
+      0013A2 BF 04 01         [24] 1238 	cjne	r7,#0x04,00124$
+      0013A5 22               [24] 1239 	ret
+      0013A6                       1240 00124$:
+      0013A6 90 DF 3B         [24] 1241 	mov	dptr,#_MARCSTATE
+      0013A9 E0               [24] 1242 	movx	a,@dptr
+      0013AA FF               [12] 1243 	mov	r7,a
+      0013AB BF 01 02         [24] 1244 	cjne	r7,#0x01,00125$
+      0013AE 80 ED            [24] 1245 	sjmp	00105$
+      0013B0                       1246 00125$:
+      0013B0 22               [24] 1247 	ret
+                                   1248 ;------------------------------------------------------------
+                                   1249 ;Allocation info for local variables in function 'RxMode'
+                                   1250 ;------------------------------------------------------------
+                                   1251 ;	cc1111rf.c:78: void RxMode(void)
+                                   1252 ;	-----------------------------------------
+                                   1253 ;	 function RxMode
+                                   1254 ;	-----------------------------------------
+      0013B1                       1255 _RxMode:
+                                   1256 ;	cc1111rf.c:80: if (rf_status != RFST_SRX)
+      0013B1 90 FB 6F         [24] 1257 	mov	dptr,#_rf_status
+      0013B4 E0               [24] 1258 	movx	a,@dptr
+      0013B5 FF               [12] 1259 	mov	r7,a
+      0013B6 BF 02 01         [24] 1260 	cjne	r7,#0x02,00108$
+      0013B9 22               [24] 1261 	ret
+      0013BA                       1262 00108$:
+                                   1263 ;	cc1111rf.c:82: MCSM1 &= 0xf0;
+      0013BA 90 DF 13         [24] 1264 	mov	dptr,#_MCSM1
+      0013BD E0               [24] 1265 	movx	a,@dptr
+      0013BE FF               [12] 1266 	mov	r7,a
+      0013BF 74 F0            [12] 1267 	mov	a,#0xF0
+      0013C1 5F               [12] 1268 	anl	a,r7
+      0013C2 F0               [24] 1269 	movx	@dptr,a
+                                   1270 ;	cc1111rf.c:83: MCSM1 |= 0x0f;
+      0013C3 E0               [24] 1271 	movx	a,@dptr
+      0013C4 FF               [12] 1272 	mov	r7,a
+      0013C5 74 0F            [12] 1273 	mov	a,#0x0F
+      0013C7 4F               [12] 1274 	orl	a,r7
+      0013C8 F0               [24] 1275 	movx	@dptr,a
+                                   1276 ;	cc1111rf.c:84: rf_status = RFST_SRX;
+      0013C9 90 FB 6F         [24] 1277 	mov	dptr,#_rf_status
+      0013CC 74 02            [12] 1278 	mov	a,#0x02
+      0013CE F0               [24] 1279 	movx	@dptr,a
+                                   1280 ;	cc1111rf.c:86: startRX();
+      0013CF 02 17 DA         [24] 1281 	ljmp	_startRX
+                                   1282 ;------------------------------------------------------------
+                                   1283 ;Allocation info for local variables in function 'TxMode'
+                                   1284 ;------------------------------------------------------------
+                                   1285 ;	cc1111rf.c:91: void TxMode(void)
+                                   1286 ;	-----------------------------------------
+                                   1287 ;	 function TxMode
+                                   1288 ;	-----------------------------------------
+      0013D2                       1289 _TxMode:
+                                   1290 ;	cc1111rf.c:93: if (rf_status != RFST_STX)
+      0013D2 90 FB 6F         [24] 1291 	mov	dptr,#_rf_status
+      0013D5 E0               [24] 1292 	movx	a,@dptr
+      0013D6 FF               [12] 1293 	mov	r7,a
+      0013D7 BF 03 01         [24] 1294 	cjne	r7,#0x03,00117$
+      0013DA 22               [24] 1295 	ret
+      0013DB                       1296 00117$:
+                                   1297 ;	cc1111rf.c:95: MCSM1 &= 0xf0;
+      0013DB 90 DF 13         [24] 1298 	mov	dptr,#_MCSM1
+      0013DE E0               [24] 1299 	movx	a,@dptr
+      0013DF FF               [12] 1300 	mov	r7,a
+      0013E0 74 F0            [12] 1301 	mov	a,#0xF0
+      0013E2 5F               [12] 1302 	anl	a,r7
+      0013E3 F0               [24] 1303 	movx	@dptr,a
+                                   1304 ;	cc1111rf.c:96: MCSM1 |= 0x0a;
+      0013E4 E0               [24] 1305 	movx	a,@dptr
+      0013E5 FF               [12] 1306 	mov	r7,a
+      0013E6 74 0A            [12] 1307 	mov	a,#0x0A
+      0013E8 4F               [12] 1308 	orl	a,r7
+      0013E9 F0               [24] 1309 	movx	@dptr,a
+                                   1310 ;	cc1111rf.c:98: rf_status = RFST_STX;
+      0013EA 90 FB 6F         [24] 1311 	mov	dptr,#_rf_status
+      0013ED 74 03            [12] 1312 	mov	a,#0x03
+      0013EF F0               [24] 1313 	movx	@dptr,a
+                                   1314 ;	cc1111rf.c:99: RFTX;
+                                   1315 ;	1-genFromRTrack replaced	mov	_RFST,#0x03
+      0013F0 F5 E1            [12] 1316 	mov	_RFST,a
+      0013F2                       1317 00101$:
+      0013F2 90 DF 3B         [24] 1318 	mov	dptr,#_MARCSTATE
+      0013F5 E0               [24] 1319 	movx	a,@dptr
+      0013F6 FF               [12] 1320 	mov	r7,a
+      0013F7 BF 13 F8         [24] 1321 	cjne	r7,#0x13,00101$
+      0013FA 22               [24] 1322 	ret
+                                   1323 ;------------------------------------------------------------
+                                   1324 ;Allocation info for local variables in function 'IdleMode'
+                                   1325 ;------------------------------------------------------------
+                                   1326 ;	cc1111rf.c:104: void IdleMode(void)
+                                   1327 ;	-----------------------------------------
+                                   1328 ;	 function IdleMode
+                                   1329 ;	-----------------------------------------
+      0013FB                       1330 _IdleMode:
+                                   1331 ;	cc1111rf.c:106: if (rf_status != RFST_SIDLE)
+      0013FB 90 FB 6F         [24] 1332 	mov	dptr,#_rf_status
+      0013FE E0               [24] 1333 	movx	a,@dptr
+      0013FF FF               [12] 1334 	mov	r7,a
+      001400 BF 04 01         [24] 1335 	cjne	r7,#0x04,00120$
+      001403 22               [24] 1336 	ret
+      001404                       1337 00120$:
+                                   1338 ;	cc1111rf.c:109: MCSM1 &= 0xf0;
+      001404 90 DF 13         [24] 1339 	mov	dptr,#_MCSM1
+      001407 E0               [24] 1340 	movx	a,@dptr
+      001408 FF               [12] 1341 	mov	r7,a
+      001409 74 F0            [12] 1342 	mov	a,#0xF0
+      00140B 5F               [12] 1343 	anl	a,r7
+      00140C F0               [24] 1344 	movx	@dptr,a
+                                   1345 ;	cc1111rf.c:110: RFIM &= ~RFIF_IRQ_DONE;
+      00140D AF 91            [24] 1346 	mov	r7,_RFIM
+      00140F 74 EF            [12] 1347 	mov	a,#0xEF
+      001411 5F               [12] 1348 	anl	a,r7
+      001412 F5 91            [12] 1349 	mov	_RFIM,a
+                                   1350 ;	cc1111rf.c:111: RFOFF;
+      001414 75 E1 04         [24] 1351 	mov	_RFST,#0x04
+      001417                       1352 00101$:
+      001417 90 DF 3B         [24] 1353 	mov	dptr,#_MARCSTATE
+      00141A E0               [24] 1354 	movx	a,@dptr
+      00141B FF               [12] 1355 	mov	r7,a
+      00141C BF 01 F8         [24] 1356 	cjne	r7,#0x01,00101$
+                                   1357 ;	cc1111rf.c:118: S1CON &= ~(S1CON_RFIF_0|S1CON_RFIF_1);  // clear RFIF interrupts
+      00141F AF 9B            [24] 1358 	mov	r7,_S1CON
+      001421 74 FC            [12] 1359 	mov	a,#0xFC
+      001423 5F               [12] 1360 	anl	a,r7
+      001424 F5 9B            [12] 1361 	mov	_S1CON,a
+                                   1362 ;	cc1111rf.c:119: RFIF &= ~RFIF_IRQ_DONE;
+      001426 AF E9            [24] 1363 	mov	r7,_RFIF
+      001428 74 EF            [12] 1364 	mov	a,#0xEF
+      00142A 5F               [12] 1365 	anl	a,r7
+      00142B F5 E9            [12] 1366 	mov	_RFIF,a
+                                   1367 ;	cc1111rf.c:121: rf_status = RFST_SIDLE;
+      00142D 90 FB 6F         [24] 1368 	mov	dptr,#_rf_status
+      001430 74 04            [12] 1369 	mov	a,#0x04
+      001432 F0               [24] 1370 	movx	@dptr,a
+      001433 22               [24] 1371 	ret
+                                   1372 ;------------------------------------------------------------
+                                   1373 ;Allocation info for local variables in function 'init_RF'
+                                   1374 ;------------------------------------------------------------
+                                   1375 ;	cc1111rf.c:130: void init_RF()
+                                   1376 ;	-----------------------------------------
+                                   1377 ;	 function init_RF
+                                   1378 ;	-----------------------------------------
+      001434                       1379 _init_RF:
+                                   1380 ;	cc1111rf.c:133: rf_tLastRecv = 0;
+      001434 90 FB 72         [24] 1381 	mov	dptr,#_rf_tLastRecv
+      001437 E4               [12] 1382 	clr	a
+      001438 F0               [24] 1383 	movx	@dptr,a
+      001439 A3               [24] 1384 	inc	dptr
+      00143A F0               [24] 1385 	movx	@dptr,a
+                                   1386 ;	cc1111rf.c:136: rfRxCounter[FIRST_BUFFER] = 0;
+      00143B 90 FB 65         [24] 1387 	mov	dptr,#_rfRxCounter
+      00143E F0               [24] 1388 	movx	@dptr,a
+      00143F A3               [24] 1389 	inc	dptr
+      001440 F0               [24] 1390 	movx	@dptr,a
+                                   1391 ;	cc1111rf.c:137: rfRxCounter[SECOND_BUFFER] = 0;
+      001441 90 FB 67         [24] 1392 	mov	dptr,#(_rfRxCounter + 0x0002)
+      001444 F0               [24] 1393 	movx	@dptr,a
+      001445 A3               [24] 1394 	inc	dptr
+      001446 F0               [24] 1395 	movx	@dptr,a
+                                   1396 ;	cc1111rf.c:150: CLKCON &= 0xc7;
+      001447 53 C6 C7         [24] 1397 	anl	_CLKCON,#0xC7
+                                   1398 ;	cc1111rf.c:152: T2PR = 0;
+      00144A 75 9D 00         [24] 1399 	mov	_T2PR,#0x00
+                                   1400 ;	cc1111rf.c:153: T2CTL |= T2CTL_TIP_64;  // 64, 128, 256, 1024
+      00144D 85 9E 9E         [24] 1401 	mov	_T2CTL,_T2CTL
+                                   1402 ;	cc1111rf.c:154: T2CTL |= T2CTL_TIG;
+      001450 43 9E 04         [24] 1403 	orl	_T2CTL,#0x04
+                                   1404 ;	cc1111rf.c:158: IP0 |= 0;       // grp0 is RF/RFTXRX/DMA
+      001453 85 A9 A9         [24] 1405 	mov	_IP0,_IP0
+                                   1406 ;	cc1111rf.c:159: IP1 |= BIT0;
+      001456 43 B9 01         [24] 1407 	orl	_IP1,#0x01
+                                   1408 ;	cc1111rf.c:162: rf_status = RFST_SIDLE;
+      001459 90 FB 6F         [24] 1409 	mov	dptr,#_rf_status
+      00145C 74 04            [12] 1410 	mov	a,#0x04
+      00145E F0               [24] 1411 	movx	@dptr,a
+                                   1412 ;	cc1111rf.c:171: memset(rfrxbuf,0,(BUFFER_AMOUNT * BUFFER_SIZE));
+      00145F 75 22 00         [24] 1413 	mov	_memset_PARM_2,#0x00
+      001462 75 23 00         [24] 1414 	mov	_memset_PARM_3,#0x00
+                                   1415 ;	1-genFromRTrack replaced	mov	(_memset_PARM_3 + 1),#0x04
+      001465 F5 24            [12] 1416 	mov	(_memset_PARM_3 + 1),a
+      001467 90 F7 65         [24] 1417 	mov	dptr,#_rfrxbuf
+      00146A 75 F0 00         [24] 1418 	mov	b,#0x00
+      00146D 12 23 9B         [24] 1419 	lcall	_memset
+                                   1420 ;	cc1111rf.c:173: appInitRf();
+      001470 12 0E 18         [24] 1421 	lcall	_appInitRf
+                                   1422 ;	cc1111rf.c:176: RFTXRXIE = 1;                   // FIXME: should this be something that is enabled/disabled by usb?
+      001473 D2 A8            [12] 1423 	setb	_RFTXRXIE
+                                   1424 ;	cc1111rf.c:177: RFIM = 0xd1;    // TXUNF, RXOVF, DONE, SFD  (SFD to mark time of receipt)
+      001475 75 91 D1         [24] 1425 	mov	_RFIM,#0xD1
+                                   1426 ;	cc1111rf.c:178: RFIF = 0;
+      001478 75 E9 00         [24] 1427 	mov	_RFIF,#0x00
+                                   1428 ;	cc1111rf.c:179: rfif = 0;
+      00147B 75 19 00         [24] 1429 	mov	_rfif,#0x00
+                                   1430 ;	cc1111rf.c:180: IEN2 |= IEN2_RFIE;
+      00147E 43 9A 01         [24] 1431 	orl	_IEN2,#0x01
+                                   1432 ;	cc1111rf.c:183: RFOFF;
+      001481 75 E1 04         [24] 1433 	mov	_RFST,#0x04
+      001484                       1434 00101$:
+      001484 90 DF 3B         [24] 1435 	mov	dptr,#_MARCSTATE
+      001487 E0               [24] 1436 	movx	a,@dptr
+      001488 FF               [12] 1437 	mov	r7,a
+      001489 BF 01 F8         [24] 1438 	cjne	r7,#0x01,00101$
+      00148C 22               [24] 1439 	ret
+                                   1440 ;------------------------------------------------------------
+                                   1441 ;Allocation info for local variables in function 'waitRSSI'
+                                   1442 ;------------------------------------------------------------
+                                   1443 ;u16WaitTime               Allocated to registers r6 r7 
+                                   1444 ;------------------------------------------------------------
+                                   1445 ;	cc1111rf.c:188: int waitRSSI()
+                                   1446 ;	-----------------------------------------
+                                   1447 ;	 function waitRSSI
+                                   1448 ;	-----------------------------------------
+      00148D                       1449 _waitRSSI:
+                                   1450 ;	cc1111rf.c:191: while(u16WaitTime < RSSI_TIMEOUT_US)
+      00148D 7E 00            [12] 1451 	mov	r6,#0x00
+      00148F 7F 00            [12] 1452 	mov	r7,#0x00
+      001491                       1453 00104$:
+      001491 C3               [12] 1454 	clr	c
+      001492 EE               [12] 1455 	mov	a,r6
+      001493 94 DC            [12] 1456 	subb	a,#0xDC
+      001495 EF               [12] 1457 	mov	a,r7
+      001496 94 05            [12] 1458 	subb	a,#0x05
+      001498 50 24            [24] 1459 	jnc	00106$
+                                   1460 ;	cc1111rf.c:193: if(PKTSTATUS & (PKTSTATUS_CCA | PKTSTATUS_CS))
+      00149A 90 DF 3C         [24] 1461 	mov	dptr,#_PKTSTATUS
+      00149D E0               [24] 1462 	movx	a,@dptr
+      00149E FD               [12] 1463 	mov	r5,a
+      00149F 54 50            [12] 1464 	anl	a,#0x50
+      0014A1 60 04            [24] 1465 	jz	00102$
+                                   1466 ;	cc1111rf.c:195: return 1;
+      0014A3 90 00 01         [24] 1467 	mov	dptr,#0x0001
+      0014A6 22               [24] 1468 	ret
+      0014A7                       1469 00102$:
+                                   1470 ;	cc1111rf.c:199: sleepMicros(50);
+      0014A7 90 00 32         [24] 1471 	mov	dptr,#0x0032
+      0014AA C0 07            [24] 1472 	push	ar7
+      0014AC C0 06            [24] 1473 	push	ar6
+      0014AE 12 1E 0C         [24] 1474 	lcall	_sleepMicros
+      0014B1 D0 06            [24] 1475 	pop	ar6
+      0014B3 D0 07            [24] 1476 	pop	ar7
+                                   1477 ;	cc1111rf.c:200: u16WaitTime += 50;
+      0014B5 74 32            [12] 1478 	mov	a,#0x32
+      0014B7 2E               [12] 1479 	add	a,r6
+      0014B8 FE               [12] 1480 	mov	r6,a
+      0014B9 E4               [12] 1481 	clr	a
+      0014BA 3F               [12] 1482 	addc	a,r7
+      0014BB FF               [12] 1483 	mov	r7,a
+      0014BC 80 D3            [24] 1484 	sjmp	00104$
+      0014BE                       1485 00106$:
+                                   1486 ;	cc1111rf.c:203: return 0;
+      0014BE 90 00 00         [24] 1487 	mov	dptr,#0x0000
+      0014C1 22               [24] 1488 	ret
+                                   1489 ;------------------------------------------------------------
+                                   1490 ;Allocation info for local variables in function 'transmit'
+                                   1491 ;------------------------------------------------------------
+                                   1492 ;sloc0                     Allocated with name '_transmit_sloc0_1_0'
+                                   1493 ;len                       Allocated with name '_transmit_PARM_2'
+                                   1494 ;repeat                    Allocated with name '_transmit_PARM_3'
+                                   1495 ;offset                    Allocated with name '_transmit_PARM_4'
+                                   1496 ;buf                       Allocated with name '_transmit_buf_1_96'
+                                   1497 ;countdown                 Allocated with name '_transmit_countdown_1_97'
+                                   1498 ;encoffset                 Allocated with name '_transmit_encoffset_1_97'
+                                   1499 ;original_pktlen           Allocated with name '_transmit_original_pktlen_1_97'
+                                   1500 ;------------------------------------------------------------
+                                   1501 ;	cc1111rf.c:214: u8 transmit(__xdata u8* __xdata buf, __xdata u16 len, __xdata u16 repeat, __xdata u16 offset)
+                                   1502 ;	-----------------------------------------
+                                   1503 ;	 function transmit
+                                   1504 ;	-----------------------------------------
+      0014C2                       1505 _transmit:
+      0014C2 AF 83            [24] 1506 	mov	r7,dph
+      0014C4 E5 82            [12] 1507 	mov	a,dpl
+      0014C6 90 FB 8F         [24] 1508 	mov	dptr,#_transmit_buf_1_96
+      0014C9 F0               [24] 1509 	movx	@dptr,a
+      0014CA EF               [12] 1510 	mov	a,r7
+      0014CB A3               [24] 1511 	inc	dptr
+      0014CC F0               [24] 1512 	movx	@dptr,a
+                                   1513 ;	cc1111rf.c:217: __xdata u8 encoffset = 0;
+      0014CD 90 FB 91         [24] 1514 	mov	dptr,#_transmit_encoffset_1_97
+      0014D0 E4               [12] 1515 	clr	a
+      0014D1 F0               [24] 1516 	movx	@dptr,a
+                                   1517 ;	cc1111rf.c:218: __xdata u8 original_pktlen = PKTLEN;
+      0014D2 90 DF 02         [24] 1518 	mov	dptr,#_PKTLEN
+      0014D5 E0               [24] 1519 	movx	a,@dptr
+      0014D6 FF               [12] 1520 	mov	r7,a
+                                   1521 ;	cc1111rf.c:220: while (MARCSTATE == MARC_STATE_TX)
+      0014D7                       1522 00101$:
+      0014D7 90 DF 3B         [24] 1523 	mov	dptr,#_MARCSTATE
+      0014DA E0               [24] 1524 	movx	a,@dptr
+      0014DB FE               [12] 1525 	mov	r6,a
+      0014DC BE 13 04         [24] 1526 	cjne	r6,#0x13,00103$
+                                   1527 ;	cc1111rf.c:222: LED = !LED;
+      0014DF B2 A4            [12] 1528 	cpl	_P2_4
+      0014E1 80 F4            [24] 1529 	sjmp	00101$
+      0014E3                       1530 00103$:
+                                   1531 ;	cc1111rf.c:228: LED = 0;
+      0014E3 C2 A4            [12] 1532 	clr	_P2_4
+                                   1533 ;	cc1111rf.c:231: rfTxInfMode = 0;
+      0014E5 90 FB DD         [24] 1534 	mov	dptr,#_rfTxInfMode
+      0014E8 E4               [12] 1535 	clr	a
+      0014E9 F0               [24] 1536 	movx	@dptr,a
+                                   1537 ;	cc1111rf.c:232: rfTxRepeatCounter = repeat;
+      0014EA 90 FB 8B         [24] 1538 	mov	dptr,#_transmit_PARM_3
+      0014ED E0               [24] 1539 	movx	a,@dptr
+      0014EE FD               [12] 1540 	mov	r5,a
+      0014EF A3               [24] 1541 	inc	dptr
+      0014F0 E0               [24] 1542 	movx	a,@dptr
+      0014F1 FE               [12] 1543 	mov	r6,a
+      0014F2 90 FB D3         [24] 1544 	mov	dptr,#_rfTxRepeatCounter
+      0014F5 ED               [12] 1545 	mov	a,r5
+      0014F6 F0               [24] 1546 	movx	@dptr,a
+      0014F7 EE               [12] 1547 	mov	a,r6
+      0014F8 A3               [24] 1548 	inc	dptr
+      0014F9 F0               [24] 1549 	movx	@dptr,a
+                                   1550 ;	cc1111rf.c:233: rfTxRepeatOffset = offset;
+      0014FA 90 FB 8D         [24] 1551 	mov	dptr,#_transmit_PARM_4
+      0014FD E0               [24] 1552 	movx	a,@dptr
+      0014FE FB               [12] 1553 	mov	r3,a
+      0014FF A3               [24] 1554 	inc	dptr
+      001500 E0               [24] 1555 	movx	a,@dptr
+      001501 FC               [12] 1556 	mov	r4,a
+      001502 90 FB D9         [24] 1557 	mov	dptr,#_rfTxRepeatOffset
+      001505 EB               [12] 1558 	mov	a,r3
+      001506 F0               [24] 1559 	movx	@dptr,a
+      001507 EC               [12] 1560 	mov	a,r4
+      001508 A3               [24] 1561 	inc	dptr
+      001509 F0               [24] 1562 	movx	@dptr,a
+                                   1563 ;	cc1111rf.c:234: rfTxBufferEnd = len;
+      00150A 90 FB 89         [24] 1564 	mov	dptr,#_transmit_PARM_2
+      00150D E0               [24] 1565 	movx	a,@dptr
+      00150E F9               [12] 1566 	mov	r1,a
+      00150F A3               [24] 1567 	inc	dptr
+      001510 E0               [24] 1568 	movx	a,@dptr
+      001511 FA               [12] 1569 	mov	r2,a
+      001512 90 FB D5         [24] 1570 	mov	dptr,#_rfTxBufferEnd
+      001515 E9               [12] 1571 	mov	a,r1
+      001516 F0               [24] 1572 	movx	@dptr,a
+      001517 EA               [12] 1573 	mov	a,r2
+      001518 A3               [24] 1574 	inc	dptr
+      001519 F0               [24] 1575 	movx	@dptr,a
+                                   1576 ;	cc1111rf.c:235: rfTxRepeatLen = len - offset;
+      00151A 90 FB D7         [24] 1577 	mov	dptr,#_rfTxRepeatLen
+      00151D E9               [12] 1578 	mov	a,r1
+      00151E C3               [12] 1579 	clr	c
+      00151F 9B               [12] 1580 	subb	a,r3
+      001520 F0               [24] 1581 	movx	@dptr,a
+      001521 EA               [12] 1582 	mov	a,r2
+      001522 9C               [12] 1583 	subb	a,r4
+      001523 A3               [24] 1584 	inc	dptr
+      001524 F0               [24] 1585 	movx	@dptr,a
+                                   1586 ;	cc1111rf.c:237: rfTxTotalTXLen = len + (rfTxRepeatLen * repeat);
+      001525 90 FB D7         [24] 1587 	mov	dptr,#_rfTxRepeatLen
+      001528 E0               [24] 1588 	movx	a,@dptr
+      001529 FB               [12] 1589 	mov	r3,a
+      00152A A3               [24] 1590 	inc	dptr
+      00152B E0               [24] 1591 	movx	a,@dptr
+      00152C FC               [12] 1592 	mov	r4,a
+      00152D 8D 22            [24] 1593 	mov	__mulint_PARM_2,r5
+      00152F 8E 23            [24] 1594 	mov	(__mulint_PARM_2 + 1),r6
+      001531 8B 82            [24] 1595 	mov	dpl,r3
+      001533 8C 83            [24] 1596 	mov	dph,r4
+      001535 C0 07            [24] 1597 	push	ar7
+      001537 C0 06            [24] 1598 	push	ar6
+      001539 C0 05            [24] 1599 	push	ar5
+      00153B C0 02            [24] 1600 	push	ar2
+      00153D C0 01            [24] 1601 	push	ar1
+      00153F 12 24 76         [24] 1602 	lcall	__mulint
+      001542 AB 82            [24] 1603 	mov	r3,dpl
+      001544 AC 83            [24] 1604 	mov	r4,dph
+      001546 D0 01            [24] 1605 	pop	ar1
+      001548 D0 02            [24] 1606 	pop	ar2
+      00154A D0 05            [24] 1607 	pop	ar5
+      00154C D0 06            [24] 1608 	pop	ar6
+      00154E D0 07            [24] 1609 	pop	ar7
+      001550 90 FB DB         [24] 1610 	mov	dptr,#_rfTxTotalTXLen
+      001553 EB               [12] 1611 	mov	a,r3
+      001554 29               [12] 1612 	add	a,r1
+      001555 F0               [24] 1613 	movx	@dptr,a
+      001556 EC               [12] 1614 	mov	a,r4
+      001557 3A               [12] 1615 	addc	a,r2
+      001558 A3               [24] 1616 	inc	dptr
+      001559 F0               [24] 1617 	movx	@dptr,a
+                                   1618 ;	cc1111rf.c:242: if(len == 0)
+      00155A E9               [12] 1619 	mov	a,r1
+      00155B 4A               [12] 1620 	orl	a,r2
+      00155C 70 5D            [24] 1621 	jnz	00118$
+                                   1622 ;	cc1111rf.c:244: len = buf[0];
+      00155E 90 FB 8F         [24] 1623 	mov	dptr,#_transmit_buf_1_96
+      001561 E0               [24] 1624 	movx	a,@dptr
+      001562 FB               [12] 1625 	mov	r3,a
+      001563 A3               [24] 1626 	inc	dptr
+      001564 E0               [24] 1627 	movx	a,@dptr
+      001565 FC               [12] 1628 	mov	r4,a
+      001566 8B 82            [24] 1629 	mov	dpl,r3
+      001568 8C 83            [24] 1630 	mov	dph,r4
+      00156A E0               [24] 1631 	movx	a,@dptr
+      00156B F8               [12] 1632 	mov	r0,a
+      00156C 88 1A            [24] 1633 	mov	_transmit_sloc0_1_0,r0
+      00156E 75 1B 00         [24] 1634 	mov	(_transmit_sloc0_1_0 + 1),#0x00
+      001571 90 FB 89         [24] 1635 	mov	dptr,#_transmit_PARM_2
+      001574 E5 1A            [12] 1636 	mov	a,_transmit_sloc0_1_0
+      001576 F0               [24] 1637 	movx	@dptr,a
+      001577 E5 1B            [12] 1638 	mov	a,(_transmit_sloc0_1_0 + 1)
+      001579 A3               [24] 1639 	inc	dptr
+      00157A F0               [24] 1640 	movx	@dptr,a
+                                   1641 ;	cc1111rf.c:246: switch (PKTCTRL0 & PKTCTRL0_LENGTH_CONFIG)
+      00157B 90 DF 04         [24] 1642 	mov	dptr,#_PKTCTRL0
+      00157E E0               [24] 1643 	movx	a,@dptr
+      00157F F8               [12] 1644 	mov	r0,a
+      001580 53 00 03         [24] 1645 	anl	ar0,#0x03
+      001583 B8 00 02         [24] 1646 	cjne	r0,#0x00,00214$
+      001586 80 18            [24] 1647 	sjmp	00105$
+      001588                       1648 00214$:
+      001588 B8 01 02         [24] 1649 	cjne	r0,#0x01,00215$
+      00158B 80 03            [24] 1650 	sjmp	00216$
+      00158D                       1651 00215$:
+      00158D 02 16 4D         [24] 1652 	ljmp	00119$
+      001590                       1653 00216$:
+                                   1654 ;	cc1111rf.c:249: len++;  // we need to send the length byte too...
+      001590 90 FB 89         [24] 1655 	mov	dptr,#_transmit_PARM_2
+      001593 74 01            [12] 1656 	mov	a,#0x01
+      001595 25 1A            [12] 1657 	add	a,_transmit_sloc0_1_0
+      001597 F0               [24] 1658 	movx	@dptr,a
+      001598 E4               [12] 1659 	clr	a
+      001599 35 1B            [12] 1660 	addc	a,(_transmit_sloc0_1_0 + 1)
+      00159B A3               [24] 1661 	inc	dptr
+      00159C F0               [24] 1662 	movx	@dptr,a
+                                   1663 ;	cc1111rf.c:250: break;
+      00159D 02 16 4D         [24] 1664 	ljmp	00119$
+                                   1665 ;	cc1111rf.c:251: case PKTCTRL0_LENGTH_CONFIG_FIX:
+      0015A0                       1666 00105$:
+                                   1667 ;	cc1111rf.c:252: buf++;  // skip sending the length byte
+      0015A0 90 FB 8F         [24] 1668 	mov	dptr,#_transmit_buf_1_96
+      0015A3 74 01            [12] 1669 	mov	a,#0x01
+      0015A5 2B               [12] 1670 	add	a,r3
+      0015A6 F0               [24] 1671 	movx	@dptr,a
+      0015A7 E4               [12] 1672 	clr	a
+      0015A8 3C               [12] 1673 	addc	a,r4
+      0015A9 A3               [24] 1674 	inc	dptr
+      0015AA F0               [24] 1675 	movx	@dptr,a
+                                   1676 ;	cc1111rf.c:253: PKTLEN= len;
+      0015AB 90 FB 89         [24] 1677 	mov	dptr,#_transmit_PARM_2
+      0015AE E0               [24] 1678 	movx	a,@dptr
+      0015AF FB               [12] 1679 	mov	r3,a
+      0015B0 A3               [24] 1680 	inc	dptr
+      0015B1 E0               [24] 1681 	movx	a,@dptr
+      0015B2 FC               [12] 1682 	mov	r4,a
+      0015B3 90 DF 02         [24] 1683 	mov	dptr,#_PKTLEN
+      0015B6 EB               [12] 1684 	mov	a,r3
+      0015B7 F0               [24] 1685 	movx	@dptr,a
+                                   1686 ;	cc1111rf.c:254: break;
+      0015B8 02 16 4D         [24] 1687 	ljmp	00119$
+                                   1688 ;	cc1111rf.c:257: }
+      0015BB                       1689 00118$:
+                                   1690 ;	cc1111rf.c:263: switch (PKTCTRL0 & PKTCTRL0_LENGTH_CONFIG)
+      0015BB 90 DF 04         [24] 1691 	mov	dptr,#_PKTCTRL0
+      0015BE E0               [24] 1692 	movx	a,@dptr
+      0015BF FC               [12] 1693 	mov	r4,a
+      0015C0 53 04 03         [24] 1694 	anl	ar4,#0x03
+      0015C3 BC 00 02         [24] 1695 	cjne	r4,#0x00,00217$
+      0015C6 80 46            [24] 1696 	sjmp	00109$
+      0015C8                       1697 00217$:
+      0015C8 BC 01 02         [24] 1698 	cjne	r4,#0x01,00218$
+      0015CB 80 03            [24] 1699 	sjmp	00219$
+      0015CD                       1700 00218$:
+      0015CD 02 16 4D         [24] 1701 	ljmp	00119$
+      0015D0                       1702 00219$:
+                                   1703 ;	cc1111rf.c:267: byte_shuffle(buf, len, 1);
+      0015D0 90 FB 8F         [24] 1704 	mov	dptr,#_transmit_buf_1_96
+      0015D3 E0               [24] 1705 	movx	a,@dptr
+      0015D4 FB               [12] 1706 	mov	r3,a
+      0015D5 A3               [24] 1707 	inc	dptr
+      0015D6 E0               [24] 1708 	movx	a,@dptr
+      0015D7 FC               [12] 1709 	mov	r4,a
+      0015D8 90 FB 92         [24] 1710 	mov	dptr,#_byte_shuffle_PARM_2
+      0015DB E9               [12] 1711 	mov	a,r1
+      0015DC F0               [24] 1712 	movx	@dptr,a
+      0015DD EA               [12] 1713 	mov	a,r2
+      0015DE A3               [24] 1714 	inc	dptr
+      0015DF F0               [24] 1715 	movx	@dptr,a
+      0015E0 90 FB 94         [24] 1716 	mov	dptr,#_byte_shuffle_PARM_3
+      0015E3 74 01            [12] 1717 	mov	a,#0x01
+      0015E5 F0               [24] 1718 	movx	@dptr,a
+      0015E6 E4               [12] 1719 	clr	a
+      0015E7 A3               [24] 1720 	inc	dptr
+      0015E8 F0               [24] 1721 	movx	@dptr,a
+      0015E9 8B 82            [24] 1722 	mov	dpl,r3
+      0015EB 8C 83            [24] 1723 	mov	dph,r4
+      0015ED C0 07            [24] 1724 	push	ar7
+      0015EF C0 02            [24] 1725 	push	ar2
+      0015F1 C0 01            [24] 1726 	push	ar1
+      0015F3 12 1D 89         [24] 1727 	lcall	_byte_shuffle
+      0015F6 D0 01            [24] 1728 	pop	ar1
+      0015F8 D0 02            [24] 1729 	pop	ar2
+      0015FA D0 07            [24] 1730 	pop	ar7
+                                   1731 ;	cc1111rf.c:268: buf[0] = (u8) len;
+      0015FC 90 FB 8F         [24] 1732 	mov	dptr,#_transmit_buf_1_96
+      0015FF E0               [24] 1733 	movx	a,@dptr
+      001600 FB               [12] 1734 	mov	r3,a
+      001601 A3               [24] 1735 	inc	dptr
+      001602 E0               [24] 1736 	movx	a,@dptr
+      001603 FC               [12] 1737 	mov	r4,a
+      001604 89 00            [24] 1738 	mov	ar0,r1
+      001606 8B 82            [24] 1739 	mov	dpl,r3
+      001608 8C 83            [24] 1740 	mov	dph,r4
+      00160A E8               [12] 1741 	mov	a,r0
+      00160B F0               [24] 1742 	movx	@dptr,a
+                                   1743 ;	cc1111rf.c:269: break;
+                                   1744 ;	cc1111rf.c:270: case PKTCTRL0_LENGTH_CONFIG_FIX:
+      00160C 80 3F            [24] 1745 	sjmp	00119$
+      00160E                       1746 00109$:
+                                   1747 ;	cc1111rf.c:274: if(repeat)
+      00160E ED               [12] 1748 	mov	a,r5
+      00160F 4E               [12] 1749 	orl	a,r6
+      001610 60 36            [24] 1750 	jz	00113$
+                                   1751 ;	cc1111rf.c:278: PKTLEN = (u8) (rfTxTotalTXLen % 256);
+      001612 90 FB DB         [24] 1752 	mov	dptr,#_rfTxTotalTXLen
+      001615 E0               [24] 1753 	movx	a,@dptr
+      001616 FD               [12] 1754 	mov	r5,a
+      001617 A3               [24] 1755 	inc	dptr
+      001618 E0               [24] 1756 	movx	a,@dptr
+      001619 90 DF 02         [24] 1757 	mov	dptr,#_PKTLEN
+      00161C ED               [12] 1758 	mov	a,r5
+      00161D F0               [24] 1759 	movx	@dptr,a
+                                   1760 ;	cc1111rf.c:279: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
+      00161E 90 DF 04         [24] 1761 	mov	dptr,#_PKTCTRL0
+      001621 E0               [24] 1762 	movx	a,@dptr
+      001622 FE               [12] 1763 	mov	r6,a
+      001623 74 FC            [12] 1764 	mov	a,#0xFC
+      001625 5E               [12] 1765 	anl	a,r6
+      001626 F0               [24] 1766 	movx	@dptr,a
+                                   1767 ;	cc1111rf.c:281: if(rfTxTotalTXLen > RF_MAX_TX_BLOCK)
+      001627 90 FB DB         [24] 1768 	mov	dptr,#_rfTxTotalTXLen
+      00162A E0               [24] 1769 	movx	a,@dptr
+      00162B FD               [12] 1770 	mov	r5,a
+      00162C A3               [24] 1771 	inc	dptr
+      00162D E0               [24] 1772 	movx	a,@dptr
+      00162E FE               [12] 1773 	mov	r6,a
+      00162F C3               [12] 1774 	clr	c
+      001630 74 FF            [12] 1775 	mov	a,#0xFF
+      001632 9D               [12] 1776 	subb	a,r5
+      001633 E4               [12] 1777 	clr	a
+      001634 9E               [12] 1778 	subb	a,r6
+      001635 50 09            [24] 1779 	jnc	00111$
+                                   1780 ;	cc1111rf.c:282: PKTCTRL0 |= PKTCTRL0_LENGTH_CONFIG_INF;
+      001637 90 DF 04         [24] 1781 	mov	dptr,#_PKTCTRL0
+      00163A E0               [24] 1782 	movx	a,@dptr
+      00163B FE               [12] 1783 	mov	r6,a
+      00163C 74 02            [12] 1784 	mov	a,#0x02
+      00163E 4E               [12] 1785 	orl	a,r6
+      00163F F0               [24] 1786 	movx	@dptr,a
+      001640                       1787 00111$:
+                                   1788 ;	cc1111rf.c:284: rfTxInfMode = 1;
+      001640 90 FB DD         [24] 1789 	mov	dptr,#_rfTxInfMode
+      001643 74 01            [12] 1790 	mov	a,#0x01
+      001645 F0               [24] 1791 	movx	@dptr,a
+      001646 80 05            [24] 1792 	sjmp	00119$
+      001648                       1793 00113$:
+                                   1794 ;	cc1111rf.c:287: PKTLEN = len;
+      001648 90 DF 02         [24] 1795 	mov	dptr,#_PKTLEN
+      00164B E9               [12] 1796 	mov	a,r1
+      00164C F0               [24] 1797 	movx	@dptr,a
+                                   1798 ;	cc1111rf.c:291: }
+      00164D                       1799 00119$:
+                                   1800 ;	cc1111rf.c:296: RFTXRXIE = 1;
+      00164D D2 A8            [12] 1801 	setb	_RFTXRXIE
+                                   1802 ;	cc1111rf.c:302: if(rfAESMode & AES_CRYPTO_OUT_ENABLE)
+      00164F 90 FB DE         [24] 1803 	mov	dptr,#_rfAESMode
+      001652 E0               [24] 1804 	movx	a,@dptr
+      001653 FE               [12] 1805 	mov	r6,a
+      001654 20 E3 03         [24] 1806 	jb	acc.3,00222$
+      001657 02 17 7B         [24] 1807 	ljmp	00135$
+      00165A                       1808 00222$:
+                                   1809 ;	cc1111rf.c:304: if((PKTCTRL0 & PKTCTRL0_LENGTH_CONFIG) == PKTCTRL0_LENGTH_CONFIG_VAR)
+      00165A 90 DF 04         [24] 1810 	mov	dptr,#_PKTCTRL0
+      00165D E0               [24] 1811 	movx	a,@dptr
+      00165E FE               [12] 1812 	mov	r6,a
+      00165F 53 06 03         [24] 1813 	anl	ar6,#0x03
+      001662 BE 01 06         [24] 1814 	cjne	r6,#0x01,00121$
+                                   1815 ;	cc1111rf.c:305: encoffset= 1;
+      001665 90 FB 91         [24] 1816 	mov	dptr,#_transmit_encoffset_1_97
+      001668 74 01            [12] 1817 	mov	a,#0x01
+      00166A F0               [24] 1818 	movx	@dptr,a
+      00166B                       1819 00121$:
+                                   1820 ;	cc1111rf.c:307: len= padAES(buf + encoffset, len);
+      00166B 90 FB 91         [24] 1821 	mov	dptr,#_transmit_encoffset_1_97
+      00166E E0               [24] 1822 	movx	a,@dptr
+      00166F FE               [12] 1823 	mov	r6,a
+      001670 90 FB 8F         [24] 1824 	mov	dptr,#_transmit_buf_1_96
+      001673 E0               [24] 1825 	movx	a,@dptr
+      001674 FC               [12] 1826 	mov	r4,a
+      001675 A3               [24] 1827 	inc	dptr
+      001676 E0               [24] 1828 	movx	a,@dptr
+      001677 FD               [12] 1829 	mov	r5,a
+      001678 EE               [12] 1830 	mov	a,r6
+      001679 2C               [12] 1831 	add	a,r4
+      00167A FA               [12] 1832 	mov	r2,a
+      00167B E4               [12] 1833 	clr	a
+      00167C 3D               [12] 1834 	addc	a,r5
+      00167D FB               [12] 1835 	mov	r3,a
+      00167E 90 FB 89         [24] 1836 	mov	dptr,#_transmit_PARM_2
+      001681 E0               [24] 1837 	movx	a,@dptr
+      001682 F8               [12] 1838 	mov	r0,a
+      001683 A3               [24] 1839 	inc	dptr
+      001684 E0               [24] 1840 	movx	a,@dptr
+      001685 F9               [12] 1841 	mov	r1,a
+      001686 90 FB B0         [24] 1842 	mov	dptr,#_padAES_PARM_2
+      001689 E8               [12] 1843 	mov	a,r0
+      00168A F0               [24] 1844 	movx	@dptr,a
+      00168B E9               [12] 1845 	mov	a,r1
+      00168C A3               [24] 1846 	inc	dptr
+      00168D F0               [24] 1847 	movx	@dptr,a
+      00168E 8A 82            [24] 1848 	mov	dpl,r2
+      001690 8B 83            [24] 1849 	mov	dph,r3
+      001692 C0 07            [24] 1850 	push	ar7
+      001694 C0 06            [24] 1851 	push	ar6
+      001696 C0 05            [24] 1852 	push	ar5
+      001698 C0 04            [24] 1853 	push	ar4
+      00169A 12 20 D8         [24] 1854 	lcall	_padAES
+      00169D AA 82            [24] 1855 	mov	r2,dpl
+      00169F AB 83            [24] 1856 	mov	r3,dph
+      0016A1 D0 04            [24] 1857 	pop	ar4
+      0016A3 D0 05            [24] 1858 	pop	ar5
+      0016A5 D0 06            [24] 1859 	pop	ar6
+      0016A7 D0 07            [24] 1860 	pop	ar7
+                                   1861 ;	cc1111rf.c:309: if((rfAESMode & AES_CRYPTO_OUT_TYPE) == AES_CRYPTO_OUT_ENCRYPT)
+      0016A9 90 FB DE         [24] 1862 	mov	dptr,#_rfAESMode
+      0016AC E0               [24] 1863 	movx	a,@dptr
+      0016AD F9               [12] 1864 	mov	r1,a
+      0016AE 53 01 04         [24] 1865 	anl	ar1,#0x04
+      0016B1 B9 04 48         [24] 1866 	cjne	r1,#0x04,00123$
+                                   1867 ;	cc1111rf.c:310: encAES(buf + encoffset, buf + encoffset, len, (rfAESMode & AES_CRYPTO_MODE));
+      0016B4 C0 07            [24] 1868 	push	ar7
+      0016B6 EE               [12] 1869 	mov	a,r6
+      0016B7 2C               [12] 1870 	add	a,r4
+      0016B8 F8               [12] 1871 	mov	r0,a
+      0016B9 E4               [12] 1872 	clr	a
+      0016BA 3D               [12] 1873 	addc	a,r5
+      0016BB F9               [12] 1874 	mov	r1,a
+      0016BC 90 FB DE         [24] 1875 	mov	dptr,#_rfAESMode
+      0016BF E0               [24] 1876 	movx	a,@dptr
+      0016C0 FF               [12] 1877 	mov	r7,a
+      0016C1 53 07 F0         [24] 1878 	anl	ar7,#0xF0
+      0016C4 90 FB B4         [24] 1879 	mov	dptr,#_encAES_PARM_2
+      0016C7 E8               [12] 1880 	mov	a,r0
+      0016C8 F0               [24] 1881 	movx	@dptr,a
+      0016C9 E9               [12] 1882 	mov	a,r1
+      0016CA A3               [24] 1883 	inc	dptr
+      0016CB F0               [24] 1884 	movx	@dptr,a
+      0016CC 90 FB B6         [24] 1885 	mov	dptr,#_encAES_PARM_3
+      0016CF EA               [12] 1886 	mov	a,r2
+      0016D0 F0               [24] 1887 	movx	@dptr,a
+      0016D1 EB               [12] 1888 	mov	a,r3
+      0016D2 A3               [24] 1889 	inc	dptr
+      0016D3 F0               [24] 1890 	movx	@dptr,a
+      0016D4 90 FB B8         [24] 1891 	mov	dptr,#_encAES_PARM_4
+      0016D7 EF               [12] 1892 	mov	a,r7
+      0016D8 F0               [24] 1893 	movx	@dptr,a
+      0016D9 88 82            [24] 1894 	mov	dpl,r0
+      0016DB 89 83            [24] 1895 	mov	dph,r1
+      0016DD C0 07            [24] 1896 	push	ar7
+      0016DF C0 06            [24] 1897 	push	ar6
+      0016E1 C0 05            [24] 1898 	push	ar5
+      0016E3 C0 04            [24] 1899 	push	ar4
+      0016E5 C0 03            [24] 1900 	push	ar3
+      0016E7 C0 02            [24] 1901 	push	ar2
+      0016E9 12 21 12         [24] 1902 	lcall	_encAES
+      0016EC D0 02            [24] 1903 	pop	ar2
+      0016EE D0 03            [24] 1904 	pop	ar3
+      0016F0 D0 04            [24] 1905 	pop	ar4
+      0016F2 D0 05            [24] 1906 	pop	ar5
+      0016F4 D0 06            [24] 1907 	pop	ar6
+      0016F6 D0 07            [24] 1908 	pop	ar7
+      0016F8 D0 07            [24] 1909 	pop	ar7
+      0016FA 80 46            [24] 1910 	sjmp	00124$
+      0016FC                       1911 00123$:
+                                   1912 ;	cc1111rf.c:312: decAES(buf + encoffset, buf + encoffset, len, (rfAESMode & AES_CRYPTO_MODE));
+      0016FC C0 07            [24] 1913 	push	ar7
+      0016FE EE               [12] 1914 	mov	a,r6
+      0016FF 2C               [12] 1915 	add	a,r4
+      001700 F8               [12] 1916 	mov	r0,a
+      001701 E4               [12] 1917 	clr	a
+      001702 3D               [12] 1918 	addc	a,r5
+      001703 F9               [12] 1919 	mov	r1,a
+      001704 90 FB DE         [24] 1920 	mov	dptr,#_rfAESMode
+      001707 E0               [24] 1921 	movx	a,@dptr
+      001708 FF               [12] 1922 	mov	r7,a
+      001709 53 07 F0         [24] 1923 	anl	ar7,#0xF0
+      00170C 90 FB BB         [24] 1924 	mov	dptr,#_decAES_PARM_2
+      00170F E8               [12] 1925 	mov	a,r0
+      001710 F0               [24] 1926 	movx	@dptr,a
+      001711 E9               [12] 1927 	mov	a,r1
+      001712 A3               [24] 1928 	inc	dptr
+      001713 F0               [24] 1929 	movx	@dptr,a
+      001714 90 FB BD         [24] 1930 	mov	dptr,#_decAES_PARM_3
+      001717 EA               [12] 1931 	mov	a,r2
+      001718 F0               [24] 1932 	movx	@dptr,a
+      001719 EB               [12] 1933 	mov	a,r3
+      00171A A3               [24] 1934 	inc	dptr
+      00171B F0               [24] 1935 	movx	@dptr,a
+      00171C 90 FB BF         [24] 1936 	mov	dptr,#_decAES_PARM_4
+      00171F EF               [12] 1937 	mov	a,r7
+      001720 F0               [24] 1938 	movx	@dptr,a
+      001721 88 82            [24] 1939 	mov	dpl,r0
+      001723 89 83            [24] 1940 	mov	dph,r1
+      001725 C0 07            [24] 1941 	push	ar7
+      001727 C0 06            [24] 1942 	push	ar6
+      001729 C0 05            [24] 1943 	push	ar5
+      00172B C0 04            [24] 1944 	push	ar4
+      00172D C0 03            [24] 1945 	push	ar3
+      00172F C0 02            [24] 1946 	push	ar2
+      001731 12 21 5B         [24] 1947 	lcall	_decAES
+      001734 D0 02            [24] 1948 	pop	ar2
+      001736 D0 03            [24] 1949 	pop	ar3
+      001738 D0 04            [24] 1950 	pop	ar4
+      00173A D0 05            [24] 1951 	pop	ar5
+      00173C D0 06            [24] 1952 	pop	ar6
+      00173E D0 07            [24] 1953 	pop	ar7
+                                   1954 ;	cc1111rf.c:426: return 1;
+      001740 D0 07            [24] 1955 	pop	ar7
+                                   1956 ;	cc1111rf.c:312: decAES(buf + encoffset, buf + encoffset, len, (rfAESMode & AES_CRYPTO_MODE));
+      001742                       1957 00124$:
+                                   1958 ;	cc1111rf.c:314: if(encoffset)
+      001742 EE               [12] 1959 	mov	a,r6
+      001743 60 1E            [24] 1960 	jz	00132$
+                                   1961 ;	cc1111rf.c:318: if((rfAESMode & AES_CRYPTO_MODE) == ENCCS_MODE_CBCMAC)
+      001745 90 FB DE         [24] 1962 	mov	dptr,#_rfAESMode
+      001748 E0               [24] 1963 	movx	a,@dptr
+      001749 FE               [12] 1964 	mov	r6,a
+      00174A 53 06 F0         [24] 1965 	anl	ar6,#0xF0
+      00174D BE 50 09         [24] 1966 	cjne	r6,#0x50,00126$
+                                   1967 ;	cc1111rf.c:319: buf[0] = 16;
+      001750 8C 82            [24] 1968 	mov	dpl,r4
+      001752 8D 83            [24] 1969 	mov	dph,r5
+      001754 74 10            [12] 1970 	mov	a,#0x10
+      001756 F0               [24] 1971 	movx	@dptr,a
+      001757 80 22            [24] 1972 	sjmp	00135$
+      001759                       1973 00126$:
+                                   1974 ;	cc1111rf.c:321: buf[0] = (u8) len;
+      001759 8A 06            [24] 1975 	mov	ar6,r2
+      00175B 8C 82            [24] 1976 	mov	dpl,r4
+      00175D 8D 83            [24] 1977 	mov	dph,r5
+      00175F EE               [12] 1978 	mov	a,r6
+      001760 F0               [24] 1979 	movx	@dptr,a
+      001761 80 18            [24] 1980 	sjmp	00135$
+      001763                       1981 00132$:
+                                   1982 ;	cc1111rf.c:325: if((rfAESMode & AES_CRYPTO_MODE) == ENCCS_MODE_CBCMAC)
+      001763 90 FB DE         [24] 1983 	mov	dptr,#_rfAESMode
+      001766 E0               [24] 1984 	movx	a,@dptr
+      001767 FE               [12] 1985 	mov	r6,a
+      001768 53 06 F0         [24] 1986 	anl	ar6,#0xF0
+      00176B BE 50 08         [24] 1987 	cjne	r6,#0x50,00129$
+                                   1988 ;	cc1111rf.c:326: PKTLEN = 16;
+      00176E 90 DF 02         [24] 1989 	mov	dptr,#_PKTLEN
+      001771 74 10            [12] 1990 	mov	a,#0x10
+      001773 F0               [24] 1991 	movx	@dptr,a
+      001774 80 05            [24] 1992 	sjmp	00135$
+      001776                       1993 00129$:
+                                   1994 ;	cc1111rf.c:328: PKTLEN = (u8) len;
+      001776 90 DF 02         [24] 1995 	mov	dptr,#_PKTLEN
+      001779 EA               [12] 1996 	mov	a,r2
+      00177A F0               [24] 1997 	movx	@dptr,a
+      00177B                       1998 00135$:
+                                   1999 ;	cc1111rf.c:333: rftxbuf = buf;
+      00177B 90 FB 8F         [24] 2000 	mov	dptr,#_transmit_buf_1_96
+      00177E E0               [24] 2001 	movx	a,@dptr
+      00177F FD               [12] 2002 	mov	r5,a
+      001780 A3               [24] 2003 	inc	dptr
+      001781 E0               [24] 2004 	movx	a,@dptr
+      001782 FE               [12] 2005 	mov	r6,a
+      001783 90 FB 6B         [24] 2006 	mov	dptr,#_rftxbuf
+      001786 ED               [12] 2007 	mov	a,r5
+      001787 F0               [24] 2008 	movx	@dptr,a
+      001788 EE               [12] 2009 	mov	a,r6
+      001789 A3               [24] 2010 	inc	dptr
+      00178A F0               [24] 2011 	movx	@dptr,a
+                                   2012 ;	cc1111rf.c:336: rfTxCounter = 0;
+      00178B 90 FB D1         [24] 2013 	mov	dptr,#_rfTxCounter
+      00178E E4               [12] 2014 	clr	a
+      00178F F0               [24] 2015 	movx	@dptr,a
+      001790 A3               [24] 2016 	inc	dptr
+      001791 F0               [24] 2017 	movx	@dptr,a
+                                   2018 ;	cc1111rf.c:393: RFST = RFST_STX;
+      001792 75 E1 03         [24] 2019 	mov	_RFST,#0x03
+                                   2020 ;	cc1111rf.c:397: while (MARCSTATE != MARC_STATE_TX && --countdown)
+      001795 7D 60            [12] 2021 	mov	r5,#0x60
+      001797 7E EA            [12] 2022 	mov	r6,#0xEA
+      001799                       2023 00137$:
+      001799 90 DF 3B         [24] 2024 	mov	dptr,#_MARCSTATE
+      00179C E0               [24] 2025 	movx	a,@dptr
+      00179D FC               [12] 2026 	mov	r4,a
+      00179E BC 13 02         [24] 2027 	cjne	r4,#0x13,00232$
+      0017A1 80 0D            [24] 2028 	sjmp	00139$
+      0017A3                       2029 00232$:
+      0017A3 1D               [12] 2030 	dec	r5
+      0017A4 BD FF 01         [24] 2031 	cjne	r5,#0xFF,00233$
+      0017A7 1E               [12] 2032 	dec	r6
+      0017A8                       2033 00233$:
+      0017A8 ED               [12] 2034 	mov	a,r5
+      0017A9 4E               [12] 2035 	orl	a,r6
+      0017AA 60 04            [24] 2036 	jz	00139$
+                                   2037 ;	cc1111rf.c:400: LED = !LED;
+      0017AC B2 A4            [12] 2038 	cpl	_P2_4
+      0017AE 80 E9            [24] 2039 	sjmp	00137$
+      0017B0                       2040 00139$:
+                                   2041 ;	cc1111rf.c:406: LED = 1;
+      0017B0 D2 A4            [12] 2042 	setb	_P2_4
+                                   2043 ;	cc1111rf.c:407: if (!countdown)
+      0017B2 ED               [12] 2044 	mov	a,r5
+      0017B3 4E               [12] 2045 	orl	a,r6
+      0017B4 70 06            [24] 2046 	jnz	00142$
+                                   2047 ;	cc1111rf.c:409: lastCode[1] = LCE_RFTX_NEVER_TX;
+      0017B6 90 FB 99         [24] 2048 	mov	dptr,#(_lastCode + 0x0001)
+      0017B9 74 13            [12] 2049 	mov	a,#0x13
+      0017BB F0               [24] 2050 	movx	@dptr,a
+                                   2051 ;	cc1111rf.c:412: while (MARCSTATE == MARC_STATE_TX)
+      0017BC                       2052 00142$:
+      0017BC 90 DF 3B         [24] 2053 	mov	dptr,#_MARCSTATE
+      0017BF E0               [24] 2054 	movx	a,@dptr
+      0017C0 FE               [12] 2055 	mov	r6,a
+      0017C1 BE 13 0B         [24] 2056 	cjne	r6,#0x13,00144$
+                                   2057 ;	cc1111rf.c:414: LED = !LED;
+      0017C4 B2 A4            [12] 2058 	cpl	_P2_4
+                                   2059 ;	cc1111rf.c:416: usbProcessEvents();
+      0017C6 C0 07            [24] 2060 	push	ar7
+      0017C8 12 11 29         [24] 2061 	lcall	_usbProcessEvents
+      0017CB D0 07            [24] 2062 	pop	ar7
+      0017CD 80 ED            [24] 2063 	sjmp	00142$
+      0017CF                       2064 00144$:
+                                   2065 ;	cc1111rf.c:421: LED = 0;
+      0017CF C2 A4            [12] 2066 	clr	_P2_4
+                                   2067 ;	cc1111rf.c:424: PKTLEN = original_pktlen;
+      0017D1 90 DF 02         [24] 2068 	mov	dptr,#_PKTLEN
+      0017D4 EF               [12] 2069 	mov	a,r7
+      0017D5 F0               [24] 2070 	movx	@dptr,a
+                                   2071 ;	cc1111rf.c:426: return 1;
+      0017D6 75 82 01         [24] 2072 	mov	dpl,#0x01
+      0017D9 22               [24] 2073 	ret
+                                   2074 ;------------------------------------------------------------
+                                   2075 ;Allocation info for local variables in function 'startRX'
+                                   2076 ;------------------------------------------------------------
+                                   2077 ;	cc1111rf.c:433: void startRX(void)
+                                   2078 ;	-----------------------------------------
+                                   2079 ;	 function startRX
+                                   2080 ;	-----------------------------------------
+      0017DA                       2081 _startRX:
+                                   2082 ;	cc1111rf.c:439: RFTXRXIE = 1;
+      0017DA D2 A8            [12] 2083 	setb	_RFTXRXIE
+                                   2084 ;	cc1111rf.c:443: memset(rfrxbuf,0,BUFFER_SIZE);
+      0017DC 75 22 00         [24] 2085 	mov	_memset_PARM_2,#0x00
+      0017DF 75 23 00         [24] 2086 	mov	_memset_PARM_3,#0x00
+      0017E2 75 24 02         [24] 2087 	mov	(_memset_PARM_3 + 1),#0x02
+      0017E5 90 F7 65         [24] 2088 	mov	dptr,#_rfrxbuf
+      0017E8 75 F0 00         [24] 2089 	mov	b,#0x00
+      0017EB 12 23 9B         [24] 2090 	lcall	_memset
+                                   2091 ;	cc1111rf.c:446: rfRxCounter[FIRST_BUFFER] = 0;
+      0017EE 90 FB 65         [24] 2092 	mov	dptr,#_rfRxCounter
+      0017F1 E4               [12] 2093 	clr	a
+      0017F2 F0               [24] 2094 	movx	@dptr,a
+      0017F3 A3               [24] 2095 	inc	dptr
+      0017F4 F0               [24] 2096 	movx	@dptr,a
+                                   2097 ;	cc1111rf.c:447: rfRxCounter[SECOND_BUFFER] = 0;
+      0017F5 90 FB 67         [24] 2098 	mov	dptr,#(_rfRxCounter + 0x0002)
+      0017F8 F0               [24] 2099 	movx	@dptr,a
+      0017F9 A3               [24] 2100 	inc	dptr
+      0017FA F0               [24] 2101 	movx	@dptr,a
+                                   2102 ;	cc1111rf.c:453: rfRxProcessed[FIRST_BUFFER] = RX_UNPROCESSED;
+      0017FB 90 FB 69         [24] 2103 	mov	dptr,#_rfRxProcessed
+      0017FE F0               [24] 2104 	movx	@dptr,a
+                                   2105 ;	cc1111rf.c:454: rfRxProcessed[SECOND_BUFFER] = RX_PROCESSED;
+      0017FF 90 FB 6A         [24] 2106 	mov	dptr,#(_rfRxProcessed + 0x0001)
+      001802 04               [12] 2107 	inc	a
+      001803 F0               [24] 2108 	movx	@dptr,a
+                                   2109 ;	cc1111rf.c:457: rfRxCurrentBuffer = 0;
+      001804 90 F7 64         [24] 2110 	mov	dptr,#_rfRxCurrentBuffer
+      001807 E4               [12] 2111 	clr	a
+      001808 F0               [24] 2112 	movx	@dptr,a
+                                   2113 ;	cc1111rf.c:459: S1CON &= ~(S1CON_RFIF_0|S1CON_RFIF_1);
+      001809 AF 9B            [24] 2114 	mov	r7,_S1CON
+      00180B 74 FC            [12] 2115 	mov	a,#0xFC
+      00180D 5F               [12] 2116 	anl	a,r7
+      00180E F5 9B            [12] 2117 	mov	_S1CON,a
+                                   2118 ;	cc1111rf.c:460: RFIF &= ~RFIF_IRQ_DONE;
+      001810 AF E9            [24] 2119 	mov	r7,_RFIF
+      001812 74 EF            [12] 2120 	mov	a,#0xEF
+      001814 5F               [12] 2121 	anl	a,r7
+      001815 F5 E9            [12] 2122 	mov	_RFIF,a
+                                   2123 ;	cc1111rf.c:493: RFRX;
+      001817 75 E1 02         [24] 2124 	mov	_RFST,#0x02
+      00181A                       2125 00101$:
+      00181A 90 DF 3B         [24] 2126 	mov	dptr,#_MARCSTATE
+      00181D E0               [24] 2127 	movx	a,@dptr
+      00181E FF               [12] 2128 	mov	r7,a
+      00181F BF 0D F8         [24] 2129 	cjne	r7,#0x0D,00101$
+                                   2130 ;	cc1111rf.c:495: RFIM |= RFIF_IRQ_DONE;
+      001822 43 91 10         [24] 2131 	orl	_RFIM,#0x10
+      001825 22               [24] 2132 	ret
+                                   2133 ;------------------------------------------------------------
+                                   2134 ;Allocation info for local variables in function 'RepeaterStart'
+                                   2135 ;------------------------------------------------------------
+                                   2136 ;	cc1111rf.c:506: void RepeaterStart()
+                                   2137 ;	-----------------------------------------
+                                   2138 ;	 function RepeaterStart
+                                   2139 ;	-----------------------------------------
+      001826                       2140 _RepeaterStart:
+                                   2141 ;	cc1111rf.c:508: bRepeatMode = 1;
+      001826 90 FB E0         [24] 2142 	mov	dptr,#_bRepeatMode
+      001829 74 01            [12] 2143 	mov	a,#0x01
+      00182B F0               [24] 2144 	movx	@dptr,a
+      00182C 22               [24] 2145 	ret
+                                   2146 ;------------------------------------------------------------
+                                   2147 ;Allocation info for local variables in function 'RepeaterStop'
+                                   2148 ;------------------------------------------------------------
+                                   2149 ;	cc1111rf.c:511: void RepeaterStop()
+                                   2150 ;	-----------------------------------------
+                                   2151 ;	 function RepeaterStop
+                                   2152 ;	-----------------------------------------
+      00182D                       2153 _RepeaterStop:
+                                   2154 ;	cc1111rf.c:513: bRepeatMode = 0;
+      00182D 90 FB E0         [24] 2155 	mov	dptr,#_bRepeatMode
+      001830 E4               [12] 2156 	clr	a
+      001831 F0               [24] 2157 	movx	@dptr,a
+      001832 22               [24] 2158 	ret
+                                   2159 ;------------------------------------------------------------
+                                   2160 ;Allocation info for local variables in function 'rfTxRxIntHandler'
+                                   2161 ;------------------------------------------------------------
+                                   2162 ;	cc1111rf.c:525: void rfTxRxIntHandler(void) __interrupt RFTXRX_VECTOR  // interrupt handler should transmit or receive the next byte
+                                   2163 ;	-----------------------------------------
+                                   2164 ;	 function rfTxRxIntHandler
+                                   2165 ;	-----------------------------------------
+      001833                       2166 _rfTxRxIntHandler:
+      001833 C0 21            [24] 2167 	push	bits
+      001835 C0 E0            [24] 2168 	push	acc
+      001837 C0 F0            [24] 2169 	push	b
+      001839 C0 82            [24] 2170 	push	dpl
+      00183B C0 83            [24] 2171 	push	dph
+      00183D C0 07            [24] 2172 	push	(0+7)
+      00183F C0 06            [24] 2173 	push	(0+6)
+      001841 C0 05            [24] 2174 	push	(0+5)
+      001843 C0 04            [24] 2175 	push	(0+4)
+      001845 C0 03            [24] 2176 	push	(0+3)
+      001847 C0 02            [24] 2177 	push	(0+2)
+      001849 C0 01            [24] 2178 	push	(0+1)
+      00184B C0 00            [24] 2179 	push	(0+0)
+      00184D C0 D0            [24] 2180 	push	psw
+      00184F 75 D0 00         [24] 2181 	mov	psw,#0x00
+                                   2182 ;	cc1111rf.c:527: lastCode[0] = LC_RFTXRX_VECTOR;
+      001852 90 FB 98         [24] 2183 	mov	dptr,#_lastCode
+      001855 74 11            [12] 2184 	mov	a,#0x11
+      001857 F0               [24] 2185 	movx	@dptr,a
+                                   2186 ;	cc1111rf.c:531: RFTXRXIF = 0;
+      001858 C2 89            [12] 2187 	clr	_RFTXRXIF
+                                   2188 ;	cc1111rf.c:533: if(MARCSTATE == MARC_STATE_RX)
+      00185A 90 DF 3B         [24] 2189 	mov	dptr,#_MARCSTATE
+      00185D E0               [24] 2190 	movx	a,@dptr
+      00185E FF               [12] 2191 	mov	r7,a
+      00185F BF 0D 02         [24] 2192 	cjne	r7,#0x0D,00176$
+      001862 80 03            [24] 2193 	sjmp	00177$
+      001864                       2194 00176$:
+      001864 02 19 7D         [24] 2195 	ljmp	00130$
+      001867                       2196 00177$:
+                                   2197 ;	cc1111rf.c:536: LED = 1;
+      001867 D2 A4            [12] 2198 	setb	_P2_4
+                                   2199 ;	cc1111rf.c:538: if(rfRxInfMode)
+      001869 90 FB CA         [24] 2200 	mov	dptr,#_rfRxInfMode
+      00186C E0               [24] 2201 	movx	a,@dptr
+      00186D E0               [24] 2202 	movx	a,@dptr
+      00186E 60 2A            [24] 2203 	jz	00104$
+                                   2204 ;	cc1111rf.c:539: if(rfRxTotalRXLen-- < 256)
+      001870 90 FB CB         [24] 2205 	mov	dptr,#_rfRxTotalRXLen
+      001873 E0               [24] 2206 	movx	a,@dptr
+      001874 FE               [12] 2207 	mov	r6,a
+      001875 A3               [24] 2208 	inc	dptr
+      001876 E0               [24] 2209 	movx	a,@dptr
+      001877 FF               [12] 2210 	mov	r7,a
+      001878 90 FB CB         [24] 2211 	mov	dptr,#_rfRxTotalRXLen
+      00187B E0               [24] 2212 	movx	a,@dptr
+      00187C 24 FF            [12] 2213 	add	a,#0xFF
+      00187E FC               [12] 2214 	mov	r4,a
+      00187F A3               [24] 2215 	inc	dptr
+      001880 E0               [24] 2216 	movx	a,@dptr
+      001881 34 FF            [12] 2217 	addc	a,#0xFF
+      001883 FD               [12] 2218 	mov	r5,a
+      001884 90 FB CB         [24] 2219 	mov	dptr,#_rfRxTotalRXLen
+      001887 EC               [12] 2220 	mov	a,r4
+      001888 F0               [24] 2221 	movx	@dptr,a
+      001889 ED               [12] 2222 	mov	a,r5
+      00188A A3               [24] 2223 	inc	dptr
+      00188B F0               [24] 2224 	movx	@dptr,a
+      00188C 74 FF            [12] 2225 	mov	a,#0x100 - 0x01
+      00188E 2F               [12] 2226 	add	a,r7
+      00188F 40 09            [24] 2227 	jc	00104$
+                                   2228 ;	cc1111rf.c:540: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
+      001891 90 DF 04         [24] 2229 	mov	dptr,#_PKTCTRL0
+      001894 E0               [24] 2230 	movx	a,@dptr
+      001895 FF               [12] 2231 	mov	r7,a
+      001896 74 FC            [12] 2232 	mov	a,#0xFC
+      001898 5F               [12] 2233 	anl	a,r7
+      001899 F0               [24] 2234 	movx	@dptr,a
+      00189A                       2235 00104$:
+                                   2236 ;	cc1111rf.c:541: rf_status = RFST_SRX;
+      00189A 90 FB 6F         [24] 2237 	mov	dptr,#_rf_status
+      00189D 74 02            [12] 2238 	mov	a,#0x02
+      00189F F0               [24] 2239 	movx	@dptr,a
+                                   2240 ;	cc1111rf.c:542: rfrxbuf[rfRxCurrentBuffer][rfRxCounter[rfRxCurrentBuffer]++] = RFD;
+      0018A0 90 F7 64         [24] 2241 	mov	dptr,#_rfRxCurrentBuffer
+      0018A3 E0               [24] 2242 	movx	a,@dptr
+      0018A4 25 E0            [12] 2243 	add	a,acc
+      0018A6 FE               [12] 2244 	mov	r6,a
+      0018A7 E4               [12] 2245 	clr	a
+      0018A8 24 65            [12] 2246 	add	a,#_rfrxbuf
+      0018AA FF               [12] 2247 	mov	r7,a
+      0018AB EE               [12] 2248 	mov	a,r6
+      0018AC 34 F7            [12] 2249 	addc	a,#(_rfrxbuf >> 8)
+      0018AE FE               [12] 2250 	mov	r6,a
+      0018AF E0               [24] 2251 	movx	a,@dptr
+      0018B0 75 F0 02         [24] 2252 	mov	b,#0x02
+      0018B3 A4               [48] 2253 	mul	ab
+      0018B4 24 65            [12] 2254 	add	a,#_rfRxCounter
+      0018B6 FC               [12] 2255 	mov	r4,a
+      0018B7 74 FB            [12] 2256 	mov	a,#(_rfRxCounter >> 8)
+      0018B9 35 F0            [12] 2257 	addc	a,b
+      0018BB FD               [12] 2258 	mov	r5,a
+      0018BC 8C 82            [24] 2259 	mov	dpl,r4
+      0018BE 8D 83            [24] 2260 	mov	dph,r5
+      0018C0 E0               [24] 2261 	movx	a,@dptr
+      0018C1 FA               [12] 2262 	mov	r2,a
+      0018C2 A3               [24] 2263 	inc	dptr
+      0018C3 E0               [24] 2264 	movx	a,@dptr
+      0018C4 FB               [12] 2265 	mov	r3,a
+      0018C5 74 01            [12] 2266 	mov	a,#0x01
+      0018C7 2A               [12] 2267 	add	a,r2
+      0018C8 F8               [12] 2268 	mov	r0,a
+      0018C9 E4               [12] 2269 	clr	a
+      0018CA 3B               [12] 2270 	addc	a,r3
+      0018CB F9               [12] 2271 	mov	r1,a
+      0018CC 8C 82            [24] 2272 	mov	dpl,r4
+      0018CE 8D 83            [24] 2273 	mov	dph,r5
+      0018D0 E8               [12] 2274 	mov	a,r0
+      0018D1 F0               [24] 2275 	movx	@dptr,a
+      0018D2 E9               [12] 2276 	mov	a,r1
+      0018D3 A3               [24] 2277 	inc	dptr
+      0018D4 F0               [24] 2278 	movx	@dptr,a
+      0018D5 EA               [12] 2279 	mov	a,r2
+      0018D6 2F               [12] 2280 	add	a,r7
+      0018D7 F5 82            [12] 2281 	mov	dpl,a
+      0018D9 EB               [12] 2282 	mov	a,r3
+      0018DA 3E               [12] 2283 	addc	a,r6
+      0018DB F5 83            [12] 2284 	mov	dph,a
+      0018DD E5 D9            [12] 2285 	mov	a,_RFD
+      0018DF F0               [24] 2286 	movx	@dptr,a
+                                   2287 ;	cc1111rf.c:543: if(rfRxCounter[rfRxCurrentBuffer] >= BUFFER_SIZE || rfRxCounter[rfRxCurrentBuffer] == 0)
+      0018E0 90 F7 64         [24] 2288 	mov	dptr,#_rfRxCurrentBuffer
+      0018E3 E0               [24] 2289 	movx	a,@dptr
+      0018E4 75 F0 02         [24] 2290 	mov	b,#0x02
+      0018E7 A4               [48] 2291 	mul	ab
+      0018E8 24 65            [12] 2292 	add	a,#_rfRxCounter
+      0018EA F5 82            [12] 2293 	mov	dpl,a
+      0018EC 74 FB            [12] 2294 	mov	a,#(_rfRxCounter >> 8)
+      0018EE 35 F0            [12] 2295 	addc	a,b
+      0018F0 F5 83            [12] 2296 	mov	dph,a
+      0018F2 E0               [24] 2297 	movx	a,@dptr
+      0018F3 FE               [12] 2298 	mov	r6,a
+      0018F4 A3               [24] 2299 	inc	dptr
+      0018F5 E0               [24] 2300 	movx	a,@dptr
+      0018F6 FF               [12] 2301 	mov	r7,a
+      0018F7 C3               [12] 2302 	clr	c
+      0018F8 94 02            [12] 2303 	subb	a,#0x02
+      0018FA 50 1A            [24] 2304 	jnc	00105$
+      0018FC 90 F7 64         [24] 2305 	mov	dptr,#_rfRxCurrentBuffer
+      0018FF E0               [24] 2306 	movx	a,@dptr
+      001900 75 F0 02         [24] 2307 	mov	b,#0x02
+      001903 A4               [48] 2308 	mul	ab
+      001904 24 65            [12] 2309 	add	a,#_rfRxCounter
+      001906 F5 82            [12] 2310 	mov	dpl,a
+      001908 74 FB            [12] 2311 	mov	a,#(_rfRxCounter >> 8)
+      00190A 35 F0            [12] 2312 	addc	a,b
+      00190C F5 83            [12] 2313 	mov	dph,a
+      00190E E0               [24] 2314 	movx	a,@dptr
+      00190F FE               [12] 2315 	mov	r6,a
+      001910 A3               [24] 2316 	inc	dptr
+      001911 E0               [24] 2317 	movx	a,@dptr
+      001912 FF               [12] 2318 	mov	r7,a
+      001913 4E               [12] 2319 	orl	a,r6
+      001914 70 1A            [24] 2320 	jnz	00106$
+      001916                       2321 00105$:
+                                   2322 ;	cc1111rf.c:545: rfRxCounter[rfRxCurrentBuffer] = BUFFER_SIZE-1;
+      001916 90 F7 64         [24] 2323 	mov	dptr,#_rfRxCurrentBuffer
+      001919 E0               [24] 2324 	movx	a,@dptr
+      00191A FF               [12] 2325 	mov	r7,a
+      00191B 75 F0 02         [24] 2326 	mov	b,#0x02
+      00191E A4               [48] 2327 	mul	ab
+      00191F 24 65            [12] 2328 	add	a,#_rfRxCounter
+      001921 F5 82            [12] 2329 	mov	dpl,a
+      001923 74 FB            [12] 2330 	mov	a,#(_rfRxCounter >> 8)
+      001925 35 F0            [12] 2331 	addc	a,b
+      001927 F5 83            [12] 2332 	mov	dph,a
+      001929 74 FF            [12] 2333 	mov	a,#0xFF
+      00192B F0               [24] 2334 	movx	@dptr,a
+      00192C 74 01            [12] 2335 	mov	a,#0x01
+      00192E A3               [24] 2336 	inc	dptr
+      00192F F0               [24] 2337 	movx	@dptr,a
+      001930                       2338 00106$:
+                                   2339 ;	cc1111rf.c:548: if(!rfRxTotalRXLen && rfRxInfMode)
+      001930 90 FB CB         [24] 2340 	mov	dptr,#_rfRxTotalRXLen
+      001933 E0               [24] 2341 	movx	a,@dptr
+      001934 A3               [24] 2342 	inc	dptr
+      001935 E0               [24] 2343 	movx	a,@dptr
+      001936 90 FB CB         [24] 2344 	mov	dptr,#_rfRxTotalRXLen
+      001939 E0               [24] 2345 	movx	a,@dptr
+      00193A F5 F0            [12] 2346 	mov	b,a
+      00193C A3               [24] 2347 	inc	dptr
+      00193D E0               [24] 2348 	movx	a,@dptr
+      00193E 45 F0            [12] 2349 	orl	a,b
+      001940 60 03            [24] 2350 	jz	00182$
+      001942 02 1B 3A         [24] 2351 	ljmp	00132$
+      001945                       2352 00182$:
+      001945 90 FB CA         [24] 2353 	mov	dptr,#_rfRxInfMode
+      001948 E0               [24] 2354 	movx	a,@dptr
+      001949 E0               [24] 2355 	movx	a,@dptr
+      00194A 70 03            [24] 2356 	jnz	00183$
+      00194C 02 1B 3A         [24] 2357 	ljmp	00132$
+      00194F                       2358 00183$:
+                                   2359 ;	cc1111rf.c:550: rfRxTotalRXLen = rfRxLargeLen;
+      00194F 90 FB CD         [24] 2360 	mov	dptr,#_rfRxLargeLen
+      001952 E0               [24] 2361 	movx	a,@dptr
+      001953 FE               [12] 2362 	mov	r6,a
+      001954 A3               [24] 2363 	inc	dptr
+      001955 E0               [24] 2364 	movx	a,@dptr
+      001956 FF               [12] 2365 	mov	r7,a
+      001957 90 FB CB         [24] 2366 	mov	dptr,#_rfRxTotalRXLen
+      00195A EE               [12] 2367 	mov	a,r6
+      00195B F0               [24] 2368 	movx	@dptr,a
+      00195C EF               [12] 2369 	mov	a,r7
+      00195D A3               [24] 2370 	inc	dptr
+      00195E F0               [24] 2371 	movx	@dptr,a
+                                   2372 ;	cc1111rf.c:551: PKTLEN = (u8) (rfRxTotalRXLen % 256);
+      00195F 90 FB CB         [24] 2373 	mov	dptr,#_rfRxTotalRXLen
+      001962 E0               [24] 2374 	movx	a,@dptr
+      001963 FE               [12] 2375 	mov	r6,a
+      001964 A3               [24] 2376 	inc	dptr
+      001965 E0               [24] 2377 	movx	a,@dptr
+      001966 90 DF 02         [24] 2378 	mov	dptr,#_PKTLEN
+      001969 EE               [12] 2379 	mov	a,r6
+      00196A F0               [24] 2380 	movx	@dptr,a
+                                   2381 ;	cc1111rf.c:552: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
+      00196B 90 DF 04         [24] 2382 	mov	dptr,#_PKTCTRL0
+      00196E E0               [24] 2383 	movx	a,@dptr
+      00196F FF               [12] 2384 	mov	r7,a
+      001970 74 FC            [12] 2385 	mov	a,#0xFC
+      001972 5F               [12] 2386 	anl	a,r7
+      001973 F0               [24] 2387 	movx	@dptr,a
+                                   2388 ;	cc1111rf.c:553: PKTCTRL0 |= PKTCTRL0_LENGTH_CONFIG_INF;
+      001974 E0               [24] 2389 	movx	a,@dptr
+      001975 FF               [12] 2390 	mov	r7,a
+      001976 74 02            [12] 2391 	mov	a,#0x02
+      001978 4F               [12] 2392 	orl	a,r7
+      001979 F0               [24] 2393 	movx	@dptr,a
+      00197A 02 1B 3A         [24] 2394 	ljmp	00132$
+      00197D                       2395 00130$:
+                                   2396 ;	cc1111rf.c:557: else if(MARCSTATE == MARC_STATE_TX)
+      00197D 90 DF 3B         [24] 2397 	mov	dptr,#_MARCSTATE
+      001980 E0               [24] 2398 	movx	a,@dptr
+      001981 FF               [12] 2399 	mov	r7,a
+      001982 BF 13 02         [24] 2400 	cjne	r7,#0x13,00184$
+      001985 80 03            [24] 2401 	sjmp	00185$
+      001987                       2402 00184$:
+      001987 02 1B 3A         [24] 2403 	ljmp	00132$
+      00198A                       2404 00185$:
+                                   2405 ;	cc1111rf.c:560: if (rfTxInfMode)
+      00198A 90 FB DD         [24] 2406 	mov	dptr,#_rfTxInfMode
+      00198D E0               [24] 2407 	movx	a,@dptr
+      00198E E0               [24] 2408 	movx	a,@dptr
+      00198F 70 03            [24] 2409 	jnz	00186$
+      001991 02 1A CB         [24] 2410 	ljmp	00125$
+      001994                       2411 00186$:
+                                   2412 ;	cc1111rf.c:567: macdata.tLastHop ++;
+      001994 90 FB 81         [24] 2413 	mov	dptr,#(_macdata + 0x000d)
+      001997 E0               [24] 2414 	movx	a,@dptr
+      001998 FE               [12] 2415 	mov	r6,a
+      001999 A3               [24] 2416 	inc	dptr
+      00199A E0               [24] 2417 	movx	a,@dptr
+      00199B FF               [12] 2418 	mov	r7,a
+      00199C 0E               [12] 2419 	inc	r6
+      00199D BE 00 01         [24] 2420 	cjne	r6,#0x00,00187$
+      0019A0 0F               [12] 2421 	inc	r7
+      0019A1                       2422 00187$:
+      0019A1 90 FB 81         [24] 2423 	mov	dptr,#(_macdata + 0x000d)
+      0019A4 EE               [12] 2424 	mov	a,r6
+      0019A5 F0               [24] 2425 	movx	@dptr,a
+      0019A6 EF               [12] 2426 	mov	a,r7
+      0019A7 A3               [24] 2427 	inc	dptr
+      0019A8 F0               [24] 2428 	movx	@dptr,a
+                                   2429 ;	cc1111rf.c:569: if (rfTxCounter == rfTxBufferEnd)
+      0019A9 90 FB D1         [24] 2430 	mov	dptr,#_rfTxCounter
+      0019AC E0               [24] 2431 	movx	a,@dptr
+      0019AD FE               [12] 2432 	mov	r6,a
+      0019AE A3               [24] 2433 	inc	dptr
+      0019AF E0               [24] 2434 	movx	a,@dptr
+      0019B0 FF               [12] 2435 	mov	r7,a
+      0019B1 90 FB D5         [24] 2436 	mov	dptr,#_rfTxBufferEnd
+      0019B4 E0               [24] 2437 	movx	a,@dptr
+      0019B5 FC               [12] 2438 	mov	r4,a
+      0019B6 A3               [24] 2439 	inc	dptr
+      0019B7 E0               [24] 2440 	movx	a,@dptr
+      0019B8 FD               [12] 2441 	mov	r5,a
+      0019B9 EE               [12] 2442 	mov	a,r6
+      0019BA B5 04 06         [24] 2443 	cjne	a,ar4,00188$
+      0019BD EF               [12] 2444 	mov	a,r7
+      0019BE B5 05 02         [24] 2445 	cjne	a,ar5,00188$
+      0019C1 80 03            [24] 2446 	sjmp	00189$
+      0019C3                       2447 00188$:
+      0019C3 02 1A 9E         [24] 2448 	ljmp	00121$
+      0019C6                       2449 00189$:
+                                   2450 ;	cc1111rf.c:571: if (rfTxRepeatCounter)
+      0019C6 90 FB D3         [24] 2451 	mov	dptr,#_rfTxRepeatCounter
+      0019C9 E0               [24] 2452 	movx	a,@dptr
+      0019CA A3               [24] 2453 	inc	dptr
+      0019CB E0               [24] 2454 	movx	a,@dptr
+      0019CC 90 FB D3         [24] 2455 	mov	dptr,#_rfTxRepeatCounter
+      0019CF E0               [24] 2456 	movx	a,@dptr
+      0019D0 F5 F0            [12] 2457 	mov	b,a
+      0019D2 A3               [24] 2458 	inc	dptr
+      0019D3 E0               [24] 2459 	movx	a,@dptr
+      0019D4 45 F0            [12] 2460 	orl	a,b
+      0019D6 60 37            [24] 2461 	jz	00118$
+                                   2462 ;	cc1111rf.c:573: if(rfTxRepeatCounter != 0xff)
+      0019D8 90 FB D3         [24] 2463 	mov	dptr,#_rfTxRepeatCounter
+      0019DB E0               [24] 2464 	movx	a,@dptr
+      0019DC FE               [12] 2465 	mov	r6,a
+      0019DD A3               [24] 2466 	inc	dptr
+      0019DE E0               [24] 2467 	movx	a,@dptr
+      0019DF FF               [12] 2468 	mov	r7,a
+      0019E0 BE FF 05         [24] 2469 	cjne	r6,#0xFF,00191$
+      0019E3 BF 00 02         [24] 2470 	cjne	r7,#0x00,00191$
+      0019E6 80 14            [24] 2471 	sjmp	00112$
+      0019E8                       2472 00191$:
+                                   2473 ;	cc1111rf.c:574: rfTxRepeatCounter--;
+      0019E8 90 FB D3         [24] 2474 	mov	dptr,#_rfTxRepeatCounter
+      0019EB E0               [24] 2475 	movx	a,@dptr
+      0019EC 24 FF            [12] 2476 	add	a,#0xFF
+      0019EE FE               [12] 2477 	mov	r6,a
+      0019EF A3               [24] 2478 	inc	dptr
+      0019F0 E0               [24] 2479 	movx	a,@dptr
+      0019F1 34 FF            [12] 2480 	addc	a,#0xFF
+      0019F3 FF               [12] 2481 	mov	r7,a
+      0019F4 90 FB D3         [24] 2482 	mov	dptr,#_rfTxRepeatCounter
+      0019F7 EE               [12] 2483 	mov	a,r6
+      0019F8 F0               [24] 2484 	movx	@dptr,a
+      0019F9 EF               [12] 2485 	mov	a,r7
+      0019FA A3               [24] 2486 	inc	dptr
+      0019FB F0               [24] 2487 	movx	@dptr,a
+      0019FC                       2488 00112$:
+                                   2489 ;	cc1111rf.c:575: rfTxCounter = rfTxRepeatOffset;
+      0019FC 90 FB D9         [24] 2490 	mov	dptr,#_rfTxRepeatOffset
+      0019FF E0               [24] 2491 	movx	a,@dptr
+      001A00 FE               [12] 2492 	mov	r6,a
+      001A01 A3               [24] 2493 	inc	dptr
+      001A02 E0               [24] 2494 	movx	a,@dptr
+      001A03 FF               [12] 2495 	mov	r7,a
+      001A04 90 FB D1         [24] 2496 	mov	dptr,#_rfTxCounter
+      001A07 EE               [12] 2497 	mov	a,r6
+      001A08 F0               [24] 2498 	movx	@dptr,a
+      001A09 EF               [12] 2499 	mov	a,r7
+      001A0A A3               [24] 2500 	inc	dptr
+      001A0B F0               [24] 2501 	movx	@dptr,a
+      001A0C 02 1A 9E         [24] 2502 	ljmp	00121$
+      001A0F                       2503 00118$:
+                                   2504 ;	cc1111rf.c:581: rftxbuf[(rfTxCurBufIdx * rfTxBufferEnd)] = BUFFER_AVAILABLE;
+      001A0F 90 FB D5         [24] 2505 	mov	dptr,#_rfTxBufferEnd
+      001A12 E0               [24] 2506 	movx	a,@dptr
+      001A13 F5 22            [12] 2507 	mov	__mulint_PARM_2,a
+      001A15 A3               [24] 2508 	inc	dptr
+      001A16 E0               [24] 2509 	movx	a,@dptr
+      001A17 F5 23            [12] 2510 	mov	(__mulint_PARM_2 + 1),a
+      001A19 90 FB CF         [24] 2511 	mov	dptr,#_rfTxCurBufIdx
+      001A1C E0               [24] 2512 	movx	a,@dptr
+      001A1D FF               [12] 2513 	mov	r7,a
+      001A1E 7E 00            [12] 2514 	mov	r6,#0x00
+      001A20 8F 82            [24] 2515 	mov	dpl,r7
+      001A22 8E 83            [24] 2516 	mov	dph,r6
+      001A24 12 24 76         [24] 2517 	lcall	__mulint
+      001A27 AE 82            [24] 2518 	mov	r6,dpl
+      001A29 AF 83            [24] 2519 	mov	r7,dph
+      001A2B 90 FB 6B         [24] 2520 	mov	dptr,#_rftxbuf
+      001A2E E0               [24] 2521 	movx	a,@dptr
+      001A2F FC               [12] 2522 	mov	r4,a
+      001A30 A3               [24] 2523 	inc	dptr
+      001A31 E0               [24] 2524 	movx	a,@dptr
+      001A32 FD               [12] 2525 	mov	r5,a
+      001A33 EE               [12] 2526 	mov	a,r6
+      001A34 2C               [12] 2527 	add	a,r4
+      001A35 F5 82            [12] 2528 	mov	dpl,a
+      001A37 EF               [12] 2529 	mov	a,r7
+      001A38 3D               [12] 2530 	addc	a,r5
+      001A39 F5 83            [12] 2531 	mov	dph,a
+      001A3B E4               [12] 2532 	clr	a
+      001A3C F0               [24] 2533 	movx	@dptr,a
+                                   2534 ;	cc1111rf.c:583: if (++rfTxCurBufIdx == rfTxBufCount)
+      001A3D 90 FB CF         [24] 2535 	mov	dptr,#_rfTxCurBufIdx
+      001A40 E0               [24] 2536 	movx	a,@dptr
+      001A41 24 01            [12] 2537 	add	a,#0x01
+      001A43 F0               [24] 2538 	movx	@dptr,a
+      001A44 E0               [24] 2539 	movx	a,@dptr
+      001A45 FF               [12] 2540 	mov	r7,a
+      001A46 90 FB D0         [24] 2541 	mov	dptr,#_rfTxBufCount
+      001A49 E0               [24] 2542 	movx	a,@dptr
+      001A4A FE               [12] 2543 	mov	r6,a
+      001A4B EF               [12] 2544 	mov	a,r7
+      001A4C B5 06 05         [24] 2545 	cjne	a,ar6,00114$
+                                   2546 ;	cc1111rf.c:585: rfTxCurBufIdx = 0;
+      001A4F 90 FB CF         [24] 2547 	mov	dptr,#_rfTxCurBufIdx
+      001A52 E4               [12] 2548 	clr	a
+      001A53 F0               [24] 2549 	movx	@dptr,a
+      001A54                       2550 00114$:
+                                   2551 ;	cc1111rf.c:588: if (rftxbuf[(rfTxCurBufIdx * rfTxBufferEnd)] == BUFFER_AVAILABLE)
+      001A54 90 FB D5         [24] 2552 	mov	dptr,#_rfTxBufferEnd
+      001A57 E0               [24] 2553 	movx	a,@dptr
+      001A58 F5 22            [12] 2554 	mov	__mulint_PARM_2,a
+      001A5A A3               [24] 2555 	inc	dptr
+      001A5B E0               [24] 2556 	movx	a,@dptr
+      001A5C F5 23            [12] 2557 	mov	(__mulint_PARM_2 + 1),a
+      001A5E 90 FB CF         [24] 2558 	mov	dptr,#_rfTxCurBufIdx
+      001A61 E0               [24] 2559 	movx	a,@dptr
+      001A62 FF               [12] 2560 	mov	r7,a
+      001A63 7E 00            [12] 2561 	mov	r6,#0x00
+      001A65 8F 82            [24] 2562 	mov	dpl,r7
+      001A67 8E 83            [24] 2563 	mov	dph,r6
+      001A69 12 24 76         [24] 2564 	lcall	__mulint
+      001A6C AE 82            [24] 2565 	mov	r6,dpl
+      001A6E AF 83            [24] 2566 	mov	r7,dph
+      001A70 90 FB 6B         [24] 2567 	mov	dptr,#_rftxbuf
+      001A73 E0               [24] 2568 	movx	a,@dptr
+      001A74 FC               [12] 2569 	mov	r4,a
+      001A75 A3               [24] 2570 	inc	dptr
+      001A76 E0               [24] 2571 	movx	a,@dptr
+      001A77 FD               [12] 2572 	mov	r5,a
+      001A78 EE               [12] 2573 	mov	a,r6
+      001A79 2C               [12] 2574 	add	a,r4
+      001A7A FE               [12] 2575 	mov	r6,a
+      001A7B EF               [12] 2576 	mov	a,r7
+      001A7C 3D               [12] 2577 	addc	a,r5
+      001A7D FF               [12] 2578 	mov	r7,a
+      001A7E 8E 82            [24] 2579 	mov	dpl,r6
+      001A80 8F 83            [24] 2580 	mov	dph,r7
+      001A82 E0               [24] 2581 	movx	a,@dptr
+      001A83 70 10            [24] 2582 	jnz	00116$
+                                   2583 ;	cc1111rf.c:591: macdata.mac_state = MAC_STATE_NONHOPPING;
+      001A85 90 FB 74         [24] 2584 	mov	dptr,#_macdata
+      001A88 E4               [12] 2585 	clr	a
+      001A89 F0               [24] 2586 	movx	@dptr,a
+                                   2587 ;	cc1111rf.c:592: lastCode[1] = LCE_DROPPED_PACKET;
+      001A8A 90 FB 99         [24] 2588 	mov	dptr,#(_lastCode + 0x0001)
+      001A8D 74 12            [12] 2589 	mov	a,#0x12
+      001A8F F0               [24] 2590 	movx	@dptr,a
+                                   2591 ;	cc1111rf.c:593: resetRFSTATE();
+      001A90 12 13 8C         [24] 2592 	lcall	_resetRFSTATE
+                                   2593 ;	cc1111rf.c:594: LED = 0;
+      001A93 C2 A4            [12] 2594 	clr	_P2_4
+      001A95                       2595 00116$:
+                                   2596 ;	cc1111rf.c:598: rfTxCounter = 1;
+      001A95 90 FB D1         [24] 2597 	mov	dptr,#_rfTxCounter
+      001A98 74 01            [12] 2598 	mov	a,#0x01
+      001A9A F0               [24] 2599 	movx	@dptr,a
+      001A9B E4               [12] 2600 	clr	a
+      001A9C A3               [24] 2601 	inc	dptr
+      001A9D F0               [24] 2602 	movx	@dptr,a
+      001A9E                       2603 00121$:
+                                   2604 ;	cc1111rf.c:602: if(rfTxTotalTXLen-- == 255)
+      001A9E 90 FB DB         [24] 2605 	mov	dptr,#_rfTxTotalTXLen
+      001AA1 E0               [24] 2606 	movx	a,@dptr
+      001AA2 FE               [12] 2607 	mov	r6,a
+      001AA3 A3               [24] 2608 	inc	dptr
+      001AA4 E0               [24] 2609 	movx	a,@dptr
+      001AA5 FF               [12] 2610 	mov	r7,a
+      001AA6 90 FB DB         [24] 2611 	mov	dptr,#_rfTxTotalTXLen
+      001AA9 E0               [24] 2612 	movx	a,@dptr
+      001AAA 24 FF            [12] 2613 	add	a,#0xFF
+      001AAC FC               [12] 2614 	mov	r4,a
+      001AAD A3               [24] 2615 	inc	dptr
+      001AAE E0               [24] 2616 	movx	a,@dptr
+      001AAF 34 FF            [12] 2617 	addc	a,#0xFF
+      001AB1 FD               [12] 2618 	mov	r5,a
+      001AB2 90 FB DB         [24] 2619 	mov	dptr,#_rfTxTotalTXLen
+      001AB5 EC               [12] 2620 	mov	a,r4
+      001AB6 F0               [24] 2621 	movx	@dptr,a
+      001AB7 ED               [12] 2622 	mov	a,r5
+      001AB8 A3               [24] 2623 	inc	dptr
+      001AB9 F0               [24] 2624 	movx	@dptr,a
+      001ABA BE FF 22         [24] 2625 	cjne	r6,#0xFF,00126$
+      001ABD BF 00 1F         [24] 2626 	cjne	r7,#0x00,00126$
+                                   2627 ;	cc1111rf.c:604: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
+      001AC0 90 DF 04         [24] 2628 	mov	dptr,#_PKTCTRL0
+      001AC3 E0               [24] 2629 	movx	a,@dptr
+      001AC4 FF               [12] 2630 	mov	r7,a
+      001AC5 74 FC            [12] 2631 	mov	a,#0xFC
+      001AC7 5F               [12] 2632 	anl	a,r7
+      001AC8 F0               [24] 2633 	movx	@dptr,a
+      001AC9 80 14            [24] 2634 	sjmp	00126$
+      001ACB                       2635 00125$:
+                                   2636 ;	cc1111rf.c:611: rfTxTotalTXLen--;
+      001ACB 90 FB DB         [24] 2637 	mov	dptr,#_rfTxTotalTXLen
+      001ACE E0               [24] 2638 	movx	a,@dptr
+      001ACF 24 FF            [12] 2639 	add	a,#0xFF
+      001AD1 FE               [12] 2640 	mov	r6,a
+      001AD2 A3               [24] 2641 	inc	dptr
+      001AD3 E0               [24] 2642 	movx	a,@dptr
+      001AD4 34 FF            [12] 2643 	addc	a,#0xFF
+      001AD6 FF               [12] 2644 	mov	r7,a
+      001AD7 90 FB DB         [24] 2645 	mov	dptr,#_rfTxTotalTXLen
+      001ADA EE               [12] 2646 	mov	a,r6
+      001ADB F0               [24] 2647 	movx	@dptr,a
+      001ADC EF               [12] 2648 	mov	a,r7
+      001ADD A3               [24] 2649 	inc	dptr
+      001ADE F0               [24] 2650 	movx	@dptr,a
+      001ADF                       2651 00126$:
+                                   2652 ;	cc1111rf.c:612: rf_status = RFST_STX;
+      001ADF 90 FB 6F         [24] 2653 	mov	dptr,#_rf_status
+      001AE2 74 03            [12] 2654 	mov	a,#0x03
+      001AE4 F0               [24] 2655 	movx	@dptr,a
+                                   2656 ;	cc1111rf.c:614: RFD = rftxbuf[(rfTxCurBufIdx * rfTxBufferEnd) + rfTxCounter++];
+      001AE5 90 FB D5         [24] 2657 	mov	dptr,#_rfTxBufferEnd
+      001AE8 E0               [24] 2658 	movx	a,@dptr
+      001AE9 F5 22            [12] 2659 	mov	__mulint_PARM_2,a
+      001AEB A3               [24] 2660 	inc	dptr
+      001AEC E0               [24] 2661 	movx	a,@dptr
+      001AED F5 23            [12] 2662 	mov	(__mulint_PARM_2 + 1),a
+      001AEF 90 FB CF         [24] 2663 	mov	dptr,#_rfTxCurBufIdx
+      001AF2 E0               [24] 2664 	movx	a,@dptr
+      001AF3 FF               [12] 2665 	mov	r7,a
+      001AF4 7E 00            [12] 2666 	mov	r6,#0x00
+      001AF6 8F 82            [24] 2667 	mov	dpl,r7
+      001AF8 8E 83            [24] 2668 	mov	dph,r6
+      001AFA 12 24 76         [24] 2669 	lcall	__mulint
+      001AFD AE 82            [24] 2670 	mov	r6,dpl
+      001AFF AF 83            [24] 2671 	mov	r7,dph
+      001B01 90 FB D1         [24] 2672 	mov	dptr,#_rfTxCounter
+      001B04 E0               [24] 2673 	movx	a,@dptr
+      001B05 FC               [12] 2674 	mov	r4,a
+      001B06 A3               [24] 2675 	inc	dptr
+      001B07 E0               [24] 2676 	movx	a,@dptr
+      001B08 FD               [12] 2677 	mov	r5,a
+      001B09 90 FB D1         [24] 2678 	mov	dptr,#_rfTxCounter
+      001B0C E0               [24] 2679 	movx	a,@dptr
+      001B0D 24 01            [12] 2680 	add	a,#0x01
+      001B0F F0               [24] 2681 	movx	@dptr,a
+      001B10 A3               [24] 2682 	inc	dptr
+      001B11 E0               [24] 2683 	movx	a,@dptr
+      001B12 34 00            [12] 2684 	addc	a,#0x00
+      001B14 F0               [24] 2685 	movx	@dptr,a
+      001B15 EC               [12] 2686 	mov	a,r4
+      001B16 2E               [12] 2687 	add	a,r6
+      001B17 FE               [12] 2688 	mov	r6,a
+      001B18 ED               [12] 2689 	mov	a,r5
+      001B19 3F               [12] 2690 	addc	a,r7
+      001B1A FF               [12] 2691 	mov	r7,a
+      001B1B 90 FB 6B         [24] 2692 	mov	dptr,#_rftxbuf
+      001B1E E0               [24] 2693 	movx	a,@dptr
+      001B1F FC               [12] 2694 	mov	r4,a
+      001B20 A3               [24] 2695 	inc	dptr
+      001B21 E0               [24] 2696 	movx	a,@dptr
+      001B22 FD               [12] 2697 	mov	r5,a
+      001B23 EE               [12] 2698 	mov	a,r6
+      001B24 2C               [12] 2699 	add	a,r4
+      001B25 F5 82            [12] 2700 	mov	dpl,a
+      001B27 EF               [12] 2701 	mov	a,r7
+      001B28 3D               [12] 2702 	addc	a,r5
+      001B29 F5 83            [12] 2703 	mov	dph,a
+      001B2B E0               [24] 2704 	movx	a,@dptr
+      001B2C F5 D9            [12] 2705 	mov	_RFD,a
+                                   2706 ;	cc1111rf.c:615: txTotal++;
+      001B2E 90 FB 6D         [24] 2707 	mov	dptr,#_txTotal
+      001B31 E0               [24] 2708 	movx	a,@dptr
+      001B32 24 01            [12] 2709 	add	a,#0x01
+      001B34 F0               [24] 2710 	movx	@dptr,a
+      001B35 A3               [24] 2711 	inc	dptr
+      001B36 E0               [24] 2712 	movx	a,@dptr
+      001B37 34 00            [12] 2713 	addc	a,#0x00
+      001B39 F0               [24] 2714 	movx	@dptr,a
+      001B3A                       2715 00132$:
+      001B3A D0 D0            [24] 2716 	pop	psw
+      001B3C D0 00            [24] 2717 	pop	(0+0)
+      001B3E D0 01            [24] 2718 	pop	(0+1)
+      001B40 D0 02            [24] 2719 	pop	(0+2)
+      001B42 D0 03            [24] 2720 	pop	(0+3)
+      001B44 D0 04            [24] 2721 	pop	(0+4)
+      001B46 D0 05            [24] 2722 	pop	(0+5)
+      001B48 D0 06            [24] 2723 	pop	(0+6)
+      001B4A D0 07            [24] 2724 	pop	(0+7)
+      001B4C D0 83            [24] 2725 	pop	dph
+      001B4E D0 82            [24] 2726 	pop	dpl
+      001B50 D0 F0            [24] 2727 	pop	b
+      001B52 D0 E0            [24] 2728 	pop	acc
+      001B54 D0 21            [24] 2729 	pop	bits
+      001B56 32               [24] 2730 	reti
+                                   2731 ;------------------------------------------------------------
+                                   2732 ;Allocation info for local variables in function 'rfIntHandler'
+                                   2733 ;------------------------------------------------------------
+                                   2734 ;encoffset                 Allocated with name '_rfIntHandler_encoffset_1_136'
+                                   2735 ;------------------------------------------------------------
+                                   2736 ;	cc1111rf.c:619: void rfIntHandler(void) __interrupt RF_VECTOR  // interrupt handler should trigger on rf events
+                                   2737 ;	-----------------------------------------
+                                   2738 ;	 function rfIntHandler
+                                   2739 ;	-----------------------------------------
+      001B57                       2740 _rfIntHandler:
+      001B57 C0 21            [24] 2741 	push	bits
+      001B59 C0 E0            [24] 2742 	push	acc
+      001B5B C0 F0            [24] 2743 	push	b
+      001B5D C0 82            [24] 2744 	push	dpl
+      001B5F C0 83            [24] 2745 	push	dph
+      001B61 C0 07            [24] 2746 	push	(0+7)
+      001B63 C0 06            [24] 2747 	push	(0+6)
+      001B65 C0 05            [24] 2748 	push	(0+5)
+      001B67 C0 04            [24] 2749 	push	(0+4)
+      001B69 C0 03            [24] 2750 	push	(0+3)
+      001B6B C0 02            [24] 2751 	push	(0+2)
+      001B6D C0 01            [24] 2752 	push	(0+1)
+      001B6F C0 00            [24] 2753 	push	(0+0)
+      001B71 C0 D0            [24] 2754 	push	psw
+      001B73 75 D0 00         [24] 2755 	mov	psw,#0x00
+                                   2756 ;	cc1111rf.c:621: u8 encoffset= 0;
+      001B76 75 1C 00         [24] 2757 	mov	_rfIntHandler_encoffset_1_136,#0x00
+                                   2758 ;	cc1111rf.c:624: lastCode[0] = LC_RF_VECTOR;
+      001B79 90 FB 98         [24] 2759 	mov	dptr,#_lastCode
+      001B7C 74 10            [12] 2760 	mov	a,#0x10
+      001B7E F0               [24] 2761 	movx	@dptr,a
+                                   2762 ;	cc1111rf.c:625: S1CON &= ~(S1CON_RFIF_0 | S1CON_RFIF_1);
+      001B7F AE 9B            [24] 2763 	mov	r6,_S1CON
+      001B81 74 FC            [12] 2764 	mov	a,#0xFC
+      001B83 5E               [12] 2765 	anl	a,r6
+      001B84 F5 9B            [12] 2766 	mov	_S1CON,a
+                                   2767 ;	cc1111rf.c:628: rfif |= RFIF;
+      001B86 E5 E9            [12] 2768 	mov	a,_RFIF
+      001B88 42 19            [12] 2769 	orl	_rfif,a
+                                   2770 ;	cc1111rf.c:630: if (RFIF & RFIF_IRQ_SFD)
+      001B8A E5 E9            [12] 2771 	mov	a,_RFIF
+      001B8C 30 E0 20         [24] 2772 	jnb	acc.0,00102$
+                                   2773 ;	cc1111rf.c:634: rf_tLastRecv = T2CT | (rf_MAC_timer << 8);
+      001B8F 90 FB 70         [24] 2774 	mov	dptr,#_rf_MAC_timer
+      001B92 E0               [24] 2775 	movx	a,@dptr
+      001B93 FD               [12] 2776 	mov	r5,a
+      001B94 A3               [24] 2777 	inc	dptr
+      001B95 E0               [24] 2778 	movx	a,@dptr
+      001B96 8D 06            [24] 2779 	mov	ar6,r5
+      001B98 7D 00            [12] 2780 	mov	r5,#0x00
+      001B9A AB 9C            [24] 2781 	mov	r3,_T2CT
+      001B9C 7C 00            [12] 2782 	mov	r4,#0x00
+      001B9E 90 FB 72         [24] 2783 	mov	dptr,#_rf_tLastRecv
+      001BA1 ED               [12] 2784 	mov	a,r5
+      001BA2 4B               [12] 2785 	orl	a,r3
+      001BA3 F0               [24] 2786 	movx	@dptr,a
+      001BA4 EE               [12] 2787 	mov	a,r6
+      001BA5 4C               [12] 2788 	orl	a,r4
+      001BA6 A3               [24] 2789 	inc	dptr
+      001BA7 F0               [24] 2790 	movx	@dptr,a
+                                   2791 ;	cc1111rf.c:635: RFIF &= ~RFIF_IRQ_SFD;
+      001BA8 AE E9            [24] 2792 	mov	r6,_RFIF
+      001BAA 74 FE            [12] 2793 	mov	a,#0xFE
+      001BAC 5E               [12] 2794 	anl	a,r6
+      001BAD F5 E9            [12] 2795 	mov	_RFIF,a
+      001BAF                       2796 00102$:
+                                   2797 ;	cc1111rf.c:640: if (RFIF & ( RFIF_IRQ_DONE | RFIF_IRQ_RXOVF | RFIF_IRQ_TIMEOUT ))
+      001BAF E5 E9            [12] 2798 	mov	a,_RFIF
+      001BB1 54 70            [12] 2799 	anl	a,#0x70
+      001BB3 70 03            [24] 2800 	jnz	00152$
+      001BB5 02 1D 3A         [24] 2801 	ljmp	00117$
+      001BB8                       2802 00152$:
+                                   2803 ;	cc1111rf.c:643: if(rf_status == RFST_STX)
+      001BB8 90 FB 6F         [24] 2804 	mov	dptr,#_rf_status
+      001BBB E0               [24] 2805 	movx	a,@dptr
+      001BBC FE               [12] 2806 	mov	r6,a
+      001BBD BE 03 0A         [24] 2807 	cjne	r6,#0x03,00114$
+                                   2808 ;	cc1111rf.c:649: rfif &= ~( RFIF_IRQ_DONE | RFIF_IRQ_RXOVF | RFIF_IRQ_TIMEOUT );
+      001BC0 AE 19            [24] 2809 	mov	r6,_rfif
+      001BC2 74 8F            [12] 2810 	mov	a,#0x8F
+      001BC4 5E               [12] 2811 	anl	a,r6
+      001BC5 F5 19            [12] 2812 	mov	_rfif,a
+      001BC7 02 1D 33         [24] 2813 	ljmp	00115$
+      001BCA                       2814 00114$:
+                                   2815 ;	cc1111rf.c:655: if(rfRxProcessed[!rfRxCurrentBuffer] == RX_PROCESSED)
+      001BCA 90 F7 64         [24] 2816 	mov	dptr,#_rfRxCurrentBuffer
+      001BCD E0               [24] 2817 	movx	a,@dptr
+      001BCE FE               [12] 2818 	mov	r6,a
+      001BCF B4 01 00         [24] 2819 	cjne	a,#0x01,00155$
+      001BD2                       2820 00155$:
+      001BD2 E4               [12] 2821 	clr	a
+      001BD3 33               [12] 2822 	rlc	a
+      001BD4 24 69            [12] 2823 	add	a,#_rfRxProcessed
+      001BD6 F5 82            [12] 2824 	mov	dpl,a
+      001BD8 E4               [12] 2825 	clr	a
+      001BD9 34 FB            [12] 2826 	addc	a,#(_rfRxProcessed >> 8)
+      001BDB F5 83            [12] 2827 	mov	dph,a
+      001BDD E0               [24] 2828 	movx	a,@dptr
+      001BDE FE               [12] 2829 	mov	r6,a
+      001BDF BE 01 02         [24] 2830 	cjne	r6,#0x01,00156$
+      001BE2 80 03            [24] 2831 	sjmp	00157$
+      001BE4                       2832 00156$:
+      001BE4 02 1D 10         [24] 2833 	ljmp	00111$
+      001BE7                       2834 00157$:
+                                   2835 ;	cc1111rf.c:660: if(rfAESMode & AES_CRYPTO_IN_ENABLE)
+      001BE7 90 FB DE         [24] 2836 	mov	dptr,#_rfAESMode
+      001BEA E0               [24] 2837 	movx	a,@dptr
+      001BEB FE               [12] 2838 	mov	r6,a
+      001BEC 20 E1 03         [24] 2839 	jb	acc.1,00158$
+      001BEF 02 1C E9         [24] 2840 	ljmp	00109$
+      001BF2                       2841 00158$:
+                                   2842 ;	cc1111rf.c:662: if((PKTCTRL0 & PKTCTRL0_LENGTH_CONFIG) == PKTCTRL0_LENGTH_CONFIG_VAR)
+      001BF2 90 DF 04         [24] 2843 	mov	dptr,#_PKTCTRL0
+      001BF5 E0               [24] 2844 	movx	a,@dptr
+      001BF6 FE               [12] 2845 	mov	r6,a
+      001BF7 53 06 03         [24] 2846 	anl	ar6,#0x03
+      001BFA BE 01 03         [24] 2847 	cjne	r6,#0x01,00104$
+                                   2848 ;	cc1111rf.c:663: encoffset= 1;
+      001BFD 75 1C 01         [24] 2849 	mov	_rfIntHandler_encoffset_1_136,#0x01
+      001C00                       2850 00104$:
+                                   2851 ;	cc1111rf.c:664: if((rfAESMode & AES_CRYPTO_IN_TYPE) == AES_CRYPTO_IN_ENCRYPT)
+      001C00 90 FB DE         [24] 2852 	mov	dptr,#_rfAESMode
+      001C03 E0               [24] 2853 	movx	a,@dptr
+      001C04 FE               [12] 2854 	mov	r6,a
+      001C05 53 06 01         [24] 2855 	anl	ar6,#0x01
+      001C08 BE 01 70         [24] 2856 	cjne	r6,#0x01,00106$
+                                   2857 ;	cc1111rf.c:665: encAES(&rfrxbuf[rfRxCurrentBuffer][encoffset], &rfrxbuf[rfRxCurrentBuffer][encoffset], rfRxCounter[rfRxCurrentBuffer] - encoffset, (rfAESMode & AES_CRYPTO_MODE));
+      001C0B 90 F7 64         [24] 2858 	mov	dptr,#_rfRxCurrentBuffer
+      001C0E E0               [24] 2859 	movx	a,@dptr
+      001C0F 25 E0            [12] 2860 	add	a,acc
+      001C11 FD               [12] 2861 	mov	r5,a
+      001C12 E4               [12] 2862 	clr	a
+      001C13 24 65            [12] 2863 	add	a,#_rfrxbuf
+      001C15 FE               [12] 2864 	mov	r6,a
+      001C16 ED               [12] 2865 	mov	a,r5
+      001C17 34 F7            [12] 2866 	addc	a,#(_rfrxbuf >> 8)
+      001C19 FD               [12] 2867 	mov	r5,a
+      001C1A AB 1C            [24] 2868 	mov	r3,_rfIntHandler_encoffset_1_136
+      001C1C 7C 00            [12] 2869 	mov	r4,#0x00
+      001C1E EB               [12] 2870 	mov	a,r3
+      001C1F 2E               [12] 2871 	add	a,r6
+      001C20 FE               [12] 2872 	mov	r6,a
+      001C21 EC               [12] 2873 	mov	a,r4
+      001C22 3D               [12] 2874 	addc	a,r5
+      001C23 FD               [12] 2875 	mov	r5,a
+      001C24 E0               [24] 2876 	movx	a,@dptr
+      001C25 F9               [12] 2877 	mov	r1,a
+      001C26 29               [12] 2878 	add	a,r1
+      001C27 FA               [12] 2879 	mov	r2,a
+      001C28 E4               [12] 2880 	clr	a
+      001C29 24 65            [12] 2881 	add	a,#_rfrxbuf
+      001C2B F9               [12] 2882 	mov	r1,a
+      001C2C EA               [12] 2883 	mov	a,r2
+      001C2D 34 F7            [12] 2884 	addc	a,#(_rfrxbuf >> 8)
+      001C2F FA               [12] 2885 	mov	r2,a
+      001C30 EB               [12] 2886 	mov	a,r3
+      001C31 29               [12] 2887 	add	a,r1
+      001C32 FB               [12] 2888 	mov	r3,a
+      001C33 EC               [12] 2889 	mov	a,r4
+      001C34 3A               [12] 2890 	addc	a,r2
+      001C35 FC               [12] 2891 	mov	r4,a
+      001C36 E0               [24] 2892 	movx	a,@dptr
+      001C37 75 F0 02         [24] 2893 	mov	b,#0x02
+      001C3A A4               [48] 2894 	mul	ab
+      001C3B 24 65            [12] 2895 	add	a,#_rfRxCounter
+      001C3D F5 82            [12] 2896 	mov	dpl,a
+      001C3F 74 FB            [12] 2897 	mov	a,#(_rfRxCounter >> 8)
+      001C41 35 F0            [12] 2898 	addc	a,b
+      001C43 F5 83            [12] 2899 	mov	dph,a
+      001C45 E0               [24] 2900 	movx	a,@dptr
+      001C46 F9               [12] 2901 	mov	r1,a
+      001C47 A3               [24] 2902 	inc	dptr
+      001C48 E0               [24] 2903 	movx	a,@dptr
+      001C49 FA               [12] 2904 	mov	r2,a
+      001C4A A8 1C            [24] 2905 	mov	r0,_rfIntHandler_encoffset_1_136
+      001C4C 7F 00            [12] 2906 	mov	r7,#0x00
+      001C4E E9               [12] 2907 	mov	a,r1
+      001C4F C3               [12] 2908 	clr	c
+      001C50 98               [12] 2909 	subb	a,r0
+      001C51 F9               [12] 2910 	mov	r1,a
+      001C52 EA               [12] 2911 	mov	a,r2
+      001C53 9F               [12] 2912 	subb	a,r7
+      001C54 FA               [12] 2913 	mov	r2,a
+      001C55 90 FB DE         [24] 2914 	mov	dptr,#_rfAESMode
+      001C58 E0               [24] 2915 	movx	a,@dptr
+      001C59 FF               [12] 2916 	mov	r7,a
+      001C5A 53 07 F0         [24] 2917 	anl	ar7,#0xF0
+      001C5D 90 FB B4         [24] 2918 	mov	dptr,#_encAES_PARM_2
+      001C60 EB               [12] 2919 	mov	a,r3
+      001C61 F0               [24] 2920 	movx	@dptr,a
+      001C62 EC               [12] 2921 	mov	a,r4
+      001C63 A3               [24] 2922 	inc	dptr
+      001C64 F0               [24] 2923 	movx	@dptr,a
+      001C65 90 FB B6         [24] 2924 	mov	dptr,#_encAES_PARM_3
+      001C68 E9               [12] 2925 	mov	a,r1
+      001C69 F0               [24] 2926 	movx	@dptr,a
+      001C6A EA               [12] 2927 	mov	a,r2
+      001C6B A3               [24] 2928 	inc	dptr
+      001C6C F0               [24] 2929 	movx	@dptr,a
+      001C6D 90 FB B8         [24] 2930 	mov	dptr,#_encAES_PARM_4
+      001C70 EF               [12] 2931 	mov	a,r7
+      001C71 F0               [24] 2932 	movx	@dptr,a
+      001C72 8E 82            [24] 2933 	mov	dpl,r6
+      001C74 8D 83            [24] 2934 	mov	dph,r5
+      001C76 12 21 12         [24] 2935 	lcall	_encAES
+      001C79 80 6E            [24] 2936 	sjmp	00109$
+      001C7B                       2937 00106$:
+                                   2938 ;	cc1111rf.c:667: decAES(&rfrxbuf[rfRxCurrentBuffer][encoffset], &rfrxbuf[rfRxCurrentBuffer][encoffset], rfRxCounter[rfRxCurrentBuffer] - encoffset, (rfAESMode & AES_CRYPTO_MODE));
+      001C7B 90 F7 64         [24] 2939 	mov	dptr,#_rfRxCurrentBuffer
+      001C7E E0               [24] 2940 	movx	a,@dptr
+      001C7F 25 E0            [12] 2941 	add	a,acc
+      001C81 FE               [12] 2942 	mov	r6,a
+      001C82 E4               [12] 2943 	clr	a
+      001C83 24 65            [12] 2944 	add	a,#_rfrxbuf
+      001C85 FF               [12] 2945 	mov	r7,a
+      001C86 EE               [12] 2946 	mov	a,r6
+      001C87 34 F7            [12] 2947 	addc	a,#(_rfrxbuf >> 8)
+      001C89 FE               [12] 2948 	mov	r6,a
+      001C8A AC 1C            [24] 2949 	mov	r4,_rfIntHandler_encoffset_1_136
+      001C8C 7D 00            [12] 2950 	mov	r5,#0x00
+      001C8E EC               [12] 2951 	mov	a,r4
+      001C8F 2F               [12] 2952 	add	a,r7
+      001C90 FF               [12] 2953 	mov	r7,a
+      001C91 ED               [12] 2954 	mov	a,r5
+      001C92 3E               [12] 2955 	addc	a,r6
+      001C93 FE               [12] 2956 	mov	r6,a
+      001C94 E0               [24] 2957 	movx	a,@dptr
+      001C95 25 E0            [12] 2958 	add	a,acc
+      001C97 FA               [12] 2959 	mov	r2,a
+      001C98 E4               [12] 2960 	clr	a
+      001C99 24 65            [12] 2961 	add	a,#_rfrxbuf
+      001C9B FB               [12] 2962 	mov	r3,a
+      001C9C EA               [12] 2963 	mov	a,r2
+      001C9D 34 F7            [12] 2964 	addc	a,#(_rfrxbuf >> 8)
+      001C9F FA               [12] 2965 	mov	r2,a
+      001CA0 EC               [12] 2966 	mov	a,r4
+      001CA1 2B               [12] 2967 	add	a,r3
+      001CA2 FC               [12] 2968 	mov	r4,a
+      001CA3 ED               [12] 2969 	mov	a,r5
+      001CA4 3A               [12] 2970 	addc	a,r2
+      001CA5 FD               [12] 2971 	mov	r5,a
+      001CA6 E0               [24] 2972 	movx	a,@dptr
+      001CA7 75 F0 02         [24] 2973 	mov	b,#0x02
+      001CAA A4               [48] 2974 	mul	ab
+      001CAB 24 65            [12] 2975 	add	a,#_rfRxCounter
+      001CAD F5 82            [12] 2976 	mov	dpl,a
+      001CAF 74 FB            [12] 2977 	mov	a,#(_rfRxCounter >> 8)
+      001CB1 35 F0            [12] 2978 	addc	a,b
+      001CB3 F5 83            [12] 2979 	mov	dph,a
+      001CB5 E0               [24] 2980 	movx	a,@dptr
+      001CB6 FA               [12] 2981 	mov	r2,a
+      001CB7 A3               [24] 2982 	inc	dptr
+      001CB8 E0               [24] 2983 	movx	a,@dptr
+      001CB9 FB               [12] 2984 	mov	r3,a
+      001CBA A8 1C            [24] 2985 	mov	r0,_rfIntHandler_encoffset_1_136
+      001CBC 79 00            [12] 2986 	mov	r1,#0x00
+      001CBE EA               [12] 2987 	mov	a,r2
+      001CBF C3               [12] 2988 	clr	c
+      001CC0 98               [12] 2989 	subb	a,r0
+      001CC1 FA               [12] 2990 	mov	r2,a
+      001CC2 EB               [12] 2991 	mov	a,r3
+      001CC3 99               [12] 2992 	subb	a,r1
+      001CC4 FB               [12] 2993 	mov	r3,a
+      001CC5 90 FB DE         [24] 2994 	mov	dptr,#_rfAESMode
+      001CC8 E0               [24] 2995 	movx	a,@dptr
+      001CC9 F9               [12] 2996 	mov	r1,a
+      001CCA 53 01 F0         [24] 2997 	anl	ar1,#0xF0
+      001CCD 90 FB BB         [24] 2998 	mov	dptr,#_decAES_PARM_2
+      001CD0 EC               [12] 2999 	mov	a,r4
+      001CD1 F0               [24] 3000 	movx	@dptr,a
+      001CD2 ED               [12] 3001 	mov	a,r5
+      001CD3 A3               [24] 3002 	inc	dptr
+      001CD4 F0               [24] 3003 	movx	@dptr,a
+      001CD5 90 FB BD         [24] 3004 	mov	dptr,#_decAES_PARM_3
+      001CD8 EA               [12] 3005 	mov	a,r2
+      001CD9 F0               [24] 3006 	movx	@dptr,a
+      001CDA EB               [12] 3007 	mov	a,r3
+      001CDB A3               [24] 3008 	inc	dptr
+      001CDC F0               [24] 3009 	movx	@dptr,a
+      001CDD 90 FB BF         [24] 3010 	mov	dptr,#_decAES_PARM_4
+      001CE0 E9               [12] 3011 	mov	a,r1
+      001CE1 F0               [24] 3012 	movx	@dptr,a
+      001CE2 8F 82            [24] 3013 	mov	dpl,r7
+      001CE4 8E 83            [24] 3014 	mov	dph,r6
+      001CE6 12 21 5B         [24] 3015 	lcall	_decAES
+      001CE9                       3016 00109$:
+                                   3017 ;	cc1111rf.c:671: rfRxCurrentBuffer ^= 1;
+      001CE9 90 F7 64         [24] 3018 	mov	dptr,#_rfRxCurrentBuffer
+      001CEC E0               [24] 3019 	movx	a,@dptr
+      001CED FF               [12] 3020 	mov	r7,a
+      001CEE 74 01            [12] 3021 	mov	a,#0x01
+      001CF0 6F               [12] 3022 	xrl	a,r7
+      001CF1 F0               [24] 3023 	movx	@dptr,a
+                                   3024 ;	cc1111rf.c:672: rfRxCounter[rfRxCurrentBuffer] = 0;
+      001CF2 E0               [24] 3025 	movx	a,@dptr
+      001CF3 FF               [12] 3026 	mov	r7,a
+      001CF4 75 F0 02         [24] 3027 	mov	b,#0x02
+      001CF7 A4               [48] 3028 	mul	ab
+      001CF8 24 65            [12] 3029 	add	a,#_rfRxCounter
+      001CFA F5 82            [12] 3030 	mov	dpl,a
+      001CFC 74 FB            [12] 3031 	mov	a,#(_rfRxCounter >> 8)
+      001CFE 35 F0            [12] 3032 	addc	a,b
+      001D00 F5 83            [12] 3033 	mov	dph,a
+      001D02 E4               [12] 3034 	clr	a
+      001D03 F0               [24] 3035 	movx	@dptr,a
+      001D04 A3               [24] 3036 	inc	dptr
+      001D05 F0               [24] 3037 	movx	@dptr,a
+                                   3038 ;	cc1111rf.c:674: rfRxProcessed[FIRST_BUFFER] = RX_UNPROCESSED;
+      001D06 90 FB 69         [24] 3039 	mov	dptr,#_rfRxProcessed
+      001D09 F0               [24] 3040 	movx	@dptr,a
+                                   3041 ;	cc1111rf.c:675: rfRxProcessed[SECOND_BUFFER] = RX_UNPROCESSED;
+      001D0A 90 FB 6A         [24] 3042 	mov	dptr,#(_rfRxProcessed + 0x0001)
+      001D0D F0               [24] 3043 	movx	@dptr,a
+      001D0E 80 21            [24] 3044 	sjmp	00112$
+      001D10                       3045 00111$:
+                                   3046 ;	cc1111rf.c:692: lastCode[1] = LCE_DROPPED_PACKET;
+      001D10 90 FB 99         [24] 3047 	mov	dptr,#(_lastCode + 0x0001)
+      001D13 74 12            [12] 3048 	mov	a,#0x12
+      001D15 F0               [24] 3049 	movx	@dptr,a
+                                   3050 ;	cc1111rf.c:693: LED = !LED;
+      001D16 B2 A4            [12] 3051 	cpl	_P2_4
+                                   3052 ;	cc1111rf.c:694: rfRxCounter[rfRxCurrentBuffer] = 0;
+      001D18 90 F7 64         [24] 3053 	mov	dptr,#_rfRxCurrentBuffer
+      001D1B E0               [24] 3054 	movx	a,@dptr
+      001D1C FF               [12] 3055 	mov	r7,a
+      001D1D 75 F0 02         [24] 3056 	mov	b,#0x02
+      001D20 A4               [48] 3057 	mul	ab
+      001D21 24 65            [12] 3058 	add	a,#_rfRxCounter
+      001D23 F5 82            [12] 3059 	mov	dpl,a
+      001D25 74 FB            [12] 3060 	mov	a,#(_rfRxCounter >> 8)
+      001D27 35 F0            [12] 3061 	addc	a,b
+      001D29 F5 83            [12] 3062 	mov	dph,a
+      001D2B E4               [12] 3063 	clr	a
+      001D2C F0               [24] 3064 	movx	@dptr,a
+      001D2D A3               [24] 3065 	inc	dptr
+      001D2E F0               [24] 3066 	movx	@dptr,a
+                                   3067 ;	cc1111rf.c:695: LED = !LED;
+      001D2F B2 A4            [12] 3068 	cpl	_P2_4
+      001D31                       3069 00112$:
+                                   3070 ;	cc1111rf.c:698: LED = 0;
+      001D31 C2 A4            [12] 3071 	clr	_P2_4
+      001D33                       3072 00115$:
+                                   3073 ;	cc1111rf.c:700: RFIF &= ~(RFIF_IRQ_DONE | RFIF_IRQ_TIMEOUT);        // OVF needs to be handled next...
+      001D33 AF E9            [24] 3074 	mov	r7,_RFIF
+      001D35 74 CF            [12] 3075 	mov	a,#0xCF
+      001D37 5F               [12] 3076 	anl	a,r7
+      001D38 F5 E9            [12] 3077 	mov	_RFIF,a
+      001D3A                       3078 00117$:
+                                   3079 ;	cc1111rf.c:704: if(RFIF & RFIF_IRQ_RXOVF)
+      001D3A E5 E9            [12] 3080 	mov	a,_RFIF
+      001D3C 30 E6 14         [24] 3081 	jnb	acc.6,00119$
+                                   3082 ;	cc1111rf.c:709: lastCode[1] = LCE_RF_RXOVF;
+      001D3F 90 FB 99         [24] 3083 	mov	dptr,#(_lastCode + 0x0001)
+      001D42 74 10            [12] 3084 	mov	a,#0x10
+      001D44 F0               [24] 3085 	movx	@dptr,a
+                                   3086 ;	cc1111rf.c:710: LED = !LED;
+      001D45 B2 A4            [12] 3087 	cpl	_P2_4
+                                   3088 ;	cc1111rf.c:712: resetRFSTATE();
+      001D47 12 13 8C         [24] 3089 	lcall	_resetRFSTATE
+                                   3090 ;	cc1111rf.c:714: LED = !LED;
+      001D4A B2 A4            [12] 3091 	cpl	_P2_4
+                                   3092 ;	cc1111rf.c:715: RFIF &= ~RFIF_IRQ_RXOVF;
+      001D4C AF E9            [24] 3093 	mov	r7,_RFIF
+      001D4E 74 BF            [12] 3094 	mov	a,#0xBF
+      001D50 5F               [12] 3095 	anl	a,r7
+      001D51 F5 E9            [12] 3096 	mov	_RFIF,a
+      001D53                       3097 00119$:
+                                   3098 ;	cc1111rf.c:718: if(RFIF & RFIF_IRQ_TXUNF)
+      001D53 E5 E9            [12] 3099 	mov	a,_RFIF
+      001D55 30 E7 14         [24] 3100 	jnb	acc.7,00122$
+                                   3101 ;	cc1111rf.c:721: lastCode[1] = LCE_RF_TXUNF;
+      001D58 90 FB 99         [24] 3102 	mov	dptr,#(_lastCode + 0x0001)
+      001D5B 74 11            [12] 3103 	mov	a,#0x11
+      001D5D F0               [24] 3104 	movx	@dptr,a
+                                   3105 ;	cc1111rf.c:722: LED = !LED;
+      001D5E B2 A4            [12] 3106 	cpl	_P2_4
+                                   3107 ;	cc1111rf.c:724: resetRFSTATE();
+      001D60 12 13 8C         [24] 3108 	lcall	_resetRFSTATE
+                                   3109 ;	cc1111rf.c:726: LED = !LED;
+      001D63 B2 A4            [12] 3110 	cpl	_P2_4
+                                   3111 ;	cc1111rf.c:728: RFIF &= ~RFIF_IRQ_TXUNF;
+      001D65 AF E9            [24] 3112 	mov	r7,_RFIF
+      001D67 74 7F            [12] 3113 	mov	a,#0x7F
+      001D69 5F               [12] 3114 	anl	a,r7
+      001D6A F5 E9            [12] 3115 	mov	_RFIF,a
+      001D6C                       3116 00122$:
+      001D6C D0 D0            [24] 3117 	pop	psw
+      001D6E D0 00            [24] 3118 	pop	(0+0)
+      001D70 D0 01            [24] 3119 	pop	(0+1)
+      001D72 D0 02            [24] 3120 	pop	(0+2)
+      001D74 D0 03            [24] 3121 	pop	(0+3)
+      001D76 D0 04            [24] 3122 	pop	(0+4)
+      001D78 D0 05            [24] 3123 	pop	(0+5)
+      001D7A D0 06            [24] 3124 	pop	(0+6)
+      001D7C D0 07            [24] 3125 	pop	(0+7)
+      001D7E D0 83            [24] 3126 	pop	dph
+      001D80 D0 82            [24] 3127 	pop	dpl
+      001D82 D0 F0            [24] 3128 	pop	b
+      001D84 D0 E0            [24] 3129 	pop	acc
+      001D86 D0 21            [24] 3130 	pop	bits
+      001D88 32               [24] 3131 	reti
+                                   3132 ;------------------------------------------------------------
+                                   3133 ;Allocation info for local variables in function 'byte_shuffle'
+                                   3134 ;------------------------------------------------------------
+                                   3135 ;len                       Allocated with name '_byte_shuffle_PARM_2'
+                                   3136 ;offset                    Allocated with name '_byte_shuffle_PARM_3'
+                                   3137 ;buf                       Allocated with name '_byte_shuffle_buf_1_146'
+                                   3138 ;------------------------------------------------------------
+                                   3139 ;	cc1111rf.c:733: void byte_shuffle(__xdata u8* __xdata buf, __xdata u16 len, __xdata u16 offset)
+                                   3140 ;	-----------------------------------------
+                                   3141 ;	 function byte_shuffle
+                                   3142 ;	-----------------------------------------
+      001D89                       3143 _byte_shuffle:
+      001D89 AF 83            [24] 3144 	mov	r7,dph
+      001D8B E5 82            [12] 3145 	mov	a,dpl
+      001D8D 90 FB 96         [24] 3146 	mov	dptr,#_byte_shuffle_buf_1_146
+      001D90 F0               [24] 3147 	movx	@dptr,a
+      001D91 EF               [12] 3148 	mov	a,r7
+      001D92 A3               [24] 3149 	inc	dptr
+      001D93 F0               [24] 3150 	movx	@dptr,a
+                                   3151 ;	cc1111rf.c:735: while(len--)
+      001D94 90 FB 94         [24] 3152 	mov	dptr,#_byte_shuffle_PARM_3
+      001D97 E0               [24] 3153 	movx	a,@dptr
+      001D98 FE               [12] 3154 	mov	r6,a
+      001D99 A3               [24] 3155 	inc	dptr
+      001D9A E0               [24] 3156 	movx	a,@dptr
+      001D9B FF               [12] 3157 	mov	r7,a
+      001D9C 90 FB 96         [24] 3158 	mov	dptr,#_byte_shuffle_buf_1_146
+      001D9F E0               [24] 3159 	movx	a,@dptr
+      001DA0 FC               [12] 3160 	mov	r4,a
+      001DA1 A3               [24] 3161 	inc	dptr
+      001DA2 E0               [24] 3162 	movx	a,@dptr
+      001DA3 FD               [12] 3163 	mov	r5,a
+      001DA4 90 FB 92         [24] 3164 	mov	dptr,#_byte_shuffle_PARM_2
+      001DA7 E0               [24] 3165 	movx	a,@dptr
+      001DA8 FA               [12] 3166 	mov	r2,a
+      001DA9 A3               [24] 3167 	inc	dptr
+      001DAA E0               [24] 3168 	movx	a,@dptr
+      001DAB FB               [12] 3169 	mov	r3,a
+      001DAC                       3170 00101$:
+      001DAC 8A 00            [24] 3171 	mov	ar0,r2
+      001DAE 8B 01            [24] 3172 	mov	ar1,r3
+      001DB0 1A               [12] 3173 	dec	r2
+      001DB1 BA FF 01         [24] 3174 	cjne	r2,#0xFF,00113$
+      001DB4 1B               [12] 3175 	dec	r3
+      001DB5                       3176 00113$:
+      001DB5 E8               [12] 3177 	mov	a,r0
+      001DB6 49               [12] 3178 	orl	a,r1
+      001DB7 60 24            [24] 3179 	jz	00104$
+                                   3180 ;	cc1111rf.c:736: buf[len + offset] = buf[len];
+      001DB9 EE               [12] 3181 	mov	a,r6
+      001DBA 2A               [12] 3182 	add	a,r2
+      001DBB F8               [12] 3183 	mov	r0,a
+      001DBC EF               [12] 3184 	mov	a,r7
+      001DBD 3B               [12] 3185 	addc	a,r3
+      001DBE F9               [12] 3186 	mov	r1,a
+      001DBF E8               [12] 3187 	mov	a,r0
+      001DC0 2C               [12] 3188 	add	a,r4
+      001DC1 F8               [12] 3189 	mov	r0,a
+      001DC2 E9               [12] 3190 	mov	a,r1
+      001DC3 3D               [12] 3191 	addc	a,r5
+      001DC4 F9               [12] 3192 	mov	r1,a
+      001DC5 EA               [12] 3193 	mov	a,r2
+      001DC6 2C               [12] 3194 	add	a,r4
+      001DC7 F5 82            [12] 3195 	mov	dpl,a
+      001DC9 EB               [12] 3196 	mov	a,r3
+      001DCA 3D               [12] 3197 	addc	a,r5
+      001DCB F5 83            [12] 3198 	mov	dph,a
+      001DCD C0 06            [24] 3199 	push	ar6
+      001DCF C0 07            [24] 3200 	push	ar7
+      001DD1 E0               [24] 3201 	movx	a,@dptr
+      001DD2 88 82            [24] 3202 	mov	dpl,r0
+      001DD4 89 83            [24] 3203 	mov	dph,r1
+      001DD6 F0               [24] 3204 	movx	@dptr,a
+      001DD7 D0 07            [24] 3205 	pop	ar7
+      001DD9 D0 06            [24] 3206 	pop	ar6
+      001DDB 80 CF            [24] 3207 	sjmp	00101$
+      001DDD                       3208 00104$:
+      001DDD 22               [24] 3209 	ret
+                                   3210 	.area CSEG    (CODE)
+                                   3211 	.area CONST   (CODE)
+                                   3212 	.area XINIT   (CODE)
+      002773                       3213 __xinit__rfRxInfMode:
+      002773 00                    3214 	.db #0x00	; 0
+      002774                       3215 __xinit__rfRxTotalRXLen:
+      002774 00 00                 3216 	.byte #0x00,#0x00	; 0
+      002776                       3217 __xinit__rfRxLargeLen:
+      002776 00 00                 3218 	.byte #0x00,#0x00	; 0
+      002778                       3219 __xinit__rfTxCurBufIdx:
+      002778 00                    3220 	.db #0x00	; 0
+      002779                       3221 __xinit__rfTxBufCount:
+      002779 01                    3222 	.db #0x01	; 1
+      00277A                       3223 __xinit__rfTxCounter:
+      00277A 00 00                 3224 	.byte #0x00,#0x00	; 0
+      00277C                       3225 __xinit__rfTxRepeatCounter:
+      00277C 00 00                 3226 	.byte #0x00,#0x00	; 0
+      00277E                       3227 __xinit__rfTxBufferEnd:
+      00277E 00 00                 3228 	.byte #0x00,#0x00	; 0
+      002780                       3229 __xinit__rfTxRepeatLen:
+      002780 00 00                 3230 	.byte #0x00,#0x00	; 0
+      002782                       3231 __xinit__rfTxRepeatOffset:
+      002782 00 00                 3232 	.byte #0x00,#0x00	; 0
+      002784                       3233 __xinit__rfTxTotalTXLen:
+      002784 00 00                 3234 	.byte #0x00,#0x00	; 0
+      002786                       3235 __xinit__rfTxInfMode:
+      002786 00                    3236 	.db #0x00	; 0
+      002787                       3237 __xinit__rfAESMode:
+      002787 00                    3238 	.db #0x00	; 0
+      002788                       3239 __xinit__rfAmpMode:
+      002788 00                    3240 	.db #0x00	; 0
+      002789                       3241 __xinit__bRepeatMode:
+      002789 00                    3242 	.db #0x00	; 0
+                                   3243 	.area CABS    (ABS,CODE)
