@@ -107,7 +107,9 @@ class USBDongle:
             time.sleep(4)
 
     def setup(self, console=True, copyDongle=None):
-        # setup spi_serial?
+        # setup spi_serial
+        self.recv_mbox = {}
+        self.SpiSerial = spi_serial.SpiSerial()
     
         self.getRadioConfig()
         chip = self.getPartNum()
@@ -152,6 +154,19 @@ class USBDongle:
 
 
     ######## APPLICATION API ########
+    def get_spi_dat(self):
+        spi_dat = self.SpiSerial.read()
+
+        # TODO: parse spi_dat and stuff it into recv_mbox or something
+   
+        # self.recv_mbox is a dictionary{apps -> cmds}
+        # each cmd is a queue of strings?
+        return length(spi_dat)
+        
+    def spi_ping(self):
+        return 0
+        # TODO: check a reg on the cc1110 or something
+    
     def recv(self, app, cmd=None, wait=USB_RX_WAIT):
         '''
         high-level USB EP5 receive.  
@@ -164,6 +179,8 @@ class USBDongle:
 
         while (time.time() - startTime)*1000 < wait:
             try:
+                self.get_spi_dat()
+                
                 b = self.recv_mbox.get(app)
                 if b:
                     if self._debug: print>>sys.stderr, "Recv msg",app,b,cmd
@@ -176,13 +193,9 @@ class USBDongle:
                     q = b.get(cmd)
                     if self._debug: print >>sys.stderr,"debug(recv) q='%s'"%repr(q)
 
-                    if q is not None and self.rsema.acquire(False):
-                        if self._debug>3: print ("rsema.UNlocked", "rsema.locked")[self.rsema.locked()],2
+                    if q is not None:
                         try:
                             resp, rt = q.pop(0)
-
-                            self.rsema.release()
-                            if self._debug>3: print ("rsema.UNlocked", "rsema.locked")[self.rsema.locked()],2
 
                             # bring it on home...  this is the way out.
                             return resp[4:], rt
@@ -193,11 +206,9 @@ class USBDongle:
                         except AttributeError:
                             sys.excepthook(*sys.exc_info())
                             pass
+                else:
+                    time.sleep(0.01)
 
-                        self.rsema.release()
-
-                self.recv_event.wait((wait - (time.time() - startTime)*1000)/1000) # wait on recv event, with timeout of remaining time
-                self.recv_event.clear() # clear event, if it's set
 
             except KeyboardInterrupt:
                 sys.excepthook(*sys.exc_info())
@@ -208,102 +219,48 @@ class USBDongle:
         raise(ChipconUsbTimeoutException())
 
     def recvAll(self, app, cmd=None):
+        self.get_spi_dat()
         retval = self.recv_mbox.get(app,None)
         if retval is not None:
             if cmd is not None:
                 b = retval
-                if self.rsema.acquire():
-                    #if self._debug: print ("rsema.UNlocked", "rsema.locked")[self.rsema.locked()],3
-                    try:
-                        retval = b.get(cmd)
-                        b[cmd]=[]
-                        if len(retval):
-                            retval = [ (d[4:],t) for d,t in retval ] 
-                    except:
-                        sys.excepthook(*sys.exc_info())
-                    finally:
-                        self.rsema.release()
-                        #if self._debug: print ("rsema.UNlocked", "rsema.locked")[self.rsema.locked()],3
+                try:
+                    retval = b.get(cmd)
+                    b[cmd]=[]
+                    if len(retval):
+                        retval = [ (d[4:],t) for d,t in retval ] 
+                except:
+                    sys.excepthook(*sys.exc_info())
             else:
-                if self.rsema.acquire():
-                    #if self._debug: print ("rsema.UNlocked", "rsema.locked")[self.rsema.locked()],4
-                    try:
-                        self.recv_mbox[app]={}
-                    finally:
-                        self.rsema.release()
-                        #if self._debug: print ("rsema.UNlocked", "rsema.locked")[self.rsema.locked()],4
+                try:
+                    self.recv_mbox[app]={}
             return retval
 
     def send(self, app, cmd, buf, wait=USB_TX_WAIT):
         msg = "%c%c%s%s"%(app,cmd, struct.pack("<H",len(buf)),buf)
-        self.xsema.acquire()
-        self.xmit_queue.append(msg)
-        self.xmit_event.set()
-        self.xsema.release()
+        self.SpiSerial.write(msg)
         if self._debug: print "Sent Msg",msg.encode("hex")
         return self.recv(app, cmd, wait)
 
     def reprDebugCodes(self, timeout=100):
-        codes = self.getDebugCodes(timeout)
-        if (codes != None and len(codes) == 2):
-            rc1 = LCS.get(codes[0])
-            rc2 = LCES.get(codes[0])
-            return 'last position: %s\nlast error: %s' % (rc1, rc2)
-        return codes
+        return None
 
     def getDebugCodes(self, timeout=100):
-        '''
-        this function uses EP0 (not the normal USB EP5) to check the last state of the dongle.
-        this only works if the dongle isn't in a hard-loop or some other corrupted state
-        that neglects usbprocessing.
-
-        two values are returned.  
-        the first value is lastCode[0] and represents standard tracking messages (we were <here>)
-        the second value is lastCode[1] and represents exception information (writing OUT while buffer in use!)
-
-        messages LC_* and LCE_* (respectively) are defined in both global.h and rflib.chipcon_usb
-        '''
-        x = self._recvEP0(request=EP0_CMD_GET_DEBUG_CODES, timeout=timeout)
-        if (x != None and len(x)==2):
-            return struct.unpack("BB", x)
-        else:
-            return x
+        return None
 
     def clearDebugCodes(self):
-        retval = self.send(APP_SYSTEM, SYS_CMD_CLEAR_CODES, "  ", 1000)
-        return LCES.get(retval)
+        return None
 
     def ep0GetAddr(self):
-        addr = self._recvEP0(request=EP0_CMD_GET_ADDRESS)
-        return addr
+        return ''
     def ep0Reset(self):
-        x = self._recvEP0(request=0xfe, value=0x5352, index=0x4e54)
-        return x
+        return True
 
     def ep0Peek(self, addr, length, timeout=100):
-        x = self._recvEP0(request=EP0_CMD_PEEKX, value=addr, length=length, timeout=timeout)
-        return x#x[3:]
+        return 0
 
     def ep0Poke(self, addr, buf='\x00', timeout=100):
-        x = self._sendEP0(request=EP0_CMD_POKEX, buf=buf, value=addr, timeout=timeout)
-        return x
-
-    def ep0Ping(self, count=10):
-        good=0
-        bad=0
-        for x in range(count):
-            #r = self._recvEP0(3, 10)
-            try:
-                r = self._recvEP0(request=2, value=count, length=count, timeout=DEFAULT_USB_TIMEOUT)
-                print "PING: %d bytes received: %s"%(len(r), repr(r))
-            except ChipconUsbTimeoutException, e:
-                r = None
-                print "Ping Failed.",e
-            if r==None:
-                bad+=1
-            else:
-                good+=1
-        return (good,bad)
+        return 0
 
     def debug(self, delay=1):
         while True:
@@ -362,21 +319,11 @@ class USBDongle:
         return (good,bad,stop-start)
 
     def bootloader(self):
-        '''
-        switch to bootloader mode. based on Fergus Noble's CC-Bootloader (https://github.com/fnoble/CC-Bootloader)
-        this allows the firmware to be updated via USB instead of goodfet/ccdebugger
-        '''
-        try:
-            self._bootloader = True
-            r = self.send(APP_SYSTEM, SYS_CMD_BOOTLOADER, "", wait=1)
-        except ChipconUsbTimeoutException:
+        pass
             pass
         
     def RESET(self):
-        try:
-            r = self.send(APP_SYSTEM, SYS_CMD_RESET, "RESET_NOW\x00")
-        except ChipconUsbTimeoutException:
-            pass
+        self.SpiSerial.reset()
         
     def peek(self, addr, bytecount=1):
         r, t = self.send(APP_SYSTEM, SYS_CMD_PEEK, struct.pack("<HH", bytecount, addr))
@@ -473,22 +420,10 @@ class USBDongle:
 
 
 def unittest(self, mhz=24):
-    print "\nTesting USB ping()"
+    print "\nTesting SPI ping()"
     self.ping(3)
     
-    print "\nTesting USB ep0Ping()"
-    self.ep0Ping()
-    
-    print "\nTesting USB enumeration"
-    print "getString(0,100): %s" % repr(self._do.getString(0,100))
-    
-    print "\nTesting USB EP MAX_PACKET_SIZE handling (ep0Peek(0xf000, 100))"
-    print repr(self.ep0Peek(0xf000, 100))
-
-    print "\nTesting USB EP MAX_PACKET_SIZE handling (peek(0xf000, 300))"
-    print repr(self.peek(0xf000, 400))
-
-    print "\nTesting USB poke/peek"
+    print "\nTesting SPI poke/peek"
     data = "".join([chr(c) for c in xrange(120)])
     where = 0xf300
     self.poke(where, data)
