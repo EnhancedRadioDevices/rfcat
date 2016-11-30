@@ -82,6 +82,7 @@ void rx1_isr(void) __interrupt URX1_VECTOR {
 
   if (spi_mode == SPI_MODE_SIZE) {
     master_send_size = value;
+    ep5.OUTlen = value;
     if (master_send_size > 0 || slave_send_size > 0) {
       spi_mode = SPI_MODE_XFER;
     } else {
@@ -91,36 +92,32 @@ void rx1_isr(void) __interrupt URX1_VECTOR {
   }
 
   if (spi_mode == SPI_MODE_XFER && input_size < master_send_size) {
-    if (input_size < SPI_BUF_LEN) {
-      spi_input_buf[input_head_idx] = value;
-      input_head_idx++;
-      if (input_head_idx >= SPI_BUF_LEN) {
-        input_head_idx = 0;
-      }
-      input_size++;
-      if (input_size == master_send_size) {
+    if (input_size == 0) {
+        // first byte is app
+        ep5.app = value;
+        ep5.OUTbuf[0] = 0x40; // backwards compatibility
+    } else if (input_size == 1) {
+        // second byte is cmd
+        ep5.cmd = value;
+        ep5.OUTbuf[1] = 0xe0; // backwards compatibility
+    } else {
+        // data
+        ep5.OUTbuf[input_size] = value;
+    }
+    input_size++;
+    if (input_size == master_send_size) {
         master_send_size = 0;
         serial_data_available = 1;
-        
+    }
+    if (slave_send_size == 0 && master_send_size == 0) {
+        spi_mode = SPI_MODE_WAIT;
         if (cb_ep5)
         {
-            // TODO: construct EP5 struct from data and send it
             if(!cb_ep5()) {
                 // TODO: non-zero return may be needed later
             }
-            
         }
-      }
     }
-    if (slave_send_size == 0 && master_send_size == 0) {
-      spi_mode = SPI_MODE_WAIT;
-    }
-  }
-  
-  // TODO: call callback if necessary
-  if (cb_ep5 != NULL) {
-      // do nothing for now, as we still need to populate ep5
-      // cp_ep5();
   }
 }
 
@@ -134,6 +131,9 @@ void tx1_isr(void) __interrupt UTX1_VECTOR {
       }
       U1DBUF = spi_output_buf[output_tail_idx];
       output_size--;
+      if (output_size == 0) {
+          ep5.flags &= ~EP_INBUF_WRITTEN;
+      }
       output_tail_idx++;
       if (output_tail_idx >= SPI_BUF_LEN) {
         output_tail_idx = 0;
@@ -169,6 +169,8 @@ void vcom_putchar(char c)
     output_head_idx = 0;
   }
   output_size++;
+  
+  ep5.flags |= EP_INBUF_WRITTEN;
 }
 
 char vcom_pollchar()
@@ -299,16 +301,19 @@ void vcom_down() {
 
 int txdata(u8 app, u8 cmd, u16 len, __xdata u8* dataptr)
 {
-    u16 test = 0;
-
+    //u16 test = 0;
     /*removes warning */    
-    test = app = cmd = len;
-
+    //test = app = cmd = len;
+    
+    vcom_putchar(app);
+    vcom_putchar(cmd);
+    
     /* function from usb thing, only need data ptr */    
     while (*dataptr) 
     {
           vcom_putchar(*dataptr++);
     }
+    vcom_putchar(0);
     vcom_flush();
     
     // TODO: may want to handle ep5.flags EP_INBUF_WRITTEN
