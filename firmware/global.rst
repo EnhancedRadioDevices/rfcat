@@ -1,7 +1,7 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
                                       3 ; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
-                                      4 ; This file was generated Fri Nov 18 22:30:58 2016
+                                      4 ; This file was generated Wed Nov 30 16:38:12 2016
                                       5 ;--------------------------------------------------------
                                       6 	.module global
                                       7 	.optsdcc -mmcs51 --model-small
@@ -719,20 +719,20 @@
                                     719 ; internal ram data
                                     720 ;--------------------------------------------------------
                                     721 	.area DSEG    (DATA)
-      00001D                        722 _blink_binary_baby_lsb_PARM_2:
-      00001D                        723 	.ds 1
+      000026                        722 _blink_binary_baby_lsb_PARM_2:
+      000026                        723 	.ds 1
                                     724 ;--------------------------------------------------------
                                     725 ; overlayable items in internal ram 
                                     726 ;--------------------------------------------------------
                                     727 	.area	OSEG    (OVR,DATA)
                                     728 	.area	OSEG    (OVR,DATA)
                                     729 	.area	OSEG    (OVR,DATA)
-      000022                        730 _strncmp_PARM_3:
-      000022                        731 	.ds 2
-      000024                        732 _strncmp_sloc0_1_0:
-      000024                        733 	.ds 1
-      000025                        734 _strncmp_sloc1_1_0:
-      000025                        735 	.ds 2
+      000027                        730 _strncmp_PARM_3:
+      000027                        731 	.ds 2
+      000029                        732 _strncmp_sloc0_1_0:
+      000029                        733 	.ds 1
+      00002A                        734 _strncmp_sloc1_1_0:
+      00002A                        735 	.ds 2
                                     736 ;--------------------------------------------------------
                                     737 ; indirectly addressable internal ram data
                                     738 ;--------------------------------------------------------
@@ -981,14 +981,14 @@
                            00DE26   981 _USBF3	=	0xde26
                            00DE28   982 _USBF4	=	0xde28
                            00DE2A   983 _USBF5	=	0xde2a
-      00FB98                        984 _lastCode::
-      00FB98                        985 	.ds 2
-      00FB9A                        986 _clock::
-      00FB9A                        987 	.ds 4
-      00FB9E                        988 _strncmp_PARM_2:
-      00FB9E                        989 	.ds 3
-      00FBA1                        990 _strncmp_s1_1_58:
-      00FBA1                        991 	.ds 3
+      00FDB3                        984 _lastCode::
+      00FDB3                        985 	.ds 2
+      00FDB5                        986 _clock::
+      00FDB5                        987 	.ds 4
+      00FDB9                        988 _strncmp_PARM_2:
+      00FDB9                        989 	.ds 3
+      00FDBC                        990 _strncmp_s1_1_58:
+      00FDBC                        991 	.ds 3
                                     992 ;--------------------------------------------------------
                                     993 ; absolute external ram data
                                     994 ;--------------------------------------------------------
@@ -1033,7 +1033,7 @@
                                    1033 ;	-----------------------------------------
                                    1034 ;	 function sleepMillis
                                    1035 ;	-----------------------------------------
-      001DDE                       1036 _sleepMillis:
+      002865                       1036 _sleepMillis:
                            000007  1037 	ar7 = 0x07
                            000006  1038 	ar6 = 0x06
                            000005  1039 	ar5 = 0x05
@@ -1042,40 +1042,40 @@
                            000002  1042 	ar2 = 0x02
                            000001  1043 	ar1 = 0x01
                            000000  1044 	ar0 = 0x00
-      001DDE AE 82            [24] 1045 	mov	r6,dpl
-      001DE0 AF 83            [24] 1046 	mov	r7,dph
+      002865 AE 82            [24] 1045 	mov	r6,dpl
+      002867 AF 83            [24] 1046 	mov	r7,dph
                                    1047 ;	global.c:12: while (--ms > 0) 
-      001DE2                       1048 00102$:
-      001DE2 1E               [12] 1049 	dec	r6
-      001DE3 BE FF 01         [24] 1050 	cjne	r6,#0xFF,00123$
-      001DE6 1F               [12] 1051 	dec	r7
-      001DE7                       1052 00123$:
-      001DE7 C3               [12] 1053 	clr	c
-      001DE8 E4               [12] 1054 	clr	a
-      001DE9 9E               [12] 1055 	subb	a,r6
-      001DEA 74 80            [12] 1056 	mov	a,#(0x00 ^ 0x80)
-      001DEC 8F F0            [24] 1057 	mov	b,r7
-      001DEE 63 F0 80         [24] 1058 	xrl	b,#0x80
-      001DF1 95 F0            [12] 1059 	subb	a,b
-      001DF3 50 16            [24] 1060 	jnc	00108$
+      002869                       1048 00102$:
+      002869 1E               [12] 1049 	dec	r6
+      00286A BE FF 01         [24] 1050 	cjne	r6,#0xFF,00123$
+      00286D 1F               [12] 1051 	dec	r7
+      00286E                       1052 00123$:
+      00286E C3               [12] 1053 	clr	c
+      00286F E4               [12] 1054 	clr	a
+      002870 9E               [12] 1055 	subb	a,r6
+      002871 74 80            [12] 1056 	mov	a,#(0x00 ^ 0x80)
+      002873 8F F0            [24] 1057 	mov	b,r7
+      002875 63 F0 80         [24] 1058 	xrl	b,#0x80
+      002878 95 F0            [12] 1059 	subb	a,b
+      00287A 50 16            [24] 1060 	jnc	00108$
                                    1061 ;	global.c:14: for (j=0; j<SLEEPTIMER;j++); // about 1 millisecond
-      001DF5 7C 4C            [12] 1062 	mov	r4,#0x4C
-      001DF7 7D 04            [12] 1063 	mov	r5,#0x04
-      001DF9                       1064 00107$:
-      001DF9 EC               [12] 1065 	mov	a,r4
-      001DFA 24 FF            [12] 1066 	add	a,#0xFF
-      001DFC FA               [12] 1067 	mov	r2,a
-      001DFD ED               [12] 1068 	mov	a,r5
-      001DFE 34 FF            [12] 1069 	addc	a,#0xFF
-      001E00 FB               [12] 1070 	mov	r3,a
-      001E01 8A 04            [24] 1071 	mov	ar4,r2
-      001E03 8B 05            [24] 1072 	mov	ar5,r3
-      001E05 EA               [12] 1073 	mov	a,r2
-      001E06 4B               [12] 1074 	orl	a,r3
-      001E07 70 F0            [24] 1075 	jnz	00107$
-      001E09 80 D7            [24] 1076 	sjmp	00102$
-      001E0B                       1077 00108$:
-      001E0B 22               [24] 1078 	ret
+      00287C 7C 4C            [12] 1062 	mov	r4,#0x4C
+      00287E 7D 04            [12] 1063 	mov	r5,#0x04
+      002880                       1064 00107$:
+      002880 EC               [12] 1065 	mov	a,r4
+      002881 24 FF            [12] 1066 	add	a,#0xFF
+      002883 FA               [12] 1067 	mov	r2,a
+      002884 ED               [12] 1068 	mov	a,r5
+      002885 34 FF            [12] 1069 	addc	a,#0xFF
+      002887 FB               [12] 1070 	mov	r3,a
+      002888 8A 04            [24] 1071 	mov	ar4,r2
+      00288A 8B 05            [24] 1072 	mov	ar5,r3
+      00288C EA               [12] 1073 	mov	a,r2
+      00288D 4B               [12] 1074 	orl	a,r3
+      00288E 70 F0            [24] 1075 	jnz	00107$
+      002890 80 D7            [24] 1076 	sjmp	00102$
+      002892                       1077 00108$:
+      002892 22               [24] 1078 	ret
                                    1079 ;------------------------------------------------------------
                                    1080 ;Allocation info for local variables in function 'sleepMicros'
                                    1081 ;------------------------------------------------------------
@@ -1085,30 +1085,30 @@
                                    1085 ;	-----------------------------------------
                                    1086 ;	 function sleepMicros
                                    1087 ;	-----------------------------------------
-      001E0C                       1088 _sleepMicros:
-      001E0C AE 82            [24] 1089 	mov	r6,dpl
+      002893                       1088 _sleepMicros:
+      002893 AE 82            [24] 1089 	mov	r6,dpl
                                    1090 ;	global.c:23: us *= PLATFORM_CLOCK_FREQ/11;
-      001E0E E5 83            [12] 1091 	mov	a,dph
-      001E10 CE               [12] 1092 	xch	a,r6
-      001E11 25 E0            [12] 1093 	add	a,acc
-      001E13 CE               [12] 1094 	xch	a,r6
-      001E14 33               [12] 1095 	rlc	a
-      001E15 FF               [12] 1096 	mov	r7,a
+      002895 E5 83            [12] 1091 	mov	a,dph
+      002897 CE               [12] 1092 	xch	a,r6
+      002898 25 E0            [12] 1093 	add	a,acc
+      00289A CE               [12] 1094 	xch	a,r6
+      00289B 33               [12] 1095 	rlc	a
+      00289C FF               [12] 1096 	mov	r7,a
                                    1097 ;	global.c:24: while (--us > 0) ;
-      001E16                       1098 00101$:
-      001E16 1E               [12] 1099 	dec	r6
-      001E17 BE FF 01         [24] 1100 	cjne	r6,#0xFF,00110$
-      001E1A 1F               [12] 1101 	dec	r7
-      001E1B                       1102 00110$:
-      001E1B C3               [12] 1103 	clr	c
-      001E1C E4               [12] 1104 	clr	a
-      001E1D 9E               [12] 1105 	subb	a,r6
-      001E1E 74 80            [12] 1106 	mov	a,#(0x00 ^ 0x80)
-      001E20 8F F0            [24] 1107 	mov	b,r7
-      001E22 63 F0 80         [24] 1108 	xrl	b,#0x80
-      001E25 95 F0            [12] 1109 	subb	a,b
-      001E27 40 ED            [24] 1110 	jc	00101$
-      001E29 22               [24] 1111 	ret
+      00289D                       1098 00101$:
+      00289D 1E               [12] 1099 	dec	r6
+      00289E BE FF 01         [24] 1100 	cjne	r6,#0xFF,00110$
+      0028A1 1F               [12] 1101 	dec	r7
+      0028A2                       1102 00110$:
+      0028A2 C3               [12] 1103 	clr	c
+      0028A3 E4               [12] 1104 	clr	a
+      0028A4 9E               [12] 1105 	subb	a,r6
+      0028A5 74 80            [12] 1106 	mov	a,#(0x00 ^ 0x80)
+      0028A7 8F F0            [24] 1107 	mov	b,r7
+      0028A9 63 F0 80         [24] 1108 	xrl	b,#0x80
+      0028AC 95 F0            [12] 1109 	subb	a,b
+      0028AE 40 ED            [24] 1110 	jc	00101$
+      0028B0 22               [24] 1111 	ret
                                    1112 ;------------------------------------------------------------
                                    1113 ;Allocation info for local variables in function 'blink_binary_baby_lsb'
                                    1114 ;------------------------------------------------------------
@@ -1119,91 +1119,91 @@
                                    1119 ;	-----------------------------------------
                                    1120 ;	 function blink_binary_baby_lsb
                                    1121 ;	-----------------------------------------
-      001E2A                       1122 _blink_binary_baby_lsb:
-      001E2A AE 82            [24] 1123 	mov	r6,dpl
-      001E2C AF 83            [24] 1124 	mov	r7,dph
+      0028B1                       1122 _blink_binary_baby_lsb:
+      0028B1 AE 82            [24] 1123 	mov	r6,dpl
+      0028B3 AF 83            [24] 1124 	mov	r7,dph
                                    1125 ;	global.c:29: LED = 1;
-      001E2E D2 A4            [12] 1126 	setb	_P2_4
+      0028B5 D2 A4            [12] 1126 	setb	_P2_4
                                    1127 ;	global.c:30: sleepMillis(1000);
-      001E30 90 03 E8         [24] 1128 	mov	dptr,#0x03E8
-      001E33 C0 07            [24] 1129 	push	ar7
-      001E35 C0 06            [24] 1130 	push	ar6
-      001E37 12 1D DE         [24] 1131 	lcall	_sleepMillis
+      0028B7 90 03 E8         [24] 1128 	mov	dptr,#0x03E8
+      0028BA C0 07            [24] 1129 	push	ar7
+      0028BC C0 06            [24] 1130 	push	ar6
+      0028BE 12 28 65         [24] 1131 	lcall	_sleepMillis
                                    1132 ;	global.c:31: LED = 0;
-      001E3A C2 A4            [12] 1133 	clr	_P2_4
+      0028C1 C2 A4            [12] 1133 	clr	_P2_4
                                    1134 ;	global.c:32: sleepMillis(500);
-      001E3C 90 01 F4         [24] 1135 	mov	dptr,#0x01F4
-      001E3F 12 1D DE         [24] 1136 	lcall	_sleepMillis
-      001E42 D0 06            [24] 1137 	pop	ar6
-      001E44 D0 07            [24] 1138 	pop	ar7
+      0028C3 90 01 F4         [24] 1135 	mov	dptr,#0x01F4
+      0028C6 12 28 65         [24] 1136 	lcall	_sleepMillis
+      0028C9 D0 06            [24] 1137 	pop	ar6
+      0028CB D0 07            [24] 1138 	pop	ar7
                                    1139 ;	global.c:33: bits -= 1;          // 16 bit numbers needs to start on bit 15, etc....
-      001E46 15 1D            [12] 1140 	dec	_blink_binary_baby_lsb_PARM_2
-      001E48 AD 1D            [24] 1141 	mov	r5,_blink_binary_baby_lsb_PARM_2
-      001E4A                       1142 00106$:
+      0028CD 15 26            [12] 1140 	dec	_blink_binary_baby_lsb_PARM_2
+      0028CF AD 26            [24] 1141 	mov	r5,_blink_binary_baby_lsb_PARM_2
+      0028D1                       1142 00106$:
                                    1143 ;	global.c:35: for (; bits>=0; bits--)
-      001E4A ED               [12] 1144 	mov	a,r5
-      001E4B 20 E7 54         [24] 1145 	jb	acc.7,00104$
+      0028D1 ED               [12] 1144 	mov	a,r5
+      0028D2 20 E7 54         [24] 1145 	jb	acc.7,00104$
                                    1146 ;	global.c:37: if (num & 1)
-      001E4E EE               [12] 1147 	mov	a,r6
-      001E4F 30 E0 24         [24] 1148 	jnb	acc.0,00102$
+      0028D5 EE               [12] 1147 	mov	a,r6
+      0028D6 30 E0 24         [24] 1148 	jnb	acc.0,00102$
                                    1149 ;	global.c:39: sleepMillis(25);
-      001E52 90 00 19         [24] 1150 	mov	dptr,#0x0019
-      001E55 C0 07            [24] 1151 	push	ar7
-      001E57 C0 06            [24] 1152 	push	ar6
-      001E59 C0 05            [24] 1153 	push	ar5
-      001E5B 12 1D DE         [24] 1154 	lcall	_sleepMillis
+      0028D9 90 00 19         [24] 1150 	mov	dptr,#0x0019
+      0028DC C0 07            [24] 1151 	push	ar7
+      0028DE C0 06            [24] 1152 	push	ar6
+      0028E0 C0 05            [24] 1153 	push	ar5
+      0028E2 12 28 65         [24] 1154 	lcall	_sleepMillis
                                    1155 ;	global.c:40: LED = 1;
-      001E5E D2 A4            [12] 1156 	setb	_P2_4
+      0028E5 D2 A4            [12] 1156 	setb	_P2_4
                                    1157 ;	global.c:41: sleepMillis(550);
-      001E60 90 02 26         [24] 1158 	mov	dptr,#0x0226
-      001E63 12 1D DE         [24] 1159 	lcall	_sleepMillis
+      0028E7 90 02 26         [24] 1158 	mov	dptr,#0x0226
+      0028EA 12 28 65         [24] 1159 	lcall	_sleepMillis
                                    1160 ;	global.c:42: LED = 0;
-      001E66 C2 A4            [12] 1161 	clr	_P2_4
+      0028ED C2 A4            [12] 1161 	clr	_P2_4
                                    1162 ;	global.c:43: sleepMillis(25);
-      001E68 90 00 19         [24] 1163 	mov	dptr,#0x0019
-      001E6B 12 1D DE         [24] 1164 	lcall	_sleepMillis
-      001E6E D0 05            [24] 1165 	pop	ar5
-      001E70 D0 06            [24] 1166 	pop	ar6
-      001E72 D0 07            [24] 1167 	pop	ar7
-      001E74 80 22            [24] 1168 	sjmp	00103$
-      001E76                       1169 00102$:
+      0028EF 90 00 19         [24] 1163 	mov	dptr,#0x0019
+      0028F2 12 28 65         [24] 1164 	lcall	_sleepMillis
+      0028F5 D0 05            [24] 1165 	pop	ar5
+      0028F7 D0 06            [24] 1166 	pop	ar6
+      0028F9 D0 07            [24] 1167 	pop	ar7
+      0028FB 80 22            [24] 1168 	sjmp	00103$
+      0028FD                       1169 00102$:
                                    1170 ;	global.c:47: sleepMillis(275);
-      001E76 90 01 13         [24] 1171 	mov	dptr,#0x0113
-      001E79 C0 07            [24] 1172 	push	ar7
-      001E7B C0 06            [24] 1173 	push	ar6
-      001E7D C0 05            [24] 1174 	push	ar5
-      001E7F 12 1D DE         [24] 1175 	lcall	_sleepMillis
+      0028FD 90 01 13         [24] 1171 	mov	dptr,#0x0113
+      002900 C0 07            [24] 1172 	push	ar7
+      002902 C0 06            [24] 1173 	push	ar6
+      002904 C0 05            [24] 1174 	push	ar5
+      002906 12 28 65         [24] 1175 	lcall	_sleepMillis
                                    1176 ;	global.c:48: LED = 1;
-      001E82 D2 A4            [12] 1177 	setb	_P2_4
+      002909 D2 A4            [12] 1177 	setb	_P2_4
                                    1178 ;	global.c:49: sleepMillis(50);
-      001E84 90 00 32         [24] 1179 	mov	dptr,#0x0032
-      001E87 12 1D DE         [24] 1180 	lcall	_sleepMillis
+      00290B 90 00 32         [24] 1179 	mov	dptr,#0x0032
+      00290E 12 28 65         [24] 1180 	lcall	_sleepMillis
                                    1181 ;	global.c:50: LED = 0;
-      001E8A C2 A4            [12] 1182 	clr	_P2_4
+      002911 C2 A4            [12] 1182 	clr	_P2_4
                                    1183 ;	global.c:51: sleepMillis(275);
-      001E8C 90 01 13         [24] 1184 	mov	dptr,#0x0113
-      001E8F 12 1D DE         [24] 1185 	lcall	_sleepMillis
-      001E92 D0 05            [24] 1186 	pop	ar5
-      001E94 D0 06            [24] 1187 	pop	ar6
-      001E96 D0 07            [24] 1188 	pop	ar7
-      001E98                       1189 00103$:
+      002913 90 01 13         [24] 1184 	mov	dptr,#0x0113
+      002916 12 28 65         [24] 1185 	lcall	_sleepMillis
+      002919 D0 05            [24] 1186 	pop	ar5
+      00291B D0 06            [24] 1187 	pop	ar6
+      00291D D0 07            [24] 1188 	pop	ar7
+      00291F                       1189 00103$:
                                    1190 ;	global.c:53: num = num >> 1;
-      001E98 EF               [12] 1191 	mov	a,r7
-      001E99 C3               [12] 1192 	clr	c
-      001E9A 13               [12] 1193 	rrc	a
-      001E9B CE               [12] 1194 	xch	a,r6
-      001E9C 13               [12] 1195 	rrc	a
-      001E9D CE               [12] 1196 	xch	a,r6
-      001E9E FF               [12] 1197 	mov	r7,a
+      00291F EF               [12] 1191 	mov	a,r7
+      002920 C3               [12] 1192 	clr	c
+      002921 13               [12] 1193 	rrc	a
+      002922 CE               [12] 1194 	xch	a,r6
+      002923 13               [12] 1195 	rrc	a
+      002924 CE               [12] 1196 	xch	a,r6
+      002925 FF               [12] 1197 	mov	r7,a
                                    1198 ;	global.c:35: for (; bits>=0; bits--)
-      001E9F 1D               [12] 1199 	dec	r5
-      001EA0 80 A8            [24] 1200 	sjmp	00106$
-      001EA2                       1201 00104$:
+      002926 1D               [12] 1199 	dec	r5
+      002927 80 A8            [24] 1200 	sjmp	00106$
+      002929                       1201 00104$:
                                    1202 ;	global.c:55: LED = 0;
-      001EA2 C2 A4            [12] 1203 	clr	_P2_4
+      002929 C2 A4            [12] 1203 	clr	_P2_4
                                    1204 ;	global.c:56: sleepMillis(1000);
-      001EA4 90 03 E8         [24] 1205 	mov	dptr,#0x03E8
-      001EA7 02 1D DE         [24] 1206 	ljmp	_sleepMillis
+      00292B 90 03 E8         [24] 1205 	mov	dptr,#0x03E8
+      00292E 02 28 65         [24] 1206 	ljmp	_sleepMillis
                                    1207 ;------------------------------------------------------------
                                    1208 ;Allocation info for local variables in function 'strncmp'
                                    1209 ;------------------------------------------------------------
@@ -1218,105 +1218,105 @@
                                    1218 ;	-----------------------------------------
                                    1219 ;	 function strncmp
                                    1220 ;	-----------------------------------------
-      001EAA                       1221 _strncmp:
-      001EAA AF F0            [24] 1222 	mov	r7,b
-      001EAC AE 83            [24] 1223 	mov	r6,dph
-      001EAE E5 82            [12] 1224 	mov	a,dpl
-      001EB0 90 FB A1         [24] 1225 	mov	dptr,#_strncmp_s1_1_58
-      001EB3 F0               [24] 1226 	movx	@dptr,a
-      001EB4 EE               [12] 1227 	mov	a,r6
-      001EB5 A3               [24] 1228 	inc	dptr
-      001EB6 F0               [24] 1229 	movx	@dptr,a
-      001EB7 EF               [12] 1230 	mov	a,r7
-      001EB8 A3               [24] 1231 	inc	dptr
-      001EB9 F0               [24] 1232 	movx	@dptr,a
+      002931                       1221 _strncmp:
+      002931 AF F0            [24] 1222 	mov	r7,b
+      002933 AE 83            [24] 1223 	mov	r6,dph
+      002935 E5 82            [12] 1224 	mov	a,dpl
+      002937 90 FD BC         [24] 1225 	mov	dptr,#_strncmp_s1_1_58
+      00293A F0               [24] 1226 	movx	@dptr,a
+      00293B EE               [12] 1227 	mov	a,r6
+      00293C A3               [24] 1228 	inc	dptr
+      00293D F0               [24] 1229 	movx	@dptr,a
+      00293E EF               [12] 1230 	mov	a,r7
+      00293F A3               [24] 1231 	inc	dptr
+      002940 F0               [24] 1232 	movx	@dptr,a
                                    1233 ;	global.c:100: return 0;
-      001EBA 90 FB A1         [24] 1234 	mov	dptr,#_strncmp_s1_1_58
-      001EBD E0               [24] 1235 	movx	a,@dptr
-      001EBE FD               [12] 1236 	mov	r5,a
-      001EBF A3               [24] 1237 	inc	dptr
-      001EC0 E0               [24] 1238 	movx	a,@dptr
-      001EC1 FE               [12] 1239 	mov	r6,a
-      001EC2 A3               [24] 1240 	inc	dptr
-      001EC3 E0               [24] 1241 	movx	a,@dptr
-      001EC4 FF               [12] 1242 	mov	r7,a
-      001EC5 90 FB 9E         [24] 1243 	mov	dptr,#_strncmp_PARM_2
-      001EC8 E0               [24] 1244 	movx	a,@dptr
-      001EC9 FA               [12] 1245 	mov	r2,a
-      001ECA A3               [24] 1246 	inc	dptr
-      001ECB E0               [24] 1247 	movx	a,@dptr
-      001ECC FB               [12] 1248 	mov	r3,a
-      001ECD A3               [24] 1249 	inc	dptr
-      001ECE E0               [24] 1250 	movx	a,@dptr
-      001ECF FC               [12] 1251 	mov	r4,a
-      001ED0 A8 22            [24] 1252 	mov	r0,_strncmp_PARM_3
-      001ED2 A9 23            [24] 1253 	mov	r1,(_strncmp_PARM_3 + 1)
-      001ED4                       1254 00105$:
+      002941 90 FD BC         [24] 1234 	mov	dptr,#_strncmp_s1_1_58
+      002944 E0               [24] 1235 	movx	a,@dptr
+      002945 FD               [12] 1236 	mov	r5,a
+      002946 A3               [24] 1237 	inc	dptr
+      002947 E0               [24] 1238 	movx	a,@dptr
+      002948 FE               [12] 1239 	mov	r6,a
+      002949 A3               [24] 1240 	inc	dptr
+      00294A E0               [24] 1241 	movx	a,@dptr
+      00294B FF               [12] 1242 	mov	r7,a
+      00294C 90 FD B9         [24] 1243 	mov	dptr,#_strncmp_PARM_2
+      00294F E0               [24] 1244 	movx	a,@dptr
+      002950 FA               [12] 1245 	mov	r2,a
+      002951 A3               [24] 1246 	inc	dptr
+      002952 E0               [24] 1247 	movx	a,@dptr
+      002953 FB               [12] 1248 	mov	r3,a
+      002954 A3               [24] 1249 	inc	dptr
+      002955 E0               [24] 1250 	movx	a,@dptr
+      002956 FC               [12] 1251 	mov	r4,a
+      002957 A8 27            [24] 1252 	mov	r0,_strncmp_PARM_3
+      002959 A9 28            [24] 1253 	mov	r1,(_strncmp_PARM_3 + 1)
+      00295B                       1254 00105$:
                                    1255 ;	global.c:92: for (;n>0;n--)
-      001ED4 E8               [12] 1256 	mov	a,r0
-      001ED5 49               [12] 1257 	orl	a,r1
-      001ED6 60 50            [24] 1258 	jz	00103$
+      00295B E8               [12] 1256 	mov	a,r0
+      00295C 49               [12] 1257 	orl	a,r1
+      00295D 60 50            [24] 1258 	jz	00103$
                                    1259 ;	global.c:94: tst = *s1 - *s2;
-      001ED8 C0 00            [24] 1260 	push	ar0
-      001EDA C0 01            [24] 1261 	push	ar1
-      001EDC 8D 82            [24] 1262 	mov	dpl,r5
-      001EDE 8E 83            [24] 1263 	mov	dph,r6
-      001EE0 8F F0            [24] 1264 	mov	b,r7
-      001EE2 12 25 F2         [24] 1265 	lcall	__gptrget
-      001EE5 F9               [12] 1266 	mov	r1,a
-      001EE6 8A 82            [24] 1267 	mov	dpl,r2
-      001EE8 8B 83            [24] 1268 	mov	dph,r3
-      001EEA 8C F0            [24] 1269 	mov	b,r4
-      001EEC 12 25 F2         [24] 1270 	lcall	__gptrget
-      001EEF F8               [12] 1271 	mov	r0,a
-      001EF0 E9               [12] 1272 	mov	a,r1
-      001EF1 C3               [12] 1273 	clr	c
-      001EF2 98               [12] 1274 	subb	a,r0
+      00295F C0 00            [24] 1260 	push	ar0
+      002961 C0 01            [24] 1261 	push	ar1
+      002963 8D 82            [24] 1262 	mov	dpl,r5
+      002965 8E 83            [24] 1263 	mov	dph,r6
+      002967 8F F0            [24] 1264 	mov	b,r7
+      002969 12 30 79         [24] 1265 	lcall	__gptrget
+      00296C F9               [12] 1266 	mov	r1,a
+      00296D 8A 82            [24] 1267 	mov	dpl,r2
+      00296F 8B 83            [24] 1268 	mov	dph,r3
+      002971 8C F0            [24] 1269 	mov	b,r4
+      002973 12 30 79         [24] 1270 	lcall	__gptrget
+      002976 F8               [12] 1271 	mov	r0,a
+      002977 E9               [12] 1272 	mov	a,r1
+      002978 C3               [12] 1273 	clr	c
+      002979 98               [12] 1274 	subb	a,r0
                                    1275 ;	global.c:95: if (tst)
-      001EF3 F9               [12] 1276 	mov	r1,a
-      001EF4 89 24            [24] 1277 	mov	_strncmp_sloc0_1_0,r1
-      001EF6 D0 01            [24] 1278 	pop	ar1
-      001EF8 D0 00            [24] 1279 	pop	ar0
-      001EFA 60 10            [24] 1280 	jz	00102$
+      00297A F9               [12] 1276 	mov	r1,a
+      00297B 89 29            [24] 1277 	mov	_strncmp_sloc0_1_0,r1
+      00297D D0 01            [24] 1278 	pop	ar1
+      00297F D0 00            [24] 1279 	pop	ar0
+      002981 60 10            [24] 1280 	jz	00102$
                                    1281 ;	global.c:96: return tst;
-      001EFC E5 24            [12] 1282 	mov	a,_strncmp_sloc0_1_0
-      001EFE F5 25            [12] 1283 	mov	_strncmp_sloc1_1_0,a
-      001F00 33               [12] 1284 	rlc	a
-      001F01 95 E0            [12] 1285 	subb	a,acc
-      001F03 F5 26            [12] 1286 	mov	(_strncmp_sloc1_1_0 + 1),a
-      001F05 85 25 82         [24] 1287 	mov	dpl,_strncmp_sloc1_1_0
-      001F08 85 26 83         [24] 1288 	mov	dph,(_strncmp_sloc1_1_0 + 1)
-      001F0B 22               [24] 1289 	ret
-      001F0C                       1290 00102$:
+      002983 E5 29            [12] 1282 	mov	a,_strncmp_sloc0_1_0
+      002985 F5 2A            [12] 1283 	mov	_strncmp_sloc1_1_0,a
+      002987 33               [12] 1284 	rlc	a
+      002988 95 E0            [12] 1285 	subb	a,acc
+      00298A F5 2B            [12] 1286 	mov	(_strncmp_sloc1_1_0 + 1),a
+      00298C 85 2A 82         [24] 1287 	mov	dpl,_strncmp_sloc1_1_0
+      00298F 85 2B 83         [24] 1288 	mov	dph,(_strncmp_sloc1_1_0 + 1)
+      002992 22               [24] 1289 	ret
+      002993                       1290 00102$:
                                    1291 ;	global.c:97: s1++;
-      001F0C 0D               [12] 1292 	inc	r5
-      001F0D BD 00 01         [24] 1293 	cjne	r5,#0x00,00122$
-      001F10 0E               [12] 1294 	inc	r6
-      001F11                       1295 00122$:
-      001F11 90 FB A1         [24] 1296 	mov	dptr,#_strncmp_s1_1_58
-      001F14 ED               [12] 1297 	mov	a,r5
-      001F15 F0               [24] 1298 	movx	@dptr,a
-      001F16 EE               [12] 1299 	mov	a,r6
-      001F17 A3               [24] 1300 	inc	dptr
-      001F18 F0               [24] 1301 	movx	@dptr,a
-      001F19 EF               [12] 1302 	mov	a,r7
-      001F1A A3               [24] 1303 	inc	dptr
-      001F1B F0               [24] 1304 	movx	@dptr,a
+      002993 0D               [12] 1292 	inc	r5
+      002994 BD 00 01         [24] 1293 	cjne	r5,#0x00,00122$
+      002997 0E               [12] 1294 	inc	r6
+      002998                       1295 00122$:
+      002998 90 FD BC         [24] 1296 	mov	dptr,#_strncmp_s1_1_58
+      00299B ED               [12] 1297 	mov	a,r5
+      00299C F0               [24] 1298 	movx	@dptr,a
+      00299D EE               [12] 1299 	mov	a,r6
+      00299E A3               [24] 1300 	inc	dptr
+      00299F F0               [24] 1301 	movx	@dptr,a
+      0029A0 EF               [12] 1302 	mov	a,r7
+      0029A1 A3               [24] 1303 	inc	dptr
+      0029A2 F0               [24] 1304 	movx	@dptr,a
                                    1305 ;	global.c:98: s2++;
-      001F1C 0A               [12] 1306 	inc	r2
-      001F1D BA 00 01         [24] 1307 	cjne	r2,#0x00,00123$
-      001F20 0B               [12] 1308 	inc	r3
-      001F21                       1309 00123$:
+      0029A3 0A               [12] 1306 	inc	r2
+      0029A4 BA 00 01         [24] 1307 	cjne	r2,#0x00,00123$
+      0029A7 0B               [12] 1308 	inc	r3
+      0029A8                       1309 00123$:
                                    1310 ;	global.c:92: for (;n>0;n--)
-      001F21 18               [12] 1311 	dec	r0
-      001F22 B8 FF 01         [24] 1312 	cjne	r0,#0xFF,00124$
-      001F25 19               [12] 1313 	dec	r1
-      001F26                       1314 00124$:
-      001F26 80 AC            [24] 1315 	sjmp	00105$
-      001F28                       1316 00103$:
+      0029A8 18               [12] 1311 	dec	r0
+      0029A9 B8 FF 01         [24] 1312 	cjne	r0,#0xFF,00124$
+      0029AC 19               [12] 1313 	dec	r1
+      0029AD                       1314 00124$:
+      0029AD 80 AC            [24] 1315 	sjmp	00105$
+      0029AF                       1316 00103$:
                                    1317 ;	global.c:100: return 0;
-      001F28 90 00 00         [24] 1318 	mov	dptr,#0x0000
-      001F2B 22               [24] 1319 	ret
+      0029AF 90 00 00         [24] 1318 	mov	dptr,#0x0000
+      0029B2 22               [24] 1319 	ret
                                    1320 ;------------------------------------------------------------
                                    1321 ;Allocation info for local variables in function 'clock_init'
                                    1322 ;------------------------------------------------------------
@@ -1324,40 +1324,40 @@
                                    1324 ;	-----------------------------------------
                                    1325 ;	 function clock_init
                                    1326 ;	-----------------------------------------
-      001F2C                       1327 _clock_init:
+      0029B3                       1327 _clock_init:
                                    1328 ;	global.c:108: SLEEP &= ~SLEEP_OSC_PD;
-      001F2C AF BE            [24] 1329 	mov	r7,_SLEEP
-      001F2E 74 FB            [12] 1330 	mov	a,#0xFB
-      001F30 5F               [12] 1331 	anl	a,r7
-      001F31 F5 BE            [12] 1332 	mov	_SLEEP,a
+      0029B3 AF BE            [24] 1329 	mov	r7,_SLEEP
+      0029B5 74 FB            [12] 1330 	mov	a,#0xFB
+      0029B7 5F               [12] 1331 	anl	a,r7
+      0029B8 F5 BE            [12] 1332 	mov	_SLEEP,a
                                    1333 ;	global.c:109: while( !(SLEEP & SLEEP_XOSC_S) );
-      001F33                       1334 00101$:
-      001F33 E5 BE            [12] 1335 	mov	a,_SLEEP
-      001F35 30 E6 FB         [24] 1336 	jnb	acc.6,00101$
+      0029BA                       1334 00101$:
+      0029BA E5 BE            [12] 1335 	mov	a,_SLEEP
+      0029BC 30 E6 FB         [24] 1336 	jnb	acc.6,00101$
                                    1337 ;	global.c:110: CLKCON = (CLKCON & ~(CLKCON_CLKSPD | CLKCON_OSC)) | CLKSPD_DIV_1;
-      001F38 AF C6            [24] 1338 	mov	r7,_CLKCON
-      001F3A 74 B8            [12] 1339 	mov	a,#0xB8
-      001F3C 5F               [12] 1340 	anl	a,r7
-      001F3D F5 C6            [12] 1341 	mov	_CLKCON,a
+      0029BF AF C6            [24] 1338 	mov	r7,_CLKCON
+      0029C1 74 B8            [12] 1339 	mov	a,#0xB8
+      0029C3 5F               [12] 1340 	anl	a,r7
+      0029C4 F5 C6            [12] 1341 	mov	_CLKCON,a
                                    1342 ;	global.c:111: while (CLKCON & CLKCON_OSC);
-      001F3F                       1343 00104$:
-      001F3F E5 C6            [12] 1344 	mov	a,_CLKCON
-      001F41 20 E6 FB         [24] 1345 	jb	acc.6,00104$
+      0029C6                       1343 00104$:
+      0029C6 E5 C6            [12] 1344 	mov	a,_CLKCON
+      0029C8 20 E6 FB         [24] 1345 	jb	acc.6,00104$
                                    1346 ;	global.c:112: SLEEP |= SLEEP_OSC_PD;
-      001F44 43 BE 04         [24] 1347 	orl	_SLEEP,#0x04
+      0029CB 43 BE 04         [24] 1347 	orl	_SLEEP,#0x04
                                    1348 ;	global.c:113: while (!IS_XOSC_STABLE());
-      001F47                       1349 00107$:
-      001F47 E5 BE            [12] 1350 	mov	a,_SLEEP
-      001F49 30 E6 FB         [24] 1351 	jnb	acc.6,00107$
+      0029CE                       1349 00107$:
+      0029CE E5 BE            [12] 1350 	mov	a,_SLEEP
+      0029D0 30 E6 FB         [24] 1351 	jnb	acc.6,00107$
                                    1352 ;	global.c:119: CLKCON &= 0xc7;          //( ~ 0b00111000);  - clearing out TICKSPD  freq = 24mhz on cc1111, 26mhz on cc1110
-      001F4C 53 C6 C7         [24] 1353 	anl	_CLKCON,#0xC7
+      0029D3 53 C6 C7         [24] 1353 	anl	_CLKCON,#0xC7
                                    1354 ;	global.c:121: T1CTL |= T1CTL_DIV_128;     // T1 running at 187.500 kHz
-      001F4F 43 E4 0C         [24] 1355 	orl	_T1CTL,#0x0C
+      0029D6 43 E4 0C         [24] 1355 	orl	_T1CTL,#0x0C
                                    1356 ;	global.c:122: T1CTL |= T1CTL_MODE_FREERUN;
-      001F52 43 E4 01         [24] 1357 	orl	_T1CTL,#0x01
+      0029D9 43 E4 01         [24] 1357 	orl	_T1CTL,#0x01
                                    1358 ;	global.c:123: T1IE = 1;
-      001F55 D2 B9            [12] 1359 	setb	_T1IE
-      001F57 22               [24] 1360 	ret
+      0029DC D2 B9            [12] 1359 	setb	_T1IE
+      0029DE 22               [24] 1360 	ret
                                    1361 ;------------------------------------------------------------
                                    1362 ;Allocation info for local variables in function 'io_init'
                                    1363 ;------------------------------------------------------------
@@ -1365,12 +1365,12 @@
                                    1365 ;	-----------------------------------------
                                    1366 ;	 function io_init
                                    1367 ;	-----------------------------------------
-      001F58                       1368 _io_init:
+      0029DF                       1368 _io_init:
                                    1369 ;	global.c:190: P1DIR |= 3;
-      001F58 43 FE 03         [24] 1370 	orl	_P1DIR,#0x03
+      0029DF 43 FE 03         [24] 1370 	orl	_P1DIR,#0x03
                                    1371 ;	global.c:196: LED = 0;
-      001F5B C2 A4            [12] 1372 	clr	_P2_4
-      001F5D 22               [24] 1373 	ret
+      0029E2 C2 A4            [12] 1372 	clr	_P2_4
+      0029E4 22               [24] 1373 	ret
                                    1374 ;------------------------------------------------------------
                                    1375 ;Allocation info for local variables in function 't1IntHandler'
                                    1376 ;------------------------------------------------------------
@@ -1378,33 +1378,33 @@
                                    1378 ;	-----------------------------------------
                                    1379 ;	 function t1IntHandler
                                    1380 ;	-----------------------------------------
-      001F5E                       1381 _t1IntHandler:
-      001F5E C0 E0            [24] 1382 	push	acc
-      001F60 C0 82            [24] 1383 	push	dpl
-      001F62 C0 83            [24] 1384 	push	dph
-      001F64 C0 D0            [24] 1385 	push	psw
+      0029E5                       1381 _t1IntHandler:
+      0029E5 C0 E0            [24] 1382 	push	acc
+      0029E7 C0 82            [24] 1383 	push	dpl
+      0029E9 C0 83            [24] 1384 	push	dph
+      0029EB C0 D0            [24] 1385 	push	psw
                                    1386 ;	global.c:205: clock ++;
-      001F66 90 FB 9A         [24] 1387 	mov	dptr,#_clock
-      001F69 E0               [24] 1388 	movx	a,@dptr
-      001F6A 24 01            [12] 1389 	add	a,#0x01
-      001F6C F0               [24] 1390 	movx	@dptr,a
-      001F6D A3               [24] 1391 	inc	dptr
-      001F6E E0               [24] 1392 	movx	a,@dptr
-      001F6F 34 00            [12] 1393 	addc	a,#0x00
-      001F71 F0               [24] 1394 	movx	@dptr,a
-      001F72 A3               [24] 1395 	inc	dptr
-      001F73 E0               [24] 1396 	movx	a,@dptr
-      001F74 34 00            [12] 1397 	addc	a,#0x00
-      001F76 F0               [24] 1398 	movx	@dptr,a
-      001F77 A3               [24] 1399 	inc	dptr
-      001F78 E0               [24] 1400 	movx	a,@dptr
-      001F79 34 00            [12] 1401 	addc	a,#0x00
-      001F7B F0               [24] 1402 	movx	@dptr,a
-      001F7C D0 D0            [24] 1403 	pop	psw
-      001F7E D0 83            [24] 1404 	pop	dph
-      001F80 D0 82            [24] 1405 	pop	dpl
-      001F82 D0 E0            [24] 1406 	pop	acc
-      001F84 32               [24] 1407 	reti
+      0029ED 90 FD B5         [24] 1387 	mov	dptr,#_clock
+      0029F0 E0               [24] 1388 	movx	a,@dptr
+      0029F1 24 01            [12] 1389 	add	a,#0x01
+      0029F3 F0               [24] 1390 	movx	@dptr,a
+      0029F4 A3               [24] 1391 	inc	dptr
+      0029F5 E0               [24] 1392 	movx	a,@dptr
+      0029F6 34 00            [12] 1393 	addc	a,#0x00
+      0029F8 F0               [24] 1394 	movx	@dptr,a
+      0029F9 A3               [24] 1395 	inc	dptr
+      0029FA E0               [24] 1396 	movx	a,@dptr
+      0029FB 34 00            [12] 1397 	addc	a,#0x00
+      0029FD F0               [24] 1398 	movx	@dptr,a
+      0029FE A3               [24] 1399 	inc	dptr
+      0029FF E0               [24] 1400 	movx	a,@dptr
+      002A00 34 00            [12] 1401 	addc	a,#0x00
+      002A02 F0               [24] 1402 	movx	@dptr,a
+      002A03 D0 D0            [24] 1403 	pop	psw
+      002A05 D0 83            [24] 1404 	pop	dph
+      002A07 D0 82            [24] 1405 	pop	dpl
+      002A09 D0 E0            [24] 1406 	pop	acc
+      002A0B 32               [24] 1407 	reti
                                    1408 ;	eliminated unneeded mov psw,# (no regs used in bank)
                                    1409 ;	eliminated unneeded push/pop b
                                    1410 	.area CSEG    (CODE)

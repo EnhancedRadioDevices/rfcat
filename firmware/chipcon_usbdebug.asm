@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
-; This file was generated Fri Nov 18 22:31:00 2016
+; This file was generated Wed Nov 30 16:38:14 2016
 ;--------------------------------------------------------
 	.module chipcon_usbdebug
 	.optsdcc -mmcs51 --model-small

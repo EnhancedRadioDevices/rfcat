@@ -1,7 +1,7 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
                                       3 ; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
-                                      4 ; This file was generated Fri Nov 18 22:31:01 2016
+                                      4 ; This file was generated Wed Nov 30 16:38:14 2016
                                       5 ;--------------------------------------------------------
                                       6 	.module chipcon_dma
                                       7 	.optsdcc -mmcs51 --model-small
@@ -712,8 +712,8 @@
                                     712 ; internal ram data
                                     713 ;--------------------------------------------------------
                                     714 	.area DSEG    (DATA)
-      000017                        715 _dma_channels::
-      000017                        716 	.ds 2
+      00001E                        715 _dma_channels::
+      00001E                        716 	.ds 2
                                     717 ;--------------------------------------------------------
                                     718 ; overlayable items in internal ram 
                                     719 ;--------------------------------------------------------
@@ -965,8 +965,8 @@
                            00DE26   965 _USBF3	=	0xde26
                            00DE28   966 _USBF4	=	0xde28
                            00DE2A   967 _USBF5	=	0xde2a
-      00F74C                        968 _dma_configs::
-      00F74C                        969 	.ds 24
+      00F967                        968 _dma_configs::
+      00F967                        969 	.ds 24
                                     970 ;--------------------------------------------------------
                                     971 ; absolute external ram data
                                     972 ;--------------------------------------------------------
@@ -993,9 +993,9 @@
                                     993 	.area GSFINAL (CODE)
                                     994 	.area GSINIT  (CODE)
                                     995 ;	chipcon_dma.c:27: __data dma_channels= 0;
-      0000FA E4               [12]  996 	clr	a
-      0000FB F5 17            [12]  997 	mov	_dma_channels,a
-      0000FD F5 18            [12]  998 	mov	(_dma_channels + 1),a
+      0000FC E4               [12]  996 	clr	a
+      0000FD F5 1E            [12]  997 	mov	_dma_channels,a
+      0000FF F5 1F            [12]  998 	mov	(_dma_channels + 1),a
                                     999 ;--------------------------------------------------------
                                    1000 ; Home
                                    1001 ;--------------------------------------------------------
@@ -1012,7 +1012,7 @@
                                    1012 ;	-----------------------------------------
                                    1013 ;	 function initDMA
                                    1014 ;	-----------------------------------------
-      0012D2                       1015 _initDMA:
+      001D59                       1015 _initDMA:
                            000007  1016 	ar7 = 0x07
                            000006  1017 	ar6 = 0x06
                            000005  1018 	ar5 = 0x05
@@ -1022,31 +1022,31 @@
                            000001  1022 	ar1 = 0x01
                            000000  1023 	ar0 = 0x00
                                    1024 ;	chipcon_dma.c:33: DMA0CFGH = ((u16)(&dma_configs[0]))>>8;
-      0012D2 7E 4C            [12] 1025 	mov	r6,#_dma_configs
-      0012D4 7F F7            [12] 1026 	mov	r7,#(_dma_configs >> 8)
-      0012D6 8F D5            [24] 1027 	mov	_DMA0CFGH,r7
+      001D59 7E 67            [12] 1025 	mov	r6,#_dma_configs
+      001D5B 7F F9            [12] 1026 	mov	r7,#(_dma_configs >> 8)
+      001D5D 8F D5            [24] 1027 	mov	_DMA0CFGH,r7
                                    1028 ;	chipcon_dma.c:34: DMA0CFGL = ((u16)(&dma_configs[0]))&0xff;
-      0012D8 7E 4C            [12] 1029 	mov	r6,#_dma_configs
-      0012DA 7F F7            [12] 1030 	mov	r7,#(_dma_configs >> 8)
-      0012DC 8E D4            [24] 1031 	mov	_DMA0CFGL,r6
+      001D5F 7E 67            [12] 1029 	mov	r6,#_dma_configs
+      001D61 7F F9            [12] 1030 	mov	r7,#(_dma_configs >> 8)
+      001D63 8E D4            [24] 1031 	mov	_DMA0CFGL,r6
                                    1032 ;	chipcon_dma.c:38: DMA1CFGH = ((u16)(&dma_configs[1]))>>8;
-      0012DE 7E 54            [12] 1033 	mov	r6,#(_dma_configs + 0x0008)
-      0012E0 7F F7            [12] 1034 	mov	r7,#((_dma_configs + 0x0008) >> 8)
-      0012E2 8F D3            [24] 1035 	mov	_DMA1CFGH,r7
+      001D65 7E 6F            [12] 1033 	mov	r6,#(_dma_configs + 0x0008)
+      001D67 7F F9            [12] 1034 	mov	r7,#((_dma_configs + 0x0008) >> 8)
+      001D69 8F D3            [24] 1035 	mov	_DMA1CFGH,r7
                                    1036 ;	chipcon_dma.c:39: DMA1CFGL = ((u16)(&dma_configs[1]))&0xff;
-      0012E4 7E 54            [12] 1037 	mov	r6,#(_dma_configs + 0x0008)
-      0012E6 7F F7            [12] 1038 	mov	r7,#((_dma_configs + 0x0008) >> 8)
-      0012E8 7F 00            [12] 1039 	mov	r7,#0x00
-      0012EA 8E D2            [24] 1040 	mov	_DMA1CFGL,r6
+      001D6B 7E 6F            [12] 1037 	mov	r6,#(_dma_configs + 0x0008)
+      001D6D 7F F9            [12] 1038 	mov	r7,#((_dma_configs + 0x0008) >> 8)
+      001D6F 7F 00            [12] 1039 	mov	r7,#0x00
+      001D71 8E D2            [24] 1040 	mov	_DMA1CFGL,r6
                                    1041 ;	chipcon_dma.c:42: memset(dma_configs,'\0',sizeof(DMA_DESC)*DMA_CHANNELS);
                                    1042 ;	1-genFromRTrack replaced	mov	_memset_PARM_2,#0x00
-      0012EC 8F 22            [24] 1043 	mov	_memset_PARM_2,r7
-      0012EE 75 23 18         [24] 1044 	mov	_memset_PARM_3,#0x18
+      001D73 8F 27            [24] 1043 	mov	_memset_PARM_2,r7
+      001D75 75 28 18         [24] 1044 	mov	_memset_PARM_3,#0x18
                                    1045 ;	1-genFromRTrack replaced	mov	(_memset_PARM_3 + 1),#0x00
-      0012F1 8F 24            [24] 1046 	mov	(_memset_PARM_3 + 1),r7
-      0012F3 90 F7 4C         [24] 1047 	mov	dptr,#_dma_configs
-      0012F6 75 F0 00         [24] 1048 	mov	b,#0x00
-      0012F9 02 23 9B         [24] 1049 	ljmp	_memset
+      001D78 8F 29            [24] 1046 	mov	(_memset_PARM_3 + 1),r7
+      001D7A 90 F9 67         [24] 1047 	mov	dptr,#_dma_configs
+      001D7D 75 F0 00         [24] 1048 	mov	b,#0x00
+      001D80 02 2E 22         [24] 1049 	ljmp	_memset
                                    1050 ;------------------------------------------------------------
                                    1051 ;Allocation info for local variables in function 'getDMA'
                                    1052 ;------------------------------------------------------------
@@ -1054,30 +1054,30 @@
                                    1054 ;	-----------------------------------------
                                    1055 ;	 function getDMA
                                    1056 ;	-----------------------------------------
-      0012FC                       1057 _getDMA:
+      001D83                       1057 _getDMA:
                                    1058 ;	chipcon_dma.c:48: if(dma_channels == DMA_CHANNELS)
-      0012FC 74 03            [12] 1059 	mov	a,#0x03
-      0012FE B5 17 06         [24] 1060 	cjne	a,_dma_channels,00109$
-      001301 E4               [12] 1061 	clr	a
-      001302 B5 18 02         [24] 1062 	cjne	a,(_dma_channels + 1),00109$
-      001305 80 02            [24] 1063 	sjmp	00110$
-      001307                       1064 00109$:
-      001307 80 04            [24] 1065 	sjmp	00102$
-      001309                       1066 00110$:
+      001D83 74 03            [12] 1059 	mov	a,#0x03
+      001D85 B5 1E 06         [24] 1060 	cjne	a,_dma_channels,00109$
+      001D88 E4               [12] 1061 	clr	a
+      001D89 B5 1F 02         [24] 1062 	cjne	a,(_dma_channels + 1),00109$
+      001D8C 80 02            [24] 1063 	sjmp	00110$
+      001D8E                       1064 00109$:
+      001D8E 80 04            [24] 1065 	sjmp	00102$
+      001D90                       1066 00110$:
                                    1067 ;	chipcon_dma.c:49: return 0xff;
-      001309 75 82 FF         [24] 1068 	mov	dpl,#0xFF
-      00130C 22               [24] 1069 	ret
-      00130D                       1070 00102$:
+      001D90 75 82 FF         [24] 1068 	mov	dpl,#0xFF
+      001D93 22               [24] 1069 	ret
+      001D94                       1070 00102$:
                                    1071 ;	chipcon_dma.c:51: return dma_channels++;
-      00130D AE 17            [24] 1072 	mov	r6,_dma_channels
-      00130F AF 18            [24] 1073 	mov	r7,(_dma_channels + 1)
-      001311 05 17            [12] 1074 	inc	_dma_channels
-      001313 E4               [12] 1075 	clr	a
-      001314 B5 17 02         [24] 1076 	cjne	a,_dma_channels,00111$
-      001317 05 18            [12] 1077 	inc	(_dma_channels + 1)
-      001319                       1078 00111$:
-      001319 8E 82            [24] 1079 	mov	dpl,r6
-      00131B 22               [24] 1080 	ret
+      001D94 AE 1E            [24] 1072 	mov	r6,_dma_channels
+      001D96 AF 1F            [24] 1073 	mov	r7,(_dma_channels + 1)
+      001D98 05 1E            [12] 1074 	inc	_dma_channels
+      001D9A E4               [12] 1075 	clr	a
+      001D9B B5 1E 02         [24] 1076 	cjne	a,_dma_channels,00111$
+      001D9E 05 1F            [12] 1077 	inc	(_dma_channels + 1)
+      001DA0                       1078 00111$:
+      001DA0 8E 82            [24] 1079 	mov	dpl,r6
+      001DA2 22               [24] 1080 	ret
                                    1081 	.area CSEG    (CODE)
                                    1082 	.area CONST   (CODE)
                                    1083 	.area XINIT   (CODE)

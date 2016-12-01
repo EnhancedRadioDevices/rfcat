@@ -19,7 +19,6 @@
 
 #include "cc1110_spicom.h"
 
-#define SPI_BUF_LEN 220 
 
 volatile uint8_t __xdata spi_input_buf[SPI_BUF_LEN];
 volatile uint8_t input_size = 0;
@@ -44,6 +43,9 @@ volatile uint8_t slave_send_size = 0;
 // USB simulation stuff
 __xdata u8  usb_ep5_OUTbuf[EP5OUT_BUFFER_SIZE];                   // these get pointed to by the above structure
 __xdata USB_EP_IO_BUF     ep5;
+
+__xdata int (*cb_ep5)(void);
+
 
 
 // TODO: in rx1_isr, parse packets and put them into ep5 
@@ -94,11 +96,11 @@ void rx1_isr(void) __interrupt URX1_VECTOR {
   if (spi_mode == SPI_MODE_XFER && input_size < master_send_size) {
     if (input_size == 0) {
         // first byte is app
-        ep5.app = value;
+        ep5.OUTapp = value;
         ep5.OUTbuf[0] = 0x40; // backwards compatibility
     } else if (input_size == 1) {
         // second byte is cmd
-        ep5.cmd = value;
+        ep5.OUTcmd = value;
         ep5.OUTbuf[1] = 0xe0; // backwards compatibility
     } else {
         // data
@@ -301,9 +303,9 @@ void vcom_down() {
 
 int txdata(u8 app, u8 cmd, u16 len, __xdata u8* dataptr)
 {
-    //u16 test = 0;
+    u16 test = 0;
     /*removes warning */    
-    //test = app = cmd = len;
+    test = len; //app = cmd = len;
     
     vcom_putchar(app);
     vcom_putchar(cmd);
@@ -340,5 +342,11 @@ void waitForUSBsetup()
 
 void registerCb_ep5(int (*callback)(void))
 {
-    cb_ep5 = callback2;
+    cb_ep5 = callback;
+}
+
+void appReturn(__xdata u8 len, __xdata u8* __xdata  response)
+{
+    ep5.flags &= ~EP_OUTBUF_WRITTEN;                       // this should be superfluous... but could be causing problems?
+    txdata(ep5.OUTapp,ep5.OUTcmd, len, response);
 }

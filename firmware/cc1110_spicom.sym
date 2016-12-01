@@ -693,44 +693,53 @@ Symbol Table
     __X_SFRC8                                                   =  00DFC8 G
     __gptrget                                                      ****** GX
     __gptrput                                                      ****** GX
- 17 _initUSB                                                       000189 GR
-  5 _input_head_idx                                                000001 GR
-  5 _input_size                                                    000000 GR
-  5 _input_tail_idx                                                000002 GR
-  5 _master_send_size                                              000008 GR
-  5 _output_head_idx                                               000004 GR
-  5 _output_size                                                   000003 GR
-  5 _output_tail_idx                                               000005 GR
- 17 _rx1_isr                                                       000000 GR
-  5 _serial_data_available                                         000006 GR
-  5 _slave_send_size                                               000009 GR
-  B _spi_input_buf                                                 000000 GR
-  5 _spi_mode                                                      000007 GR
-  B _spi_output_buf                                                0000DC GR
- 17 _tx1_isr                                                       000086 GR
- 17 _txdata                                                        000259 GR
-  5 _txdata_PARM_2                                                 00000A GR
-  5 _txdata_PARM_3                                                 00000B GR
-  5 _txdata_PARM_4                                                 00000D GR
- 17 _usbIntHandler                                                 000280 GR
- 17 _usbProcessEvents                                              0001C1 GR
- 17 _usb_up                                                        000253 GR
- 17 _vcom_disable                                                  000171 GR
- 17 _vcom_down                                                     000256 GR
- 17 _vcom_enable                                                   00015D GR
+    __sdcc_call_dptr                                               ****** GX
+ 18 _appReturn                                                     00033B GR
+  C _appReturn_PARM_2                                              0003D1 GR
+  C _appReturn_len_1_114                                           0003D3 R
+  6 _cb_ep5                                                        00000A GR
+  C _ep5                                                           0003BC GR
+ 18 _initUSB                                                       00022B GR
+  6 _input_head_idx                                                000001 GR
+  6 _input_size                                                    000000 GR
+  6 _input_tail_idx                                                000002 GR
+  6 _master_send_size                                              000008 GR
+  6 _output_head_idx                                               000004 GR
+  6 _output_size                                                   000003 GR
+  6 _output_tail_idx                                               000005 GR
+ 18 _p0IntHandler                                                  000332 GR
+ 18 _registerCb_ep5                                                000334 GR
+ 18 _rx1_isr                                                       000000 GR
+  6 _serial_data_available                                         000006 GR
+  6 _slave_send_size                                               000009 GR
+  C _spi_input_buf                                                 000000 GR
+  6 _spi_mode                                                      000007 GR
+  C _spi_output_buf                                                0000DC GR
+ 18 _tx1_isr                                                       000115 GR
+ 18 _txdata                                                        0002FB GR
+  6 _txdata_PARM_2                                                 00000C GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051), page 13.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
- 17 _vcom_flush                                                    0000EA GR
- 17 _vcom_getchar                                                  000132 GR
- 17 _vcom_pollchar                                                 00011B GR
- 17 _vcom_putchar                                                  0000EB GR
- 17 _vcom_putstr                                                   0001FB GR
-  B _vcom_putstr_buff_1_91                                         0001B8 R
- 17 _vcom_readline                                                 0001C2 GR
- 17 _waitForUSBsetup                                               000281 GR
+  6 _txdata_PARM_3                                                 00000D GR
+  6 _txdata_PARM_4                                                 00000F GR
+ 18 _usbIntHandler                                                 000331 GR
+ 18 _usbProcessEvents                                              000263 GR
+  C _usb_ep5_OUTbuf                                                0001B8 GR
+ 18 _usb_up                                                        0002F5 GR
+ 18 _vcom_disable                                                  000213 GR
+ 18 _vcom_down                                                     0002F8 GR
+ 18 _vcom_enable                                                   0001FF GR
+ 18 _vcom_flush                                                    000185 GR
+ 18 _vcom_getchar                                                  0001D4 GR
+ 18 _vcom_pollchar                                                 0001BD GR
+ 18 _vcom_putchar                                                  000186 GR
+ 18 _vcom_putstr                                                   00029D GR
+  C _vcom_putstr_buff_1_98                                         0003CE R
+ 18 _vcom_readline                                                 000264 GR
+ 18 _waitForUSBsetup                                               000333 GR
     a                                                           =  0000E0 L
     a.0                                                         =  0000E0 L
     a.1                                                         =  0000E1 L
@@ -767,6 +776,20 @@ Symbol Table
     b.5                                                         =  0000F5 L
     b.6                                                         =  0000F6 L
     b.7                                                         =  0000F7 L
+  5 b0                                                          =  008000 R
+  5 b1                                                          =  008100 R
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051), page 14.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  5 b2                                                          =  008200 R
+  5 b3                                                          =  008300 R
+  5 b4                                                          =  008400 R
+  5 b5                                                          =  008500 R
+  5 b6                                                          =  008600 R
+  5 b7                                                          =  008700 R
+  5 bits                                                           000000 R
     cprl2                                                       =  0000C8 L
     ct2                                                         =  0000C9 L
     cy                                                          =  0000D7 L
@@ -778,11 +801,6 @@ Symbol Table
     et1                                                         =  0000AB L
     et2                                                         =  0000AD L
     ex0                                                         =  0000A8 L
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051), page 14.
-Hexadecimal [24-Bits]
-
-Symbol Table
-
     ex1                                                         =  0000AA L
     exen2                                                       =  0000CB L
     exf2                                                        =  0000CE L
@@ -820,6 +838,11 @@ Symbol Table
     p0.6                                                        =  000086 L
     p0.7                                                        =  000087 L
     p1                                                          =  000090 L
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051), page 15.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
     p1.0                                                        =  000090 L
     p1.1                                                        =  000091 L
     p1.2                                                        =  000092 L
@@ -838,11 +861,6 @@ Symbol Table
     p2.6                                                        =  0000A6 L
     p2.7                                                        =  0000A7 L
     p3                                                          =  0000B0 L
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051), page 15.
-Hexadecimal [24-Bits]
-
-Symbol Table
-
     p3.0                                                        =  0000B0 L
     p3.1                                                        =  0000B1 L
     p3.2                                                        =  0000B2 L
@@ -880,6 +898,11 @@ Symbol Table
     scon                                                        =  000098 L
     scon.0                                                      =  000098 L
     scon.1                                                      =  000099 L
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051), page 16.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
     scon.2                                                      =  00009A L
     scon.3                                                      =  00009B L
     scon.4                                                      =  00009C L
@@ -898,11 +921,6 @@ Symbol Table
     t2con.4                                                     =  0000CC L
     t2con.5                                                     =  0000CD L
     t2con.6                                                     =  0000CE L
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051), page 16.
-Hexadecimal [24-Bits]
-
-Symbol Table
-
     t2con.7                                                     =  0000CF L
     tb8                                                         =  00009B L
     tclk                                                        =  0000CC L
@@ -941,26 +959,27 @@ Area Table
    2 RSEG0                                      size      0   flags    8
    3 RSEG1                                      size      0   flags    8
    4 REG_BANK_0                                 size      8   flags    4
-   5 DSEG                                       size      F   flags    0
-   6 OSEG                                       size      0   flags    4
-   7 ISEG                                       size      0   flags    0
-   8 IABS                                       size      0   flags    8
-   9 BSEG                                       size      0   flags   80
-   A PSEG                                       size      0   flags   50
-   B XSEG                                       size    1BB   flags   40
-   C XABS                                       size      0   flags   48
-   D XISEG                                      size      0   flags   40
-   E HOME                                       size      0   flags   20
-   F GSINIT0                                    size      0   flags   20
-  10 GSINIT1                                    size      0   flags   20
-  11 GSINIT2                                    size      0   flags   20
-  12 GSINIT3                                    size      0   flags   20
-  13 GSINIT4                                    size      0   flags   20
-  14 GSINIT5                                    size      0   flags   20
-  15 GSINIT                                     size     18   flags   20
-  16 GSFINAL                                    size      0   flags   20
-  17 CSEG                                       size    282   flags   20
-  18 CONST                                      size      0   flags   20
-  19 XINIT                                      size      0   flags   20
-  1A CABS                                       size      0   flags   28
+   5 BIT_BANK                                   size      1   flags    4
+   6 DSEG                                       size     11   flags    0
+   7 OSEG                                       size      0   flags    4
+   8 ISEG                                       size      0   flags    0
+   9 IABS                                       size      0   flags    8
+   A BSEG                                       size      0   flags   80
+   B PSEG                                       size      0   flags   50
+   C XSEG                                       size    3D4   flags   40
+   D XABS                                       size      0   flags   48
+   E XISEG                                      size      0   flags   40
+   F HOME                                       size      0   flags   20
+  10 GSINIT0                                    size      0   flags   20
+  11 GSINIT1                                    size      0   flags   20
+  12 GSINIT2                                    size      0   flags   20
+  13 GSINIT3                                    size      0   flags   20
+  14 GSINIT4                                    size      0   flags   20
+  15 GSINIT5                                    size      0   flags   20
+  16 GSINIT                                     size     18   flags   20
+  17 GSFINAL                                    size      0   flags   20
+  18 CSEG                                       size    36C   flags   20
+  19 CONST                                      size      0   flags   20
+  1A XINIT                                      size      0   flags   20
+  1B CABS                                       size      0   flags   28
 

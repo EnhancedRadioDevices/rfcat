@@ -43,7 +43,7 @@
 // communications interface is SPI with a custom transport layer.
  
 // USB simulation stuff
-#define     EP5OUT_BUFFER_SIZE      516 // data buffer size + 4
+/*#define     EP5OUT_BUFFER_SIZE      516 // data buffer size + 4
 
 #define     EP_STATE_IDLE      0
 #define     EP_STATE_TX        1
@@ -62,7 +62,7 @@ typedef struct {
     u8   epstatus;
     __xdata u8* dptr;
 } USB_EP_IO_BUF;
- 
+ */
  
 // External interface
 
