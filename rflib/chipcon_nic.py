@@ -1,7 +1,7 @@
 #!/usr/bin/env ipython
 import re
 import sys
-import usb
+#import usb
 import code
 import time
 import struct
