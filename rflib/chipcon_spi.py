@@ -9,6 +9,8 @@ from chipcondefs import *
 
 import spi_serial
 
+DEFAULT_USB_TIMEOUT = 1000
+
 USB_RX_WAIT         = 1000
 USB_TX_WAIT         = 10000
 
@@ -185,9 +187,9 @@ class USBDongle:
             
                     mode = 'app'
                 else:
-                    cmd_str += d
+                    cmd_str += chr(d)
                 
-        return length(spi_dat)
+        return len(spi_dat)
         
     def spi_ping(self):
         return 0
