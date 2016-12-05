@@ -66,6 +66,9 @@ CHIPS = {
 def keystop(delay=0):
     return len(select.select([sys.stdin],[],[],delay)[0])
 
+class ChipconUsbTimeoutException(Exception):
+    def __str__(self):
+        return "Timeout waiting for USB response."
 
 direct=False
 
