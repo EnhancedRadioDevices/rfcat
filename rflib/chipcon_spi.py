@@ -94,7 +94,16 @@ class USBDongle:
         self.max_packet_size = 100 #USB_MAX_BLOCK_SIZE
 
     def cleanup(self):
-        pass
+        self._usberrorcnt = 0;
+        self.recv_queue = ''
+        self.recv_mbox  = {}
+        self.recv_event = threading.Event()
+        self.xmit_event = threading.Event()
+        self.reset_event = threading.Event()
+        self.xmit_queue = []
+        self.xmit_event.clear()
+        self.reset_event.clear()
+        self.trash = []
    
     def setRFparameters(self):
         pass
@@ -185,7 +194,7 @@ class USBDongle:
             
                     mode = 'app'
                 else:
-                    cmd_str += d
+                    cmd_str += chr(d)
                 
         return length(spi_dat)
         
