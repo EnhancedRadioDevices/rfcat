@@ -9,6 +9,9 @@ from chipcondefs import *
 
 import spi_serial
 
+USB_RX_WAIT         = 1000
+USB_TX_WAIT         = 10000
+
 APP_GENERIC                     = 0x01
 APP_DEBUG                       = 0xfe
 APP_SYSTEM                      = 0xff
