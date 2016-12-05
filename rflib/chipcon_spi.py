@@ -1,11 +1,11 @@
 #!/usr/bin/env ipython
 import sys, threading, time, struct, select
-import usb
+#import usb
 
 import bits
 from chipcondefs import *
-from rflib_defs import *
-from rflib_version import *
+#from rflib_defs import *
+#from rflib_version import *
 
 import spi_serial
 

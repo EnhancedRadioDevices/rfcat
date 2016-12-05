@@ -8,7 +8,8 @@ import struct
 import pickle
 import threading
 #from chipcondefs import *
-from chipcon_usb import *
+#from chipcon_usb import *
+from chipcon_spi import *
 
 # band limits in Hz
 FREQ_MIN_300  = 281000000
