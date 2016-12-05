@@ -254,8 +254,7 @@ class USBDongle:
                 except:
                     sys.excepthook(*sys.exc_info())
             else:
-                try:
-                    self.recv_mbox[app]={}
+                self.recv_mbox[app]={}
             return retval
 
     def send(self, app, cmd, buf, wait=USB_TX_WAIT):
@@ -343,7 +342,6 @@ class USBDongle:
 
     def bootloader(self):
         pass
-            pass
         
     def RESET(self):
         self.SpiSerial.reset()
