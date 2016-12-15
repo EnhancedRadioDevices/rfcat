@@ -1,5 +1,7 @@
 welcome to the 900MHz Explorer port of the rfcat project
 
+This is a fork of atlas0fd00m's project: https://bitbucket.org/atlas0fd00m/rfcat
+
 # TOC
 * Goals
 * Requirements
@@ -56,7 +58,7 @@ Start by connecting your Intel Edison to your Explorer board. Get the spi_serial
     ./ccprog -p 19,7,36 erase
     ./ccprog -p 19,7,36 write ExplorerCat.hex
 
-# INSTALLING - Edison-SIDE
+# INSTALLING - EDISON-SIDE
 
 Dependencies:  spi_serial
 
