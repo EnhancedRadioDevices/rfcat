@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
-; This file was generated Wed Nov 30 16:38:12 2016
+; Version 3.3.0 #8604 (Dec 30 2013) (Linux)
+; This file was generated Wed Dec 14 17:38:39 2016
 ;--------------------------------------------------------
 	.module global
 	.optsdcc -mmcs51 --model-small
@@ -729,9 +729,9 @@ _blink_binary_baby_lsb_PARM_2:
 	.area	OSEG    (OVR,DATA)
 _strncmp_PARM_3:
 	.ds 2
-_strncmp_sloc0_1_0:
+_strncmp_tst_1_59:
 	.ds 1
-_strncmp_sloc1_1_0:
+_strncmp_sloc0_1_0:
 	.ds 2
 ;--------------------------------------------------------
 ; indirectly addressable internal ram data
@@ -1047,13 +1047,14 @@ _sleepMillis:
 ;	global.c:12: while (--ms > 0) 
 00102$:
 	dec	r6
-	cjne	r6,#0xFF,00123$
+	cjne	r6,#0xFF,00124$
 	dec	r7
-00123$:
+00124$:
 	clr	c
 	clr	a
 	subb	a,r6
-	mov	a,#(0x00 ^ 0x80)
+	clr	a
+	xrl	a,#0x80
 	mov	b,r7
 	xrl	b,#0x80
 	subb	a,b
@@ -1062,16 +1063,12 @@ _sleepMillis:
 	mov	r4,#0x4C
 	mov	r5,#0x04
 00107$:
+	dec	r4
+	cjne	r4,#0xFF,00126$
+	dec	r5
+00126$:
 	mov	a,r4
-	add	a,#0xFF
-	mov	r2,a
-	mov	a,r5
-	addc	a,#0xFF
-	mov	r3,a
-	mov	ar4,r2
-	mov	ar5,r3
-	mov	a,r2
-	orl	a,r3
+	orl	a,r5
 	jnz	00107$
 	sjmp	00102$
 00108$:
@@ -1103,7 +1100,8 @@ _sleepMicros:
 	clr	c
 	clr	a
 	subb	a,r6
-	mov	a,#(0x00 ^ 0x80)
+	clr	a
+	xrl	a,#0x80
 	mov	b,r7
 	xrl	b,#0x80
 	subb	a,b
@@ -1210,9 +1208,8 @@ _blink_binary_baby_lsb:
 ;s2                        Allocated with name '_strncmp_PARM_2'
 ;s1                        Allocated with name '_strncmp_s1_1_58'
 ;n                         Allocated with name '_strncmp_PARM_3'
-;tst                       Allocated with name '_strncmp_sloc0_1_0'
+;tst                       Allocated with name '_strncmp_tst_1_59'
 ;sloc0                     Allocated with name '_strncmp_sloc0_1_0'
-;sloc1                     Allocated with name '_strncmp_sloc1_1_0'
 ;------------------------------------------------------------
 ;	global.c:88: int strncmp(const char * __xdata s1, const char * __xdata s2, u16 n)
 ;	-----------------------------------------
@@ -1272,20 +1269,20 @@ _strncmp:
 	mov	a,r1
 	clr	c
 	subb	a,r0
+	mov	_strncmp_tst_1_59,a
 ;	global.c:95: if (tst)
-	mov	r1,a
-	mov	_strncmp_sloc0_1_0,r1
 	pop	ar1
 	pop	ar0
+	mov	a,_strncmp_tst_1_59
 	jz	00102$
 ;	global.c:96: return tst;
-	mov	a,_strncmp_sloc0_1_0
-	mov	_strncmp_sloc1_1_0,a
+	mov	a,_strncmp_tst_1_59
+	mov	_strncmp_sloc0_1_0,a
 	rlc	a
 	subb	a,acc
-	mov	(_strncmp_sloc1_1_0 + 1),a
-	mov	dpl,_strncmp_sloc1_1_0
-	mov	dph,(_strncmp_sloc1_1_0 + 1)
+	mov	(_strncmp_sloc0_1_0 + 1),a
+	mov	dpl,_strncmp_sloc0_1_0
+	mov	dph,(_strncmp_sloc0_1_0 + 1)
 	ret
 00102$:
 ;	global.c:97: s1++;
@@ -1366,15 +1363,28 @@ _clock_init:
 ;	 function io_init
 ;	-----------------------------------------
 _io_init:
-;	global.c:190: P1DIR |= 3;
-	orl	_P1DIR,#0x03
-;	global.c:196: LED = 0;
+;	global.c:172: IEN2&=~IEN2_WDTIE;
+	mov	r7,_IEN2
+	mov	a,#0xDF
+	anl	a,r7
+	mov	_IEN2,a
+;	global.c:173: IEN0&=~EA;
+	mov	c,_EA
+	clr	a
+	rlc	a
+	cpl	a
+	anl	_IEN0,a
+;	global.c:180: P2DIR |= BIT3|BIT4;
+	orl	_P2DIR,#0x18
+;	global.c:181: P2_3 = 0;
+	clr	_P2_3
+;	global.c:182: P2_4 = 0;
 	clr	_P2_4
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 't1IntHandler'
 ;------------------------------------------------------------
-;	global.c:203: void t1IntHandler(void) __interrupt T1_VECTOR  // interrupt handler should trigger on T1 overflow
+;	global.c:219: void t1IntHandler(void) __interrupt T1_VECTOR  // interrupt handler should trigger on T1 overflow
 ;	-----------------------------------------
 ;	 function t1IntHandler
 ;	-----------------------------------------
@@ -1383,7 +1393,7 @@ _t1IntHandler:
 	push	dpl
 	push	dph
 	push	psw
-;	global.c:205: clock ++;
+;	global.c:221: clock ++;
 	mov	dptr,#_clock
 	movx	a,@dptr
 	add	a,#0x01

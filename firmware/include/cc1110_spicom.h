@@ -21,6 +21,9 @@
 #define _USB_H_
  
 #include "cc1111.h"
+//#include <cc1110.h>
+//#include "cc1110-ext.h"
+
 #include "types.h"
 #include <stdint.h>
 
@@ -82,4 +85,6 @@ void vcom(char* __xdata  buff);
 void usb_up(void);
 void usb_down(void);
 void registerCb_ep5(int (*callback)(void));
+void processOUTEP5(void);
+
 #endif // _USB_H_

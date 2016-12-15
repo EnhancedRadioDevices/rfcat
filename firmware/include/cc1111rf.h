@@ -1,7 +1,10 @@
 #ifndef CC1111RF_H
 #define CC1111RF_H
 
-#include "cc1111.h"
+//#include "cc1111.h"
+#include <cc1110.h>
+#include "cc1110-ext.h"
+
 #include "global.h"
 
 // use DMA for RF?

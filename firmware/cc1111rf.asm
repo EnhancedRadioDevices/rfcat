@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
-; This file was generated Wed Nov 30 16:38:11 2016
+; Version 3.3.0 #8604 (Dec 30 2013) (Linux)
+; This file was generated Wed Dec 14 17:38:39 2016
 ;--------------------------------------------------------
 	.module cc1111rf
 	.optsdcc -mmcs51 --model-small
@@ -17,8 +17,8 @@
 	.globl _encAES
 	.globl _padAES
 	.globl _appInitRf
-	.globl _usbProcessEvents
 	.globl _sleepMicros
+	.globl _usbProcessEvents
 	.globl _USBIF
 	.globl _MODE
 	.globl _RE
@@ -775,7 +775,7 @@ bits:
 	.area DSEG    (DATA)
 _rfif::
 	.ds 1
-_transmit_sloc0_1_0:
+_transmit_sloc1_1_0:
 	.ds 2
 _rfIntHandler_encoffset_1_136:
 	.ds 1
@@ -795,6 +795,10 @@ _rfIntHandler_encoffset_1_136:
 ; bit data
 ;--------------------------------------------------------
 	.area BSEG    (BIT)
+_transmit_sloc0_1_0:
+	.ds 1
+_rfIntHandler_sloc0_1_0:
+	.ds 1
 ;--------------------------------------------------------
 ; paged external ram data
 ;--------------------------------------------------------
@@ -1261,17 +1265,13 @@ _RxMode:
 	ret
 00108$:
 ;	cc1111rf.c:82: MCSM1 &= 0xf0;
+;	cc1111rf.c:83: MCSM1 |= 0x0f;
 	mov	dptr,#_MCSM1
 	movx	a,@dptr
-	mov	r7,a
-	mov	a,#0xF0
-	anl	a,r7
+	anl	a,#0xF0
 	movx	@dptr,a
-;	cc1111rf.c:83: MCSM1 |= 0x0f;
 	movx	a,@dptr
-	mov	r7,a
-	mov	a,#0x0F
-	orl	a,r7
+	orl	a,#0x0F
 	movx	@dptr,a
 ;	cc1111rf.c:84: rf_status = RFST_SRX;
 	mov	dptr,#_rf_status
@@ -1295,25 +1295,21 @@ _TxMode:
 	ret
 00117$:
 ;	cc1111rf.c:95: MCSM1 &= 0xf0;
+;	cc1111rf.c:96: MCSM1 |= 0x0a;
 	mov	dptr,#_MCSM1
 	movx	a,@dptr
-	mov	r7,a
-	mov	a,#0xF0
-	anl	a,r7
+	anl	a,#0xF0
 	movx	@dptr,a
-;	cc1111rf.c:96: MCSM1 |= 0x0a;
 	movx	a,@dptr
 	mov	r7,a
-	mov	a,#0x0A
-	orl	a,r7
+	orl	a,#0x0A
 	movx	@dptr,a
 ;	cc1111rf.c:98: rf_status = RFST_STX;
 	mov	dptr,#_rf_status
 	mov	a,#0x03
 	movx	@dptr,a
 ;	cc1111rf.c:99: RFTX;
-;	1-genFromRTrack replaced	mov	_RFST,#0x03
-	mov	_RFST,a
+	mov	_RFST,#0x03
 00101$:
 	mov	dptr,#_MARCSTATE
 	movx	a,@dptr
@@ -1338,9 +1334,7 @@ _IdleMode:
 ;	cc1111rf.c:109: MCSM1 &= 0xf0;
 	mov	dptr,#_MCSM1
 	movx	a,@dptr
-	mov	r7,a
-	mov	a,#0xF0
-	anl	a,r7
+	anl	a,#0xF0
 	movx	@dptr,a
 ;	cc1111rf.c:110: RFIM &= ~RFIF_IRQ_DONE;
 	mov	r7,_RFIM
@@ -1381,16 +1375,21 @@ _init_RF:
 	mov	dptr,#_rf_tLastRecv
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 ;	cc1111rf.c:136: rfRxCounter[FIRST_BUFFER] = 0;
 	mov	dptr,#_rfRxCounter
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 ;	cc1111rf.c:137: rfRxCounter[SECOND_BUFFER] = 0;
 	mov	dptr,#(_rfRxCounter + 0x0002)
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 ;	cc1111rf.c:150: CLKCON &= 0xc7;
@@ -1412,8 +1411,7 @@ _init_RF:
 ;	cc1111rf.c:171: memset(rfrxbuf,0,(BUFFER_AMOUNT * BUFFER_SIZE));
 	mov	_memset_PARM_2,#0x00
 	mov	_memset_PARM_3,#0x00
-;	1-genFromRTrack replaced	mov	(_memset_PARM_3 + 1),#0x04
-	mov	(_memset_PARM_3 + 1),a
+	mov	(_memset_PARM_3 + 1),#0x04
 	mov	dptr,#_rfrxbuf
 	mov	b,#0x00
 	lcall	_memset
@@ -1489,7 +1487,7 @@ _waitRSSI:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'transmit'
 ;------------------------------------------------------------
-;sloc0                     Allocated with name '_transmit_sloc0_1_0'
+;sloc1                     Allocated with name '_transmit_sloc1_1_0'
 ;len                       Allocated with name '_transmit_PARM_2'
 ;repeat                    Allocated with name '_transmit_PARM_3'
 ;offset                    Allocated with name '_transmit_PARM_4'
@@ -1525,7 +1523,10 @@ _transmit:
 	mov	r6,a
 	cjne	r6,#0x13,00103$
 ;	cc1111rf.c:222: LED = !LED;
-	cpl	_P2_4
+	mov	c,_P2_4
+	cpl	c
+	mov  _transmit_sloc0_1_0,c
+	mov	_P2_4,c
 	sjmp	00101$
 00103$:
 ;	cc1111rf.c:228: LED = 0;
@@ -1630,12 +1631,12 @@ _transmit:
 	mov	dph,r4
 	movx	a,@dptr
 	mov	r0,a
-	mov	_transmit_sloc0_1_0,r0
-	mov	(_transmit_sloc0_1_0 + 1),#0x00
+	mov	_transmit_sloc1_1_0,r0
+	mov	(_transmit_sloc1_1_0 + 1),#0x00
 	mov	dptr,#_transmit_PARM_2
-	mov	a,_transmit_sloc0_1_0
+	mov	a,_transmit_sloc1_1_0
 	movx	@dptr,a
-	mov	a,(_transmit_sloc0_1_0 + 1)
+	mov	a,(_transmit_sloc1_1_0 + 1)
 	inc	dptr
 	movx	@dptr,a
 ;	cc1111rf.c:246: switch (PKTCTRL0 & PKTCTRL0_LENGTH_CONFIG)
@@ -1654,10 +1655,10 @@ _transmit:
 ;	cc1111rf.c:249: len++;  // we need to send the length byte too...
 	mov	dptr,#_transmit_PARM_2
 	mov	a,#0x01
-	add	a,_transmit_sloc0_1_0
+	add	a,_transmit_sloc1_1_0
 	movx	@dptr,a
 	clr	a
-	addc	a,(_transmit_sloc0_1_0 + 1)
+	addc	a,(_transmit_sloc1_1_0 + 1)
 	inc	dptr
 	movx	@dptr,a
 ;	cc1111rf.c:250: break;
@@ -1760,9 +1761,7 @@ _transmit:
 ;	cc1111rf.c:279: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
 	mov	dptr,#_PKTCTRL0
 	movx	a,@dptr
-	mov	r6,a
-	mov	a,#0xFC
-	anl	a,r6
+	anl	a,#0xFC
 	movx	@dptr,a
 ;	cc1111rf.c:281: if(rfTxTotalTXLen > RF_MAX_TX_BLOCK)
 	mov	dptr,#_rfTxTotalTXLen
@@ -1771,18 +1770,12 @@ _transmit:
 	inc	dptr
 	movx	a,@dptr
 	mov	r6,a
-	clr	c
-	mov	a,#0xFF
-	subb	a,r5
-	clr	a
-	subb	a,r6
-	jnc	00111$
+	jz	00111$
 ;	cc1111rf.c:282: PKTCTRL0 |= PKTCTRL0_LENGTH_CONFIG_INF;
 	mov	dptr,#_PKTCTRL0
 	movx	a,@dptr
 	mov	r6,a
-	mov	a,#0x02
-	orl	a,r6
+	orl	a,#0x02
 	movx	@dptr,a
 00111$:
 ;	cc1111rf.c:284: rfTxInfMode = 1;
@@ -2013,6 +2006,7 @@ _transmit:
 	mov	dptr,#_rfTxCounter
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 ;	cc1111rf.c:393: RFST = RFST_STX;
@@ -2035,7 +2029,10 @@ _transmit:
 	orl	a,r6
 	jz	00139$
 ;	cc1111rf.c:400: LED = !LED;
-	cpl	_P2_4
+	mov	c,_P2_4
+	cpl	c
+	mov  _transmit_sloc0_1_0,c
+	mov	_P2_4,c
 	sjmp	00137$
 00139$:
 ;	cc1111rf.c:406: LED = 1;
@@ -2055,7 +2052,10 @@ _transmit:
 	mov	r6,a
 	cjne	r6,#0x13,00144$
 ;	cc1111rf.c:414: LED = !LED;
-	cpl	_P2_4
+	mov	c,_P2_4
+	cpl	c
+	mov  _transmit_sloc0_1_0,c
+	mov	_P2_4,c
 ;	cc1111rf.c:416: usbProcessEvents();
 	push	ar7
 	lcall	_usbProcessEvents
@@ -2092,19 +2092,23 @@ _startRX:
 	mov	dptr,#_rfRxCounter
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 ;	cc1111rf.c:447: rfRxCounter[SECOND_BUFFER] = 0;
 	mov	dptr,#(_rfRxCounter + 0x0002)
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 ;	cc1111rf.c:453: rfRxProcessed[FIRST_BUFFER] = RX_UNPROCESSED;
 	mov	dptr,#_rfRxProcessed
+	clr	a
 	movx	@dptr,a
 ;	cc1111rf.c:454: rfRxProcessed[SECOND_BUFFER] = RX_PROCESSED;
 	mov	dptr,#(_rfRxProcessed + 0x0001)
-	inc	a
+	mov	a,#0x01
 	movx	@dptr,a
 ;	cc1111rf.c:457: rfRxCurrentBuffer = 0;
 	mov	dptr,#_rfRxCurrentBuffer
@@ -2199,7 +2203,7 @@ _rfTxRxIntHandler:
 ;	cc1111rf.c:538: if(rfRxInfMode)
 	mov	dptr,#_rfRxInfMode
 	movx	a,@dptr
-	movx	a,@dptr
+	mov	r7,a
 	jz	00104$
 ;	cc1111rf.c:539: if(rfRxTotalRXLen-- < 256)
 	mov	dptr,#_rfRxTotalRXLen
@@ -2222,15 +2226,13 @@ _rfTxRxIntHandler:
 	mov	a,r5
 	inc	dptr
 	movx	@dptr,a
-	mov	a,#0x100 - 0x01
-	add	a,r7
-	jc	00104$
+	mov	a,r7
+	jnz	00104$
 ;	cc1111rf.c:540: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
 	mov	dptr,#_PKTCTRL0
 	movx	a,@dptr
 	mov	r7,a
-	mov	a,#0xFC
-	anl	a,r7
+	anl	a,#0xFC
 	movx	@dptr,a
 00104$:
 ;	cc1111rf.c:541: rf_status = RFST_SRX;
@@ -2248,6 +2250,7 @@ _rfTxRxIntHandler:
 	mov	a,r6
 	addc	a,#(_rfrxbuf >> 8)
 	mov	r6,a
+	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
 	mov	b,#0x02
 	mul	ab
@@ -2299,9 +2302,8 @@ _rfTxRxIntHandler:
 	inc	dptr
 	movx	a,@dptr
 	mov	r7,a
-	clr	c
-	subb	a,#0x02
-	jnc	00105$
+	anl	a,#0xFE
+	jnz	00105$
 	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
 	mov	b,#0x02
@@ -2339,23 +2341,20 @@ _rfTxRxIntHandler:
 ;	cc1111rf.c:548: if(!rfRxTotalRXLen && rfRxInfMode)
 	mov	dptr,#_rfRxTotalRXLen
 	movx	a,@dptr
+	mov	r6,a
 	inc	dptr
 	movx	a,@dptr
-	mov	dptr,#_rfRxTotalRXLen
-	movx	a,@dptr
-	mov	b,a
-	inc	dptr
-	movx	a,@dptr
-	orl	a,b
-	jz	00182$
+	mov	r7,a
+	orl	a,r6
+	jz	00184$
 	ljmp	00132$
-00182$:
+00184$:
 	mov	dptr,#_rfRxInfMode
 	movx	a,@dptr
-	movx	a,@dptr
-	jnz	00183$
+	mov	r7,a
+	jnz	00185$
 	ljmp	00132$
-00183$:
+00185$:
 ;	cc1111rf.c:550: rfRxTotalRXLen = rfRxLargeLen;
 	mov	dptr,#_rfRxLargeLen
 	movx	a,@dptr
@@ -2379,17 +2378,14 @@ _rfTxRxIntHandler:
 	mov	a,r6
 	movx	@dptr,a
 ;	cc1111rf.c:552: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
+;	cc1111rf.c:553: PKTCTRL0 |= PKTCTRL0_LENGTH_CONFIG_INF;
 	mov	dptr,#_PKTCTRL0
 	movx	a,@dptr
-	mov	r7,a
-	mov	a,#0xFC
-	anl	a,r7
+	anl	a,#0xFC
 	movx	@dptr,a
-;	cc1111rf.c:553: PKTCTRL0 |= PKTCTRL0_LENGTH_CONFIG_INF;
 	movx	a,@dptr
 	mov	r7,a
-	mov	a,#0x02
-	orl	a,r7
+	orl	a,#0x02
 	movx	@dptr,a
 	ljmp	00132$
 00130$:
@@ -2397,18 +2393,18 @@ _rfTxRxIntHandler:
 	mov	dptr,#_MARCSTATE
 	movx	a,@dptr
 	mov	r7,a
-	cjne	r7,#0x13,00184$
-	sjmp	00185$
-00184$:
+	cjne	r7,#0x13,00186$
+	sjmp	00187$
+00186$:
 	ljmp	00132$
-00185$:
+00187$:
 ;	cc1111rf.c:560: if (rfTxInfMode)
 	mov	dptr,#_rfTxInfMode
 	movx	a,@dptr
-	movx	a,@dptr
-	jnz	00186$
+	mov	r7,a
+	jnz	00188$
 	ljmp	00125$
-00186$:
+00188$:
 ;	cc1111rf.c:567: macdata.tLastHop ++;
 	mov	dptr,#(_macdata + 0x000d)
 	movx	a,@dptr
@@ -2417,9 +2413,9 @@ _rfTxRxIntHandler:
 	movx	a,@dptr
 	mov	r7,a
 	inc	r6
-	cjne	r6,#0x00,00187$
+	cjne	r6,#0x00,00189$
 	inc	r7
-00187$:
+00189$:
 	mov	dptr,#(_macdata + 0x000d)
 	mov	a,r6
 	movx	@dptr,a
@@ -2440,24 +2436,21 @@ _rfTxRxIntHandler:
 	movx	a,@dptr
 	mov	r5,a
 	mov	a,r6
-	cjne	a,ar4,00188$
+	cjne	a,ar4,00190$
 	mov	a,r7
-	cjne	a,ar5,00188$
-	sjmp	00189$
-00188$:
+	cjne	a,ar5,00190$
+	sjmp	00191$
+00190$:
 	ljmp	00121$
-00189$:
+00191$:
 ;	cc1111rf.c:571: if (rfTxRepeatCounter)
 	mov	dptr,#_rfTxRepeatCounter
 	movx	a,@dptr
+	mov	r6,a
 	inc	dptr
 	movx	a,@dptr
-	mov	dptr,#_rfTxRepeatCounter
-	movx	a,@dptr
-	mov	b,a
-	inc	dptr
-	movx	a,@dptr
-	orl	a,b
+	mov	r7,a
+	orl	a,r6
 	jz	00118$
 ;	cc1111rf.c:573: if(rfTxRepeatCounter != 0xff)
 	mov	dptr,#_rfTxRepeatCounter
@@ -2466,10 +2459,10 @@ _rfTxRxIntHandler:
 	inc	dptr
 	movx	a,@dptr
 	mov	r7,a
-	cjne	r6,#0xFF,00191$
-	cjne	r7,#0x00,00191$
+	cjne	r6,#0xFF,00193$
+	cjne	r7,#0x00,00193$
 	sjmp	00112$
-00191$:
+00193$:
 ;	cc1111rf.c:574: rfTxRepeatCounter--;
 	mov	dptr,#_rfTxRepeatCounter
 	movx	a,@dptr
@@ -2536,6 +2529,7 @@ _rfTxRxIntHandler:
 	movx	a,@dptr
 	add	a,#0x01
 	movx	@dptr,a
+	mov	dptr,#_rfTxCurBufIdx
 	movx	a,@dptr
 	mov	r7,a
 	mov	dptr,#_rfTxBufCount
@@ -2628,8 +2622,7 @@ _rfTxRxIntHandler:
 	mov	dptr,#_PKTCTRL0
 	movx	a,@dptr
 	mov	r7,a
-	mov	a,#0xFC
-	anl	a,r7
+	anl	a,#0xFC
 	movx	@dptr,a
 	sjmp	00126$
 00125$:
@@ -2873,6 +2866,7 @@ _rfIntHandler:
 	mov	a,r4
 	addc	a,r5
 	mov	r5,a
+	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
 	mov	r1,a
 	add	a,r1
@@ -2889,6 +2883,7 @@ _rfIntHandler:
 	mov	a,r4
 	addc	a,r2
 	mov	r4,a
+	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
 	mov	b,#0x02
 	mul	ab
@@ -2954,6 +2949,7 @@ _rfIntHandler:
 	mov	a,r5
 	addc	a,r6
 	mov	r6,a
+	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
 	add	a,acc
 	mov	r2,a
@@ -2969,6 +2965,7 @@ _rfIntHandler:
 	mov	a,r5
 	addc	a,r2
 	mov	r5,a
+	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
 	mov	b,#0x02
 	mul	ab
@@ -3017,11 +3014,10 @@ _rfIntHandler:
 ;	cc1111rf.c:671: rfRxCurrentBuffer ^= 1;
 	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
-	mov	r7,a
-	mov	a,#0x01
-	xrl	a,r7
+	xrl	a,#0x01
 	movx	@dptr,a
 ;	cc1111rf.c:672: rfRxCounter[rfRxCurrentBuffer] = 0;
+	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
 	mov	r7,a
 	mov	b,#0x02
@@ -3033,12 +3029,14 @@ _rfIntHandler:
 	mov	dph,a
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 ;	cc1111rf.c:674: rfRxProcessed[FIRST_BUFFER] = RX_UNPROCESSED;
 	mov	dptr,#_rfRxProcessed
-	movx	@dptr,a
 ;	cc1111rf.c:675: rfRxProcessed[SECOND_BUFFER] = RX_UNPROCESSED;
+	clr	a
+	movx	@dptr,a
 	mov	dptr,#(_rfRxProcessed + 0x0001)
 	movx	@dptr,a
 	sjmp	00112$
@@ -3048,7 +3046,10 @@ _rfIntHandler:
 	mov	a,#0x12
 	movx	@dptr,a
 ;	cc1111rf.c:693: LED = !LED;
-	cpl	_P2_4
+	mov	c,_P2_4
+	cpl	c
+	mov  _rfIntHandler_sloc0_1_0,c
+	mov	_P2_4,c
 ;	cc1111rf.c:694: rfRxCounter[rfRxCurrentBuffer] = 0;
 	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
@@ -3062,10 +3063,14 @@ _rfIntHandler:
 	mov	dph,a
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 ;	cc1111rf.c:695: LED = !LED;
-	cpl	_P2_4
+	mov	c,_P2_4
+	cpl	c
+	mov  _rfIntHandler_sloc0_1_0,c
+	mov	_P2_4,c
 00112$:
 ;	cc1111rf.c:698: LED = 0;
 	clr	_P2_4
@@ -3084,11 +3089,17 @@ _rfIntHandler:
 	mov	a,#0x10
 	movx	@dptr,a
 ;	cc1111rf.c:710: LED = !LED;
-	cpl	_P2_4
+	mov	c,_P2_4
+	cpl	c
+	mov  _rfIntHandler_sloc0_1_0,c
+	mov	_P2_4,c
 ;	cc1111rf.c:712: resetRFSTATE();
 	lcall	_resetRFSTATE
 ;	cc1111rf.c:714: LED = !LED;
-	cpl	_P2_4
+	mov	c,_P2_4
+	cpl	c
+	mov  _rfIntHandler_sloc0_1_0,c
+	mov	_P2_4,c
 ;	cc1111rf.c:715: RFIF &= ~RFIF_IRQ_RXOVF;
 	mov	r7,_RFIF
 	mov	a,#0xBF
@@ -3103,11 +3114,17 @@ _rfIntHandler:
 	mov	a,#0x11
 	movx	@dptr,a
 ;	cc1111rf.c:722: LED = !LED;
-	cpl	_P2_4
+	mov	c,_P2_4
+	cpl	c
+	mov  _rfIntHandler_sloc0_1_0,c
+	mov	_P2_4,c
 ;	cc1111rf.c:724: resetRFSTATE();
 	lcall	_resetRFSTATE
 ;	cc1111rf.c:726: LED = !LED;
-	cpl	_P2_4
+	mov	c,_P2_4
+	cpl	c
+	mov  _rfIntHandler_sloc0_1_0,c
+	mov	_P2_4,c
 ;	cc1111rf.c:728: RFIF &= ~RFIF_IRQ_TXUNF;
 	mov	r7,_RFIF
 	mov	a,#0x7F

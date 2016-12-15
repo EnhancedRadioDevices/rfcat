@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
-; This file was generated Wed Nov 30 16:38:16 2016
+; Version 3.3.0 #8604 (Dec 30 2013) (Linux)
+; This file was generated Wed Dec 14 17:38:40 2016
 ;--------------------------------------------------------
 	.module appFHSSNIC
 	.optsdcc -mmcs51 --model-small
@@ -39,16 +39,16 @@
 	.globl _transmit
 	.globl _IdleMode
 	.globl _RxMode
+	.globl _io_init
+	.globl _clock_init
+	.globl _sleepMillis
 	.globl _initDMA
 	.globl _appReturn
 	.globl _txdata
-	.globl _clock_init
 	.globl _debughex16
 	.globl _debughex
 	.globl _debugx
 	.globl _debug
-	.globl _io_init
-	.globl _sleepMillis
 	.globl _USBIF
 	.globl _MODE
 	.globl _RE
@@ -794,7 +794,7 @@ _appHandleEP5_sloc1_1_0:
 ;--------------------------------------------------------
 ; Stack segment in internal ram 
 ;--------------------------------------------------------
-	.area	SSEG
+	.area	SSEG	(DATA)
 __start__stack:
 	.ds	1
 
@@ -1054,35 +1054,35 @@ _g_NIC_ID::
 	.ds 2
 _g_txMsgQueue::
 	.ds 482
-_PHY_set_channel_chan_1_90:
+_PHY_set_channel_chan_1_91:
 	.ds 2
-_begin_hopping_T2_offset_1_96:
+_begin_hopping_T2_offset_1_97:
 	.ds 1
 _transmit_long_PARM_2:
 	.ds 2
 _transmit_long_PARM_3:
 	.ds 1
-_transmit_long_buf_1_100:
+_transmit_long_buf_1_101:
 	.ds 2
 _MAC_tx_PARM_2:
 	.ds 1
-_MAC_tx_msg_1_111:
+_MAC_tx_msg_1_112:
 	.ds 2
-_MAC_sync_CellID_1_121:
+_MAC_sync_CellID_1_122:
 	.ds 2
-_MAC_set_chanidx_chanidx_1_129:
+_MAC_set_chanidx_chanidx_1_130:
 	.ds 2
-_MAC_set_NIC_ID_NIC_ID_1_131:
+_MAC_set_NIC_ID_NIC_ID_1_132:
 	.ds 2
 _MAC_rx_handle_PARM_2:
 	.ds 2
-_t2IntHandler_packet_1_138:
+_t2IntHandler_packet_1_139:
 	.ds 28
 _processbuffer::
 	.ds 1
 _chan_table::
 	.ds 2
-_appHandleEP5_len_1_178:
+_appHandleEP5_len_1_179:
 	.ds 2
 ;--------------------------------------------------------
 ; absolute external ram data
@@ -1171,9 +1171,9 @@ __sdcc_program_startup:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PHY_set_channel'
 ;------------------------------------------------------------
-;chan                      Allocated with name '_PHY_set_channel_chan_1_90'
+;chan                      Allocated with name '_PHY_set_channel_chan_1_91'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:72: void PHY_set_channel(__xdata u16 chan)
+;	appFHSSNIC.c:74: void PHY_set_channel(__xdata u16 chan)
 ;	-----------------------------------------
 ;	 function PHY_set_channel
 ;	-----------------------------------------
@@ -1188,20 +1188,20 @@ _PHY_set_channel:
 	ar0 = 0x00
 	mov	r7,dph
 	mov	a,dpl
-	mov	dptr,#_PHY_set_channel_chan_1_90
+	mov	dptr,#_PHY_set_channel_chan_1_91
 	movx	@dptr,a
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:75: RFOFF;
+;	appFHSSNIC.c:77: RFOFF;
 	mov	_RFST,#0x04
 00101$:
 	mov	dptr,#_MARCSTATE
 	movx	a,@dptr
 	mov	r7,a
 	cjne	r7,#0x01,00101$
-;	appFHSSNIC.c:77: CHANNR = chan;
-	mov	dptr,#_PHY_set_channel_chan_1_90
+;	appFHSSNIC.c:79: CHANNR = chan;
+	mov	dptr,#_PHY_set_channel_chan_1_91
 	movx	a,@dptr
 	mov	r6,a
 	inc	dptr
@@ -1210,7 +1210,7 @@ _PHY_set_channel:
 	mov	dptr,#_CHANNR
 	mov	a,r6
 	movx	@dptr,a
-;	appFHSSNIC.c:79: RFRX;
+;	appFHSSNIC.c:81: RFRX;
 	mov	_RFST,#0x02
 00107$:
 	mov	dptr,#_MARCSTATE
@@ -1223,12 +1223,12 @@ _PHY_set_channel:
 ;------------------------------------------------------------
 ;loop                      Allocated to registers r6 r7 
 ;------------------------------------------------------------
-;	appFHSSNIC.c:86: void MAC_initChannels()
+;	appFHSSNIC.c:88: void MAC_initChannels()
 ;	-----------------------------------------
 ;	 function MAC_initChannels
 ;	-----------------------------------------
 _MAC_initChannels:
-;	appFHSSNIC.c:90: for (loop=0; loop<macdata.NumChannelHops; loop++)
+;	appFHSSNIC.c:92: for (loop=0; loop<macdata.NumChannelHops; loop++)
 	mov	r6,#0x00
 	mov	r7,#0x00
 00103$:
@@ -1246,7 +1246,7 @@ _MAC_initChannels:
 	mov	a,r3
 	subb	a,r5
 	jnc	00105$
-;	appFHSSNIC.c:92: g_Channels[loop] = loop % macdata.NumChannels;
+;	appFHSSNIC.c:94: g_Channels[loop] = loop % macdata.NumChannels;
 	mov	a,r6
 	add	a,#_g_Channels
 	mov	r4,a
@@ -1276,7 +1276,7 @@ _MAC_initChannels:
 	mov	dph,r5
 	mov	a,r2
 	movx	@dptr,a
-;	appFHSSNIC.c:90: for (loop=0; loop<macdata.NumChannelHops; loop++)
+;	appFHSSNIC.c:92: for (loop=0; loop<macdata.NumChannelHops; loop++)
 	inc	r6
 	cjne	r6,#0x00,00103$
 	inc	r7
@@ -1286,41 +1286,40 @@ _MAC_initChannels:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'begin_hopping'
 ;------------------------------------------------------------
-;T2_offset                 Allocated with name '_begin_hopping_T2_offset_1_96'
+;T2_offset                 Allocated with name '_begin_hopping_T2_offset_1_97'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:97: void begin_hopping(__xdata u8 T2_offset)
+;	appFHSSNIC.c:99: void begin_hopping(__xdata u8 T2_offset)
 ;	-----------------------------------------
 ;	 function begin_hopping
 ;	-----------------------------------------
 _begin_hopping:
 	mov	a,dpl
-	mov	dptr,#_begin_hopping_T2_offset_1_96
+;	appFHSSNIC.c:102: T2CT -= T2_offset;
+	mov	dptr,#_begin_hopping_T2_offset_1_97
 	movx	@dptr,a
-;	appFHSSNIC.c:100: T2CT -= T2_offset;
-	movx	a,@dptr
 	mov	r7,a
 	mov	a,_T2CT
 	clr	c
 	subb	a,r7
 	mov	_T2CT,a
-;	appFHSSNIC.c:101: T2CT -= MAC_TIMER_STATIC_DIFF;
+;	appFHSSNIC.c:103: T2CT -= MAC_TIMER_STATIC_DIFF;
 	mov	a,_T2CT
 	add	a,#0xFA
 	mov	_T2CT,a
-;	appFHSSNIC.c:103: T2CTL |= T2CTL_INT;
+;	appFHSSNIC.c:105: T2CTL |= T2CTL_INT;
 	orl	_T2CTL,#0x10
-;	appFHSSNIC.c:104: T2IE = 1;
+;	appFHSSNIC.c:106: T2IE = 1;
 	setb	_T2IE
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'stop_hopping'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:108: void stop_hopping(void)
+;	appFHSSNIC.c:110: void stop_hopping(void)
 ;	-----------------------------------------
 ;	 function stop_hopping
 ;	-----------------------------------------
 _stop_hopping:
-;	appFHSSNIC.c:111: T2CTL &= ~T2CTL_INT;
+;	appFHSSNIC.c:113: T2CTL &= ~T2CTL_INT;
 	mov	r7,_T2CTL
 	mov	a,#0xEF
 	anl	a,r7
@@ -1331,43 +1330,43 @@ _stop_hopping:
 ;------------------------------------------------------------
 ;len                       Allocated with name '_transmit_long_PARM_2'
 ;blocks                    Allocated with name '_transmit_long_PARM_3'
-;buf                       Allocated with name '_transmit_long_buf_1_100'
-;countdown                 Allocated with name '_transmit_long_countdown_1_101'
-;err                       Allocated with name '_transmit_long_err_1_101'
+;buf                       Allocated with name '_transmit_long_buf_1_101'
+;countdown                 Allocated with name '_transmit_long_countdown_1_102'
+;err                       Allocated with name '_transmit_long_err_1_102'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:116: __xdata u8 transmit_long(__xdata u8* __xdata buf, __xdata u16 len, __xdata u8 blocks)
+;	appFHSSNIC.c:118: __xdata u8 transmit_long(__xdata u8* __xdata buf, __xdata u16 len, __xdata u8 blocks)
 ;	-----------------------------------------
 ;	 function transmit_long
 ;	-----------------------------------------
 _transmit_long:
 	mov	r7,dph
 	mov	a,dpl
-	mov	dptr,#_transmit_long_buf_1_100
+	mov	dptr,#_transmit_long_buf_1_101
 	movx	@dptr,a
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:124: if (macdata.mac_state != MAC_STATE_NONHOPPING)
+;	appFHSSNIC.c:126: if (macdata.mac_state != MAC_STATE_NONHOPPING)
 	mov	dptr,#_macdata
 	movx	a,@dptr
 	jz	00102$
-;	appFHSSNIC.c:126: debug("Cannot call transmit_long while FHSS Hopping or already processing transmit_long!");
-	mov	dptr,#___str_0
+;	appFHSSNIC.c:128: debug("Cannot call transmit_long while FHSS Hopping or already processing transmit_long!");
+	mov	dptr,#__str_0
 	lcall	_debug
-;	appFHSSNIC.c:127: debughex(macdata.mac_state);
+;	appFHSSNIC.c:129: debughex(macdata.mac_state);
 	mov	dptr,#_macdata
 	movx	a,@dptr
 	mov	dpl,a
 	lcall	_debughex
-;	appFHSSNIC.c:128: return RC_RF_MODE_INCOMPAT;
+;	appFHSSNIC.c:130: return RC_RF_MODE_INCOMPAT;
 	mov	dpl,#0xEF
 	ret
 00102$:
-;	appFHSSNIC.c:131: macdata.mac_state = MAC_STATE_LONG_XMIT;
+;	appFHSSNIC.c:133: macdata.mac_state = MAC_STATE_LONG_XMIT;
 	mov	dptr,#_macdata
 	mov	a,#0x06
 	movx	@dptr,a
-;	appFHSSNIC.c:132: while (MARCSTATE == MARC_STATE_TX)
+;	appFHSSNIC.c:134: while (MARCSTATE == MARC_STATE_TX)
 00103$:
 	mov	dptr,#_MARCSTATE
 	movx	a,@dptr
@@ -1375,9 +1374,9 @@ _transmit_long:
 	cjne	r7,#0x13,00164$
 	sjmp	00103$
 00164$:
-;	appFHSSNIC.c:137: LED = 0;
+;	appFHSSNIC.c:139: LED = 0;
 	clr	_P2_4
-;	appFHSSNIC.c:140: rfTxTotalTXLen = len;
+;	appFHSSNIC.c:142: rfTxTotalTXLen = len;
 	mov	dptr,#_transmit_long_PARM_2
 	movx	a,@dptr
 	mov	r6,a
@@ -1390,53 +1389,55 @@ _transmit_long:
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:142: rfTxBufferEnd = MAX_TX_MSGLEN + 1; // add 1 for length byte
+;	appFHSSNIC.c:144: rfTxBufferEnd = MAX_TX_MSGLEN + 1; // add 1 for length byte
 	mov	dptr,#_rfTxBufferEnd
 	mov	a,#0xF1
 	movx	@dptr,a
 	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:144: rftxbuf = (volatile __xdata u8*)&g_txMsgQueue[0][0];
+;	appFHSSNIC.c:146: rftxbuf = (volatile __xdata u8*)&g_txMsgQueue[0][0];
 	mov	dptr,#_rftxbuf
 	mov	a,#_g_txMsgQueue
 	movx	@dptr,a
 	mov	a,#(_g_txMsgQueue >> 8)
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:145: rfTxRepeatCounter = 0;
+;	appFHSSNIC.c:147: rfTxRepeatCounter = 0;
 	mov	dptr,#_rfTxRepeatCounter
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:146: rfTxCurBufIdx = macdata.txMsgIdxDone = 0;
+;	appFHSSNIC.c:148: rfTxCurBufIdx = macdata.txMsgIdxDone = 0;
 	mov	dptr,#(_macdata + 0x0012)
+;	appFHSSNIC.c:149: macdata.txMsgIdx = 0;
+	clr	a
 	movx	@dptr,a
 	mov	dptr,#_rfTxCurBufIdx
 	movx	@dptr,a
-;	appFHSSNIC.c:147: macdata.txMsgIdx = 0;
 	mov	dptr,#(_macdata + 0x0011)
 	movx	@dptr,a
-;	appFHSSNIC.c:148: rfTxCounter = 1; // don't transmit length byte
+;	appFHSSNIC.c:150: rfTxCounter = 1; // don't transmit length byte
 	mov	dptr,#_rfTxCounter
-	inc	a
+	mov	a,#0x01
 	movx	@dptr,a
 	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:149: rfTxBufCount = MAX_TX_MSGS;
+;	appFHSSNIC.c:151: rfTxBufCount = MAX_TX_MSGS;
 	mov	dptr,#_rfTxBufCount
 	mov	a,#0x02
 	movx	@dptr,a
-;	appFHSSNIC.c:152: MAC_tx(NULL, 0);
+;	appFHSSNIC.c:154: MAC_tx(NULL, 0);
 	mov	dptr,#_MAC_tx_PARM_2
 	clr	a
 	movx	@dptr,a
 	mov	dptr,#0x0000
 	lcall	_MAC_tx
-;	appFHSSNIC.c:155: for(countdown = 0 ; countdown < blocks ; ++countdown)
-	mov	dptr,#_transmit_long_buf_1_100
+;	appFHSSNIC.c:157: for(countdown = 0 ; countdown < blocks ; ++countdown)
+	mov	dptr,#_transmit_long_buf_1_101
 	movx	a,@dptr
 	mov	r6,a
 	inc	dptr
@@ -1456,7 +1457,7 @@ _transmit_long:
 	mov	a,r4
 	subb	a,r2
 	jnc	00108$
-;	appFHSSNIC.c:157: err = MAC_tx(buf + (u8) (countdown * MAX_TX_MSGLEN), (u8) MAX_TX_MSGLEN);
+;	appFHSSNIC.c:159: err = MAC_tx(buf + (u8) (countdown * MAX_TX_MSGLEN), (u8) MAX_TX_MSGLEN);
 	mov	ar2,r3
 	mov	a,r2
 	mov	b,#0xF0
@@ -1483,34 +1484,34 @@ _transmit_long:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:158: if(err)
+;	appFHSSNIC.c:160: if(err)
 	mov	a,r2
 	jz	00123$
-;	appFHSSNIC.c:160: debug("MAC_tx() returned error");
-	mov	dptr,#___str_1
+;	appFHSSNIC.c:162: debug("MAC_tx() returned error");
+	mov	dptr,#__str_1
 	push	ar2
 	lcall	_debug
 	pop	ar2
-;	appFHSSNIC.c:161: macdata.mac_state = MAC_STATE_NONHOPPING;
+;	appFHSSNIC.c:163: macdata.mac_state = MAC_STATE_NONHOPPING;
 	mov	dptr,#_macdata
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:162: debughex(err);
+;	appFHSSNIC.c:164: debughex(err);
 	mov	dpl,r2
 	push	ar2
 	lcall	_debughex
 	pop	ar2
-;	appFHSSNIC.c:163: return err;
+;	appFHSSNIC.c:165: return err;
 	mov	dpl,r2
 	ret
 00123$:
-;	appFHSSNIC.c:155: for(countdown = 0 ; countdown < blocks ; ++countdown)
+;	appFHSSNIC.c:157: for(countdown = 0 ; countdown < blocks ; ++countdown)
 	inc	r3
 	cjne	r3,#0x00,00122$
 	inc	r4
 	sjmp	00122$
 00108$:
-;	appFHSSNIC.c:168: if(rfAESMode & AES_CRYPTO_OUT_ENABLE && rfTxTotalTXLen % 16)
+;	appFHSSNIC.c:170: if(rfAESMode & AES_CRYPTO_OUT_ENABLE && rfTxTotalTXLen % 16)
 	mov	dptr,#_rfAESMode
 	movx	a,@dptr
 	mov	r7,a
@@ -1524,7 +1525,7 @@ _transmit_long:
 	mov	a,r6
 	anl	a,#0x0F
 	jz	00110$
-;	appFHSSNIC.c:171: rfTxTotalTXLen += 16 - (rfTxTotalTXLen % 16);
+;	appFHSSNIC.c:173: rfTxTotalTXLen += 16 - (rfTxTotalTXLen % 16);
 	mov	dptr,#_rfTxTotalTXLen
 	movx	a,@dptr
 	mov	r6,a
@@ -1554,20 +1555,15 @@ _transmit_long:
 	inc	dptr
 	movx	@dptr,a
 00110$:
-;	appFHSSNIC.c:175: if(rfTxTotalTXLen > RF_MAX_TX_BLOCK)
+;	appFHSSNIC.c:177: if(rfTxTotalTXLen > RF_MAX_TX_BLOCK)
 	mov	dptr,#_rfTxTotalTXLen
 	movx	a,@dptr
 	mov	r6,a
 	inc	dptr
 	movx	a,@dptr
 	mov	r7,a
-	clr	c
-	mov	a,#0xFF
-	subb	a,r6
-	clr	a
-	subb	a,r7
-	jnc	00113$
-;	appFHSSNIC.c:177: PKTLEN = (u8) (rfTxTotalTXLen % 256);
+	jz	00113$
+;	appFHSSNIC.c:179: PKTLEN = (u8) (rfTxTotalTXLen % 256);
 	mov	dptr,#_rfTxTotalTXLen
 	movx	a,@dptr
 	mov	r6,a
@@ -1576,26 +1572,23 @@ _transmit_long:
 	mov	dptr,#_PKTLEN
 	mov	a,r6
 	movx	@dptr,a
-;	appFHSSNIC.c:178: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
+;	appFHSSNIC.c:180: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
+;	appFHSSNIC.c:181: PKTCTRL0 |= PKTCTRL0_LENGTH_CONFIG_INF;
 	mov	dptr,#_PKTCTRL0
 	movx	a,@dptr
-	mov	r7,a
-	mov	a,#0xFC
-	anl	a,r7
+	anl	a,#0xFC
 	movx	@dptr,a
-;	appFHSSNIC.c:179: PKTCTRL0 |= PKTCTRL0_LENGTH_CONFIG_INF;
 	movx	a,@dptr
 	mov	r7,a
-	mov	a,#0x02
-	orl	a,r7
+	orl	a,#0x02
 	movx	@dptr,a
-;	appFHSSNIC.c:180: rfTxInfMode = 1;
+;	appFHSSNIC.c:182: rfTxInfMode = 1;
 	mov	dptr,#_rfTxInfMode
 	mov	a,#0x01
 	movx	@dptr,a
 	sjmp	00114$
 00113$:
-;	appFHSSNIC.c:184: PKTLEN = (u8) rfTxTotalTXLen;
+;	appFHSSNIC.c:186: PKTLEN = (u8) rfTxTotalTXLen;
 	mov	dptr,#_rfTxTotalTXLen
 	movx	a,@dptr
 	mov	r6,a
@@ -1605,14 +1598,14 @@ _transmit_long:
 	mov	dptr,#_PKTLEN
 	mov	a,r6
 	movx	@dptr,a
-;	appFHSSNIC.c:185: rfTxInfMode = 0;
+;	appFHSSNIC.c:187: rfTxInfMode = 0;
 	mov	dptr,#_rfTxInfMode
 	clr	a
 	movx	@dptr,a
 00114$:
-;	appFHSSNIC.c:192: RFST = RFST_STX;
+;	appFHSSNIC.c:194: RFST = RFST_STX;
 	mov	_RFST,#0x03
-;	appFHSSNIC.c:196: while (MARCSTATE != MARC_STATE_TX && --countdown)
+;	appFHSSNIC.c:198: while (MARCSTATE != MARC_STATE_TX && --countdown)
 	mov	r6,#0x60
 	mov	r7,#0xEA
 00116$:
@@ -1630,58 +1623,58 @@ _transmit_long:
 	orl	a,r7
 	jnz	00116$
 00118$:
-;	appFHSSNIC.c:201: LED = 1;
+;	appFHSSNIC.c:203: LED = 1;
 	setb	_P2_4
-;	appFHSSNIC.c:202: if (!countdown)
+;	appFHSSNIC.c:204: if (!countdown)
 	mov	a,r6
 	orl	a,r7
 	jnz	00120$
-;	appFHSSNIC.c:204: lastCode[1] = LCE_RFTX_NEVER_TX;
+;	appFHSSNIC.c:206: lastCode[1] = LCE_RFTX_NEVER_TX;
 	mov	dptr,#(_lastCode + 0x0001)
 	mov	a,#0x13
 	movx	@dptr,a
-;	appFHSSNIC.c:205: debug("never entered TX");
-	mov	dptr,#___str_2
+;	appFHSSNIC.c:207: debug("never entered TX");
+	mov	dptr,#__str_2
 	lcall	_debug
 00120$:
-;	appFHSSNIC.c:208: return RC_NO_ERROR;
+;	appFHSSNIC.c:210: return RC_NO_ERROR;
 	mov	dpl,#0x00
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'MAC_tx'
 ;------------------------------------------------------------
 ;len                       Allocated with name '_MAC_tx_PARM_2'
-;msg                       Allocated with name '_MAC_tx_msg_1_111'
+;msg                       Allocated with name '_MAC_tx_msg_1_112'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:211: __xdata u8 MAC_tx(__xdata u8* __xdata msg, __xdata u8 len)
+;	appFHSSNIC.c:213: __xdata u8 MAC_tx(__xdata u8* __xdata msg, __xdata u8 len)
 ;	-----------------------------------------
 ;	 function MAC_tx
 ;	-----------------------------------------
 _MAC_tx:
 	mov	r7,dph
 	mov	a,dpl
-	mov	dptr,#_MAC_tx_msg_1_111
+	mov	dptr,#_MAC_tx_msg_1_112
 	movx	@dptr,a
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:221: if (len > MAX_TX_MSGLEN)
+;	appFHSSNIC.c:223: if (len > MAX_TX_MSGLEN)
 	mov	dptr,#_MAC_tx_PARM_2
 	movx	a,@dptr
 	mov  r7,a
 	add	a,#0xff - 0xF0
 	jnc	00102$
-;	appFHSSNIC.c:223: debug("FHSSxmit message too long");
-	mov	dptr,#___str_3
+;	appFHSSNIC.c:225: debug("FHSSxmit message too long");
+	mov	dptr,#__str_3
 	lcall	_debug
-;	appFHSSNIC.c:224: return RC_ERR_BUFFER_SIZE_EXCEEDED;
+;	appFHSSNIC.c:226: return RC_ERR_BUFFER_SIZE_EXCEEDED;
 	mov	dpl,#0xFF
 	ret
 00102$:
-;	appFHSSNIC.c:228: if(len == 0)
+;	appFHSSNIC.c:230: if(len == 0)
 	mov	a,r7
 	jnz	00105$
-;	appFHSSNIC.c:231: for(macdata.txMsgIdx = 0 ; macdata.txMsgIdx < rfTxBufCount ; ++macdata.txMsgIdx)
+;	appFHSSNIC.c:233: for(macdata.txMsgIdx = 0 ; macdata.txMsgIdx < rfTxBufCount ; ++macdata.txMsgIdx)
 	mov	dptr,#(_macdata + 0x0011)
 	clr	a
 	movx	@dptr,a
@@ -1696,7 +1689,7 @@ _MAC_tx:
 	mov	a,r6
 	subb	a,r5
 	jnc	00103$
-;	appFHSSNIC.c:233: g_txMsgQueue[macdata.txMsgIdx][0] = BUFFER_AVAILABLE;
+;	appFHSSNIC.c:235: g_txMsgQueue[macdata.txMsgIdx][0] = BUFFER_AVAILABLE;
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	mov	b,#0xF1
@@ -1708,7 +1701,7 @@ _MAC_tx:
 	mov	dph,a
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:231: for(macdata.txMsgIdx = 0 ; macdata.txMsgIdx < rfTxBufCount ; ++macdata.txMsgIdx)
+;	appFHSSNIC.c:233: for(macdata.txMsgIdx = 0 ; macdata.txMsgIdx < rfTxBufCount ; ++macdata.txMsgIdx)
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	mov	r6,a
@@ -1718,21 +1711,21 @@ _MAC_tx:
 	movx	@dptr,a
 	sjmp	00122$
 00103$:
-;	appFHSSNIC.c:235: macdata.txMsgIdx = 0;
+;	appFHSSNIC.c:237: macdata.txMsgIdx = 0;
 	mov	dptr,#(_macdata + 0x0011)
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:236: return RC_NO_ERROR;
+;	appFHSSNIC.c:238: return RC_NO_ERROR;
 	mov	dpl,#0x00
 	ret
 00105$:
-;	appFHSSNIC.c:239: switch (macdata.mac_state)
+;	appFHSSNIC.c:241: switch (macdata.mac_state)
 	mov	dptr,#_macdata
 	movx	a,@dptr
 	mov	r6,a
 	jz	00110$
 	cjne	r6,#0x06,00111$
-;	appFHSSNIC.c:242: if (macdata.txMsgIdx && MARCSTATE != MARC_STATE_TX)
+;	appFHSSNIC.c:244: if (macdata.txMsgIdx && MARCSTATE != MARC_STATE_TX)
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	jz	00111$
@@ -1742,21 +1735,21 @@ _MAC_tx:
 	cjne	r6,#0x13,00169$
 	sjmp	00111$
 00169$:
-;	appFHSSNIC.c:244: macdata.mac_state = MAC_STATE_LONG_XMIT_FAIL;
+;	appFHSSNIC.c:246: macdata.mac_state = MAC_STATE_LONG_XMIT_FAIL;
 	mov	dptr,#_macdata
 	mov	a,#0x07
 	movx	@dptr,a
-;	appFHSSNIC.c:245: return RC_TX_ERROR;
+;	appFHSSNIC.c:247: return RC_TX_ERROR;
 	mov	dpl,#0xED
 	ret
-;	appFHSSNIC.c:248: case MAC_STATE_NONHOPPING:
+;	appFHSSNIC.c:250: case MAC_STATE_NONHOPPING:
 00110$:
-;	appFHSSNIC.c:249: return RC_TX_ERROR;
+;	appFHSSNIC.c:251: return RC_TX_ERROR;
 	mov	dpl,#0xED
 	ret
-;	appFHSSNIC.c:250: }
+;	appFHSSNIC.c:252: }
 00111$:
-;	appFHSSNIC.c:251: if (g_txMsgQueue[macdata.txMsgIdx][0] != BUFFER_AVAILABLE)
+;	appFHSSNIC.c:253: if (g_txMsgQueue[macdata.txMsgIdx][0] != BUFFER_AVAILABLE)
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	mov	b,#0xF1
@@ -1770,20 +1763,20 @@ _MAC_tx:
 	mov	dph,r6
 	movx	a,@dptr
 	jz	00113$
-;	appFHSSNIC.c:254: lastCode[1] = LCE_RF_MULTI_BUFFER_NOT_FREE;
+;	appFHSSNIC.c:256: lastCode[1] = LCE_RF_MULTI_BUFFER_NOT_FREE;
 	mov	dptr,#(_lastCode + 0x0001)
 	mov	a,#0x18
 	movx	@dptr,a
-;	appFHSSNIC.c:255: return RC_ERR_BUFFER_NOT_AVAILABLE;
+;	appFHSSNIC.c:257: return RC_ERR_BUFFER_NOT_AVAILABLE;
 	mov	dpl,#0xFE
 	ret
 00113$:
-;	appFHSSNIC.c:259: g_txMsgQueue[macdata.txMsgIdx][0] = BUFFER_FILLING;
+;	appFHSSNIC.c:261: g_txMsgQueue[macdata.txMsgIdx][0] = BUFFER_FILLING;
 	mov	dpl,r5
 	mov	dph,r6
 	mov	a,#0xFF
 	movx	@dptr,a
-;	appFHSSNIC.c:261: memcpy(&g_txMsgQueue[macdata.txMsgIdx][1], msg, len);
+;	appFHSSNIC.c:263: memcpy(&g_txMsgQueue[macdata.txMsgIdx][1], msg, len);
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	mov	b,#0xF1
@@ -1798,7 +1791,7 @@ _MAC_tx:
 	inc	r6
 00171$:
 	mov	r4,#0x00
-	mov	dptr,#_MAC_tx_msg_1_111
+	mov	dptr,#_MAC_tx_msg_1_112
 	movx	a,@dptr
 	mov	r2,a
 	inc	dptr
@@ -1806,8 +1799,7 @@ _MAC_tx:
 	mov	r3,a
 	mov	_memcpy_PARM_2,r2
 	mov	(_memcpy_PARM_2 + 1),r3
-;	1-genFromRTrack replaced	mov	(_memcpy_PARM_2 + 2),#0x00
-	mov	(_memcpy_PARM_2 + 2),r4
+	mov	(_memcpy_PARM_2 + 2),#0x00
 	mov	ar3,r7
 	mov	r7,#0x00
 	mov	_memcpy_PARM_3,r3
@@ -1820,14 +1812,14 @@ _MAC_tx:
 	lcall	_memcpy
 	pop	ar3
 	pop	ar7
-;	appFHSSNIC.c:266: if(rfAESMode & AES_CRYPTO_OUT_ENABLE)
+;	appFHSSNIC.c:268: if(rfAESMode & AES_CRYPTO_OUT_ENABLE)
 	mov	dptr,#_rfAESMode
 	movx	a,@dptr
 	mov	r6,a
 	jb	acc.3,00172$
 	ljmp	00118$
 00172$:
-;	appFHSSNIC.c:268: len = padAES(&g_txMsgQueue[macdata.txMsgIdx][1], len);
+;	appFHSSNIC.c:270: len = padAES(&g_txMsgQueue[macdata.txMsgIdx][1], len);
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	mov	b,#0xF1
@@ -1854,13 +1846,13 @@ _MAC_tx:
 	mov	dptr,#_MAC_tx_PARM_2
 	mov	a,r6
 	movx	@dptr,a
-;	appFHSSNIC.c:269: if((rfAESMode & AES_CRYPTO_OUT_TYPE) == AES_CRYPTO_OUT_ENCRYPT)
+;	appFHSSNIC.c:271: if((rfAESMode & AES_CRYPTO_OUT_TYPE) == AES_CRYPTO_OUT_ENCRYPT)
 	mov	dptr,#_rfAESMode
 	movx	a,@dptr
 	mov	r7,a
 	anl	ar7,#0x04
 	cjne	r7,#0x04,00115$
-;	appFHSSNIC.c:270: encAES(&g_txMsgQueue[macdata.txMsgIdx][1], &g_txMsgQueue[macdata.txMsgIdx][1], len, (rfAESMode & AES_CRYPTO_MODE));
+;	appFHSSNIC.c:272: encAES(&g_txMsgQueue[macdata.txMsgIdx][1], &g_txMsgQueue[macdata.txMsgIdx][1], len, (rfAESMode & AES_CRYPTO_MODE));
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	mov	b,#0xF1
@@ -1900,7 +1892,7 @@ _MAC_tx:
 	lcall	_encAES
 	sjmp	00118$
 00115$:
-;	appFHSSNIC.c:272: decAES(&g_txMsgQueue[macdata.txMsgIdx][1], &g_txMsgQueue[macdata.txMsgIdx][1], len, (rfAESMode & AES_CRYPTO_MODE));
+;	appFHSSNIC.c:274: decAES(&g_txMsgQueue[macdata.txMsgIdx][1], &g_txMsgQueue[macdata.txMsgIdx][1], len, (rfAESMode & AES_CRYPTO_MODE));
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	mov	b,#0xF1
@@ -1938,7 +1930,7 @@ _MAC_tx:
 	mov	dph,r7
 	lcall	_decAES
 00118$:
-;	appFHSSNIC.c:275: g_txMsgQueue[macdata.txMsgIdx][0] = len;
+;	appFHSSNIC.c:277: g_txMsgQueue[macdata.txMsgIdx][0] = len;
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	mov	b,#0xF1
@@ -1954,7 +1946,7 @@ _MAC_tx:
 	mov	dpl,r6
 	mov	dph,r7
 	movx	@dptr,a
-;	appFHSSNIC.c:282: if (++macdata.txMsgIdx == rfTxBufCount)
+;	appFHSSNIC.c:284: if (++macdata.txMsgIdx == rfTxBufCount)
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	mov	r7,a
@@ -1967,32 +1959,32 @@ _MAC_tx:
 	mov	r6,a
 	mov	a,r7
 	cjne	a,ar6,00120$
-;	appFHSSNIC.c:284: macdata.txMsgIdx = 0;
+;	appFHSSNIC.c:286: macdata.txMsgIdx = 0;
 	mov	dptr,#(_macdata + 0x0011)
 	clr	a
 	movx	@dptr,a
 00120$:
-;	appFHSSNIC.c:287: return RC_NO_ERROR;
+;	appFHSSNIC.c:289: return RC_NO_ERROR;
 	mov	dpl,#0x00
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'MAC_sync'
 ;------------------------------------------------------------
-;CellID                    Allocated with name '_MAC_sync_CellID_1_121'
+;CellID                    Allocated with name '_MAC_sync_CellID_1_122'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:290: void MAC_sync(__xdata u16 CellID)
+;	appFHSSNIC.c:292: void MAC_sync(__xdata u16 CellID)
 ;	-----------------------------------------
 ;	 function MAC_sync
 ;	-----------------------------------------
 _MAC_sync:
 	mov	r7,dph
 	mov	a,dpl
-	mov	dptr,#_MAC_sync_CellID_1_121
+	mov	dptr,#_MAC_sync_CellID_1_122
 	movx	@dptr,a
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:298: if (macdata.mac_state != MAC_STATE_NONHOPPING && macdata.mac_state != MAC_STATE_DISCOVERY)
+;	appFHSSNIC.c:300: if (macdata.mac_state != MAC_STATE_NONHOPPING && macdata.mac_state != MAC_STATE_DISCOVERY)
 	mov	dptr,#_macdata
 	movx	a,@dptr
 	mov	r7,a
@@ -2000,26 +1992,27 @@ _MAC_sync:
 	cjne	r7,#0x01,00133$
 	sjmp	00102$
 00133$:
-;	appFHSSNIC.c:300: debug("FHSS state entering SYNCHING from wrong state");
-	mov	dptr,#___str_4
+;	appFHSSNIC.c:302: debug("FHSS state entering SYNCHING from wrong state");
+	mov	dptr,#__str_4
 	lcall	_debug
-;	appFHSSNIC.c:301: debughex(macdata.mac_state);
+;	appFHSSNIC.c:303: debughex(macdata.mac_state);
 	mov	dptr,#_macdata
 	movx	a,@dptr
 	mov	dpl,a
 	lcall	_debughex
 00102$:
-;	appFHSSNIC.c:305: stop_hopping();
+;	appFHSSNIC.c:307: stop_hopping();
 	lcall	_stop_hopping
-;	appFHSSNIC.c:308: macdata.curChanIdx = 0;
+;	appFHSSNIC.c:310: macdata.curChanIdx = 0;
 	mov	dptr,#(_macdata + 0x0009)
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:309: while (1)
+;	appFHSSNIC.c:311: while (1)
 00110$:
-;	appFHSSNIC.c:311: MAC_set_chanidx(macdata.curChanIdx);
+;	appFHSSNIC.c:313: MAC_set_chanidx(macdata.curChanIdx);
 	mov	dptr,#(_macdata + 0x0009)
 	movx	a,@dptr
 	mov	r6,a
@@ -2029,13 +2022,13 @@ _MAC_sync:
 	mov	dpl,r6
 	mov	dph,r7
 	lcall	_MAC_set_chanidx
-;	appFHSSNIC.c:312: while (MARCSTATE != MARC_STATE_RX)
+;	appFHSSNIC.c:314: while (MARCSTATE != MARC_STATE_RX)
 00104$:
 	mov	dptr,#_MARCSTATE
 	movx	a,@dptr
 	mov	r7,a
 	cjne	r7,#0x0D,00104$
-;	appFHSSNIC.c:314: if ((RSSI&0x7f) < 0x60)
+;	appFHSSNIC.c:316: if ((RSSI&0x7f) < 0x60)
 	mov	dptr,#_RSSI
 	movx	a,@dptr
 	mov	r7,a
@@ -2043,7 +2036,7 @@ _MAC_sync:
 	cjne	r7,#0x60,00136$
 00136$:
 	jc	00111$
-;	appFHSSNIC.c:317: macdata.curChanIdx++;
+;	appFHSSNIC.c:319: macdata.curChanIdx++;
 	mov	dptr,#(_macdata + 0x0009)
 	movx	a,@dptr
 	mov	r6,a
@@ -2060,7 +2053,7 @@ _MAC_sync:
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:318: blink(10,10);
+;	appFHSSNIC.c:320: blink(10,10);
 	setb	_P2_4
 	mov	dptr,#0x000A
 	lcall	_sleepMillis
@@ -2069,11 +2062,11 @@ _MAC_sync:
 	lcall	_sleepMillis
 	sjmp	00110$
 00111$:
-;	appFHSSNIC.c:322: macdata.mac_state = MAC_STATE_SYNCHING;
+;	appFHSSNIC.c:324: macdata.mac_state = MAC_STATE_SYNCHING;
 	mov	dptr,#_macdata
 	mov	a,#0x02
 	movx	@dptr,a
-;	appFHSSNIC.c:325: macdata.tLastStateChange = clock;
+;	appFHSSNIC.c:327: macdata.tLastStateChange = clock;
 	mov	dptr,#_clock
 	movx	a,@dptr
 	mov	r4,a
@@ -2090,8 +2083,8 @@ _MAC_sync:
 	mov	a,r5
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:328: macdata.desperatelySeeking = CellID;
-	mov	dptr,#_MAC_sync_CellID_1_121
+;	appFHSSNIC.c:330: macdata.desperatelySeeking = CellID;
+	mov	dptr,#_MAC_sync_CellID_1_122
 	movx	a,@dptr
 	mov	r6,a
 	inc	dptr
@@ -2107,16 +2100,16 @@ _MAC_sync:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'MAC_stop_sync'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:333: void MAC_stop_sync()
+;	appFHSSNIC.c:335: void MAC_stop_sync()
 ;	-----------------------------------------
 ;	 function MAC_stop_sync
 ;	-----------------------------------------
 _MAC_stop_sync:
-;	appFHSSNIC.c:336: macdata.mac_state = MAC_STATE_NONHOPPING;
+;	appFHSSNIC.c:338: macdata.mac_state = MAC_STATE_NONHOPPING;
 	mov	dptr,#_macdata
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:337: macdata.tLastStateChange = clock;
+;	appFHSSNIC.c:339: macdata.tLastStateChange = clock;
 	mov	dptr,#_clock
 	movx	a,@dptr
 	mov	r4,a
@@ -2137,16 +2130,16 @@ _MAC_stop_sync:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'MAC_become_master'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:341: void MAC_become_master()
+;	appFHSSNIC.c:343: void MAC_become_master()
 ;	-----------------------------------------
 ;	 function MAC_become_master
 ;	-----------------------------------------
 _MAC_become_master:
-;	appFHSSNIC.c:344: macdata.mac_state = MAC_STATE_SYNC_MASTER;
+;	appFHSSNIC.c:346: macdata.mac_state = MAC_STATE_SYNC_MASTER;
 	mov	dptr,#_macdata
 	mov	a,#0x04
 	movx	@dptr,a
-;	appFHSSNIC.c:345: macdata.tLastStateChange = clock;
+;	appFHSSNIC.c:347: macdata.tLastStateChange = clock;
 	mov	dptr,#_clock
 	movx	a,@dptr
 	mov	r4,a
@@ -2167,22 +2160,23 @@ _MAC_become_master:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'MAC_do_Master_scanny_thingy'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:349: void MAC_do_Master_scanny_thingy()
+;	appFHSSNIC.c:351: void MAC_do_Master_scanny_thingy()
 ;	-----------------------------------------
 ;	 function MAC_do_Master_scanny_thingy
 ;	-----------------------------------------
 _MAC_do_Master_scanny_thingy:
-;	appFHSSNIC.c:351: macdata.mac_state = MAC_STATE_SYNCINGMASTER;
+;	appFHSSNIC.c:353: macdata.mac_state = MAC_STATE_SYNCINGMASTER;
 	mov	dptr,#_macdata
 	mov	a,#0x05
 	movx	@dptr,a
-;	appFHSSNIC.c:352: macdata.synched_chans = 0;
+;	appFHSSNIC.c:354: macdata.synched_chans = 0;
 	mov	dptr,#(_macdata + 0x0013)
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:353: macdata.tLastStateChange = clock;
+;	appFHSSNIC.c:355: macdata.tLastStateChange = clock;
 	mov	dptr,#_clock
 	movx	a,@dptr
 	mov	r4,a
@@ -2199,28 +2193,28 @@ _MAC_do_Master_scanny_thingy:
 	mov	a,r5
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:354: begin_hopping(0);
+;	appFHSSNIC.c:356: begin_hopping(0);
 	mov	dpl,#0x00
 	ljmp	_begin_hopping
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'MAC_set_chanidx'
 ;------------------------------------------------------------
-;chanidx                   Allocated with name '_MAC_set_chanidx_chanidx_1_129'
+;chanidx                   Allocated with name '_MAC_set_chanidx_chanidx_1_130'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:358: void MAC_set_chanidx(__xdata u16 chanidx)
+;	appFHSSNIC.c:360: void MAC_set_chanidx(__xdata u16 chanidx)
 ;	-----------------------------------------
 ;	 function MAC_set_chanidx
 ;	-----------------------------------------
 _MAC_set_chanidx:
 	mov	r7,dph
 	mov	a,dpl
-	mov	dptr,#_MAC_set_chanidx_chanidx_1_129
+	mov	dptr,#_MAC_set_chanidx_chanidx_1_130
 	movx	@dptr,a
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:360: PHY_set_channel( g_Channels[ chanidx ] );
-	mov	dptr,#_MAC_set_chanidx_chanidx_1_129
+;	appFHSSNIC.c:362: PHY_set_channel( g_Channels[ chanidx ] );
+	mov	dptr,#_MAC_set_chanidx_chanidx_1_130
 	movx	a,@dptr
 	mov	r6,a
 	inc	dptr
@@ -2241,22 +2235,22 @@ _MAC_set_chanidx:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'MAC_set_NIC_ID'
 ;------------------------------------------------------------
-;NIC_ID                    Allocated with name '_MAC_set_NIC_ID_NIC_ID_1_131'
+;NIC_ID                    Allocated with name '_MAC_set_NIC_ID_NIC_ID_1_132'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:364: void MAC_set_NIC_ID(__xdata u16 NIC_ID)
+;	appFHSSNIC.c:366: void MAC_set_NIC_ID(__xdata u16 NIC_ID)
 ;	-----------------------------------------
 ;	 function MAC_set_NIC_ID
 ;	-----------------------------------------
 _MAC_set_NIC_ID:
 	mov	r7,dph
 	mov	a,dpl
-	mov	dptr,#_MAC_set_NIC_ID_NIC_ID_1_131
+	mov	dptr,#_MAC_set_NIC_ID_NIC_ID_1_132
 	movx	@dptr,a
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:367: g_NIC_ID = NIC_ID;
-	mov	dptr,#_MAC_set_NIC_ID_NIC_ID_1_131
+;	appFHSSNIC.c:369: g_NIC_ID = NIC_ID;
+	mov	dptr,#_MAC_set_NIC_ID_NIC_ID_1_132
 	movx	a,@dptr
 	mov	r6,a
 	inc	dptr
@@ -2273,24 +2267,24 @@ _MAC_set_NIC_ID:
 ;Allocation info for local variables in function 'MAC_rx_handle'
 ;------------------------------------------------------------
 ;message                   Allocated with name '_MAC_rx_handle_PARM_2'
-;len                       Allocated with name '_MAC_rx_handle_len_1_133'
+;len                       Allocated with name '_MAC_rx_handle_len_1_134'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:370: void MAC_rx_handle(__xdata u8 len, __xdata u8* __xdata message)
+;	appFHSSNIC.c:372: void MAC_rx_handle(__xdata u8 len, __xdata u8* __xdata message)
 ;	-----------------------------------------
 ;	 function MAC_rx_handle
 ;	-----------------------------------------
 _MAC_rx_handle:
-;	appFHSSNIC.c:373: message;
+;	appFHSSNIC.c:375: message;
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'MAC_getNextChannel'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:379: __xdata u8 MAC_getNextChannel()
+;	appFHSSNIC.c:381: __xdata u8 MAC_getNextChannel()
 ;	-----------------------------------------
 ;	 function MAC_getNextChannel
 ;	-----------------------------------------
 _MAC_getNextChannel:
-;	appFHSSNIC.c:381: macdata.curChanIdx++;
+;	appFHSSNIC.c:383: macdata.curChanIdx++;
 	mov	dptr,#(_macdata + 0x0009)
 	movx	a,@dptr
 	mov	r6,a
@@ -2307,21 +2301,22 @@ _MAC_getNextChannel:
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:382: if (macdata.curChanIdx >= MAX_CHANNELS)
+;	appFHSSNIC.c:384: if (macdata.curChanIdx >= MAX_CHANNELS)
 	clr	c
 	mov	a,r6
 	subb	a,#0x70
 	mov	a,r7
 	subb	a,#0x03
 	jc	00102$
-;	appFHSSNIC.c:384: macdata.curChanIdx = 0;
+;	appFHSSNIC.c:386: macdata.curChanIdx = 0;
 	mov	dptr,#(_macdata + 0x0009)
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 00102$:
-;	appFHSSNIC.c:386: return g_Channels[macdata.curChanIdx];
+;	appFHSSNIC.c:388: return g_Channels[macdata.curChanIdx];
 	mov	dptr,#(_macdata + 0x0009)
 	movx	a,@dptr
 	mov	r6,a
@@ -2340,9 +2335,9 @@ _MAC_getNextChannel:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 't2IntHandler'
 ;------------------------------------------------------------
-;packet                    Allocated with name '_t2IntHandler_packet_1_138'
+;packet                    Allocated with name '_t2IntHandler_packet_1_139'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:393: void t2IntHandler(void) __interrupt T2_VECTOR  // interrupt handler should trigger on T2 overflow
+;	appFHSSNIC.c:395: void t2IntHandler(void) __interrupt T2_VECTOR  // interrupt handler should trigger on T2 overflow
 ;	-----------------------------------------
 ;	 function t2IntHandler
 ;	-----------------------------------------
@@ -2362,7 +2357,7 @@ _t2IntHandler:
 	push	(0+0)
 	push	psw
 	mov	psw,#0x00
-;	appFHSSNIC.c:402: if (++rf_MAC_timer == macdata.MAC_threshold)
+;	appFHSSNIC.c:404: if (++rf_MAC_timer == macdata.MAC_threshold)
 	mov	dptr,#_rf_MAC_timer
 	movx	a,@dptr
 	add	a,#0x01
@@ -2387,14 +2382,15 @@ _t2IntHandler:
 	cjne	a,ar6,00102$
 	mov	a,r5
 	cjne	a,ar7,00102$
-;	appFHSSNIC.c:403: rf_MAC_timer = 0;   // since we're 0-based, MAC_threshold is actually past the end of our state machine, which makes it 0 *right now*
+;	appFHSSNIC.c:405: rf_MAC_timer = 0;   // since we're 0-based, MAC_threshold is actually past the end of our state machine, which makes it 0 *right now*
 	mov	dptr,#_rf_MAC_timer
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 00102$:
-;	appFHSSNIC.c:405: switch (rf_MAC_timer)
+;	appFHSSNIC.c:407: switch (rf_MAC_timer)
 	mov	dptr,#_rf_MAC_timer
 	movx	a,@dptr
 	mov	r6,a
@@ -2410,9 +2406,9 @@ _t2IntHandler:
 	sjmp	00108$
 00161$:
 	ljmp	00111$
-;	appFHSSNIC.c:407: case 0:     // change channels
+;	appFHSSNIC.c:409: case 0:     // change channels
 00103$:
-;	appFHSSNIC.c:409: macdata.tLastHop = T2CT | (rf_MAC_timer<<8);        // should this be based on clock and T1?
+;	appFHSSNIC.c:411: macdata.tLastHop = T2CT | (rf_MAC_timer<<8);        // should this be based on clock and T1?
 	mov	dptr,#_rf_MAC_timer
 	movx	a,@dptr
 	mov	r6,a
@@ -2432,7 +2428,7 @@ _t2IntHandler:
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:412: if (++macdata.curChanIdx >= macdata.NumChannelHops)
+;	appFHSSNIC.c:414: if (++macdata.curChanIdx >= macdata.NumChannelHops)
 	mov	dptr,#(_macdata + 0x0009)
 	movx	a,@dptr
 	mov	r6,a
@@ -2461,22 +2457,23 @@ _t2IntHandler:
 	mov	a,r7
 	subb	a,r5
 	jc	00105$
-;	appFHSSNIC.c:414: macdata.curChanIdx = 0;
+;	appFHSSNIC.c:416: macdata.curChanIdx = 0;
 	mov	dptr,#(_macdata + 0x0009)
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 00105$:
-;	appFHSSNIC.c:419: if (MARCSTATE == MARC_STATE_TX)
+;	appFHSSNIC.c:421: if (MARCSTATE == MARC_STATE_TX)
 	mov	dptr,#_MARCSTATE
 	movx	a,@dptr
 	mov	r7,a
 	cjne	r7,#0x13,00107$
-;	appFHSSNIC.c:420: return;
+;	appFHSSNIC.c:422: return;
 	ljmp	00123$
 00107$:
-;	appFHSSNIC.c:424: MAC_set_chanidx(macdata.curChanIdx);
+;	appFHSSNIC.c:426: MAC_set_chanidx(macdata.curChanIdx);
 	mov	dptr,#(_macdata + 0x0009)
 	movx	a,@dptr
 	mov	r6,a
@@ -2486,11 +2483,11 @@ _t2IntHandler:
 	mov	dpl,r6
 	mov	dph,r7
 	lcall	_MAC_set_chanidx
-;	appFHSSNIC.c:435: break;
+;	appFHSSNIC.c:437: break;
 	ljmp	00123$
-;	appFHSSNIC.c:437: case 1:
+;	appFHSSNIC.c:439: case 1:
 00108$:
-;	appFHSSNIC.c:439: if (macdata.mac_state == MAC_STATE_SYNCINGMASTER)
+;	appFHSSNIC.c:441: if (macdata.mac_state == MAC_STATE_SYNCINGMASTER)
 	mov	dptr,#_macdata
 	movx	a,@dptr
 	mov	r7,a
@@ -2499,130 +2496,130 @@ _t2IntHandler:
 00166$:
 	ljmp	00123$
 00167$:
-;	appFHSSNIC.c:441: sleepMillis(FHSS_TX_SLEEP_DELAY);
+;	appFHSSNIC.c:443: sleepMillis(FHSS_TX_SLEEP_DELAY);
 	mov	dptr,#0x0019
 	lcall	_sleepMillis
-;	appFHSSNIC.c:442: packet[0] = 28;
-	mov	dptr,#_t2IntHandler_packet_1_138
+;	appFHSSNIC.c:444: packet[0] = 28;
+	mov	dptr,#_t2IntHandler_packet_1_139
 	mov	a,#0x1C
 	movx	@dptr,a
-;	appFHSSNIC.c:443: packet[1] = macdata.curChanIdx & 0xff;
+;	appFHSSNIC.c:445: packet[1] = macdata.curChanIdx & 0xff;
 	mov	dptr,#(_macdata + 0x0009)
 	movx	a,@dptr
 	mov	r6,a
 	inc	dptr
 	movx	a,@dptr
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0001)
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0001)
 	mov	a,r6
 	movx	@dptr,a
-;	appFHSSNIC.c:444: packet[2] = macdata.curChanIdx >> 8;
+;	appFHSSNIC.c:446: packet[2] = macdata.curChanIdx >> 8;
 	mov	dptr,#(_macdata + 0x0009)
 	movx	a,@dptr
 	inc	dptr
 	movx	a,@dptr
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0002)
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0002)
 	movx	@dptr,a
-;	appFHSSNIC.c:445: packet[3] =  'B';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0003)
+;	appFHSSNIC.c:447: packet[3] =  'B';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0003)
 	mov	a,#0x42
 	movx	@dptr,a
-;	appFHSSNIC.c:446: packet[4] =  'L';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0004)
+;	appFHSSNIC.c:448: packet[4] =  'L';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0004)
 	mov	a,#0x4C
 	movx	@dptr,a
-;	appFHSSNIC.c:447: packet[5] =  'A';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0005)
+;	appFHSSNIC.c:449: packet[5] =  'A';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0005)
 	mov	a,#0x41
 	movx	@dptr,a
-;	appFHSSNIC.c:448: packet[6] =  'H';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0006)
+;	appFHSSNIC.c:450: packet[6] =  'H';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0006)
 	mov	a,#0x48
 	movx	@dptr,a
-;	appFHSSNIC.c:449: packet[7] =  'B';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0007)
+;	appFHSSNIC.c:451: packet[7] =  'B';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0007)
 	mov	a,#0x42
 	movx	@dptr,a
-;	appFHSSNIC.c:450: packet[8] =  'L';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0008)
+;	appFHSSNIC.c:452: packet[8] =  'L';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0008)
 	mov	a,#0x4C
 	movx	@dptr,a
-;	appFHSSNIC.c:451: packet[9] =  'A';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0009)
+;	appFHSSNIC.c:453: packet[9] =  'A';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0009)
 	mov	a,#0x41
 	movx	@dptr,a
-;	appFHSSNIC.c:452: packet[10] = 'H';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x000a)
+;	appFHSSNIC.c:454: packet[10] = 'H';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x000a)
 	mov	a,#0x48
 	movx	@dptr,a
-;	appFHSSNIC.c:453: packet[11] = 'B';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x000b)
+;	appFHSSNIC.c:455: packet[11] = 'B';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x000b)
 	mov	a,#0x42
 	movx	@dptr,a
-;	appFHSSNIC.c:454: packet[12] = 'L';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x000c)
+;	appFHSSNIC.c:456: packet[12] = 'L';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x000c)
 	mov	a,#0x4C
 	movx	@dptr,a
-;	appFHSSNIC.c:455: packet[13] = 'A';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x000d)
+;	appFHSSNIC.c:457: packet[13] = 'A';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x000d)
 	mov	a,#0x41
 	movx	@dptr,a
-;	appFHSSNIC.c:456: packet[14] = 'H';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x000e)
+;	appFHSSNIC.c:458: packet[14] = 'H';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x000e)
 	mov	a,#0x48
 	movx	@dptr,a
-;	appFHSSNIC.c:457: packet[15] = 'B';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x000f)
+;	appFHSSNIC.c:459: packet[15] = 'B';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x000f)
 	mov	a,#0x42
 	movx	@dptr,a
-;	appFHSSNIC.c:458: packet[16] = 'L';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0010)
+;	appFHSSNIC.c:460: packet[16] = 'L';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0010)
 	mov	a,#0x4C
 	movx	@dptr,a
-;	appFHSSNIC.c:459: packet[17] = 'A';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0011)
+;	appFHSSNIC.c:461: packet[17] = 'A';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0011)
 	mov	a,#0x41
 	movx	@dptr,a
-;	appFHSSNIC.c:460: packet[18] = 'H';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0012)
+;	appFHSSNIC.c:462: packet[18] = 'H';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0012)
 	mov	a,#0x48
 	movx	@dptr,a
-;	appFHSSNIC.c:461: packet[19] = 'B';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0013)
+;	appFHSSNIC.c:463: packet[19] = 'B';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0013)
 	mov	a,#0x42
 	movx	@dptr,a
-;	appFHSSNIC.c:462: packet[20] = 'L';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0014)
+;	appFHSSNIC.c:464: packet[20] = 'L';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0014)
 	mov	a,#0x4C
 	movx	@dptr,a
-;	appFHSSNIC.c:463: packet[21] = 'A';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0015)
+;	appFHSSNIC.c:465: packet[21] = 'A';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0015)
 	mov	a,#0x41
 	movx	@dptr,a
-;	appFHSSNIC.c:464: packet[22] = 'H';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0016)
+;	appFHSSNIC.c:466: packet[22] = 'H';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0016)
 	mov	a,#0x48
 	movx	@dptr,a
-;	appFHSSNIC.c:465: packet[23] = 'B';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0017)
+;	appFHSSNIC.c:467: packet[23] = 'B';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0017)
 	mov	a,#0x42
 	movx	@dptr,a
-;	appFHSSNIC.c:466: packet[24] = 'L';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0018)
+;	appFHSSNIC.c:468: packet[24] = 'L';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0018)
 	mov	a,#0x4C
 	movx	@dptr,a
-;	appFHSSNIC.c:467: packet[25] = 'A';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0019)
+;	appFHSSNIC.c:469: packet[25] = 'A';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0019)
 	mov	a,#0x41
 	movx	@dptr,a
-;	appFHSSNIC.c:468: packet[26] = 'H';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x001a)
+;	appFHSSNIC.c:470: packet[26] = 'H';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x001a)
 	mov	a,#0x48
 	movx	@dptr,a
-;	appFHSSNIC.c:469: packet[27] = ' ';
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x001b)
+;	appFHSSNIC.c:471: packet[27] = ' ';
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x001b)
 	mov	a,#0x20
 	movx	@dptr,a
-;	appFHSSNIC.c:471: transmit((__xdata u8*)&packet[1], 28, 0, 0);
+;	appFHSSNIC.c:473: transmit((__xdata u8*)&packet[1], 28, 0, 0);
 	mov	dptr,#_transmit_PARM_2
 	mov	a,#0x1C
 	movx	@dptr,a
@@ -2630,16 +2627,20 @@ _t2IntHandler:
 	inc	dptr
 	movx	@dptr,a
 	mov	dptr,#_transmit_PARM_3
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 	mov	dptr,#_transmit_PARM_4
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-	mov	dptr,#(_t2IntHandler_packet_1_138 + 0x0001)
+	mov	dptr,#(_t2IntHandler_packet_1_139 + 0x0001)
 	lcall	_transmit
-;	appFHSSNIC.c:472: macdata.synched_chans++;
+;	appFHSSNIC.c:474: macdata.synched_chans++;
 	mov	dptr,#(_macdata + 0x0013)
 	movx	a,@dptr
 	mov	r6,a
@@ -2656,11 +2657,11 @@ _t2IntHandler:
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:473: break;      // don't want to do anything else if we're in this state.
+;	appFHSSNIC.c:475: break;      // don't want to do anything else if we're in this state.
 	ljmp	00123$
-;	appFHSSNIC.c:477: default:    // all other ticks we can transmit
+;	appFHSSNIC.c:479: default:    // all other ticks we can transmit
 00111$:
-;	appFHSSNIC.c:480: switch (macdata.mac_state)
+;	appFHSSNIC.c:482: switch (macdata.mac_state)
 	mov	dptr,#_macdata
 	movx	a,@dptr
 	mov	r7,a
@@ -2675,9 +2676,9 @@ _t2IntHandler:
 00171$:
 	ljmp	00123$
 00172$:
-;	appFHSSNIC.c:483: case MAC_STATE_SYNC_MASTER:
+;	appFHSSNIC.c:485: case MAC_STATE_SYNC_MASTER:
 00113$:
-;	appFHSSNIC.c:484: if (100 < (clock - macdata.tLastStateChange))   // periodically shift back to beaconing
+;	appFHSSNIC.c:486: if (100 < (clock - macdata.tLastStateChange))   // periodically shift back to beaconing
 	mov	dptr,#(_macdata + 0x000b)
 	movx	a,@dptr
 	mov	r6,a
@@ -2724,14 +2725,14 @@ _t2IntHandler:
 	clr	a
 	subb	a,r5
 	jnc	00116$
-;	appFHSSNIC.c:486: debug("SYNCH_MASTER -> SYNCINGMASTER");
-	mov	dptr,#___str_5
+;	appFHSSNIC.c:488: debug("SYNCH_MASTER -> SYNCINGMASTER");
+	mov	dptr,#__str_5
 	lcall	_debug
-;	appFHSSNIC.c:487: macdata.mac_state = MAC_STATE_SYNCINGMASTER;
+;	appFHSSNIC.c:489: macdata.mac_state = MAC_STATE_SYNCINGMASTER;
 	mov	dptr,#_macdata
 	mov	a,#0x05
 	movx	@dptr,a
-;	appFHSSNIC.c:488: macdata.tLastStateChange = clock;
+;	appFHSSNIC.c:490: macdata.tLastStateChange = clock;
 	mov	dptr,#_clock
 	movx	a,@dptr
 	mov	r4,a
@@ -2750,9 +2751,9 @@ _t2IntHandler:
 	mov	a,r5
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:491: case MAC_STATE_SYNCHED:
+;	appFHSSNIC.c:493: case MAC_STATE_SYNCHED:
 00116$:
-;	appFHSSNIC.c:501: if ( g_txMsgQueue[macdata.txMsgIdxDone][0])      // if length byte >0
+;	appFHSSNIC.c:503: if ( g_txMsgQueue[macdata.txMsgIdxDone][0])      // if length byte >0
 	mov	dptr,#(_macdata + 0x0012)
 	movx	a,@dptr
 	mov	b,#0xF1
@@ -2766,10 +2767,10 @@ _t2IntHandler:
 	mov	dph,r7
 	movx	a,@dptr
 	jz	00123$
-;	appFHSSNIC.c:504: sleepMillis(FHSS_TX_SLEEP_DELAY);
+;	appFHSSNIC.c:506: sleepMillis(FHSS_TX_SLEEP_DELAY);
 	mov	dptr,#0x0019
 	lcall	_sleepMillis
-;	appFHSSNIC.c:505: transmit(&g_txMsgQueue[macdata.txMsgIdxDone][!(PKTCTRL0&1)], g_txMsgQueue[macdata.txMsgIdxDone][0], 0, 0);
+;	appFHSSNIC.c:507: transmit(&g_txMsgQueue[macdata.txMsgIdxDone][!(PKTCTRL0&1)], g_txMsgQueue[macdata.txMsgIdxDone][0], 0, 0);
 	mov	dptr,#(_macdata + 0x0012)
 	movx	a,@dptr
 	mov	b,#0xF1
@@ -2801,17 +2802,21 @@ _t2IntHandler:
 	inc	dptr
 	movx	@dptr,a
 	mov	dptr,#_transmit_PARM_3
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 	mov	dptr,#_transmit_PARM_4
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 	mov	dpl,r5
 	mov	dph,r4
 	lcall	_transmit
-;	appFHSSNIC.c:507: g_txMsgQueue[macdata.txMsgIdxDone][0] = 0;
+;	appFHSSNIC.c:509: g_txMsgQueue[macdata.txMsgIdxDone][0] = 0;
 	mov	dptr,#(_macdata + 0x0012)
 	movx	a,@dptr
 	mov	b,#0xF1
@@ -2823,7 +2828,7 @@ _t2IntHandler:
 	mov	dph,a
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:509: if (++macdata.txMsgIdxDone >= MAX_TX_MSGS)
+;	appFHSSNIC.c:511: if (++macdata.txMsgIdxDone >= MAX_TX_MSGS)
 	mov	dptr,#(_macdata + 0x0012)
 	movx	a,@dptr
 	mov	r7,a
@@ -2834,15 +2839,15 @@ _t2IntHandler:
 	cjne	r7,#0x02,00176$
 00176$:
 	jc	00118$
-;	appFHSSNIC.c:511: macdata.txMsgIdxDone = 0;
+;	appFHSSNIC.c:513: macdata.txMsgIdxDone = 0;
 	mov	dptr,#(_macdata + 0x0012)
 	clr	a
 	movx	@dptr,a
 00118$:
-;	appFHSSNIC.c:513: debug("FHSSxmit done");
-	mov	dptr,#___str_6
+;	appFHSSNIC.c:515: debug("FHSSxmit done");
+	mov	dptr,#__str_6
 	lcall	_debug
-;	appFHSSNIC.c:516: }
+;	appFHSSNIC.c:518: }
 00123$:
 	pop	psw
 	pop	(0+0)
@@ -2862,12 +2867,12 @@ _t2IntHandler:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 't3IntHandler'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:519: void t3IntHandler(void) __interrupt T3_VECTOR
+;	appFHSSNIC.c:521: void t3IntHandler(void) __interrupt T3_VECTOR
 ;	-----------------------------------------
 ;	 function t3IntHandler
 ;	-----------------------------------------
 _t3IntHandler:
-;	appFHSSNIC.c:523: }
+;	appFHSSNIC.c:525: }
 	reti
 ;	eliminated unneeded mov psw,# (no regs used in bank)
 ;	eliminated unneeded push/pop psw
@@ -2878,125 +2883,139 @@ _t3IntHandler:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'init_FHSS'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:525: void init_FHSS(void)
+;	appFHSSNIC.c:527: void init_FHSS(void)
 ;	-----------------------------------------
 ;	 function init_FHSS
 ;	-----------------------------------------
 _init_FHSS:
-;	appFHSSNIC.c:527: macdata.mac_state = 0;
+;	appFHSSNIC.c:529: macdata.mac_state = 0;
 	mov	dptr,#_macdata
+;	appFHSSNIC.c:530: macdata.txMsgIdx = 0;
+;	appFHSSNIC.c:531: macdata.txMsgIdxDone = 0;
+;	appFHSSNIC.c:532: macdata.curChanIdx = 0;
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:528: macdata.txMsgIdx = 0;
 	mov	dptr,#(_macdata + 0x0011)
 	movx	@dptr,a
-;	appFHSSNIC.c:529: macdata.txMsgIdxDone = 0;
 	mov	dptr,#(_macdata + 0x0012)
 	movx	@dptr,a
-;	appFHSSNIC.c:530: macdata.curChanIdx = 0;
 	mov	dptr,#(_macdata + 0x0009)
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:531: macdata.NumChannels = DEFAULT_NUM_CHANS;
+;	appFHSSNIC.c:533: macdata.NumChannels = DEFAULT_NUM_CHANS;
 	mov	dptr,#(_macdata + 0x0005)
 	mov	a,#0x53
 	movx	@dptr,a
 	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:532: macdata.NumChannelHops = DEFAULT_NUM_CHANHOPS;
+;	appFHSSNIC.c:534: macdata.NumChannelHops = DEFAULT_NUM_CHANHOPS;
 	mov	dptr,#(_macdata + 0x0007)
 	mov	a,#0x53
 	movx	@dptr,a
 	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:533: macdata.tLastHop = 0;
+;	appFHSSNIC.c:535: macdata.tLastHop = 0;
 	mov	dptr,#(_macdata + 0x000d)
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:534: macdata.tLastStateChange = 0;
+;	appFHSSNIC.c:536: macdata.tLastStateChange = 0;
 	mov	dptr,#(_macdata + 0x000b)
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:535: macdata.MAC_threshold = 6;
+;	appFHSSNIC.c:537: macdata.MAC_threshold = 6;
 	mov	dptr,#(_macdata + 0x0001)
 	mov	a,#0x06
 	movx	@dptr,a
 	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:536: macdata.MAC_timer = 0;
+;	appFHSSNIC.c:538: macdata.MAC_timer = 0;
 	mov	dptr,#(_macdata + 0x0003)
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:537: macdata.desperatelySeeking = 0;
+;	appFHSSNIC.c:539: macdata.desperatelySeeking = 0;
 	mov	dptr,#(_macdata + 0x000f)
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:538: macdata.synched_chans = 0;
+;	appFHSSNIC.c:540: macdata.synched_chans = 0;
 	mov	dptr,#(_macdata + 0x0013)
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:540: MAC_initChannels();
+;	appFHSSNIC.c:542: MAC_initChannels();
 	lcall	_MAC_initChannels
-;	appFHSSNIC.c:542: macdata.mac_state = MAC_STATE_NONHOPPING;   // this is basic NIC functionality
+;	appFHSSNIC.c:544: macdata.mac_state = MAC_STATE_NONHOPPING;   // this is basic NIC functionality
 	mov	dptr,#_macdata
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:552: T2PR = 0xdc;        
+;	appFHSSNIC.c:554: T2PR = 0xdc;        
 	mov	_T2PR,#0xDC
-;	appFHSSNIC.c:553: T2CTL |= T2CTL_TIP_64;  // 64, 128, 256, 1024
+;	appFHSSNIC.c:555: T2CTL |= T2CTL_TIP_64;  // 64, 128, 256, 1024
 	mov	_T2CTL,_T2CTL
-;	appFHSSNIC.c:587: T2CTL |= T2CTL_TIG;
+;	appFHSSNIC.c:589: T2CTL |= T2CTL_TIG;
 	orl	_T2CTL,#0x04
-;	appFHSSNIC.c:593: T3CTL |= T3CTL_START;
+;	appFHSSNIC.c:595: T3CTL |= T3CTL_START;
 	orl	_T3CTL,#0x10
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'init_MAC'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:597: void init_MAC(void)
+;	appFHSSNIC.c:599: void init_MAC(void)
 ;	-----------------------------------------
 ;	 function init_MAC
 ;	-----------------------------------------
 _init_MAC:
-;	appFHSSNIC.c:599: init_FHSS();
+;	appFHSSNIC.c:601: init_FHSS();
 	ljmp	_init_FHSS
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'appMainInit'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:610: void appMainInit(void)
+;	appFHSSNIC.c:612: void appMainInit(void)
 ;	-----------------------------------------
 ;	 function appMainInit
 ;	-----------------------------------------
 _appMainInit:
-;	appFHSSNIC.c:613: registerCb_ep5( appHandleEP5 );
+;	appFHSSNIC.c:615: registerCb_ep5( appHandleEP5 );
 	mov	dptr,#_appHandleEP5
 	lcall	_registerCb_ep5
-;	appFHSSNIC.c:615: clock = 0;
+;	appFHSSNIC.c:617: clock = 0;
 	mov	dptr,#_clock
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:617: init_MAC();
+;	appFHSSNIC.c:619: init_MAC();
 	lcall	_init_MAC
-;	appFHSSNIC.c:619: processbuffer = 0;
+;	appFHSSNIC.c:621: processbuffer = 0;
 	mov	dptr,#_processbuffer
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:620: chan_table = rfrxbuf[0];
+;	appFHSSNIC.c:622: chan_table = rfrxbuf[0];
 	mov	dptr,#_chan_table
 	mov	a,#_rfrxbuf
 	movx	@dptr,a
@@ -3007,12 +3026,12 @@ _appMainInit:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'appMainLoop'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:626: void appMainLoop(void)
+;	appFHSSNIC.c:628: void appMainLoop(void)
 ;	-----------------------------------------
 ;	 function appMainLoop
 ;	-----------------------------------------
 _appMainLoop:
-;	appFHSSNIC.c:629: switch  (macdata.mac_state)
+;	appFHSSNIC.c:631: switch  (macdata.mac_state)
 	mov	dptr,#_macdata
 	movx	a,@dptr
 	mov	r7,a
@@ -3044,7 +3063,7 @@ _appMainLoop:
 	sjmp	00109$
 00279$:
 	ret
-;	appFHSSNIC.c:636: RFOFF;
+;	appFHSSNIC.c:638: RFOFF;
 00106$:
 	mov	_RFST,#0x04
 00103$:
@@ -3052,47 +3071,46 @@ _appMainLoop:
 	movx	a,@dptr
 	mov	r7,a
 	cjne	r7,#0x01,00103$
-;	appFHSSNIC.c:637: PKTCTRL1 =  0xE5;       // highest PQT, address check, append_status
+;	appFHSSNIC.c:639: PKTCTRL1 =  0xE5;       // highest PQT, address check, append_status
 	mov	dptr,#_PKTCTRL1
 	mov	a,#0xE5
 	movx	@dptr,a
-;	appFHSSNIC.c:638: PKTCTRL0 =  0x04;       // crc enabled      ( we really don't want any packets coming our way :)
+;	appFHSSNIC.c:640: PKTCTRL0 =  0x04;       // crc enabled      ( we really don't want any packets coming our way :)
 	mov	dptr,#_PKTCTRL0
 	mov	a,#0x04
 	movx	@dptr,a
-;	appFHSSNIC.c:639: FSCTRL1 =   0x12;       // freq if
+;	appFHSSNIC.c:641: FSCTRL1 =   0x12;       // freq if
 	mov	dptr,#_FSCTRL1
 	mov	a,#0x12
 	movx	@dptr,a
-;	appFHSSNIC.c:640: FSCTRL0 =   0x00;
+;	appFHSSNIC.c:642: FSCTRL0 =   0x00;
 	mov	dptr,#_FSCTRL0
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:641: MCSM0 =     0x10;       // autocal/no auto-cal....  hmmm...
+;	appFHSSNIC.c:643: MCSM0 =     0x10;       // autocal/no auto-cal....  hmmm...
 	mov	dptr,#_MCSM0
 	mov	a,#0x10
 	movx	@dptr,a
-;	appFHSSNIC.c:642: AGCCTRL2 |= AGCCTRL2_MAX_DVGA_GAIN;     // disable 3 highest gain settings
+;	appFHSSNIC.c:644: AGCCTRL2 |= AGCCTRL2_MAX_DVGA_GAIN;     // disable 3 highest gain settings
 	mov	dptr,#_AGCCTRL2
 	movx	a,@dptr
 	mov	r7,a
-	mov	a,#0xC0
-	orl	a,r7
+	orl	a,#0xC0
 	movx	@dptr,a
-;	appFHSSNIC.c:643: macdata.mac_state = MAC_STATE_SPECAN;
+;	appFHSSNIC.c:645: macdata.mac_state = MAC_STATE_SPECAN;
 	mov	dptr,#_macdata
 	mov	a,#0x41
 	movx	@dptr,a
-;	appFHSSNIC.c:645: chan_table = rfrxbuf[0];
+;	appFHSSNIC.c:647: chan_table = rfrxbuf[0];
 	mov	dptr,#_chan_table
 	mov	a,#_rfrxbuf
 	movx	@dptr,a
 	mov	a,#(_rfrxbuf >> 8)
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:647: case MAC_STATE_SPECAN:
+;	appFHSSNIC.c:649: case MAC_STATE_SPECAN:
 00109$:
-;	appFHSSNIC.c:648: for (processbuffer = 0; processbuffer < macdata.synched_chans; processbuffer++)
+;	appFHSSNIC.c:650: for (processbuffer = 0; processbuffer < macdata.synched_chans; processbuffer++)
 	mov	dptr,#_processbuffer
 	clr	a
 	movx	@dptr,a
@@ -3114,28 +3132,28 @@ _appMainLoop:
 	mov	a,r4
 	subb	a,r7
 	jnc	00126$
-;	appFHSSNIC.c:651: CHANNR = processbuffer;        // may not be the fastest, but otherwise we have to store FSCAL data for each channel
+;	appFHSSNIC.c:653: CHANNR = processbuffer;        // may not be the fastest, but otherwise we have to store FSCAL data for each channel
 	mov	dptr,#_CHANNR
 	mov	a,r5
 	movx	@dptr,a
-;	appFHSSNIC.c:652: RFOFF;
+;	appFHSSNIC.c:654: RFOFF;
 	mov	_RFST,#0x04
 00110$:
 	mov	dptr,#_MARCSTATE
 	movx	a,@dptr
 	mov	r7,a
 	cjne	r7,#0x01,00110$
-;	appFHSSNIC.c:653: RFRX;
+;	appFHSSNIC.c:655: RFRX;
 	mov	_RFST,#0x02
 00116$:
 	mov	dptr,#_MARCSTATE
 	movx	a,@dptr
 	mov	r7,a
 	cjne	r7,#0x0D,00116$
-;	appFHSSNIC.c:654: sleepMillis(2);
+;	appFHSSNIC.c:656: sleepMillis(2);
 	mov	dptr,#0x0002
 	lcall	_sleepMillis
-;	appFHSSNIC.c:657: chan_table[processbuffer] = (RSSI);
+;	appFHSSNIC.c:659: chan_table[processbuffer] = (RSSI);
 	mov	dptr,#_chan_table
 	movx	a,@dptr
 	mov	r6,a
@@ -3155,12 +3173,12 @@ _appMainLoop:
 	mov	dpl,r6
 	mov	dph,r7
 	movx	@dptr,a
-;	appFHSSNIC.c:648: for (processbuffer = 0; processbuffer < macdata.synched_chans; processbuffer++)
+;	appFHSSNIC.c:650: for (processbuffer = 0; processbuffer < macdata.synched_chans; processbuffer++)
 	mov	dptr,#_processbuffer
 	movx	a,@dptr
 	add	a,#0x01
 	movx	@dptr,a
-;	appFHSSNIC.c:661: RFOFF;
+;	appFHSSNIC.c:663: RFOFF;
 	sjmp	00166$
 00126$:
 	mov	_RFST,#0x04
@@ -3169,7 +3187,7 @@ _appMainLoop:
 	movx	a,@dptr
 	mov	r7,a
 	cjne	r7,#0x01,00123$
-;	appFHSSNIC.c:662: txdata( APP_SPECAN, SPECAN_QUEUE, (u8)macdata.synched_chans, (__xdata u8*)&chan_table[0] );
+;	appFHSSNIC.c:664: txdata( APP_SPECAN, SPECAN_QUEUE, (u8)macdata.synched_chans, (__xdata u8*)&chan_table[0] );
 	mov	dptr,#(_macdata + 0x0013)
 	movx	a,@dptr
 	mov	r6,a
@@ -3185,34 +3203,34 @@ _appMainLoop:
 	mov	(_txdata_PARM_4 + 1),a
 	mov	_txdata_PARM_2,#0x01
 	mov	dpl,#0x43
-;	appFHSSNIC.c:663: break;
+;	appFHSSNIC.c:665: break;
 	ljmp	_txdata
-;	appFHSSNIC.c:665: case MAC_STATE_SYNCHING:
+;	appFHSSNIC.c:667: case MAC_STATE_SYNCHING:
 00129$:
-;	appFHSSNIC.c:668: if (rfif)
+;	appFHSSNIC.c:670: if (rfif)
 	mov	a,_rfif
 	jnz	00289$
 	ljmp	00138$
 00289$:
-;	appFHSSNIC.c:670: lastCode[0] = 0xd;
+;	appFHSSNIC.c:672: lastCode[0] = 0xd;
 	mov	dptr,#_lastCode
 	mov	a,#0x0D
 	movx	@dptr,a
-;	appFHSSNIC.c:671: IEN2 &= ~IEN2_RFIE;   // FIXME: is this ok?
+;	appFHSSNIC.c:673: IEN2 &= ~IEN2_RFIE;   // FIXME: is this ok?
 	mov	r7,_IEN2
 	mov	a,#0xFE
 	anl	a,r7
 	mov	_IEN2,a
-;	appFHSSNIC.c:673: if(rfif & RFIF_IRQ_DONE)
+;	appFHSSNIC.c:675: if(rfif & RFIF_IRQ_DONE)
 	mov	a,_rfif
 	jb	acc.4,00290$
 	ljmp	00138$
 00290$:
-;	appFHSSNIC.c:677: macdata.mac_state = MAC_STATE_SYNCHED;
+;	appFHSSNIC.c:679: macdata.mac_state = MAC_STATE_SYNCHED;
 	mov	dptr,#_macdata
 	mov	a,#0x03
 	movx	@dptr,a
-;	appFHSSNIC.c:678: begin_hopping((u8)(rf_tLastRecv & 0xff));       // synching happens within
+;	appFHSSNIC.c:680: begin_hopping((u8)(rf_tLastRecv & 0xff));       // synching happens within
 	mov	dptr,#_rf_tLastRecv
 	movx	a,@dptr
 	mov	r6,a
@@ -3220,10 +3238,10 @@ _appMainLoop:
 	movx	a,@dptr
 	mov	dpl,r6
 	lcall	_begin_hopping
-;	appFHSSNIC.c:680: debug("network packet(sync)");
-	mov	dptr,#___str_7
+;	appFHSSNIC.c:682: debug("network packet(sync)");
+	mov	dptr,#__str_7
 	lcall	_debug
-;	appFHSSNIC.c:681: debughex16((u16)rf_tLastRecv);
+;	appFHSSNIC.c:683: debughex16((u16)rf_tLastRecv);
 	mov	dptr,#_rf_tLastRecv
 	movx	a,@dptr
 	mov	r6,a
@@ -3233,7 +3251,7 @@ _appMainLoop:
 	mov	dpl,r6
 	mov	dph,r7
 	lcall	_debughex16
-;	appFHSSNIC.c:682: debug((__code u8*)&rfrxbuf[rfRxCurrentBuffer][0]);
+;	appFHSSNIC.c:684: debug((__code u8*)&rfrxbuf[rfRxCurrentBuffer][0]);
 	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
 	add	a,acc
@@ -3247,7 +3265,7 @@ _appMainLoop:
 	mov	dpl,r7
 	mov	dph,r6
 	lcall	_debug
-;	appFHSSNIC.c:685: processbuffer = !rfRxCurrentBuffer;
+;	appFHSSNIC.c:687: processbuffer = !rfRxCurrentBuffer;
 	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
 	mov	r7,a
@@ -3258,7 +3276,7 @@ _appMainLoop:
 	mov	r7,a
 	mov	dptr,#_processbuffer
 	movx	@dptr,a
-;	appFHSSNIC.c:686: if(rfRxProcessed[processbuffer] == RX_UNPROCESSED)
+;	appFHSSNIC.c:688: if(rfRxProcessed[processbuffer] == RX_UNPROCESSED)
 	mov	a,r7
 	add	a,#_rfRxProcessed
 	mov	r5,a
@@ -3269,12 +3287,12 @@ _appMainLoop:
 	mov	dph,r6
 	movx	a,@dptr
 	jnz	00134$
-;	appFHSSNIC.c:689: if (PKTCTRL0&1)     // variable length packets have a leading "length" byte, let's skip it
+;	appFHSSNIC.c:691: if (PKTCTRL0&1)     // variable length packets have a leading "length" byte, let's skip it
 	mov	dptr,#_PKTCTRL0
 	movx	a,@dptr
 	mov	r6,a
 	jnb	acc.0,00131$
-;	appFHSSNIC.c:690: txdata(APP_NIC, NIC_RECV, (u8)rfrxbuf[processbuffer][0], (u8*)&rfrxbuf[processbuffer][1]);
+;	appFHSSNIC.c:692: txdata(APP_NIC, NIC_RECV, (u8)rfrxbuf[processbuffer][0], (u8*)&rfrxbuf[processbuffer][1]);
 	mov	ar6,r7
 	mov	a,r6
 	add	a,r6
@@ -3310,7 +3328,7 @@ _appMainLoop:
 	lcall	_txdata
 	sjmp	00132$
 00131$:
-;	appFHSSNIC.c:692: txdata(APP_NIC, NIC_RECV, PKTLEN, (u8*)&rfrxbuf[processbuffer]);
+;	appFHSSNIC.c:694: txdata(APP_NIC, NIC_RECV, PKTLEN, (u8*)&rfrxbuf[processbuffer]);
 	mov	dptr,#_PKTLEN
 	movx	a,@dptr
 	mov	r6,a
@@ -3332,7 +3350,7 @@ _appMainLoop:
 	mov	dpl,#0x42
 	lcall	_txdata
 00132$:
-;	appFHSSNIC.c:695: rfRxProcessed[processbuffer] = RX_PROCESSED;
+;	appFHSSNIC.c:697: rfRxProcessed[processbuffer] = RX_PROCESSED;
 	mov	dptr,#_processbuffer
 	movx	a,@dptr
 	mov	r7,a
@@ -3344,13 +3362,13 @@ _appMainLoop:
 	mov	a,#0x01
 	movx	@dptr,a
 00134$:
-;	appFHSSNIC.c:697: rfif &= ~RFIF_IRQ_DONE;
+;	appFHSSNIC.c:699: rfif &= ~RFIF_IRQ_DONE;
 	mov	r7,_rfif
 	mov	a,#0xEF
 	anl	a,r7
 	mov	_rfif,a
 00138$:
-;	appFHSSNIC.c:701: __critical { rfif = 0; }
+;	appFHSSNIC.c:703: __critical { rfif = 0; }
 	setb	_appMainLoop_sloc0_1_0
 	jbc	ea,00294$
 	clr	_appMainLoop_sloc0_1_0
@@ -3358,32 +3376,32 @@ _appMainLoop:
 	mov	_rfif,#0x00
 	mov	c,_appMainLoop_sloc0_1_0
 	mov	ea,c
-;	appFHSSNIC.c:702: IEN2 |= IEN2_RFIE;
+;	appFHSSNIC.c:704: IEN2 |= IEN2_RFIE;
 	orl	_IEN2,#0x01
-;	appFHSSNIC.c:703: break;
+;	appFHSSNIC.c:705: break;
 	ret
-;	appFHSSNIC.c:705: case MAC_STATE_DISCOVERY:
+;	appFHSSNIC.c:707: case MAC_STATE_DISCOVERY:
 00139$:
-;	appFHSSNIC.c:708: if (rfif)
+;	appFHSSNIC.c:710: if (rfif)
 	mov	a,_rfif
 	jnz	00295$
 	ljmp	00148$
 00295$:
-;	appFHSSNIC.c:710: lastCode[0] = 0xd;
+;	appFHSSNIC.c:712: lastCode[0] = 0xd;
 	mov	dptr,#_lastCode
 	mov	a,#0x0D
 	movx	@dptr,a
-;	appFHSSNIC.c:711: IEN2 &= ~IEN2_RFIE;
+;	appFHSSNIC.c:713: IEN2 &= ~IEN2_RFIE;
 	mov	r7,_IEN2
 	mov	a,#0xFE
 	anl	a,r7
 	mov	_IEN2,a
-;	appFHSSNIC.c:713: if(rfif & RFIF_IRQ_DONE)
+;	appFHSSNIC.c:715: if(rfif & RFIF_IRQ_DONE)
 	mov	a,_rfif
 	jb	acc.4,00296$
 	ljmp	00148$
 00296$:
-;	appFHSSNIC.c:716: processbuffer = !rfRxCurrentBuffer;
+;	appFHSSNIC.c:718: processbuffer = !rfRxCurrentBuffer;
 	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
 	mov	r7,a
@@ -3393,10 +3411,10 @@ _appMainLoop:
 	clr	a
 	rlc	a
 	movx	@dptr,a
-;	appFHSSNIC.c:717: debug("network packet(discovery)");
-	mov	dptr,#___str_8
+;	appFHSSNIC.c:719: debug("network packet(discovery)");
+	mov	dptr,#__str_8
 	lcall	_debug
-;	appFHSSNIC.c:718: debughex16((u16)rfrxbuf[processbuffer]);
+;	appFHSSNIC.c:720: debughex16((u16)rfrxbuf[processbuffer]);
 	mov	dptr,#_processbuffer
 	movx	a,@dptr
 	add	a,acc
@@ -3410,7 +3428,7 @@ _appMainLoop:
 	mov	dpl,r7
 	mov	dph,r6
 	lcall	_debughex16
-;	appFHSSNIC.c:719: debug((__code u8*)&rfrxbuf[processbuffer][0]);
+;	appFHSSNIC.c:721: debug((__code u8*)&rfrxbuf[processbuffer][0]);
 	mov	dptr,#_processbuffer
 	movx	a,@dptr
 	add	a,acc
@@ -3424,7 +3442,7 @@ _appMainLoop:
 	mov	dpl,r7
 	mov	dph,r6
 	lcall	_debug
-;	appFHSSNIC.c:722: processbuffer = !rfRxCurrentBuffer;
+;	appFHSSNIC.c:724: processbuffer = !rfRxCurrentBuffer;
 	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
 	mov	r7,a
@@ -3435,7 +3453,7 @@ _appMainLoop:
 	mov	r7,a
 	mov	dptr,#_processbuffer
 	movx	@dptr,a
-;	appFHSSNIC.c:723: if(rfRxProcessed[processbuffer] == RX_UNPROCESSED)
+;	appFHSSNIC.c:725: if(rfRxProcessed[processbuffer] == RX_UNPROCESSED)
 	mov	a,r7
 	add	a,#_rfRxProcessed
 	mov	r5,a
@@ -3446,12 +3464,12 @@ _appMainLoop:
 	mov	dph,r6
 	movx	a,@dptr
 	jnz	00144$
-;	appFHSSNIC.c:726: if (PKTCTRL0&1)     // variable length packets have a leading "length" byte, let's skip it
+;	appFHSSNIC.c:728: if (PKTCTRL0&1)     // variable length packets have a leading "length" byte, let's skip it
 	mov	dptr,#_PKTCTRL0
 	movx	a,@dptr
 	mov	r6,a
 	jnb	acc.0,00141$
-;	appFHSSNIC.c:727: txdata(APP_NIC, NIC_RECV, (u8)rfrxbuf[processbuffer][0], (u8*)&rfrxbuf[processbuffer][1]);
+;	appFHSSNIC.c:729: txdata(APP_NIC, NIC_RECV, (u8)rfrxbuf[processbuffer][0], (u8*)&rfrxbuf[processbuffer][1]);
 	mov	ar6,r7
 	mov	a,r6
 	add	a,r6
@@ -3487,7 +3505,7 @@ _appMainLoop:
 	lcall	_txdata
 	sjmp	00142$
 00141$:
-;	appFHSSNIC.c:729: txdata(APP_NIC, NIC_RECV, PKTLEN, (u8*)&rfrxbuf[processbuffer]);
+;	appFHSSNIC.c:731: txdata(APP_NIC, NIC_RECV, PKTLEN, (u8*)&rfrxbuf[processbuffer]);
 	mov	dptr,#_PKTLEN
 	movx	a,@dptr
 	mov	r6,a
@@ -3509,7 +3527,7 @@ _appMainLoop:
 	mov	dpl,#0x42
 	lcall	_txdata
 00142$:
-;	appFHSSNIC.c:732: rfRxProcessed[processbuffer] = RX_PROCESSED;
+;	appFHSSNIC.c:734: rfRxProcessed[processbuffer] = RX_PROCESSED;
 	mov	dptr,#_processbuffer
 	movx	a,@dptr
 	mov	r7,a
@@ -3521,7 +3539,7 @@ _appMainLoop:
 	mov	a,#0x01
 	movx	@dptr,a
 00144$:
-;	appFHSSNIC.c:734: __critical { rfif &= ~RFIF_IRQ_DONE; }
+;	appFHSSNIC.c:736: __critical { rfif &= ~RFIF_IRQ_DONE; }
 	setb	_appMainLoop_sloc0_1_0
 	jbc	ea,00301$
 	clr	_appMainLoop_sloc0_1_0
@@ -3533,7 +3551,7 @@ _appMainLoop:
 	mov	c,_appMainLoop_sloc0_1_0
 	mov	ea,c
 00148$:
-;	appFHSSNIC.c:738: __critical{ rfif = 0; }
+;	appFHSSNIC.c:740: __critical{ rfif = 0; }
 	setb	_appMainLoop_sloc0_1_0
 	jbc	ea,00302$
 	clr	_appMainLoop_sloc0_1_0
@@ -3541,13 +3559,13 @@ _appMainLoop:
 	mov	_rfif,#0x00
 	mov	c,_appMainLoop_sloc0_1_0
 	mov	ea,c
-;	appFHSSNIC.c:739: IEN2 |= IEN2_RFIE;
+;	appFHSSNIC.c:741: IEN2 |= IEN2_RFIE;
 	orl	_IEN2,#0x01
-;	appFHSSNIC.c:740: break;
+;	appFHSSNIC.c:742: break;
 	ret
-;	appFHSSNIC.c:742: case MAC_STATE_SYNCINGMASTER:
+;	appFHSSNIC.c:744: case MAC_STATE_SYNCINGMASTER:
 00149$:
-;	appFHSSNIC.c:744: if (macdata.synched_chans >= macdata.NumChannelHops)
+;	appFHSSNIC.c:746: if (macdata.synched_chans >= macdata.NumChannelHops)
 	mov	dptr,#(_macdata + 0x0013)
 	movx	a,@dptr
 	mov	r6,a
@@ -3568,30 +3586,30 @@ _appMainLoop:
 	jnc	00303$
 	ret
 00303$:
-;	appFHSSNIC.c:746: macdata.mac_state = MAC_STATE_SYNC_MASTER;
+;	appFHSSNIC.c:748: macdata.mac_state = MAC_STATE_SYNC_MASTER;
 	mov	dptr,#_macdata
 	mov	a,#0x04
 	movx	@dptr,a
-;	appFHSSNIC.c:748: break;
+;	appFHSSNIC.c:750: break;
 	ret
-;	appFHSSNIC.c:752: case MAC_STATE_NONHOPPING:
+;	appFHSSNIC.c:754: case MAC_STATE_NONHOPPING:
 00154$:
-;	appFHSSNIC.c:754: if (rfif)
+;	appFHSSNIC.c:756: if (rfif)
 	mov	a,_rfif
 	jnz	00304$
 	ret
 00304$:
-;	appFHSSNIC.c:757: lastCode[0] = 0xd;
+;	appFHSSNIC.c:759: lastCode[0] = 0xd;
 	mov	dptr,#_lastCode
 	mov	a,#0x0D
 	movx	@dptr,a
-;	appFHSSNIC.c:759: if(rfif & (RFIF_IRQ_DONE | RFIF_IRQ_TIMEOUT) )
+;	appFHSSNIC.c:761: if(rfif & (RFIF_IRQ_DONE | RFIF_IRQ_TIMEOUT) )
 	mov	a,_rfif
 	anl	a,#0x30
 	jnz	00305$
 	ret
 00305$:
-;	appFHSSNIC.c:761: processbuffer = !rfRxCurrentBuffer;
+;	appFHSSNIC.c:763: processbuffer = !rfRxCurrentBuffer;
 	mov	dptr,#_rfRxCurrentBuffer
 	movx	a,@dptr
 	mov	r7,a
@@ -3602,7 +3620,7 @@ _appMainLoop:
 	mov	r7,a
 	mov	dptr,#_processbuffer
 	movx	@dptr,a
-;	appFHSSNIC.c:762: if(rfRxProcessed[processbuffer] == RX_UNPROCESSED)
+;	appFHSSNIC.c:764: if(rfRxProcessed[processbuffer] == RX_UNPROCESSED)
 	mov	a,r7
 	add	a,#_rfRxProcessed
 	mov	r5,a
@@ -3615,12 +3633,12 @@ _appMainLoop:
 	jz	00307$
 	ljmp	00159$
 00307$:
-;	appFHSSNIC.c:765: if (PKTCTRL0&1)     // variable length packets have a leading "length" byte, let's skip it
+;	appFHSSNIC.c:767: if (PKTCTRL0&1)     // variable length packets have a leading "length" byte, let's skip it
 	mov	dptr,#_PKTCTRL0
 	movx	a,@dptr
 	mov	r6,a
 	jnb	acc.0,00156$
-;	appFHSSNIC.c:767: txdata(APP_NIC, NIC_RECV, (u8)rfrxbuf[processbuffer][0], (u8*)&rfrxbuf[processbuffer][1]);
+;	appFHSSNIC.c:769: txdata(APP_NIC, NIC_RECV, (u8)rfrxbuf[processbuffer][0], (u8*)&rfrxbuf[processbuffer][1]);
 	mov	ar6,r7
 	mov	a,r6
 	add	a,r6
@@ -3656,10 +3674,10 @@ _appMainLoop:
 	lcall	_txdata
 	sjmp	00157$
 00156$:
-;	appFHSSNIC.c:769: txdata(APP_NIC, NIC_RECV, rfRxInfMode ? rfRxLargeLen : PKTLEN, (u8*)&rfrxbuf[processbuffer]);
+;	appFHSSNIC.c:771: txdata(APP_NIC, NIC_RECV, rfRxInfMode ? rfRxLargeLen : PKTLEN, (u8*)&rfrxbuf[processbuffer]);
 	mov	dptr,#_rfRxInfMode
 	movx	a,@dptr
-	movx	a,@dptr
+	mov	r6,a
 	jz	00170$
 	mov	dptr,#_rfRxLargeLen
 	movx	a,@dptr
@@ -3692,7 +3710,7 @@ _appMainLoop:
 	mov	dpl,#0x42
 	lcall	_txdata
 00157$:
-;	appFHSSNIC.c:773: rfRxProcessed[processbuffer] = RX_PROCESSED;
+;	appFHSSNIC.c:775: rfRxProcessed[processbuffer] = RX_PROCESSED;
 	mov	dptr,#_processbuffer
 	movx	a,@dptr
 	mov	r7,a
@@ -3704,7 +3722,7 @@ _appMainLoop:
 	mov	a,#0x01
 	movx	@dptr,a
 00159$:
-;	appFHSSNIC.c:775: __critical { rfif &= ~( RFIF_IRQ_DONE | RFIF_IRQ_TIMEOUT );  }          // FIXME: rfif is way too easily tossed aside here...
+;	appFHSSNIC.c:777: __critical { rfif &= ~( RFIF_IRQ_DONE | RFIF_IRQ_TIMEOUT );  }          // FIXME: rfif is way too easily tossed aside here...
 	setb	_appMainLoop_sloc0_1_0
 	jbc	ea,00310$
 	clr	_appMainLoop_sloc0_1_0
@@ -3715,25 +3733,25 @@ _appMainLoop:
 	mov	_rfif,a
 	mov	c,_appMainLoop_sloc0_1_0
 	mov	ea,c
-;	appFHSSNIC.c:781: }
+;	appFHSSNIC.c:783: }
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'appHandleEP5'
 ;------------------------------------------------------------
 ;sloc0                     Allocated with name '_appHandleEP5_sloc0_1_0'
 ;sloc1                     Allocated with name '_appHandleEP5_sloc1_1_0'
-;len                       Allocated with name '_appHandleEP5_len_1_178'
-;repeat                    Allocated with name '_appHandleEP5_repeat_1_178'
-;offset                    Allocated with name '_appHandleEP5_offset_1_178'
-;buf                       Allocated with name '_appHandleEP5_buf_1_178'
-;blocks                    Allocated with name '_appHandleEP5_blocks_1_178'
+;len                       Allocated with name '_appHandleEP5_len_1_179'
+;repeat                    Allocated with name '_appHandleEP5_repeat_1_179'
+;offset                    Allocated with name '_appHandleEP5_offset_1_179'
+;buf                       Allocated with name '_appHandleEP5_buf_1_179'
+;blocks                    Allocated with name '_appHandleEP5_blocks_1_179'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:797: int appHandleEP5()
+;	appFHSSNIC.c:799: int appHandleEP5()
 ;	-----------------------------------------
 ;	 function appHandleEP5
 ;	-----------------------------------------
 _appHandleEP5:
-;	appFHSSNIC.c:801: __xdata u8 * __xdata buf = &ep5.OUTbuf[0];
+;	appFHSSNIC.c:803: __xdata u8 * __xdata buf = &ep5.OUTbuf[0];
 	mov	dptr,#(_ep5 + 0x0005)
 	movx	a,@dptr
 	mov	r5,a
@@ -3743,7 +3761,7 @@ _appHandleEP5:
 	inc	dptr
 	movx	a,@dptr
 	mov	r7,a
-;	appFHSSNIC.c:804: switch (ep5.OUTapp)
+;	appFHSSNIC.c:806: switch (ep5.OUTapp)
 	mov	dptr,#(_ep5 + 0x000a)
 	movx	a,@dptr
 	mov	r4,a
@@ -3752,7 +3770,7 @@ _appHandleEP5:
 00232$:
 	ljmp	00172$
 00233$:
-;	appFHSSNIC.c:808: switch (ep5.OUTcmd)
+;	appFHSSNIC.c:810: switch (ep5.OUTcmd)
 	mov	dptr,#(_ep5 + 0x000b)
 	movx	a,@dptr
 	mov  r4,a
@@ -3904,9 +3922,9 @@ _appHandleEP5:
 	.db	00170$>>8
 	.db	00102$>>8
 	.db	00103$>>8
-;	appFHSSNIC.c:810: case RFCAT_START_SPECAN:
+;	appFHSSNIC.c:812: case RFCAT_START_SPECAN:
 00102$:
-;	appFHSSNIC.c:813: stop_hopping();
+;	appFHSSNIC.c:815: stop_hopping();
 	push	ar7
 	push	ar6
 	push	ar5
@@ -3914,11 +3932,11 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:814: macdata.mac_state = MAC_STATE_PREP_SPECAN;
+;	appFHSSNIC.c:816: macdata.mac_state = MAC_STATE_PREP_SPECAN;
 	mov	dptr,#_macdata
 	mov	a,#0x40
 	movx	@dptr,a
-;	appFHSSNIC.c:815: macdata.synched_chans = buf[0];
+;	appFHSSNIC.c:817: macdata.synched_chans = buf[0];
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -3931,7 +3949,7 @@ _appHandleEP5:
 	mov	a,r3
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:816: appReturn( 1, buf);
+;	appFHSSNIC.c:818: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -3940,15 +3958,15 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:817: break;
+;	appFHSSNIC.c:819: break;
 	ljmp	00172$
-;	appFHSSNIC.c:819: case RFCAT_STOP_SPECAN:
+;	appFHSSNIC.c:821: case RFCAT_STOP_SPECAN:
 00103$:
-;	appFHSSNIC.c:820: macdata.mac_state = MAC_STATE_NONHOPPING;
+;	appFHSSNIC.c:822: macdata.mac_state = MAC_STATE_NONHOPPING;
 	mov	dptr,#_macdata
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:821: appReturn( 1, buf);
+;	appFHSSNIC.c:823: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -3957,53 +3975,52 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:822: break;
+;	appFHSSNIC.c:824: break;
 	ljmp	00172$
-;	appFHSSNIC.c:824: case NIC_XMIT:
+;	appFHSSNIC.c:826: case NIC_XMIT:
 00104$:
-;	appFHSSNIC.c:827: if (macdata.mac_state != MAC_STATE_NONHOPPING)
+;	appFHSSNIC.c:829: if (macdata.mac_state != MAC_STATE_NONHOPPING)
 	mov	dptr,#_macdata
 	movx	a,@dptr
 	jz	00106$
-;	appFHSSNIC.c:829: debug("crap, please use FHSSxmit() instead!");
-	mov	dptr,#___str_9
+;	appFHSSNIC.c:831: debug("crap, please use FHSSxmit() instead!");
+	mov	dptr,#__str_9
 	lcall	_debug
-;	appFHSSNIC.c:830: break;
+;	appFHSSNIC.c:832: break;
 	ljmp	00172$
 00106$:
-;	appFHSSNIC.c:832: len = buf[0];
+;	appFHSSNIC.c:834: len = buf[0];
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
 	lcall	__gptrget
 	mov	r4,a
 	mov	r3,#0x00
-	mov	dptr,#_appHandleEP5_len_1_178
+	mov	dptr,#_appHandleEP5_len_1_179
 	mov	a,r4
 	movx	@dptr,a
 	mov	a,r3
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:833: len += buf[1] << 8;
+;	appFHSSNIC.c:835: len += buf[1] << 8;
 	mov	dpl,r5
 	mov	dph,r6
 	inc	dptr
 	movx	a,@dptr
 	mov	r2,a
 	clr	a
-	mov	r1,a
 	add	a,r4
 	mov	r4,a
 	mov	a,r2
 	addc	a,r3
 	mov	r3,a
-	mov	dptr,#_appHandleEP5_len_1_178
+	mov	dptr,#_appHandleEP5_len_1_179
 	mov	a,r4
 	movx	@dptr,a
 	mov	a,r3
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:836: offset = buf[4];
+;	appFHSSNIC.c:838: offset = buf[4];
 	mov	dpl,r5
 	mov	dph,r6
 	inc	dptr
@@ -4013,9 +4030,8 @@ _appHandleEP5:
 	movx	a,@dptr
 	mov	r2,a
 	mov	_appHandleEP5_sloc0_1_0,r2
-;	1-genFromRTrack replaced	mov	(_appHandleEP5_sloc0_1_0 + 1),#0x00
-	mov	(_appHandleEP5_sloc0_1_0 + 1),r1
-;	appFHSSNIC.c:837: offset += buf[5] << 8;
+	mov	(_appHandleEP5_sloc0_1_0 + 1),#0x00
+;	appFHSSNIC.c:839: offset += buf[5] << 8;
 	mov	dpl,r5
 	mov	dph,r6
 	inc	dptr
@@ -4031,13 +4047,14 @@ _appHandleEP5:
 	mov	a,r2
 	addc	a,(_appHandleEP5_sloc0_1_0 + 1)
 	mov	(_appHandleEP5_sloc0_1_0 + 1),a
-;	appFHSSNIC.c:838: txTotal= 0;
+;	appFHSSNIC.c:840: txTotal= 0;
 	mov	dptr,#_txTotal
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:839: buf[0] = transmit(&buf[6], len, 0, offset);
+;	appFHSSNIC.c:841: buf[0] = transmit(&buf[6], len, 0, offset);
 	mov	a,#0x06
 	add	a,r5
 	mov	r1,a
@@ -4053,6 +4070,7 @@ _appHandleEP5:
 	mov	dptr,#_transmit_PARM_3
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
 	mov	dptr,#_transmit_PARM_4
@@ -4076,7 +4094,7 @@ _appHandleEP5:
 	mov	b,r7
 	mov	a,r4
 	lcall	__gptrput
-;	appFHSSNIC.c:840: appReturn( 1, buf);
+;	appFHSSNIC.c:842: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4085,11 +4103,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:841: break;
+;	appFHSSNIC.c:843: break;
 	ljmp	00172$
-;	appFHSSNIC.c:843: case NIC_SET_RECV_LARGE:
+;	appFHSSNIC.c:845: case NIC_SET_RECV_LARGE:
 00107$:
-;	appFHSSNIC.c:848: rfRxLargeLen = buf[0];
+;	appFHSSNIC.c:850: rfRxLargeLen = buf[0];
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -4099,7 +4117,7 @@ _appHandleEP5:
 	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:849: rfRxLargeLen += buf[1] << 8;
+;	appFHSSNIC.c:851: rfRxLargeLen += buf[1] << 8;
 	mov	dpl,r5
 	mov	dph,r6
 	inc	dptr
@@ -4120,37 +4138,31 @@ _appHandleEP5:
 	addc	a,r2
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:850: if(rfRxLargeLen)
+;	appFHSSNIC.c:852: if(rfRxLargeLen)
 	mov	dptr,#_rfRxLargeLen
 	movx	a,@dptr
+	mov	r3,a
 	inc	dptr
 	movx	a,@dptr
-	mov	dptr,#_rfRxLargeLen
-	movx	a,@dptr
-	mov	b,a
-	inc	dptr
-	movx	a,@dptr
-	orl	a,b
+	mov	r4,a
+	orl	a,r3
 	jz	00111$
-;	appFHSSNIC.c:852: rfRxInfMode = 1;
+;	appFHSSNIC.c:854: rfRxInfMode = 1;
 	mov	dptr,#_rfRxInfMode
 	mov	a,#0x01
 	movx	@dptr,a
-;	appFHSSNIC.c:854: if(!rfRxTotalRXLen)
+;	appFHSSNIC.c:856: if(!rfRxTotalRXLen)
 	mov	dptr,#_rfRxTotalRXLen
 	movx	a,@dptr
+	mov	r3,a
 	inc	dptr
 	movx	a,@dptr
-	mov	dptr,#_rfRxTotalRXLen
-	movx	a,@dptr
-	mov	b,a
-	inc	dptr
-	movx	a,@dptr
-	orl	a,b
+	mov	r4,a
+	orl	a,r3
 	jnz	00112$
-;	appFHSSNIC.c:856: IdleMode();
+;	appFHSSNIC.c:858: IdleMode();
 	lcall	_IdleMode
-;	appFHSSNIC.c:857: rfRxTotalRXLen = rfRxLargeLen;
+;	appFHSSNIC.c:859: rfRxTotalRXLen = rfRxLargeLen;
 	mov	dptr,#_rfRxLargeLen
 	movx	a,@dptr
 	mov	r3,a
@@ -4163,7 +4175,7 @@ _appHandleEP5:
 	mov	a,r4
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:858: PKTLEN = (u8) (rfRxTotalRXLen % 256);
+;	appFHSSNIC.c:860: PKTLEN = (u8) (rfRxTotalRXLen % 256);
 	mov	dptr,#_rfRxTotalRXLen
 	movx	a,@dptr
 	mov	r3,a
@@ -4172,41 +4184,40 @@ _appHandleEP5:
 	mov	dptr,#_PKTLEN
 	mov	a,r3
 	movx	@dptr,a
-;	appFHSSNIC.c:859: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
+;	appFHSSNIC.c:861: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
+;	appFHSSNIC.c:862: PKTCTRL0 |= PKTCTRL0_LENGTH_CONFIG_INF;
 	mov	dptr,#_PKTCTRL0
 	movx	a,@dptr
-	mov	r4,a
-	mov	a,#0xFC
-	anl	a,r4
+	anl	a,#0xFC
 	movx	@dptr,a
-;	appFHSSNIC.c:860: PKTCTRL0 |= PKTCTRL0_LENGTH_CONFIG_INF;
 	movx	a,@dptr
-	mov	r4,a
-	mov	a,#0x02
-	orl	a,r4
+	orl	a,#0x02
 	movx	@dptr,a
-;	appFHSSNIC.c:861: RxMode();
+;	appFHSSNIC.c:863: RxMode();
 	lcall	_RxMode
 	sjmp	00112$
 00111$:
-;	appFHSSNIC.c:866: rfRxInfMode = 0;
+;	appFHSSNIC.c:868: rfRxInfMode = 0;
 	mov	dptr,#_rfRxInfMode
+;	appFHSSNIC.c:869: rfRxTotalRXLen = 0;
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:867: rfRxTotalRXLen = 0;
 	mov	dptr,#_rfRxTotalRXLen
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:868: rfRxLargeLen = 0;
+;	appFHSSNIC.c:870: rfRxLargeLen = 0;
 	mov	dptr,#_rfRxLargeLen
+	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:869: IdleMode();
+;	appFHSSNIC.c:871: IdleMode();
 	lcall	_IdleMode
 00112$:
-;	appFHSSNIC.c:871: txdata(ep5.OUTapp, ep5.OUTcmd, 1, (__xdata u8*)&rfRxLargeLen);
+;	appFHSSNIC.c:873: txdata(ep5.OUTapp, ep5.OUTcmd, 1, (__xdata u8*)&rfRxLargeLen);
 	mov	dptr,#(_ep5 + 0x000a)
 	movx	a,@dptr
 	mov	r4,a
@@ -4219,18 +4230,18 @@ _appHandleEP5:
 	mov	(_txdata_PARM_3 + 1),#0x00
 	mov	dpl,r4
 	lcall	_txdata
-;	appFHSSNIC.c:872: break;
+;	appFHSSNIC.c:874: break;
 	ljmp	00172$
-;	appFHSSNIC.c:874: case NIC_SET_AES_MODE:
+;	appFHSSNIC.c:876: case NIC_SET_AES_MODE:
 00113$:
-;	appFHSSNIC.c:875: rfAESMode= buf[0];
+;	appFHSSNIC.c:877: rfAESMode= buf[0];
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
 	lcall	__gptrget
 	mov	dptr,#_rfAESMode
 	movx	@dptr,a
-;	appFHSSNIC.c:876: appReturn( 1, buf);
+;	appFHSSNIC.c:878: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4239,11 +4250,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:877: break;
+;	appFHSSNIC.c:879: break;
 	ljmp	00172$
-;	appFHSSNIC.c:879: case NIC_GET_AES_MODE:
+;	appFHSSNIC.c:881: case NIC_GET_AES_MODE:
 00114$:
-;	appFHSSNIC.c:880: appReturn( 1, (__xdata u8*) &rfAESMode);
+;	appFHSSNIC.c:882: appReturn( 1, (__xdata u8*) &rfAESMode);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,#_rfAESMode
 	movx	@dptr,a
@@ -4252,11 +4263,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:881: break;
+;	appFHSSNIC.c:883: break;
 	ljmp	00172$
-;	appFHSSNIC.c:883: case NIC_SET_AES_IV:
+;	appFHSSNIC.c:885: case NIC_SET_AES_IV:
 00115$:
-;	appFHSSNIC.c:884: setAES(buf, ENCCS_CMD_LDIV, (rfAESMode & AES_CRYPTO_MODE));
+;	appFHSSNIC.c:886: setAES(buf, ENCCS_CMD_LDIV, (rfAESMode & AES_CRYPTO_MODE));
 	mov	dptr,#_rfAESMode
 	movx	a,@dptr
 	mov	r4,a
@@ -4277,7 +4288,7 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:885: appReturn( 16, buf);
+;	appFHSSNIC.c:887: appReturn( 16, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4286,11 +4297,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x10
 	lcall	_appReturn
-;	appFHSSNIC.c:886: break;
+;	appFHSSNIC.c:888: break;
 	ljmp	00172$
-;	appFHSSNIC.c:888: case NIC_SET_AES_KEY:
+;	appFHSSNIC.c:890: case NIC_SET_AES_KEY:
 00116$:
-;	appFHSSNIC.c:889: setAES(buf, ENCCS_CMD_LDKEY, (rfAESMode & AES_CRYPTO_MODE));
+;	appFHSSNIC.c:891: setAES(buf, ENCCS_CMD_LDKEY, (rfAESMode & AES_CRYPTO_MODE));
 	mov	dptr,#_rfAESMode
 	movx	a,@dptr
 	mov	r4,a
@@ -4311,7 +4322,7 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:890: appReturn( 16, buf);
+;	appFHSSNIC.c:892: appReturn( 16, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4320,24 +4331,23 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x10
 	lcall	_appReturn
-;	appFHSSNIC.c:891: break;
+;	appFHSSNIC.c:893: break;
 	ljmp	00172$
-;	appFHSSNIC.c:893: case NIC_SET_AMP_MODE:
+;	appFHSSNIC.c:895: case NIC_SET_AMP_MODE:
 00117$:
-;	appFHSSNIC.c:894: rfAmpMode= *buf;
+;	appFHSSNIC.c:896: rfAmpMode= *buf;
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
 	lcall	__gptrget
 	mov	dptr,#_rfAmpMode
 	movx	@dptr,a
-;	appFHSSNIC.c:895: rfAmpMode &= 1;
+;	appFHSSNIC.c:897: rfAmpMode &= 1;
+	mov	dptr,#_rfAmpMode
 	movx	a,@dptr
-	mov	r4,a
-	mov	a,#0x01
-	anl	a,r4
+	anl	a,#0x01
 	movx	@dptr,a
-;	appFHSSNIC.c:896: appReturn( 1, buf);
+;	appFHSSNIC.c:898: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4346,11 +4356,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:897: break;
+;	appFHSSNIC.c:899: break;
 	ljmp	00172$
-;	appFHSSNIC.c:899: case NIC_GET_AMP_MODE:
+;	appFHSSNIC.c:901: case NIC_GET_AMP_MODE:
 00118$:
-;	appFHSSNIC.c:900: appReturn( 1, (__xdata u8*) &rfAmpMode);
+;	appFHSSNIC.c:902: appReturn( 1, (__xdata u8*) &rfAmpMode);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,#_rfAmpMode
 	movx	@dptr,a
@@ -4359,11 +4369,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:901: break;
+;	appFHSSNIC.c:903: break;
 	ljmp	00172$
-;	appFHSSNIC.c:903: case NIC_SET_ID:
+;	appFHSSNIC.c:905: case NIC_SET_ID:
 00119$:
-;	appFHSSNIC.c:905: MAC_set_NIC_ID(buf[0]);
+;	appFHSSNIC.c:907: MAC_set_NIC_ID(buf[0]);
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -4379,7 +4389,7 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:906: appReturn( 1, buf);
+;	appFHSSNIC.c:908: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4388,21 +4398,21 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:907: break;
+;	appFHSSNIC.c:909: break;
 	ljmp	00172$
-;	appFHSSNIC.c:909: case NIC_LONG_XMIT:
+;	appFHSSNIC.c:911: case NIC_LONG_XMIT:
 00120$:
-;	appFHSSNIC.c:914: if (macdata.mac_state != MAC_STATE_NONHOPPING)
+;	appFHSSNIC.c:916: if (macdata.mac_state != MAC_STATE_NONHOPPING)
 	mov	dptr,#_macdata
 	movx	a,@dptr
 	jz	00122$
-;	appFHSSNIC.c:916: buf[0] = RC_RF_MODE_INCOMPAT;
+;	appFHSSNIC.c:918: buf[0] = RC_RF_MODE_INCOMPAT;
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
 	mov	a,#0xEF
 	lcall	__gptrput
-;	appFHSSNIC.c:917: appReturn( 1, buf);
+;	appFHSSNIC.c:919: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4411,23 +4421,23 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:918: break;
+;	appFHSSNIC.c:920: break;
 	ljmp	00172$
 00122$:
-;	appFHSSNIC.c:920: len = buf[0];
+;	appFHSSNIC.c:922: len = buf[0];
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
 	lcall	__gptrget
 	mov	r4,a
 	mov	r3,#0x00
-	mov	dptr,#_appHandleEP5_len_1_178
+	mov	dptr,#_appHandleEP5_len_1_179
 	mov	a,r4
 	movx	@dptr,a
 	mov	a,r3
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:921: len += buf[1] << 8;
+;	appFHSSNIC.c:923: len += buf[1] << 8;
 	mov	dpl,r5
 	mov	dph,r6
 	inc	dptr
@@ -4439,26 +4449,27 @@ _appHandleEP5:
 	mov	a,r2
 	addc	a,r3
 	mov	r3,a
-	mov	dptr,#_appHandleEP5_len_1_178
+	mov	dptr,#_appHandleEP5_len_1_179
 	mov	a,r4
 	movx	@dptr,a
 	mov	a,r3
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:922: blocks = buf[2];
+;	appFHSSNIC.c:924: blocks = buf[2];
 	mov	dpl,r5
 	mov	dph,r6
 	inc	dptr
 	inc	dptr
 	movx	a,@dptr
 	mov	r2,a
-;	appFHSSNIC.c:923: txTotal= 0;
+;	appFHSSNIC.c:925: txTotal= 0;
 	mov	dptr,#_txTotal
 	clr	a
 	movx	@dptr,a
+	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:924: buf[0] = transmit_long(&buf[3], len, blocks);
+;	appFHSSNIC.c:926: buf[0] = transmit_long(&buf[3], len, blocks);
 	mov	a,#0x03
 	add	a,r5
 	mov	r0,a
@@ -4489,7 +4500,7 @@ _appHandleEP5:
 	mov	b,r7
 	mov	a,r4
 	lcall	__gptrput
-;	appFHSSNIC.c:925: appReturn( 1, buf);
+;	appFHSSNIC.c:927: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4498,47 +4509,44 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:926: break;
+;	appFHSSNIC.c:928: break;
 	ljmp	00172$
-;	appFHSSNIC.c:928: case NIC_LONG_XMIT_MORE:
+;	appFHSSNIC.c:930: case NIC_LONG_XMIT_MORE:
 00123$:
-;	appFHSSNIC.c:929: len = buf[0];
+;	appFHSSNIC.c:931: len = buf[0];
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
 	lcall	__gptrget
 	mov	r3,a
 	mov	r4,#0x00
-	mov	dptr,#_appHandleEP5_len_1_178
+	mov	dptr,#_appHandleEP5_len_1_179
 	mov	a,r3
 	movx	@dptr,a
 	mov	a,r4
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:930: if (len == 0)
+;	appFHSSNIC.c:932: if (len == 0)
 	mov	a,r3
 	orl	a,r4
 	jz	00241$
 	ljmp	00131$
 00241$:
-;	appFHSSNIC.c:933: while (rfTxTotalTXLen && MARCSTATE == MARC_STATE_TX) 
+;	appFHSSNIC.c:935: while (rfTxTotalTXLen && MARCSTATE == MARC_STATE_TX) 
 00125$:
 	mov	dptr,#_rfTxTotalTXLen
 	movx	a,@dptr
+	mov	r1,a
 	inc	dptr
 	movx	a,@dptr
-	mov	dptr,#_rfTxTotalTXLen
-	movx	a,@dptr
-	mov	b,a
-	inc	dptr
-	movx	a,@dptr
-	orl	a,b
+	mov	r2,a
+	orl	a,r1
 	jz	00127$
 	mov	dptr,#_MARCSTATE
 	movx	a,@dptr
 	mov	r2,a
 	cjne	r2,#0x13,00127$
-;	appFHSSNIC.c:935: sleepMillis(40); // delay to avoid race condition that will cause mis-read of rfTxTotalTXLen == 0
+;	appFHSSNIC.c:937: sleepMillis(40); // delay to avoid race condition that will cause mis-read of rfTxTotalTXLen == 0
 	mov	dptr,#0x0028
 	push	ar7
 	push	ar6
@@ -4549,25 +4557,22 @@ _appHandleEP5:
 	pop	ar7
 	sjmp	00125$
 00127$:
-;	appFHSSNIC.c:937: if(rfTxTotalTXLen)
+;	appFHSSNIC.c:939: if(rfTxTotalTXLen)
 	mov	dptr,#_rfTxTotalTXLen
 	movx	a,@dptr
+	mov	r1,a
 	inc	dptr
 	movx	a,@dptr
-	mov	dptr,#_rfTxTotalTXLen
-	movx	a,@dptr
-	mov	b,a
-	inc	dptr
-	movx	a,@dptr
-	orl	a,b
+	mov	r2,a
+	orl	a,r1
 	jz	00129$
-;	appFHSSNIC.c:939: debug("dropout final wait!");
-	mov	dptr,#___str_10
+;	appFHSSNIC.c:941: debug("dropout final wait!");
+	mov	dptr,#__str_10
 	push	ar7
 	push	ar6
 	push	ar5
 	lcall	_debug
-;	appFHSSNIC.c:940: debughex16(rfTxTotalTXLen);
+;	appFHSSNIC.c:942: debughex16(rfTxTotalTXLen);
 	mov	dptr,#_rfTxTotalTXLen
 	movx	a,@dptr
 	mov	r1,a
@@ -4577,12 +4582,12 @@ _appHandleEP5:
 	mov	dpl,r1
 	mov	dph,r2
 	lcall	_debughex16
-;	appFHSSNIC.c:941: debughex(g_txMsgQueue[0][0]);
+;	appFHSSNIC.c:943: debughex(g_txMsgQueue[0][0]);
 	mov	dptr,#_g_txMsgQueue
 	movx	a,@dptr
 	mov	dpl,a
 	lcall	_debughex
-;	appFHSSNIC.c:942: debughex(g_txMsgQueue[1][0]);
+;	appFHSSNIC.c:944: debughex(g_txMsgQueue[1][0]);
 	mov	dptr,#(_g_txMsgQueue + 0x00f1)
 	movx	a,@dptr
 	mov	dpl,a
@@ -4590,19 +4595,19 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:943: lastCode[1] = LCE_DROPPED_PACKET;
+;	appFHSSNIC.c:945: lastCode[1] = LCE_DROPPED_PACKET;
 	mov	dptr,#(_lastCode + 0x0001)
 	mov	a,#0x12
 	movx	@dptr,a
-;	appFHSSNIC.c:944: buf[0] = RC_TX_DROPPED_PACKET;
+;	appFHSSNIC.c:946: buf[0] = RC_TX_DROPPED_PACKET;
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
 	mov	a,#0xEC
 	lcall	__gptrput
-;	appFHSSNIC.c:945: LED = 0;
+;	appFHSSNIC.c:947: LED = 0;
 	clr	_P2_4
-;	appFHSSNIC.c:946: resetRFSTATE();
+;	appFHSSNIC.c:948: resetRFSTATE();
 	push	ar7
 	push	ar6
 	push	ar5
@@ -4610,11 +4615,11 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:947: macdata.mac_state = MAC_STATE_NONHOPPING;
+;	appFHSSNIC.c:949: macdata.mac_state = MAC_STATE_NONHOPPING;
 	mov	dptr,#_macdata
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:948: appReturn( 1, buf);
+;	appFHSSNIC.c:950: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4623,27 +4628,28 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:949: break;
+;	appFHSSNIC.c:951: break;
 	ljmp	00172$
 00129$:
-;	appFHSSNIC.c:951: LED = 0;
+;	appFHSSNIC.c:953: LED = 0;
 	clr	_P2_4
-;	appFHSSNIC.c:952: macdata.mac_state = MAC_STATE_NONHOPPING;
+;	appFHSSNIC.c:954: macdata.mac_state = MAC_STATE_NONHOPPING;
 	mov	dptr,#_macdata
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:953: buf[0] = LCE_NO_ERROR;
+;	appFHSSNIC.c:955: buf[0] = LCE_NO_ERROR;
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
+	clr	a
 	lcall	__gptrput
-;	appFHSSNIC.c:954: debug("total bytes tx:");
-	mov	dptr,#___str_11
+;	appFHSSNIC.c:956: debug("total bytes tx:");
+	mov	dptr,#__str_11
 	push	ar7
 	push	ar6
 	push	ar5
 	lcall	_debug
-;	appFHSSNIC.c:955: debughex16(txTotal);
+;	appFHSSNIC.c:957: debughex16(txTotal);
 	mov	dptr,#_txTotal
 	movx	a,@dptr
 	mov	r1,a
@@ -4656,7 +4662,7 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:956: appReturn( 1, buf);
+;	appFHSSNIC.c:958: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4665,18 +4671,18 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:957: break;
+;	appFHSSNIC.c:959: break;
 	ljmp	00172$
 00131$:
-;	appFHSSNIC.c:960: if (macdata.mac_state != MAC_STATE_LONG_XMIT)
+;	appFHSSNIC.c:962: if (macdata.mac_state != MAC_STATE_LONG_XMIT)
 	mov	dptr,#_macdata
 	movx	a,@dptr
 	mov	r2,a
 	cjne	r2,#0x06,00246$
 	sjmp	00136$
 00246$:
-;	appFHSSNIC.c:962: debug("underrun");
-	mov	dptr,#___str_12
+;	appFHSSNIC.c:964: debug("underrun");
+	mov	dptr,#__str_12
 	push	ar7
 	push	ar6
 	push	ar5
@@ -4684,18 +4690,18 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:964: if(lastCode[1] == LCE_DROPPED_PACKET)
+;	appFHSSNIC.c:966: if(lastCode[1] == LCE_DROPPED_PACKET)
 	mov	dptr,#(_lastCode + 0x0001)
 	movx	a,@dptr
 	mov	r2,a
 	cjne	r2,#0x12,00133$
-;	appFHSSNIC.c:966: buf[0] = RC_TX_DROPPED_PACKET;
+;	appFHSSNIC.c:968: buf[0] = RC_TX_DROPPED_PACKET;
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
 	mov	a,#0xEC
 	lcall	__gptrput
-;	appFHSSNIC.c:967: appReturn( 1, buf);
+;	appFHSSNIC.c:969: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4706,17 +4712,17 @@ _appHandleEP5:
 	lcall	_appReturn
 	sjmp	00134$
 00133$:
-;	appFHSSNIC.c:971: lastCode[1] = LCE_RF_MULTI_BUFFER_NOT_INIT;
+;	appFHSSNIC.c:973: lastCode[1] = LCE_RF_MULTI_BUFFER_NOT_INIT;
 	mov	dptr,#(_lastCode + 0x0001)
 	mov	a,#0x17
 	movx	@dptr,a
-;	appFHSSNIC.c:972: buf[0] = RC_RF_MODE_INCOMPAT;
+;	appFHSSNIC.c:974: buf[0] = RC_RF_MODE_INCOMPAT;
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
 	mov	a,#0xEF
 	lcall	__gptrput
-;	appFHSSNIC.c:973: appReturn( 1, buf);
+;	appFHSSNIC.c:975: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4726,18 +4732,18 @@ _appHandleEP5:
 	mov	dpl,#0x01
 	lcall	_appReturn
 00134$:
-;	appFHSSNIC.c:975: LED = 0;
+;	appFHSSNIC.c:977: LED = 0;
 	clr	_P2_4
-;	appFHSSNIC.c:976: resetRFSTATE();
+;	appFHSSNIC.c:978: resetRFSTATE();
 	lcall	_resetRFSTATE
-;	appFHSSNIC.c:977: macdata.mac_state = MAC_STATE_NONHOPPING;
+;	appFHSSNIC.c:979: macdata.mac_state = MAC_STATE_NONHOPPING;
 	mov	dptr,#_macdata
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:978: break;
+;	appFHSSNIC.c:980: break;
 	ljmp	00172$
 00136$:
-;	appFHSSNIC.c:981: buf[0] = MAC_tx(&buf[1], (__xdata u8) len);
+;	appFHSSNIC.c:983: buf[0] = MAC_tx(&buf[1], (__xdata u8) len);
 	mov	a,#0x01
 	add	a,r5
 	mov	r1,a
@@ -4762,7 +4768,7 @@ _appHandleEP5:
 	mov	b,r7
 	mov	a,r4
 	lcall	__gptrput
-;	appFHSSNIC.c:983: if(buf[0] && buf[0] != RC_ERR_BUFFER_NOT_AVAILABLE)
+;	appFHSSNIC.c:985: if(buf[0] && buf[0] != RC_ERR_BUFFER_NOT_AVAILABLE)
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -4773,8 +4779,8 @@ _appHandleEP5:
 	cjne	r3,#0xFE,00250$
 	sjmp	00138$
 00250$:
-;	appFHSSNIC.c:985: debug("buffer error");
-	mov	dptr,#___str_13
+;	appFHSSNIC.c:987: debug("buffer error");
+	mov	dptr,#__str_13
 	push	ar7
 	push	ar6
 	push	ar5
@@ -4782,7 +4788,7 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:986: debughex(buf[0]);
+;	appFHSSNIC.c:988: debughex(buf[0]);
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -4792,19 +4798,19 @@ _appHandleEP5:
 	push	ar6
 	push	ar5
 	lcall	_debughex
-;	appFHSSNIC.c:987: LED = 0;
+;	appFHSSNIC.c:989: LED = 0;
 	clr	_P2_4
-;	appFHSSNIC.c:988: resetRFSTATE();
+;	appFHSSNIC.c:990: resetRFSTATE();
 	lcall	_resetRFSTATE
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:989: macdata.mac_state = MAC_STATE_NONHOPPING;
+;	appFHSSNIC.c:991: macdata.mac_state = MAC_STATE_NONHOPPING;
 	mov	dptr,#_macdata
 	clr	a
 	movx	@dptr,a
 00138$:
-;	appFHSSNIC.c:991: appReturn( 1, buf);
+;	appFHSSNIC.c:993: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -4813,46 +4819,46 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:992: break;
+;	appFHSSNIC.c:994: break;
 	ljmp	00172$
-;	appFHSSNIC.c:994: case FHSS_XMIT:
+;	appFHSSNIC.c:996: case FHSS_XMIT:
 00140$:
-;	appFHSSNIC.c:995: len = buf[0];
+;	appFHSSNIC.c:997: len = buf[0];
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
 	lcall	__gptrget
 	mov	r3,a
 	mov	r4,#0x00
-	mov	dptr,#_appHandleEP5_len_1_178
+	mov	dptr,#_appHandleEP5_len_1_179
 	mov	a,r3
 	movx	@dptr,a
 	mov	a,r4
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:1004: if (len > MAX_TX_MSGLEN)
+;	appFHSSNIC.c:1006: if (len > MAX_TX_MSGLEN)
 	clr	c
 	mov	a,#0xF0
 	subb	a,r3
 	clr	a
 	subb	a,r4
 	jnc	00142$
-;	appFHSSNIC.c:1006: debug("FHSSxmit message too long");
-	mov	dptr,#___str_3
+;	appFHSSNIC.c:1008: debug("FHSSxmit message too long");
+	mov	dptr,#__str_3
 	lcall	_debug
-;	appFHSSNIC.c:1007: appReturn( 1, (__xdata u8*)&len);
+;	appFHSSNIC.c:1009: appReturn( 1, (__xdata u8*)&len);
 	mov	dptr,#_appReturn_PARM_2
-	mov	a,#_appHandleEP5_len_1_178
+	mov	a,#_appHandleEP5_len_1_179
 	movx	@dptr,a
-	mov	a,#(_appHandleEP5_len_1_178 >> 8)
+	mov	a,#(_appHandleEP5_len_1_179 >> 8)
 	inc	dptr
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:1008: break;
+;	appFHSSNIC.c:1010: break;
 	ljmp	00172$
 00142$:
-;	appFHSSNIC.c:1011: if (g_txMsgQueue[macdata.txMsgIdx][0] != 0)
+;	appFHSSNIC.c:1013: if (g_txMsgQueue[macdata.txMsgIdx][0] != 0)
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	mov	b,#0xF1
@@ -4866,28 +4872,28 @@ _appHandleEP5:
 	mov	dph,r2
 	movx	a,@dptr
 	jz	00144$
-;	appFHSSNIC.c:1013: debug("still waiting on the last packet");
-	mov	dptr,#___str_14
+;	appFHSSNIC.c:1015: debug("still waiting on the last packet");
+	mov	dptr,#__str_14
 	lcall	_debug
-;	appFHSSNIC.c:1014: appReturn( 1, (__xdata u8*)&len);
+;	appFHSSNIC.c:1016: appReturn( 1, (__xdata u8*)&len);
 	mov	dptr,#_appReturn_PARM_2
-	mov	a,#_appHandleEP5_len_1_178
+	mov	a,#_appHandleEP5_len_1_179
 	movx	@dptr,a
-	mov	a,#(_appHandleEP5_len_1_178 >> 8)
+	mov	a,#(_appHandleEP5_len_1_179 >> 8)
 	inc	dptr
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:1015: break;
+;	appFHSSNIC.c:1017: break;
 	ljmp	00172$
 00144$:
-;	appFHSSNIC.c:1018: g_txMsgQueue[macdata.txMsgIdx][0] = len;
+;	appFHSSNIC.c:1020: g_txMsgQueue[macdata.txMsgIdx][0] = len;
 	mov	ar0,r3
 	mov	dpl,r1
 	mov	dph,r2
 	mov	a,r0
 	movx	@dptr,a
-;	appFHSSNIC.c:1019: memcpy(&g_txMsgQueue[macdata.txMsgIdx][1], &buf[1], len);
+;	appFHSSNIC.c:1021: memcpy(&g_txMsgQueue[macdata.txMsgIdx][1], &buf[1], len);
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	mov	b,#0xF1
@@ -4919,7 +4925,7 @@ _appHandleEP5:
 	mov	dph,(_appHandleEP5_sloc1_1_0 + 1)
 	mov	b,(_appHandleEP5_sloc1_1_0 + 2)
 	lcall	_memcpy
-;	appFHSSNIC.c:1021: if (++macdata.txMsgIdx >= MAX_TX_MSGS)
+;	appFHSSNIC.c:1023: if (++macdata.txMsgIdx >= MAX_TX_MSGS)
 	mov	dptr,#(_macdata + 0x0011)
 	movx	a,@dptr
 	mov	r4,a
@@ -4930,25 +4936,25 @@ _appHandleEP5:
 	cjne	r4,#0x02,00254$
 00254$:
 	jc	00146$
-;	appFHSSNIC.c:1023: macdata.txMsgIdx = 0;
+;	appFHSSNIC.c:1025: macdata.txMsgIdx = 0;
 	mov	dptr,#(_macdata + 0x0011)
 	clr	a
 	movx	@dptr,a
 00146$:
-;	appFHSSNIC.c:1026: appReturn( 1, (__xdata u8*)&len);
+;	appFHSSNIC.c:1028: appReturn( 1, (__xdata u8*)&len);
 	mov	dptr,#_appReturn_PARM_2
-	mov	a,#_appHandleEP5_len_1_178
+	mov	a,#_appHandleEP5_len_1_179
 	movx	@dptr,a
-	mov	a,#(_appHandleEP5_len_1_178 >> 8)
+	mov	a,#(_appHandleEP5_len_1_179 >> 8)
 	inc	dptr
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:1027: break;
+;	appFHSSNIC.c:1029: break;
 	ljmp	00172$
-;	appFHSSNIC.c:1029: case FHSS_SET_CHANNELS:
+;	appFHSSNIC.c:1031: case FHSS_SET_CHANNELS:
 00147$:
-;	appFHSSNIC.c:1030: macdata.NumChannels = (__xdata u16)buf[0];
+;	appFHSSNIC.c:1032: macdata.NumChannels = (__xdata u16)buf[0];
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -4961,7 +4967,7 @@ _appHandleEP5:
 	mov	a,r3
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:1031: if (macdata.NumChannels <= MAX_CHANNELS)
+;	appFHSSNIC.c:1033: if (macdata.NumChannels <= MAX_CHANNELS)
 	mov	dptr,#(_macdata + 0x0005)
 	movx	a,@dptr
 	mov	r1,a
@@ -4974,7 +4980,7 @@ _appHandleEP5:
 	mov	a,#0x03
 	subb	a,r3
 	jc	00149$
-;	appFHSSNIC.c:1034: memcpy(&g_Channels[0], &buf[2], macdata.NumChannels);
+;	appFHSSNIC.c:1036: memcpy(&g_Channels[0], &buf[2], macdata.NumChannels);
 	mov	a,#0x02
 	add	a,r5
 	mov	r3,a
@@ -4989,7 +4995,7 @@ _appHandleEP5:
 	mov	dptr,#_g_Channels
 	mov	b,#0x00
 	lcall	_memcpy
-;	appFHSSNIC.c:1035: appReturn( 2, (u8*)&macdata.NumChannels);
+;	appFHSSNIC.c:1037: appReturn( 2, (u8*)&macdata.NumChannels);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,#(_macdata + 0x0005)
 	movx	@dptr,a
@@ -5000,20 +5006,20 @@ _appHandleEP5:
 	lcall	_appReturn
 	ljmp	00172$
 00149$:
-;	appFHSSNIC.c:1037: appReturn( 8, (__xdata u8*)"NO DEAL");
+;	appFHSSNIC.c:1039: appReturn( 8, (__xdata u8*)"NO DEAL");
 	mov	dptr,#_appReturn_PARM_2
-	mov	a,#___str_15
+	mov	a,#__str_15
 	movx	@dptr,a
-	mov	a,#(___str_15 >> 8)
+	mov	a,#(__str_15 >> 8)
 	inc	dptr
 	movx	@dptr,a
 	mov	dpl,#0x08
 	lcall	_appReturn
-;	appFHSSNIC.c:1039: break;
+;	appFHSSNIC.c:1041: break;
 	ljmp	00172$
-;	appFHSSNIC.c:1041: case FHSS_GET_CHANNELS:
+;	appFHSSNIC.c:1043: case FHSS_GET_CHANNELS:
 00151$:
-;	appFHSSNIC.c:1042: appReturn( macdata.NumChannels, &g_Channels[0]);
+;	appFHSSNIC.c:1044: appReturn( macdata.NumChannels, &g_Channels[0]);
 	mov	dptr,#(_macdata + 0x0005)
 	movx	a,@dptr
 	mov	r3,a
@@ -5027,16 +5033,16 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,r3
 	lcall	_appReturn
-;	appFHSSNIC.c:1043: break;
+;	appFHSSNIC.c:1045: break;
 	ljmp	00172$
-;	appFHSSNIC.c:1045: case FHSS_NEXT_CHANNEL:
+;	appFHSSNIC.c:1047: case FHSS_NEXT_CHANNEL:
 00152$:
-;	appFHSSNIC.c:1046: MAC_set_chanidx(MAC_getNextChannel());
+;	appFHSSNIC.c:1048: MAC_set_chanidx(MAC_getNextChannel());
 	lcall	_MAC_getNextChannel
 	mov	r3,#0x00
 	mov	dph,r3
 	lcall	_MAC_set_chanidx
-;	appFHSSNIC.c:1047: appReturn( 1, &g_Channels[macdata.curChanIdx]);
+;	appFHSSNIC.c:1049: appReturn( 1, &g_Channels[macdata.curChanIdx]);
 	mov	dptr,#(_macdata + 0x0009)
 	movx	a,@dptr
 	mov	r3,a
@@ -5053,11 +5059,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:1048: break;
+;	appFHSSNIC.c:1050: break;
 	ljmp	00172$
-;	appFHSSNIC.c:1050: case FHSS_CHANGE_CHANNEL:
+;	appFHSSNIC.c:1052: case FHSS_CHANGE_CHANNEL:
 00153$:
-;	appFHSSNIC.c:1051: PHY_set_channel(buf[0]);
+;	appFHSSNIC.c:1053: PHY_set_channel(buf[0]);
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -5073,7 +5079,7 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:1052: appReturn( 1, buf);
+;	appFHSSNIC.c:1054: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -5082,11 +5088,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:1053: break;
+;	appFHSSNIC.c:1055: break;
 	ljmp	00172$
-;	appFHSSNIC.c:1055: case FHSS_START_HOPPING:
+;	appFHSSNIC.c:1057: case FHSS_START_HOPPING:
 00154$:
-;	appFHSSNIC.c:1056: begin_hopping(0);
+;	appFHSSNIC.c:1058: begin_hopping(0);
 	mov	dpl,#0x00
 	push	ar7
 	push	ar6
@@ -5095,7 +5101,7 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:1057: appReturn( 1, buf);
+;	appFHSSNIC.c:1059: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -5104,11 +5110,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:1058: break;
+;	appFHSSNIC.c:1060: break;
 	ljmp	00172$
-;	appFHSSNIC.c:1060: case FHSS_STOP_HOPPING:
+;	appFHSSNIC.c:1062: case FHSS_STOP_HOPPING:
 00155$:
-;	appFHSSNIC.c:1061: stop_hopping();
+;	appFHSSNIC.c:1063: stop_hopping();
 	push	ar7
 	push	ar6
 	push	ar5
@@ -5116,7 +5122,7 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:1062: appReturn( 1, buf);
+;	appFHSSNIC.c:1064: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -5125,11 +5131,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:1063: break;
+;	appFHSSNIC.c:1065: break;
 	ljmp	00172$
-;	appFHSSNIC.c:1066: case FHSS_SET_MAC_THRESHOLD:
+;	appFHSSNIC.c:1068: case FHSS_SET_MAC_THRESHOLD:
 00156$:
-;	appFHSSNIC.c:1067: macdata.MAC_threshold = buf[0];
+;	appFHSSNIC.c:1069: macdata.MAC_threshold = buf[0];
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -5142,7 +5148,7 @@ _appHandleEP5:
 	mov	a,r3
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:1068: appReturn( 1, buf);
+;	appFHSSNIC.c:1070: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -5151,11 +5157,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:1069: break;
+;	appFHSSNIC.c:1071: break;
 	ljmp	00172$
-;	appFHSSNIC.c:1071: case FHSS_GET_MAC_THRESHOLD:
+;	appFHSSNIC.c:1073: case FHSS_GET_MAC_THRESHOLD:
 00157$:
-;	appFHSSNIC.c:1072: appReturn( 4, (__xdata u8*)&macdata.MAC_threshold);
+;	appFHSSNIC.c:1074: appReturn( 4, (__xdata u8*)&macdata.MAC_threshold);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,#(_macdata + 0x0001)
 	movx	@dptr,a
@@ -5164,11 +5170,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x04
 	lcall	_appReturn
-;	appFHSSNIC.c:1073: break;
+;	appFHSSNIC.c:1075: break;
 	ljmp	00172$
-;	appFHSSNIC.c:1075: case FHSS_SET_MAC_DATA:
+;	appFHSSNIC.c:1077: case FHSS_SET_MAC_DATA:
 00158$:
-;	appFHSSNIC.c:1076: debugx(buf);
+;	appFHSSNIC.c:1078: debugx(buf);
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -5179,7 +5185,7 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:1077: debughex(buf[0]);
+;	appFHSSNIC.c:1079: debughex(buf[0]);
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -5192,22 +5198,24 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:1078: memcpy((__xdata u8*)&macdata, (__xdata u8*)*buf, sizeof(macdata));
+;	appFHSSNIC.c:1080: memcpy((__xdata u8*)&macdata, (__xdata u8*)*buf, sizeof(macdata));
+	mov	r3,#_macdata
+	mov	r4,#(_macdata >> 8)
+	mov	r2,#0x00
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
 	lcall	__gptrget
-	mov	r4,a
-	mov	r3,#0x00
-	mov	_memcpy_PARM_2,r4
-	mov	(_memcpy_PARM_2 + 1),r3
-;	1-genFromRTrack replaced	mov	(_memcpy_PARM_2 + 2),#0x00
-	mov	(_memcpy_PARM_2 + 2),r3
+	mov	r0,a
+	mov	r1,#0x00
+	mov	_memcpy_PARM_2,r0
+	mov	(_memcpy_PARM_2 + 1),r1
+	mov	(_memcpy_PARM_2 + 2),#0x00
 	mov	_memcpy_PARM_3,#0x15
-;	1-genFromRTrack replaced	mov	(_memcpy_PARM_3 + 1),#0x00
-	mov	(_memcpy_PARM_3 + 1),r3
-	mov	dptr,#_macdata
-	mov	b,#0x00
+	mov	(_memcpy_PARM_3 + 1),#0x00
+	mov	dpl,r3
+	mov	dph,r4
+	mov	b,r2
 	push	ar7
 	push	ar6
 	push	ar5
@@ -5215,7 +5223,7 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:1079: appReturn( sizeof(macdata), buf);
+;	appFHSSNIC.c:1081: appReturn( sizeof(macdata), buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -5224,11 +5232,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x15
 	lcall	_appReturn
-;	appFHSSNIC.c:1080: break;
+;	appFHSSNIC.c:1082: break;
 	ljmp	00172$
-;	appFHSSNIC.c:1082: case FHSS_GET_MAC_DATA:
+;	appFHSSNIC.c:1084: case FHSS_GET_MAC_DATA:
 00159$:
-;	appFHSSNIC.c:1083: macdata.MAC_timer = rf_MAC_timer;
+;	appFHSSNIC.c:1085: macdata.MAC_timer = rf_MAC_timer;
 	mov	dptr,#_rf_MAC_timer
 	movx	a,@dptr
 	mov	r3,a
@@ -5241,7 +5249,7 @@ _appHandleEP5:
 	mov	a,r4
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:1084: appReturn( sizeof(macdata), (__xdata u8*)&macdata);
+;	appFHSSNIC.c:1086: appReturn( sizeof(macdata), (__xdata u8*)&macdata);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,#_macdata
 	movx	@dptr,a
@@ -5250,11 +5258,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x15
 	lcall	_appReturn
-;	appFHSSNIC.c:1085: break;
+;	appFHSSNIC.c:1087: break;
 	ljmp	00172$
-;	appFHSSNIC.c:1087: case FHSS_START_SYNC:
+;	appFHSSNIC.c:1089: case FHSS_START_SYNC:
 00160$:
-;	appFHSSNIC.c:1088: MAC_sync(buf[0]);
+;	appFHSSNIC.c:1090: MAC_sync(buf[0]);
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -5270,7 +5278,7 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:1089: appReturn( 1, buf);
+;	appFHSSNIC.c:1091: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -5279,11 +5287,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:1090: break;
+;	appFHSSNIC.c:1092: break;
 	ljmp	00172$
-;	appFHSSNIC.c:1092: case FHSS_SET_STATE:
+;	appFHSSNIC.c:1094: case FHSS_SET_STATE:
 00161$:
-;	appFHSSNIC.c:1094: macdata.tLastStateChange = clock;
+;	appFHSSNIC.c:1096: macdata.tLastStateChange = clock;
 	mov	dptr,#_clock
 	movx	a,@dptr
 	mov	r1,a
@@ -5300,7 +5308,7 @@ _appHandleEP5:
 	mov	a,r2
 	inc	dptr
 	movx	@dptr,a
-;	appFHSSNIC.c:1095: macdata.mac_state = (u8)buf[0];
+;	appFHSSNIC.c:1097: macdata.mac_state = (u8)buf[0];
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -5308,7 +5316,7 @@ _appHandleEP5:
 	mov	r4,a
 	mov	dptr,#_macdata
 	movx	@dptr,a
-;	appFHSSNIC.c:1099: switch (macdata.mac_state)
+;	appFHSSNIC.c:1101: switch (macdata.mac_state)
 	mov	dptr,#_macdata
 	movx	a,@dptr
 	mov	r3,a
@@ -5327,13 +5335,13 @@ _appHandleEP5:
 	ljmp	00166$
 	ljmp	00167$
 	ljmp	00165$
-;	appFHSSNIC.c:1101: case MAC_STATE_NONHOPPING:
+;	appFHSSNIC.c:1103: case MAC_STATE_NONHOPPING:
 00162$:
-;	appFHSSNIC.c:1102: case MAC_STATE_DISCOVERY:
+;	appFHSSNIC.c:1104: case MAC_STATE_DISCOVERY:
 00163$:
-;	appFHSSNIC.c:1103: case MAC_STATE_SYNCHING:
+;	appFHSSNIC.c:1105: case MAC_STATE_SYNCHING:
 00164$:
-;	appFHSSNIC.c:1105: stop_hopping();
+;	appFHSSNIC.c:1107: stop_hopping();
 	push	ar7
 	push	ar6
 	push	ar5
@@ -5341,11 +5349,11 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:1106: break;
-;	appFHSSNIC.c:1108: case MAC_STATE_SYNCINGMASTER:
+;	appFHSSNIC.c:1108: break;
+;	appFHSSNIC.c:1110: case MAC_STATE_SYNCINGMASTER:
 	sjmp	00168$
 00165$:
-;	appFHSSNIC.c:1109: MAC_do_Master_scanny_thingy();
+;	appFHSSNIC.c:1111: MAC_do_Master_scanny_thingy();
 	push	ar7
 	push	ar6
 	push	ar5
@@ -5353,13 +5361,13 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:1110: break;
-;	appFHSSNIC.c:1112: case MAC_STATE_SYNCHED:
+;	appFHSSNIC.c:1112: break;
+;	appFHSSNIC.c:1114: case MAC_STATE_SYNCHED:
 	sjmp	00168$
 00166$:
-;	appFHSSNIC.c:1113: case MAC_STATE_SYNC_MASTER:
+;	appFHSSNIC.c:1115: case MAC_STATE_SYNC_MASTER:
 00167$:
-;	appFHSSNIC.c:1114: begin_hopping(0);
+;	appFHSSNIC.c:1116: begin_hopping(0);
 	mov	dpl,#0x00
 	push	ar7
 	push	ar6
@@ -5368,9 +5376,9 @@ _appHandleEP5:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	appFHSSNIC.c:1116: }
+;	appFHSSNIC.c:1118: }
 00168$:
-;	appFHSSNIC.c:1118: appReturn( 1, buf);
+;	appFHSSNIC.c:1120: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -5379,11 +5387,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:1119: break;
-;	appFHSSNIC.c:1121: case FHSS_GET_STATE:
+;	appFHSSNIC.c:1121: break;
+;	appFHSSNIC.c:1123: case FHSS_GET_STATE:
 	sjmp	00172$
 00169$:
-;	appFHSSNIC.c:1122: appReturn( 1, (__xdata u8*)&macdata.mac_state);
+;	appFHSSNIC.c:1124: appReturn( 1, (__xdata u8*)&macdata.mac_state);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,#_macdata
 	movx	@dptr,a
@@ -5392,11 +5400,11 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:1123: break;
-;	appFHSSNIC.c:1125: default:
+;	appFHSSNIC.c:1125: break;
+;	appFHSSNIC.c:1127: default:
 	sjmp	00172$
 00170$:
-;	appFHSSNIC.c:1126: appReturn( 1, buf);
+;	appFHSSNIC.c:1128: appReturn( 1, buf);
 	mov	dptr,#_appReturn_PARM_2
 	mov	a,r5
 	movx	@dptr,a
@@ -5405,241 +5413,241 @@ _appHandleEP5:
 	movx	@dptr,a
 	mov	dpl,#0x01
 	lcall	_appReturn
-;	appFHSSNIC.c:1130: }
+;	appFHSSNIC.c:1132: }
 00172$:
-;	appFHSSNIC.c:1133: return 0;
+;	appFHSSNIC.c:1135: return 0;
 	mov	dptr,#0x0000
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'appHandleEP0OUTdone'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:1137: void appHandleEP0OUTdone(void)
+;	appFHSSNIC.c:1139: void appHandleEP0OUTdone(void)
 ;	-----------------------------------------
 ;	 function appHandleEP0OUTdone
 ;	-----------------------------------------
 _appHandleEP0OUTdone:
-;	appFHSSNIC.c:1139: }
+;	appFHSSNIC.c:1141: }
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'appHandleEP0OUT'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:1142: void appHandleEP0OUT(void)
+;	appFHSSNIC.c:1144: void appHandleEP0OUT(void)
 ;	-----------------------------------------
 ;	 function appHandleEP0OUT
 ;	-----------------------------------------
 _appHandleEP0OUT:
-;	appFHSSNIC.c:1172: }
+;	appFHSSNIC.c:1174: }
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'appHandleEP0'
 ;------------------------------------------------------------
 ;pReq                      Allocated to registers 
 ;------------------------------------------------------------
-;	appFHSSNIC.c:1179: int appHandleEP0(__xdata USB_Setup_Header* pReq)
+;	appFHSSNIC.c:1181: int appHandleEP0(__xdata USB_Setup_Header* pReq)
 ;	-----------------------------------------
 ;	 function appHandleEP0
 ;	-----------------------------------------
 _appHandleEP0:
-;	appFHSSNIC.c:1215: return 0;
+;	appFHSSNIC.c:1217: return 0;
 	mov	dptr,#0x0000
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'appInitRf'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:1225: void appInitRf(void)
+;	appFHSSNIC.c:1227: void appInitRf(void)
 ;	-----------------------------------------
 ;	 function appInitRf
 ;	-----------------------------------------
 _appInitRf:
-;	appFHSSNIC.c:1231: IOCFG2      = 0x00;
+;	appFHSSNIC.c:1233: IOCFG2      = 0x00;
 	mov	dptr,#_IOCFG2
+;	appFHSSNIC.c:1234: IOCFG1      = 0x00;
+;	appFHSSNIC.c:1235: IOCFG0      = 0x00;
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:1232: IOCFG1      = 0x00;
 	mov	dptr,#_IOCFG1
 	movx	@dptr,a
-;	appFHSSNIC.c:1233: IOCFG0      = 0x00;
 	mov	dptr,#_IOCFG0
 	movx	@dptr,a
-;	appFHSSNIC.c:1234: SYNC1       = 0x0c;
+;	appFHSSNIC.c:1236: SYNC1       = 0x0c;
 	mov	dptr,#_SYNC1
 	mov	a,#0x0C
 	movx	@dptr,a
-;	appFHSSNIC.c:1235: SYNC0       = 0x4e;
+;	appFHSSNIC.c:1237: SYNC0       = 0x4e;
 	mov	dptr,#_SYNC0
 	mov	a,#0x4E
 	movx	@dptr,a
-;	appFHSSNIC.c:1236: PKTLEN      = 0xff;
+;	appFHSSNIC.c:1238: PKTLEN      = 0xff;
 	mov	dptr,#_PKTLEN
 	mov	a,#0xFF
 	movx	@dptr,a
-;	appFHSSNIC.c:1237: PKTCTRL1    = 0x40; // PQT threshold  - was 0x00
+;	appFHSSNIC.c:1239: PKTCTRL1    = 0x40; // PQT threshold  - was 0x00
 	mov	dptr,#_PKTCTRL1
 	mov	a,#0x40
 	movx	@dptr,a
-;	appFHSSNIC.c:1238: PKTCTRL0    = 0x00; // FLEN.  for VLEN use |1 (ie.  FLEN=00, VLEN=01)
+;	appFHSSNIC.c:1240: PKTCTRL0    = 0x00; // FLEN.  for VLEN use |1 (ie.  FLEN=00, VLEN=01)
 	mov	dptr,#_PKTCTRL0
+;	appFHSSNIC.c:1241: ADDR        = 0x00;
+;	appFHSSNIC.c:1242: CHANNR      = 0x00;
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:1239: ADDR        = 0x00;
 	mov	dptr,#_ADDR
 	movx	@dptr,a
-;	appFHSSNIC.c:1240: CHANNR      = 0x00;
 	mov	dptr,#_CHANNR
 	movx	@dptr,a
-;	appFHSSNIC.c:1241: FSCTRL1     = 0x06;
+;	appFHSSNIC.c:1243: FSCTRL1     = 0x06;
 	mov	dptr,#_FSCTRL1
 	mov	a,#0x06
 	movx	@dptr,a
-;	appFHSSNIC.c:1242: FSCTRL0     = 0x00;
+;	appFHSSNIC.c:1244: FSCTRL0     = 0x00;
 	mov	dptr,#_FSCTRL0
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:1243: FREQ2       = 0x24;
+;	appFHSSNIC.c:1245: FREQ2       = 0x24;
 	mov	dptr,#_FREQ2
 	mov	a,#0x24
 	movx	@dptr,a
-;	appFHSSNIC.c:1244: FREQ1       = 0x3a;
+;	appFHSSNIC.c:1246: FREQ1       = 0x3a;
 	mov	dptr,#_FREQ1
 	mov	a,#0x3A
 	movx	@dptr,a
-;	appFHSSNIC.c:1245: FREQ0       = 0xf1;
+;	appFHSSNIC.c:1247: FREQ0       = 0xf1;
 	mov	dptr,#_FREQ0
 	mov	a,#0xF1
 	movx	@dptr,a
-;	appFHSSNIC.c:1246: MDMCFG4     = 0xca;
+;	appFHSSNIC.c:1248: MDMCFG4     = 0xca;
 	mov	dptr,#_MDMCFG4
 	mov	a,#0xCA
 	movx	@dptr,a
-;	appFHSSNIC.c:1247: MDMCFG3     = 0xa3;
+;	appFHSSNIC.c:1249: MDMCFG3     = 0xa3;
 	mov	dptr,#_MDMCFG3
 	mov	a,#0xA3
 	movx	@dptr,a
-;	appFHSSNIC.c:1248: MDMCFG2     = 0x01;
+;	appFHSSNIC.c:1250: MDMCFG2     = 0x01;
 	mov	dptr,#_MDMCFG2
 	mov	a,#0x01
 	movx	@dptr,a
-;	appFHSSNIC.c:1249: MDMCFG1     = 0x23;
+;	appFHSSNIC.c:1251: MDMCFG1     = 0x23;
 	mov	dptr,#_MDMCFG1
 	mov	a,#0x23
 	movx	@dptr,a
-;	appFHSSNIC.c:1250: MDMCFG0     = 0x11;
+;	appFHSSNIC.c:1252: MDMCFG0     = 0x11;
 	mov	dptr,#_MDMCFG0
 	mov	a,#0x11
 	movx	@dptr,a
-;	appFHSSNIC.c:1251: DEVIATN     = 0x36;
+;	appFHSSNIC.c:1253: DEVIATN     = 0x36;
 	mov	dptr,#_DEVIATN
 	mov	a,#0x36
 	movx	@dptr,a
-;	appFHSSNIC.c:1252: MCSM2       = 0x07;             // RX_TIMEOUT
+;	appFHSSNIC.c:1254: MCSM2       = 0x07;             // RX_TIMEOUT
 	mov	dptr,#_MCSM2
 	mov	a,#0x07
 	movx	@dptr,a
-;	appFHSSNIC.c:1253: MCSM1       = 0x0f;             // was 'CCA_MODE RSSI below threshold unless currently recvg pkt'-3, now 'Always'-0 - always end up in RX mode
+;	appFHSSNIC.c:1255: MCSM1       = 0x0f;             // was 'CCA_MODE RSSI below threshold unless currently recvg pkt'-3, now 'Always'-0 - always end up in RX mode
 	mov	dptr,#_MCSM1
 	mov	a,#0x0F
 	movx	@dptr,a
-;	appFHSSNIC.c:1254: MCSM0       = 0x18;             // fsautosync when going from idle to rx/tx/fstxon
+;	appFHSSNIC.c:1256: MCSM0       = 0x18;             // fsautosync when going from idle to rx/tx/fstxon
 	mov	dptr,#_MCSM0
 	mov	a,#0x18
 	movx	@dptr,a
-;	appFHSSNIC.c:1255: FOCCFG      = 0x17;
+;	appFHSSNIC.c:1257: FOCCFG      = 0x17;
 	mov	dptr,#_FOCCFG
-	dec	a
+	mov	a,#0x17
 	movx	@dptr,a
-;	appFHSSNIC.c:1256: BSCFG       = 0x6c;
+;	appFHSSNIC.c:1258: BSCFG       = 0x6c;
 	mov	dptr,#_BSCFG
 	mov	a,#0x6C
 	movx	@dptr,a
-;	appFHSSNIC.c:1257: AGCCTRL2    = 0x03;
+;	appFHSSNIC.c:1259: AGCCTRL2    = 0x03;
 	mov	dptr,#_AGCCTRL2
 	mov	a,#0x03
 	movx	@dptr,a
-;	appFHSSNIC.c:1258: AGCCTRL1    = 0x40;
+;	appFHSSNIC.c:1260: AGCCTRL1    = 0x40;
 	mov	dptr,#_AGCCTRL1
 	mov	a,#0x40
 	movx	@dptr,a
-;	appFHSSNIC.c:1259: AGCCTRL0    = 0x91;
+;	appFHSSNIC.c:1261: AGCCTRL0    = 0x91;
 	mov	dptr,#_AGCCTRL0
 	mov	a,#0x91
 	movx	@dptr,a
-;	appFHSSNIC.c:1260: FREND1      = 0x56;
+;	appFHSSNIC.c:1262: FREND1      = 0x56;
 	mov	dptr,#_FREND1
 	mov	a,#0x56
 	movx	@dptr,a
-;	appFHSSNIC.c:1261: FREND0      = 0x10;
+;	appFHSSNIC.c:1263: FREND0      = 0x10;
 	mov	dptr,#_FREND0
 	mov	a,#0x10
 	movx	@dptr,a
-;	appFHSSNIC.c:1262: FSCAL3      = 0xe9;
+;	appFHSSNIC.c:1264: FSCAL3      = 0xe9;
 	mov	dptr,#_FSCAL3
 	mov	a,#0xE9
 	movx	@dptr,a
-;	appFHSSNIC.c:1263: FSCAL2      = 0x2a;
+;	appFHSSNIC.c:1265: FSCAL2      = 0x2a;
 	mov	dptr,#_FSCAL2
 	mov	a,#0x2A
 	movx	@dptr,a
-;	appFHSSNIC.c:1264: FSCAL1      = 0x00;
+;	appFHSSNIC.c:1266: FSCAL1      = 0x00;
 	mov	dptr,#_FSCAL1
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:1265: FSCAL0      = 0x1f;
+;	appFHSSNIC.c:1267: FSCAL0      = 0x1f;
 	mov	dptr,#_FSCAL0
 	mov	a,#0x1F
 	movx	@dptr,a
-;	appFHSSNIC.c:1266: TEST2       = 0x88; // low data rates, increased sensitivity provided by 0x81- was 0x88
+;	appFHSSNIC.c:1268: TEST2       = 0x88; // low data rates, increased sensitivity provided by 0x81- was 0x88
 	mov	dptr,#_TEST2
 	mov	a,#0x88
 	movx	@dptr,a
-;	appFHSSNIC.c:1267: TEST1       = 0x31; // always 0x31 in tx-mode, for low data rates 0x35 provides increased sensitivity - was 0x31
+;	appFHSSNIC.c:1269: TEST1       = 0x31; // always 0x31 in tx-mode, for low data rates 0x35 provides increased sensitivity - was 0x31
 	mov	dptr,#_TEST1
 	mov	a,#0x31
 	movx	@dptr,a
-;	appFHSSNIC.c:1268: TEST0       = 0x09;
+;	appFHSSNIC.c:1270: TEST0       = 0x09;
 	mov	dptr,#_TEST0
 	mov	a,#0x09
 	movx	@dptr,a
-;	appFHSSNIC.c:1269: PA_TABLE0   = 0xc0;
+;	appFHSSNIC.c:1271: PA_TABLE0   = 0xc0;
 	mov	dptr,#_PA_TABLE0
 	mov	a,#0xC0
 	movx	@dptr,a
-;	appFHSSNIC.c:1277: FSCTRL1     = 0x0c;             // Intermediate Frequency
+;	appFHSSNIC.c:1279: FSCTRL1     = 0x0c;             // Intermediate Frequency
 	mov	dptr,#_FSCTRL1
-	swap	a
+	mov	a,#0x0C
 	movx	@dptr,a
-;	appFHSSNIC.c:1279: FREQ2       = 0x25;
+;	appFHSSNIC.c:1281: FREQ2       = 0x25;
 	mov	dptr,#_FREQ2
 	mov	a,#0x25
 	movx	@dptr,a
-;	appFHSSNIC.c:1280: FREQ1       = 0x95;
+;	appFHSSNIC.c:1282: FREQ1       = 0x95;
 	mov	dptr,#_FREQ1
 	mov	a,#0x95
 	movx	@dptr,a
-;	appFHSSNIC.c:1281: FREQ0       = 0x55;
+;	appFHSSNIC.c:1283: FREQ0       = 0x55;
 	mov	dptr,#_FREQ0
 	mov	a,#0x55
 	movx	@dptr,a
-;	appFHSSNIC.c:1293: FREND1      = 0xb6;
+;	appFHSSNIC.c:1295: FREND1      = 0xb6;
 	mov	dptr,#_FREND1
 	mov	a,#0xB6
 	movx	@dptr,a
-;	appFHSSNIC.c:1294: FREND0      = 0x10;
+;	appFHSSNIC.c:1296: FREND0      = 0x10;
 	mov	dptr,#_FREND0
 	mov	a,#0x10
 	movx	@dptr,a
-;	appFHSSNIC.c:1295: FSCAL3      = 0xea;
+;	appFHSSNIC.c:1297: FSCAL3      = 0xea;
 	mov	dptr,#_FSCAL3
 	mov	a,#0xEA
 	movx	@dptr,a
-;	appFHSSNIC.c:1296: FSCAL2      = 0x2a;
+;	appFHSSNIC.c:1298: FSCAL2      = 0x2a;
 	mov	dptr,#_FSCAL2
 	mov	a,#0x2A
 	movx	@dptr,a
-;	appFHSSNIC.c:1297: FSCAL1      = 0x00;
+;	appFHSSNIC.c:1299: FSCAL1      = 0x00;
 	mov	dptr,#_FSCAL1
 	clr	a
 	movx	@dptr,a
-;	appFHSSNIC.c:1298: FSCAL0      = 0x1f;
+;	appFHSSNIC.c:1300: FSCAL0      = 0x1f;
 	mov	dptr,#_FSCAL0
 	mov	a,#0x1F
 	movx	@dptr,a
@@ -5647,104 +5655,104 @@ _appInitRf:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'initBoard'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:1344: void initBoard(void)
+;	appFHSSNIC.c:1346: void initBoard(void)
 ;	-----------------------------------------
 ;	 function initBoard
 ;	-----------------------------------------
 _initBoard:
-;	appFHSSNIC.c:1347: clock_init();
+;	appFHSSNIC.c:1349: clock_init();
 	lcall	_clock_init
-;	appFHSSNIC.c:1348: io_init();
+;	appFHSSNIC.c:1350: io_init();
 	ljmp	_io_init
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
-;	appFHSSNIC.c:1352: void main (void)
+;	appFHSSNIC.c:1354: void main (void)
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-;	appFHSSNIC.c:1354: initBoard();
+;	appFHSSNIC.c:1356: initBoard();
 	lcall	_initBoard
-;	appFHSSNIC.c:1355: initDMA();  // do this early so peripherals that use DMA can allocate channels correctly
+;	appFHSSNIC.c:1357: initDMA();  // do this early so peripherals that use DMA can allocate channels correctly
 	lcall	_initDMA
-;	appFHSSNIC.c:1356: initAES();
+;	appFHSSNIC.c:1358: initAES();
 	lcall	_initAES
-;	appFHSSNIC.c:1357: initUSB();
+;	appFHSSNIC.c:1359: initUSB();
 	lcall	_initUSB
-;	appFHSSNIC.c:1358: init_RF();
+;	appFHSSNIC.c:1360: init_RF();
 	lcall	_init_RF
-;	appFHSSNIC.c:1359: appMainInit();
+;	appFHSSNIC.c:1361: appMainInit();
 	lcall	_appMainInit
-;	appFHSSNIC.c:1361: usb_up();
+;	appFHSSNIC.c:1363: usb_up();
 	lcall	_usb_up
-;	appFHSSNIC.c:1364: EA = 1;
+;	appFHSSNIC.c:1366: EA = 1;
 	setb	_EA
-;	appFHSSNIC.c:1365: waitForUSBsetup();
+;	appFHSSNIC.c:1367: waitForUSBsetup();
 	lcall	_waitForUSBsetup
-;	appFHSSNIC.c:1367: REALLYFASTBLINK();
+;	appFHSSNIC.c:1369: REALLYFASTBLINK();
 	setb	_P2_4
 	mov	dptr,#0x0002
 	lcall	_sleepMillis
 	clr	_P2_4
 	mov	dptr,#0x000A
 	lcall	_sleepMillis
-;	appFHSSNIC.c:1369: while (1)
+;	appFHSSNIC.c:1371: while (1)
 00102$:
-;	appFHSSNIC.c:1371: usbProcessEvents();
+;	appFHSSNIC.c:1373: usbProcessEvents();
 	lcall	_usbProcessEvents
-;	appFHSSNIC.c:1372: appMainLoop();
+;	appFHSSNIC.c:1374: appMainLoop();
 	lcall	_appMainLoop
 	sjmp	00102$
 	.area CSEG    (CODE)
 	.area CONST   (CODE)
-___str_0:
+__str_0:
 	.ascii "Cannot call transmit_long while FHSS Hopping or already proc"
 	.ascii "essing transmit_long!"
 	.db 0x00
-___str_1:
+__str_1:
 	.ascii "MAC_tx() returned error"
 	.db 0x00
-___str_2:
+__str_2:
 	.ascii "never entered TX"
 	.db 0x00
-___str_3:
+__str_3:
 	.ascii "FHSSxmit message too long"
 	.db 0x00
-___str_4:
+__str_4:
 	.ascii "FHSS state entering SYNCHING from wrong state"
 	.db 0x00
-___str_5:
+__str_5:
 	.ascii "SYNCH_MASTER -> SYNCINGMASTER"
 	.db 0x00
-___str_6:
+__str_6:
 	.ascii "FHSSxmit done"
 	.db 0x00
-___str_7:
+__str_7:
 	.ascii "network packet(sync)"
 	.db 0x00
-___str_8:
+__str_8:
 	.ascii "network packet(discovery)"
 	.db 0x00
-___str_9:
+__str_9:
 	.ascii "crap, please use FHSSxmit() instead!"
 	.db 0x00
-___str_10:
+__str_10:
 	.ascii "dropout final wait!"
 	.db 0x00
-___str_11:
+__str_11:
 	.ascii "total bytes tx:"
 	.db 0x00
-___str_12:
+__str_12:
 	.ascii "underrun"
 	.db 0x00
-___str_13:
+__str_13:
 	.ascii "buffer error"
 	.db 0x00
-___str_14:
+__str_14:
 	.ascii "still waiting on the last packet"
 	.db 0x00
-___str_15:
+__str_15:
 	.ascii "NO DEAL"
 	.db 0x00
 	.area XINIT   (CODE)

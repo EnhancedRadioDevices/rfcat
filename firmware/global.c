@@ -165,6 +165,22 @@ void io_init(void)
     //sleepMillis(100);
   
  #endif 
+ 
+#elif defined EXPLORER
+
+    //Disable WDT
+    IEN2&=~IEN2_WDTIE;
+    IEN0&=~EA;
+
+	// TODO: set up LEDs
+	/*
+	#define GREEN_LED P2_3
+    #define BLUE_LED P2_4
+	*/
+	P2DIR |= BIT3|BIT4;
+	P2_3 = 0;
+	P2_4 = 0;
+    
 #else       // CC1111
  #ifdef DONSDONGLES
     // CC1111 USB Dongle

@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
-; This file was generated Wed Nov 30 16:38:14 2016
+; Version 3.3.0 #8604 (Dec 30 2013) (Linux)
+; This file was generated Wed Dec 14 17:38:39 2016
 ;--------------------------------------------------------
 	.module chipcon_dma
 	.optsdcc -mmcs51 --model-small
@@ -1036,14 +1036,11 @@ _initDMA:
 ;	chipcon_dma.c:39: DMA1CFGL = ((u16)(&dma_configs[1]))&0xff;
 	mov	r6,#(_dma_configs + 0x0008)
 	mov	r7,#((_dma_configs + 0x0008) >> 8)
-	mov	r7,#0x00
 	mov	_DMA1CFGL,r6
 ;	chipcon_dma.c:42: memset(dma_configs,'\0',sizeof(DMA_DESC)*DMA_CHANNELS);
-;	1-genFromRTrack replaced	mov	_memset_PARM_2,#0x00
-	mov	_memset_PARM_2,r7
+	mov	_memset_PARM_2,#0x00
 	mov	_memset_PARM_3,#0x18
-;	1-genFromRTrack replaced	mov	(_memset_PARM_3 + 1),#0x00
-	mov	(_memset_PARM_3 + 1),r7
+	mov	(_memset_PARM_3 + 1),#0x00
 	mov	dptr,#_dma_configs
 	mov	b,#0x00
 	ljmp	_memset

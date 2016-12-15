@@ -9,7 +9,7 @@
   #include "cc1111.h"
 #elif defined CC2531
   #include "cc2531.h"
-#elif defined IMME
+#else
   #include <cc1110.h>
   #include "cc1110-ext.h"
 #endif
