@@ -100,7 +100,8 @@ void rx1_isr(void) __interrupt URX1_VECTOR {
 
   if (spi_mode == SPI_MODE_SIZE) {
     master_send_size = value;
-    ep5.OUTlen = value;
+	input_size = 0;
+    ep5.OUTlen = value - 2; // first two bytes are app and cmd
     if (master_send_size > 0 || slave_send_size > 0) {
       spi_mode = SPI_MODE_XFER;
     } else {
@@ -113,14 +114,14 @@ void rx1_isr(void) __interrupt URX1_VECTOR {
     if (input_size == 0) {
         // first byte is app
         ep5.OUTapp = value;
-        ep5.OUTbuf[0] = 0x40; // backwards compatibility
+        //ep5.OUTbuf[0] = 0x40; // backwards compatibility
     } else if (input_size == 1) {
         // second byte is cmd
         ep5.OUTcmd = value;
-        ep5.OUTbuf[1] = 0xe0; // backwards compatibility
+        //ep5.OUTbuf[1] = 0xe0; // backwards compatibility
     } else {
         // data
-        ep5.OUTbuf[input_size] = value;
+        ep5.OUTbuf[input_size - 2] = value;
     }
     input_size++;
     if (input_size == master_send_size) {
@@ -134,6 +135,7 @@ void rx1_isr(void) __interrupt URX1_VECTOR {
 	if (serial_data_available)
     {
 		ep5.flags |= EP_OUTBUF_WRITTEN;
+		LED_RED = 1;
 		processOUTEP5();
         // TODO: non-zero return may be needed later
         serial_data_available = 0;
@@ -287,8 +289,12 @@ void initUSB()
   IRCON2 &= ~BIT2; // Clear UTX1IF
   IEN2 |= BIT3;    // Enable UTX1IE interrupt
   
+  ep5.OUTbuf = usb_ep5_OUTbuf;
+
   spi_mode = SPI_MODE_WAIT;
 
+  
+  
 }
 
 void usbProcessEvents()
@@ -329,6 +335,7 @@ int txdata(u8 app, u8 cmd, u16 len, __xdata u8* dataptr)
     
     vcom_putchar(app);
     vcom_putchar(cmd);
+	vcom_putchar((u8)len);
     
     /* function from usb thing, only need data ptr */    
     while (len > 0) //*dataptr) 
@@ -381,7 +388,8 @@ void processOUTEP5(void)
     if ((ep5.flags & EP_OUTBUF_WRITTEN) == 0)
         return;
 
-    ptr = &ep5.OUTbuf[0];
+    ptr = &ep5.OUTbuf[2]; // skip first two bytes (they're superfluous)
+	ep5.OUTlen -= 2;
     // system application
     if (ep5.OUTapp == 0xff)                                        
     {
@@ -389,8 +397,8 @@ void processOUTEP5(void)
         switch (ep5.OUTcmd)
         {
             case CMD_PEEK:
-                ep5.OUTbytesleft =  *ptr++;
-                ep5.OUTbytesleft += *ptr++ << 8;
+				ep5.OUTbytesleft =  *ptr++;
+                ep5.OUTbytesleft += (u16)*ptr++ << 8;
 
                 loop =  (u16)*ptr++;
                 loop += (u16)*ptr++ << 8;

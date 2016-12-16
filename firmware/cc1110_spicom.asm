@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.3.0 #8604 (Dec 30 2013) (Linux)
-; This file was generated Wed Dec 14 17:38:39 2016
+; This file was generated Fri Dec 16 14:02:34 2016
 ;--------------------------------------------------------
 	.module cc1110_spicom
 	.optsdcc -mmcs51 --model-small
@@ -799,12 +799,10 @@ _txdata_PARM_4:
 _processOUTEP5_loop_1_117:
 	.ds 2
 _processOUTEP5_sloc0_1_0:
-	.ds 1
+	.ds 2
 _processOUTEP5_sloc1_1_0:
 	.ds 2
 _processOUTEP5_sloc2_1_0:
-	.ds 2
-_processOUTEP5_sloc3_1_0:
 	.ds 2
 ;--------------------------------------------------------
 ; overlayable items in internal ram 
@@ -1179,32 +1177,40 @@ _rx1_isr:
 	cjne	a,_spi_mode,00109$
 ;	cc1110_spicom.c:102: master_send_size = value;
 	mov	_master_send_size,r7
-;	cc1110_spicom.c:103: ep5.OUTlen = value;
+;	cc1110_spicom.c:103: input_size = 0;
+	mov	_input_size,#0x00
+;	cc1110_spicom.c:104: ep5.OUTlen = value - 2; // first two bytes are app and cmd
 	mov	ar5,r7
 	mov	r6,#0x00
+	mov	a,r5
+	add	a,#0xFE
+	mov	r5,a
+	mov	a,r6
+	addc	a,#0xFF
+	mov	r6,a
 	mov	dptr,#(_ep5 + 0x0008)
 	mov	a,r5
 	movx	@dptr,a
 	mov	a,r6
 	inc	dptr
 	movx	@dptr,a
-;	cc1110_spicom.c:104: if (master_send_size > 0 || slave_send_size > 0) {
+;	cc1110_spicom.c:105: if (master_send_size > 0 || slave_send_size > 0) {
 	mov	a,_master_send_size
 	jnz	00104$
 	mov	a,_slave_send_size
 	jz	00105$
 00104$:
-;	cc1110_spicom.c:105: spi_mode = SPI_MODE_XFER;
+;	cc1110_spicom.c:106: spi_mode = SPI_MODE_XFER;
 	mov	_spi_mode,#0x02
 	sjmp	00106$
 00105$:
-;	cc1110_spicom.c:107: spi_mode = SPI_MODE_WAIT;
+;	cc1110_spicom.c:108: spi_mode = SPI_MODE_WAIT;
 	mov	_spi_mode,#0x00
 00106$:
-;	cc1110_spicom.c:109: return;
+;	cc1110_spicom.c:110: return;
 	ljmp	00126$
 00109$:
-;	cc1110_spicom.c:112: if (spi_mode == SPI_MODE_XFER && input_size < master_send_size) {
+;	cc1110_spicom.c:113: if (spi_mode == SPI_MODE_XFER && input_size < master_send_size) {
 	mov	a,#0x02
 	cjne	a,_spi_mode,00171$
 	sjmp	00172$
@@ -1214,62 +1220,26 @@ _rx1_isr:
 	clr	c
 	mov	a,_input_size
 	subb	a,_master_send_size
-	jc	00173$
-	ljmp	00126$
-00173$:
-;	cc1110_spicom.c:113: if (input_size == 0) {
+	jnc	00126$
+;	cc1110_spicom.c:114: if (input_size == 0) {
 	mov	a,_input_size
 	jnz	00114$
-;	cc1110_spicom.c:115: ep5.OUTapp = value;
+;	cc1110_spicom.c:116: ep5.OUTapp = value;
 	mov	dptr,#(_ep5 + 0x000a)
 	mov	a,r7
 	movx	@dptr,a
-;	cc1110_spicom.c:116: ep5.OUTbuf[0] = 0x40; // backwards compatibility
-	mov	dptr,#(_ep5 + 0x0005)
-	movx	a,@dptr
-	mov	r4,a
-	inc	dptr
-	movx	a,@dptr
-	mov	r5,a
-	inc	dptr
-	movx	a,@dptr
-	mov	r6,a
-	mov	dpl,r4
-	mov	dph,r5
-	mov	b,r6
-	mov	a,#0x40
-	lcall	__gptrput
 	sjmp	00115$
 00114$:
-;	cc1110_spicom.c:117: } else if (input_size == 1) {
+;	cc1110_spicom.c:118: } else if (input_size == 1) {
 	mov	a,#0x01
 	cjne	a,_input_size,00111$
-;	cc1110_spicom.c:119: ep5.OUTcmd = value;
+;	cc1110_spicom.c:120: ep5.OUTcmd = value;
 	mov	dptr,#(_ep5 + 0x000b)
 	mov	a,r7
 	movx	@dptr,a
-;	cc1110_spicom.c:120: ep5.OUTbuf[1] = 0xe0; // backwards compatibility
-	mov	dptr,#(_ep5 + 0x0005)
-	movx	a,@dptr
-	mov	r4,a
-	inc	dptr
-	movx	a,@dptr
-	mov	r5,a
-	inc	dptr
-	movx	a,@dptr
-	mov	r6,a
-	inc	r4
-	cjne	r4,#0x00,00177$
-	inc	r5
-00177$:
-	mov	dpl,r4
-	mov	dph,r5
-	mov	b,r6
-	mov	a,#0xE0
-	lcall	__gptrput
 	sjmp	00115$
 00111$:
-;	cc1110_spicom.c:123: ep5.OUTbuf[input_size] = value;
+;	cc1110_spicom.c:124: ep5.OUTbuf[input_size - 2] = value;
 	mov	dptr,#(_ep5 + 0x0005)
 	movx	a,@dptr
 	mov	r4,a
@@ -1279,10 +1249,18 @@ _rx1_isr:
 	inc	dptr
 	movx	a,@dptr
 	mov	r6,a
-	mov	a,_input_size
+	mov	r2,_input_size
+	mov	r3,#0x00
+	mov	a,r2
+	add	a,#0xFE
+	mov	r2,a
+	mov	a,r3
+	addc	a,#0xFF
+	mov	r3,a
+	mov	a,r2
 	add	a,r4
 	mov	r4,a
-	clr	a
+	mov	a,r3
 	addc	a,r5
 	mov	r5,a
 	mov	dpl,r4
@@ -1291,35 +1269,37 @@ _rx1_isr:
 	mov	a,r7
 	lcall	__gptrput
 00115$:
-;	cc1110_spicom.c:125: input_size++;
+;	cc1110_spicom.c:126: input_size++;
 	inc	_input_size
-;	cc1110_spicom.c:126: if (input_size == master_send_size) {
+;	cc1110_spicom.c:127: if (input_size == master_send_size) {
 	mov	a,_master_send_size
 	cjne	a,_input_size,00117$
-;	cc1110_spicom.c:127: master_send_size = 0;
+;	cc1110_spicom.c:128: master_send_size = 0;
 	mov	_master_send_size,#0x00
-;	cc1110_spicom.c:128: serial_data_available = 1;
+;	cc1110_spicom.c:129: serial_data_available = 1;
 	mov	_serial_data_available,#0x01
 00117$:
-;	cc1110_spicom.c:130: if (slave_send_size == 0 && master_send_size == 0) {
+;	cc1110_spicom.c:131: if (slave_send_size == 0 && master_send_size == 0) {
 	mov	a,_slave_send_size
 	jnz	00119$
 	mov	a,_master_send_size
-;	cc1110_spicom.c:131: spi_mode = SPI_MODE_WAIT;
+;	cc1110_spicom.c:132: spi_mode = SPI_MODE_WAIT;
 	jnz	00119$
 	mov	_spi_mode,a
 00119$:
-;	cc1110_spicom.c:134: if (serial_data_available)
+;	cc1110_spicom.c:135: if (serial_data_available)
 	mov	a,_serial_data_available
 	jz	00126$
-;	cc1110_spicom.c:136: ep5.flags |= EP_OUTBUF_WRITTEN;
+;	cc1110_spicom.c:137: ep5.flags |= EP_OUTBUF_WRITTEN;
 	mov	dptr,#(_ep5 + 0x000e)
 	movx	a,@dptr
 	orl	a,#0x02
 	movx	@dptr,a
-;	cc1110_spicom.c:137: processOUTEP5();
+;	cc1110_spicom.c:138: LED_RED = 1;
+	setb	_P2_3
+;	cc1110_spicom.c:139: processOUTEP5();
 	lcall	_processOUTEP5
-;	cc1110_spicom.c:139: serial_data_available = 0;
+;	cc1110_spicom.c:141: serial_data_available = 0;
 	mov	_serial_data_available,#0x00
 00126$:
 	pop	psw
@@ -1340,7 +1320,7 @@ _rx1_isr:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'tx1_isr'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:144: void tx1_isr(void) __interrupt UTX1_VECTOR {
+;	cc1110_spicom.c:146: void tx1_isr(void) __interrupt UTX1_VECTOR {
 ;	-----------------------------------------
 ;	 function tx1_isr
 ;	-----------------------------------------
@@ -1351,12 +1331,12 @@ _tx1_isr:
 	push	ar7
 	push	psw
 	mov	psw,#0x00
-;	cc1110_spicom.c:145: IRCON2 &= ~BIT2; // Clear UTX1IF
+;	cc1110_spicom.c:147: IRCON2 &= ~BIT2; // Clear UTX1IF
 	mov	r7,_IRCON2
 	mov	a,#0xFB
 	anl	a,r7
 	mov	_IRCON2,a
-;	cc1110_spicom.c:146: if (spi_mode == SPI_MODE_SIZE || spi_mode == SPI_MODE_XFER) {
+;	cc1110_spicom.c:148: if (spi_mode == SPI_MODE_SIZE || spi_mode == SPI_MODE_XFER) {
 	mov	a,#0x01
 	cjne	a,_spi_mode,00139$
 	sjmp	00112$
@@ -1364,22 +1344,22 @@ _tx1_isr:
 	mov	a,#0x02
 	cjne	a,_spi_mode,00113$
 00112$:
-;	cc1110_spicom.c:147: if (slave_send_size > 0 && output_size > 0) {
+;	cc1110_spicom.c:149: if (slave_send_size > 0 && output_size > 0) {
 	mov	a,_slave_send_size
 	jz	00109$
 	mov	a,_output_size
 	jz	00109$
-;	cc1110_spicom.c:148: slave_send_size--;
+;	cc1110_spicom.c:150: slave_send_size--;
 	dec	_slave_send_size
-;	cc1110_spicom.c:149: if (slave_send_size == 0 && master_send_size == 0) {
+;	cc1110_spicom.c:151: if (slave_send_size == 0 && master_send_size == 0) {
 	mov	a,_slave_send_size
 	jnz	00102$
 	mov	a,_master_send_size
-;	cc1110_spicom.c:150: spi_mode = SPI_MODE_WAIT;
+;	cc1110_spicom.c:152: spi_mode = SPI_MODE_WAIT;
 	jnz	00102$
 	mov	_spi_mode,a
 00102$:
-;	cc1110_spicom.c:152: U1DBUF = spi_output_buf[output_tail_idx];
+;	cc1110_spicom.c:154: U1DBUF = spi_output_buf[output_tail_idx];
 	mov	a,_output_tail_idx
 	add	a,#_spi_output_buf
 	mov	dpl,a
@@ -1388,33 +1368,33 @@ _tx1_isr:
 	mov	dph,a
 	movx	a,@dptr
 	mov	_U1DBUF,a
-;	cc1110_spicom.c:153: output_size--;
+;	cc1110_spicom.c:155: output_size--;
 	dec	_output_size
-;	cc1110_spicom.c:154: if (output_size == 0) {
+;	cc1110_spicom.c:156: if (output_size == 0) {
 	mov	a,_output_size
 	jnz	00105$
-;	cc1110_spicom.c:155: ep5.flags &= ~EP_INBUF_WRITTEN;
+;	cc1110_spicom.c:157: ep5.flags &= ~EP_INBUF_WRITTEN;
 	mov	dptr,#(_ep5 + 0x000e)
 	movx	a,@dptr
 	anl	a,#0xFE
 	mov	r7,a
 	movx	@dptr,a
 00105$:
-;	cc1110_spicom.c:157: output_tail_idx++;
+;	cc1110_spicom.c:159: output_tail_idx++;
 	inc	_output_tail_idx
-;	cc1110_spicom.c:158: if (output_tail_idx >= SPI_BUF_LEN) {
+;	cc1110_spicom.c:160: if (output_tail_idx >= SPI_BUF_LEN) {
 	mov	a,#0x100 - 0xDC
 	add	a,_output_tail_idx
 	jnc	00116$
-;	cc1110_spicom.c:159: output_tail_idx = 0;
+;	cc1110_spicom.c:161: output_tail_idx = 0;
 	mov	_output_tail_idx,#0x00
 	sjmp	00116$
 00109$:
-;	cc1110_spicom.c:162: U1DBUF = 0x99;
+;	cc1110_spicom.c:164: U1DBUF = 0x99;
 	mov	_U1DBUF,#0x99
 	sjmp	00116$
 00113$:
-;	cc1110_spicom.c:165: U1DBUF = 0x99;
+;	cc1110_spicom.c:167: U1DBUF = 0x99;
 	mov	_U1DBUF,#0x99
 00116$:
 	pop	psw
@@ -1427,40 +1407,40 @@ _tx1_isr:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'vcom_flush'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:169: void vcom_flush()
+;	cc1110_spicom.c:171: void vcom_flush()
 ;	-----------------------------------------
 ;	 function vcom_flush
 ;	-----------------------------------------
 _vcom_flush:
-;	cc1110_spicom.c:172: return;
+;	cc1110_spicom.c:174: return;
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'vcom_putchar'
 ;------------------------------------------------------------
 ;c                         Allocated to registers r7 
 ;------------------------------------------------------------
-;	cc1110_spicom.c:175: void vcom_putchar(char c)
+;	cc1110_spicom.c:177: void vcom_putchar(char c)
 ;	-----------------------------------------
 ;	 function vcom_putchar
 ;	-----------------------------------------
 _vcom_putchar:
 	mov	r7,dpl
-;	cc1110_spicom.c:177: if (output_size >= SPI_BUF_LEN) {
+;	cc1110_spicom.c:179: if (output_size >= SPI_BUF_LEN) {
 	mov	a,#0x100 - 0xDC
 	add	a,_output_size
 	jnc	00104$
-;	cc1110_spicom.c:179: output_size--;
+;	cc1110_spicom.c:181: output_size--;
 	dec	_output_size
-;	cc1110_spicom.c:180: output_tail_idx++;
+;	cc1110_spicom.c:182: output_tail_idx++;
 	inc	_output_tail_idx
-;	cc1110_spicom.c:181: if (output_tail_idx >= SPI_BUF_LEN) {
+;	cc1110_spicom.c:183: if (output_tail_idx >= SPI_BUF_LEN) {
 	mov	a,#0x100 - 0xDC
 	add	a,_output_tail_idx
 	jnc	00104$
-;	cc1110_spicom.c:182: output_tail_idx = 0;
+;	cc1110_spicom.c:184: output_tail_idx = 0;
 	mov	_output_tail_idx,#0x00
 00104$:
-;	cc1110_spicom.c:185: spi_output_buf[output_head_idx] = c;
+;	cc1110_spicom.c:187: spi_output_buf[output_head_idx] = c;
 	mov	a,_output_head_idx
 	add	a,#_spi_output_buf
 	mov	dpl,a
@@ -1469,18 +1449,18 @@ _vcom_putchar:
 	mov	dph,a
 	mov	a,r7
 	movx	@dptr,a
-;	cc1110_spicom.c:187: output_head_idx++;
+;	cc1110_spicom.c:189: output_head_idx++;
 	inc	_output_head_idx
-;	cc1110_spicom.c:188: if (output_head_idx >= SPI_BUF_LEN) {
+;	cc1110_spicom.c:190: if (output_head_idx >= SPI_BUF_LEN) {
 	mov	a,#0x100 - 0xDC
 	add	a,_output_head_idx
 	jnc	00106$
-;	cc1110_spicom.c:189: output_head_idx = 0;
+;	cc1110_spicom.c:191: output_head_idx = 0;
 	mov	_output_head_idx,#0x00
 00106$:
-;	cc1110_spicom.c:191: output_size++;
+;	cc1110_spicom.c:193: output_size++;
 	inc	_output_size
-;	cc1110_spicom.c:193: ep5.flags |= EP_INBUF_WRITTEN;
+;	cc1110_spicom.c:195: ep5.flags |= EP_INBUF_WRITTEN;
 	mov	dptr,#(_ep5 + 0x000e)
 	movx	a,@dptr
 	orl	a,#0x01
@@ -1489,19 +1469,19 @@ _vcom_putchar:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'vcom_pollchar'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:196: char vcom_pollchar()
+;	cc1110_spicom.c:198: char vcom_pollchar()
 ;	-----------------------------------------
 ;	 function vcom_pollchar
 ;	-----------------------------------------
 _vcom_pollchar:
-;	cc1110_spicom.c:198: if (serial_data_available == 0) {
+;	cc1110_spicom.c:200: if (serial_data_available == 0) {
 	mov	a,_serial_data_available
 	jnz	00102$
-;	cc1110_spicom.c:199: return USB_READ_AGAIN;
+;	cc1110_spicom.c:201: return USB_READ_AGAIN;
 	mov	dpl,#0xFF
 	ret
 00102$:
-;	cc1110_spicom.c:201: return spi_input_buf[input_tail_idx];
+;	cc1110_spicom.c:203: return spi_input_buf[input_tail_idx];
 	mov	a,_input_tail_idx
 	add	a,#_spi_input_buf
 	mov	dpl,a
@@ -1516,19 +1496,19 @@ _vcom_pollchar:
 ;------------------------------------------------------------
 ;s_data                    Allocated to registers r7 
 ;------------------------------------------------------------
-;	cc1110_spicom.c:204: char vcom_getchar()
+;	cc1110_spicom.c:206: char vcom_getchar()
 ;	-----------------------------------------
 ;	 function vcom_getchar
 ;	-----------------------------------------
 _vcom_getchar:
-;	cc1110_spicom.c:208: if (serial_data_available == 0) {
+;	cc1110_spicom.c:210: if (serial_data_available == 0) {
 	mov	a,_serial_data_available
 	jnz	00102$
-;	cc1110_spicom.c:209: return USB_READ_AGAIN;
+;	cc1110_spicom.c:211: return USB_READ_AGAIN;
 	mov	dpl,#0xFF
 	ret
 00102$:
-;	cc1110_spicom.c:212: s_data = spi_input_buf[input_tail_idx];
+;	cc1110_spicom.c:214: s_data = spi_input_buf[input_tail_idx];
 	mov	a,_input_tail_idx
 	add	a,#_spi_input_buf
 	mov	dpl,a
@@ -1537,70 +1517,70 @@ _vcom_getchar:
 	mov	dph,a
 	movx	a,@dptr
 	mov	r7,a
-;	cc1110_spicom.c:213: input_tail_idx++;
+;	cc1110_spicom.c:215: input_tail_idx++;
 	inc	_input_tail_idx
-;	cc1110_spicom.c:214: if (input_tail_idx >= SPI_BUF_LEN) {
+;	cc1110_spicom.c:216: if (input_tail_idx >= SPI_BUF_LEN) {
 	mov	a,#0x100 - 0xDC
 	add	a,_input_tail_idx
 	jnc	00104$
-;	cc1110_spicom.c:215: input_tail_idx = 0;
+;	cc1110_spicom.c:217: input_tail_idx = 0;
 	mov	_input_tail_idx,#0x00
 00104$:
-;	cc1110_spicom.c:217: input_size--;
+;	cc1110_spicom.c:219: input_size--;
 	dec	_input_size
-;	cc1110_spicom.c:218: if (input_size == 0) {
+;	cc1110_spicom.c:220: if (input_size == 0) {
 	mov	a,_input_size
-;	cc1110_spicom.c:219: serial_data_available = 0;
+;	cc1110_spicom.c:221: serial_data_available = 0;
 	jnz	00106$
 	mov	_serial_data_available,a
 00106$:
-;	cc1110_spicom.c:221: return s_data;
+;	cc1110_spicom.c:223: return s_data;
 	mov	dpl,r7
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'vcom_enable'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:224: void vcom_enable()
+;	cc1110_spicom.c:226: void vcom_enable()
 ;	-----------------------------------------
 ;	 function vcom_enable
 ;	-----------------------------------------
 _vcom_enable:
-;	cc1110_spicom.c:226: TCON &= ~BIT3; // Clear URX1IF
+;	cc1110_spicom.c:228: TCON &= ~BIT3; // Clear URX1IF
 	mov	r7,_TCON
 	mov	a,#0xF7
 	anl	a,r7
 	mov	_TCON,a
-;	cc1110_spicom.c:227: URX1IE = 1;    // Enable URX1IE interrupt
+;	cc1110_spicom.c:229: URX1IE = 1;    // Enable URX1IE interrupt
 	setb	_URX1IE
-;	cc1110_spicom.c:229: IRCON2 &= ~BIT2; // Clear UTX1IF
+;	cc1110_spicom.c:231: IRCON2 &= ~BIT2; // Clear UTX1IF
 	mov	r7,_IRCON2
 	mov	a,#0xFB
 	anl	a,r7
 	mov	_IRCON2,a
-;	cc1110_spicom.c:230: IEN2 |= BIT3;    // Enable UTX1IE interrupt
+;	cc1110_spicom.c:232: IEN2 |= BIT3;    // Enable UTX1IE interrupt
 	orl	_IEN2,#0x08
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'vcom_disable'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:233: void vcom_disable()
+;	cc1110_spicom.c:235: void vcom_disable()
 ;	-----------------------------------------
 ;	 function vcom_disable
 ;	-----------------------------------------
 _vcom_disable:
-;	cc1110_spicom.c:235: TCON &= ~BIT3; // Clear URX1IF
+;	cc1110_spicom.c:237: TCON &= ~BIT3; // Clear URX1IF
 	mov	r7,_TCON
 	mov	a,#0xF7
 	anl	a,r7
 	mov	_TCON,a
-;	cc1110_spicom.c:236: URX1IE = 0;    // Disable URX1IE interrupt
+;	cc1110_spicom.c:238: URX1IE = 0;    // Disable URX1IE interrupt
 	clr	_URX1IE
-;	cc1110_spicom.c:238: IRCON2 &= ~BIT2; // Clear UTX1IF
+;	cc1110_spicom.c:240: IRCON2 &= ~BIT2; // Clear UTX1IF
 	mov	r7,_IRCON2
 	mov	a,#0xFB
 	anl	a,r7
 	mov	_IRCON2,a
-;	cc1110_spicom.c:239: IEN2 &= ~BIT3;    // Disable UTX1IE interrupt
+;	cc1110_spicom.c:241: IEN2 &= ~BIT3;    // Disable UTX1IE interrupt
 	mov	r7,_IEN2
 	mov	a,#0xF7
 	anl	a,r7
@@ -1609,61 +1589,71 @@ _vcom_disable:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'initUSB'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:242: void initUSB()
+;	cc1110_spicom.c:244: void initUSB()
 ;	-----------------------------------------
 ;	 function initUSB
 ;	-----------------------------------------
 _initUSB:
-;	cc1110_spicom.c:256: PERCFG = (PERCFG & ~PERCFG_U0CFG) | PERCFG_U1CFG;
+;	cc1110_spicom.c:258: PERCFG = (PERCFG & ~PERCFG_U0CFG) | PERCFG_U1CFG;
 	mov	r7,_PERCFG
 	mov	a,#0xFE
 	anl	a,r7
 	orl	a,#0x02
 	mov	_PERCFG,a
-;	cc1110_spicom.c:259: P1SEL = P1SEL | BIT4 | BIT5 | BIT6 | BIT7;
+;	cc1110_spicom.c:261: P1SEL = P1SEL | BIT4 | BIT5 | BIT6 | BIT7;
 	orl	_P1SEL,#0xF0
-;	cc1110_spicom.c:260: P1DIR = P1DIR & ~(BIT4 | BIT5 | BIT6 | BIT7);
+;	cc1110_spicom.c:262: P1DIR = P1DIR & ~(BIT4 | BIT5 | BIT6 | BIT7);
 	mov	r7,_P1DIR
 	mov	a,#0x0F
 	anl	a,r7
 	mov	_P1DIR,a
-;	cc1110_spicom.c:267: U1CSR = (U1CSR & ~U1CSR_MODE) | U1CSR_SLAVE;
+;	cc1110_spicom.c:269: U1CSR = (U1CSR & ~U1CSR_MODE) | U1CSR_SLAVE;
 	mov	r7,_U1CSR
 	mov	a,#0x7F
 	anl	a,r7
 	orl	a,#0x20
 	mov	_U1CSR,a
-;	cc1110_spicom.c:280: U1BAUD = SPI_BAUD_M;
+;	cc1110_spicom.c:282: U1BAUD = SPI_BAUD_M;
 	mov	_U1BAUD,#0x3B
-;	cc1110_spicom.c:281: U1GCR = (U1GCR & ~(U1GCR_BAUD_E | U1GCR_CPOL | U1GCR_CPHA | U1GCR_ORDER))
+;	cc1110_spicom.c:283: U1GCR = (U1GCR & ~(U1GCR_BAUD_E | U1GCR_CPOL | U1GCR_CPHA | U1GCR_ORDER))
 	mov	a,_U1GCR
 	mov	_U1GCR,#0x0B
-;	cc1110_spicom.c:284: TCON &= ~BIT3; // Clear URX1IF
+;	cc1110_spicom.c:286: TCON &= ~BIT3; // Clear URX1IF
 	mov	r7,_TCON
 	mov	a,#0xF7
 	anl	a,r7
 	mov	_TCON,a
-;	cc1110_spicom.c:285: URX1IE = 1;    // Enable URX1IE interrupt
+;	cc1110_spicom.c:287: URX1IE = 1;    // Enable URX1IE interrupt
 	setb	_URX1IE
-;	cc1110_spicom.c:287: IRCON2 &= ~BIT2; // Clear UTX1IF
+;	cc1110_spicom.c:289: IRCON2 &= ~BIT2; // Clear UTX1IF
 	mov	r7,_IRCON2
 	mov	a,#0xFB
 	anl	a,r7
 	mov	_IRCON2,a
-;	cc1110_spicom.c:288: IEN2 |= BIT3;    // Enable UTX1IE interrupt
+;	cc1110_spicom.c:290: IEN2 |= BIT3;    // Enable UTX1IE interrupt
 	orl	_IEN2,#0x08
-;	cc1110_spicom.c:290: spi_mode = SPI_MODE_WAIT;
+;	cc1110_spicom.c:292: ep5.OUTbuf = usb_ep5_OUTbuf;
+	mov	dptr,#(_ep5 + 0x0005)
+	mov	a,#_usb_ep5_OUTbuf
+	movx	@dptr,a
+	mov	a,#(_usb_ep5_OUTbuf >> 8)
+	inc	dptr
+	movx	@dptr,a
+	clr	a
+	inc	dptr
+	movx	@dptr,a
+;	cc1110_spicom.c:294: spi_mode = SPI_MODE_WAIT;
 	mov	_spi_mode,#0x00
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'usbProcessEvents'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:294: void usbProcessEvents()
+;	cc1110_spicom.c:300: void usbProcessEvents()
 ;	-----------------------------------------
 ;	 function usbProcessEvents
 ;	-----------------------------------------
 _usbProcessEvents:
-;	cc1110_spicom.c:296: return; /* dummy function */
+;	cc1110_spicom.c:302: return; /* dummy function */
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'vcom_readline'
@@ -1671,7 +1661,7 @@ _usbProcessEvents:
 ;buff                      Allocated to registers 
 ;c                         Allocated to registers r3 
 ;------------------------------------------------------------
-;	cc1110_spicom.c:299: void vcom_readline(char* buff) {
+;	cc1110_spicom.c:305: void vcom_readline(char* buff) {
 ;	-----------------------------------------
 ;	 function vcom_readline
 ;	-----------------------------------------
@@ -1679,7 +1669,7 @@ _vcom_readline:
 	mov	r5,dpl
 	mov	r6,dph
 	mov	r7,b
-;	cc1110_spicom.c:301: while ((c = vcom_getchar()) != '\n') {
+;	cc1110_spicom.c:307: while ((c = vcom_getchar()) != '\n') {
 00101$:
 	push	ar7
 	push	ar6
@@ -1693,7 +1683,7 @@ _vcom_readline:
 	cjne	r4,#0x0A,00113$
 	sjmp	00103$
 00113$:
-;	cc1110_spicom.c:302: *buff++ = c;
+;	cc1110_spicom.c:308: *buff++ = c;
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -1704,7 +1694,7 @@ _vcom_readline:
 	mov	r6,dph
 	sjmp	00101$
 00103$:
-;	cc1110_spicom.c:304: *buff = 0;
+;	cc1110_spicom.c:310: *buff = 0;
 	mov	dpl,r5
 	mov	dph,r6
 	mov	b,r7
@@ -1715,7 +1705,7 @@ _vcom_readline:
 ;------------------------------------------------------------
 ;buff                      Allocated with name '_vcom_putstr_buff_1_98'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:307: void vcom_putstr(char* __xdata buff) {
+;	cc1110_spicom.c:313: void vcom_putstr(char* __xdata buff) {
 ;	-----------------------------------------
 ;	 function vcom_putstr
 ;	-----------------------------------------
@@ -1731,7 +1721,7 @@ _vcom_putstr:
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	cc1110_spicom.c:308: while (*buff) {
+;	cc1110_spicom.c:314: while (*buff) {
 	mov	dptr,#_vcom_putstr_buff_1_98
 	movx	a,@dptr
 	mov	r5,a
@@ -1748,7 +1738,7 @@ _vcom_putstr:
 	lcall	__gptrget
 	mov	r4,a
 	jz	00108$
-;	cc1110_spicom.c:309: vcom_putchar(*buff++);
+;	cc1110_spicom.c:315: vcom_putchar(*buff++);
 	inc	r5
 	cjne	r5,#0x00,00114$
 	inc	r6
@@ -1781,27 +1771,27 @@ _vcom_putstr:
 	mov	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	cc1110_spicom.c:311: vcom_flush();
+;	cc1110_spicom.c:317: vcom_flush();
 	ljmp	_vcom_flush
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'usb_up'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:314: void usb_up() {
+;	cc1110_spicom.c:320: void usb_up() {
 ;	-----------------------------------------
 ;	 function usb_up
 ;	-----------------------------------------
 _usb_up:
-;	cc1110_spicom.c:316: vcom_enable();
+;	cc1110_spicom.c:322: vcom_enable();
 	ljmp	_vcom_enable
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'vcom_down'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:319: void vcom_down() {
+;	cc1110_spicom.c:325: void vcom_down() {
 ;	-----------------------------------------
 ;	 function vcom_down
 ;	-----------------------------------------
 _vcom_down:
-;	cc1110_spicom.c:321: vcom_disable();
+;	cc1110_spicom.c:327: vcom_disable();
 	ljmp	_vcom_disable
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'txdata'
@@ -1812,17 +1802,20 @@ _vcom_down:
 ;app                       Allocated to registers 
 ;test                      Allocated to registers 
 ;------------------------------------------------------------
-;	cc1110_spicom.c:324: int txdata(u8 app, u8 cmd, u16 len, __xdata u8* dataptr)
+;	cc1110_spicom.c:330: int txdata(u8 app, u8 cmd, u16 len, __xdata u8* dataptr)
 ;	-----------------------------------------
 ;	 function txdata
 ;	-----------------------------------------
 _txdata:
-;	cc1110_spicom.c:330: vcom_putchar(app);
+;	cc1110_spicom.c:336: vcom_putchar(app);
 	lcall	_vcom_putchar
-;	cc1110_spicom.c:331: vcom_putchar(cmd);
+;	cc1110_spicom.c:337: vcom_putchar(cmd);
 	mov	dpl,_txdata_PARM_2
 	lcall	_vcom_putchar
-;	cc1110_spicom.c:334: while (len > 0) //*dataptr) 
+;	cc1110_spicom.c:338: vcom_putchar((u8)len);
+	mov	dpl,_txdata_PARM_3
+	lcall	_vcom_putchar
+;	cc1110_spicom.c:341: while (len > 0) //*dataptr) 
 	mov	r6,_txdata_PARM_4
 	mov	r7,(_txdata_PARM_4 + 1)
 	mov	r4,_txdata_PARM_3
@@ -1831,7 +1824,7 @@ _txdata:
 	mov	a,r4
 	orl	a,r5
 	jz	00103$
-;	cc1110_spicom.c:336: vcom_putchar(*dataptr++);
+;	cc1110_spicom.c:343: vcom_putchar(*dataptr++);
 	mov	dpl,r6
 	mov	dph,r7
 	movx	a,@dptr
@@ -1849,30 +1842,30 @@ _txdata:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-;	cc1110_spicom.c:337: len--;
+;	cc1110_spicom.c:344: len--;
 	dec	r4
 	cjne	r4,#0xFF,00114$
 	dec	r5
 00114$:
 	sjmp	00101$
 00103$:
-;	cc1110_spicom.c:339: vcom_putchar(0);
+;	cc1110_spicom.c:346: vcom_putchar(0);
 	mov	dpl,#0x00
 	lcall	_vcom_putchar
-;	cc1110_spicom.c:340: vcom_flush();
+;	cc1110_spicom.c:347: vcom_flush();
 	lcall	_vcom_flush
-;	cc1110_spicom.c:344: return 0;
+;	cc1110_spicom.c:351: return 0;
 	mov	dptr,#0x0000
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'usbIntHandler'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:349: void usbIntHandler(void) __interrupt P2INT_VECTOR
+;	cc1110_spicom.c:356: void usbIntHandler(void) __interrupt P2INT_VECTOR
 ;	-----------------------------------------
 ;	 function usbIntHandler
 ;	-----------------------------------------
 _usbIntHandler:
-;	cc1110_spicom.c:351: return;
+;	cc1110_spicom.c:358: return;
 	reti
 ;	eliminated unneeded mov psw,# (no regs used in bank)
 ;	eliminated unneeded push/pop psw
@@ -1883,12 +1876,12 @@ _usbIntHandler:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'p0IntHandler'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:354: void p0IntHandler(void) __interrupt P0INT_VECTOR
+;	cc1110_spicom.c:361: void p0IntHandler(void) __interrupt P0INT_VECTOR
 ;	-----------------------------------------
 ;	 function p0IntHandler
 ;	-----------------------------------------
 _p0IntHandler:
-;	cc1110_spicom.c:356: return;
+;	cc1110_spicom.c:363: return;
 	reti
 ;	eliminated unneeded mov psw,# (no regs used in bank)
 ;	eliminated unneeded push/pop psw
@@ -1899,26 +1892,26 @@ _p0IntHandler:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'waitForUSBsetup'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:359: void waitForUSBsetup()
+;	cc1110_spicom.c:366: void waitForUSBsetup()
 ;	-----------------------------------------
 ;	 function waitForUSBsetup
 ;	-----------------------------------------
 _waitForUSBsetup:
-;	cc1110_spicom.c:361: return;
+;	cc1110_spicom.c:368: return;
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'registerCb_ep5'
 ;------------------------------------------------------------
 ;callback                  Allocated to registers 
 ;------------------------------------------------------------
-;	cc1110_spicom.c:364: void registerCb_ep5(int (*callback)(void))
+;	cc1110_spicom.c:371: void registerCb_ep5(int (*callback)(void))
 ;	-----------------------------------------
 ;	 function registerCb_ep5
 ;	-----------------------------------------
 _registerCb_ep5:
 	mov	_cb_ep5,dpl
 	mov	(_cb_ep5 + 1),dph
-;	cc1110_spicom.c:366: cb_ep5 = callback;
+;	cc1110_spicom.c:373: cb_ep5 = callback;
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'appReturn'
@@ -1926,7 +1919,7 @@ _registerCb_ep5:
 ;response                  Allocated with name '_appReturn_PARM_2'
 ;len                       Allocated with name '_appReturn_len_1_114'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:369: void appReturn(__xdata u8 len, __xdata u8* __xdata  response)
+;	cc1110_spicom.c:376: void appReturn(__xdata u8 len, __xdata u8* __xdata  response)
 ;	-----------------------------------------
 ;	 function appReturn
 ;	-----------------------------------------
@@ -1934,12 +1927,12 @@ _appReturn:
 	mov	a,dpl
 	mov	dptr,#_appReturn_len_1_114
 	movx	@dptr,a
-;	cc1110_spicom.c:371: ep5.flags &= ~EP_OUTBUF_WRITTEN;                       // this should be superfluous... but could be causing problems?
+;	cc1110_spicom.c:378: ep5.flags &= ~EP_OUTBUF_WRITTEN;                       // this should be superfluous... but could be causing problems?
 	mov	dptr,#(_ep5 + 0x000e)
 	movx	a,@dptr
 	anl	a,#0xFD
 	movx	@dptr,a
-;	cc1110_spicom.c:372: txdata(ep5.OUTapp,ep5.OUTcmd, len, response);
+;	cc1110_spicom.c:379: txdata(ep5.OUTapp,ep5.OUTcmd, len, response);
 	mov	dptr,#(_ep5 + 0x000a)
 	movx	a,@dptr
 	mov	r7,a
@@ -1966,75 +1959,99 @@ _appReturn:
 ;sloc0                     Allocated with name '_processOUTEP5_sloc0_1_0'
 ;sloc1                     Allocated with name '_processOUTEP5_sloc1_1_0'
 ;sloc2                     Allocated with name '_processOUTEP5_sloc2_1_0'
-;sloc3                     Allocated with name '_processOUTEP5_sloc3_1_0'
 ;ptr                       Allocated with name '_processOUTEP5_ptr_1_117'
 ;------------------------------------------------------------
-;	cc1110_spicom.c:375: void processOUTEP5(void)
+;	cc1110_spicom.c:382: void processOUTEP5(void)
 ;	-----------------------------------------
 ;	 function processOUTEP5
 ;	-----------------------------------------
 _processOUTEP5:
-;	cc1110_spicom.c:381: if ((ep5.flags & EP_OUTBUF_WRITTEN) == 0)
+;	cc1110_spicom.c:388: if ((ep5.flags & EP_OUTBUF_WRITTEN) == 0)
 	mov	dptr,#(_ep5 + 0x000e)
 	movx	a,@dptr
 	mov	r7,a
 	jb	acc.1,00102$
-;	cc1110_spicom.c:382: return;
+;	cc1110_spicom.c:389: return;
 	ret
 00102$:
-;	cc1110_spicom.c:384: ptr = &ep5.OUTbuf[0];
+;	cc1110_spicom.c:391: ptr = &ep5.OUTbuf[2]; // skip first two bytes (they're superfluous)
 	mov	dptr,#(_ep5 + 0x0005)
-	movx	a,@dptr
-	mov	r4,a
-	inc	dptr
 	movx	a,@dptr
 	mov	r5,a
 	inc	dptr
 	movx	a,@dptr
 	mov	r6,a
+	inc	dptr
+	movx	a,@dptr
+	mov	r7,a
+	mov	a,#0x02
+	add	a,r5
+	mov	r5,a
+	clr	a
+	addc	a,r6
+	mov	r6,a
 	mov	dptr,#_processOUTEP5_ptr_1_117
-	mov	a,r4
-	movx	@dptr,a
 	mov	a,r5
+	movx	@dptr,a
+	mov	a,r6
 	inc	dptr
 	movx	@dptr,a
-;	cc1110_spicom.c:386: if (ep5.OUTapp == 0xff)                                        
+;	cc1110_spicom.c:392: ep5.OUTlen -= 2;
+	mov	dptr,#(_ep5 + 0x0008)
+	movx	a,@dptr
+	mov	r3,a
+	inc	dptr
+	movx	a,@dptr
+	mov	r4,a
+	mov	a,r3
+	add	a,#0xFE
+	mov	r3,a
+	mov	a,r4
+	addc	a,#0xFF
+	mov	r4,a
+	mov	dptr,#(_ep5 + 0x0008)
+	mov	a,r3
+	movx	@dptr,a
+	mov	a,r4
+	inc	dptr
+	movx	@dptr,a
+;	cc1110_spicom.c:394: if (ep5.OUTapp == 0xff)                                        
 	mov	dptr,#(_ep5 + 0x000a)
 	movx	a,@dptr
-	mov	_processOUTEP5_sloc3_1_0,a
+	mov	_processOUTEP5_sloc2_1_0,a
 	mov	a,#0xFF
-	cjne	a,_processOUTEP5_sloc3_1_0,00200$
+	cjne	a,_processOUTEP5_sloc2_1_0,00200$
 	sjmp	00201$
 00200$:
 	ljmp	00135$
 00201$:
-;	cc1110_spicom.c:389: switch (ep5.OUTcmd)
+;	cc1110_spicom.c:397: switch (ep5.OUTcmd)
 	mov	dptr,#(_ep5 + 0x000b)
 	movx	a,@dptr
-	mov	_processOUTEP5_sloc2_1_0,a
-	clr	c
-	subb	a,#0x80
-	jnc	00202$
-	ljmp	00127$
+	mov	r3,a
+	cjne	r3,#0x80,00202$
 00202$:
-	mov	a,_processOUTEP5_sloc2_1_0
-	add	a,#0xff - 0x90
 	jnc	00203$
 	ljmp	00127$
 00203$:
-	mov	a,_processOUTEP5_sloc2_1_0
+	mov	a,r3
+	add	a,#0xff - 0x90
+	jnc	00204$
+	ljmp	00127$
+00204$:
+	mov	a,r3
 	add	a,#0x80
-	mov	r1,a
-	add	a,#(00204$-3-.)
+	mov	r2,a
+	add	a,#(00205$-3-.)
 	movc	a,@a+pc
 	mov	dpl,a
-	mov	a,r1
-	add	a,#(00205$-3-.)
+	mov	a,r2
+	add	a,#(00206$-3-.)
 	movc	a,@a+pc
 	mov	dph,a
 	clr	a
 	jmp	@a+dptr
-00204$:
+00205$:
 	.db	00103$
 	.db	00104$
 	.db	00112$
@@ -2052,7 +2069,7 @@ _processOUTEP5:
 	.db	00122$
 	.db	00123$
 	.db	00126$
-00205$:
+00206$:
 	.db	00103$>>8
 	.db	00104$>>8
 	.db	00112$>>8
@@ -2070,197 +2087,198 @@ _processOUTEP5:
 	.db	00122$>>8
 	.db	00123$>>8
 	.db	00126$>>8
-;	cc1110_spicom.c:391: case CMD_PEEK:
+;	cc1110_spicom.c:399: case CMD_PEEK:
 00103$:
-;	cc1110_spicom.c:392: ep5.OUTbytesleft =  *ptr++;
-	mov	dpl,r4
-	mov	dph,r5
-	mov	b,r6
+;	cc1110_spicom.c:400: ep5.OUTbytesleft =  *ptr++;
+	mov	dpl,r5
+	mov	dph,r6
+	mov	b,r7
 	lcall	__gptrget
-	mov	_processOUTEP5_sloc0_1_0,a
+	mov	r2,a
 	mov	a,#0x01
-	add	a,r4
-	mov	_processOUTEP5_sloc1_1_0,a
+	add	a,r5
+	mov	_processOUTEP5_sloc0_1_0,a
 	clr	a
-	addc	a,r5
-	mov	(_processOUTEP5_sloc1_1_0 + 1),a
-	mov	_processOUTEP5_sloc2_1_0,_processOUTEP5_sloc0_1_0
-	mov	(_processOUTEP5_sloc2_1_0 + 1),#0x00
+	addc	a,r6
+	mov	(_processOUTEP5_sloc0_1_0 + 1),a
+	mov	_processOUTEP5_sloc1_1_0,r2
+	mov	(_processOUTEP5_sloc1_1_0 + 1),#0x00
 	mov	dptr,#(_ep5 + 0x000c)
-	mov	a,_processOUTEP5_sloc2_1_0
+	mov	a,_processOUTEP5_sloc1_1_0
 	movx	@dptr,a
-	mov	a,(_processOUTEP5_sloc2_1_0 + 1)
+	mov	a,(_processOUTEP5_sloc1_1_0 + 1)
 	inc	dptr
 	movx	@dptr,a
-;	cc1110_spicom.c:393: ep5.OUTbytesleft += *ptr++ << 8;
-	mov	dpl,_processOUTEP5_sloc1_1_0
-	mov	dph,(_processOUTEP5_sloc1_1_0 + 1)
+;	cc1110_spicom.c:401: ep5.OUTbytesleft += (u16)*ptr++ << 8;
+	mov	dpl,_processOUTEP5_sloc0_1_0
+	mov	dph,(_processOUTEP5_sloc0_1_0 + 1)
 	movx	a,@dptr
 	mov	_processOUTEP5_sloc0_1_0,a
-	mov	a,#0x01
-	add	a,_processOUTEP5_sloc1_1_0
-	mov	_processOUTEP5_sloc3_1_0,a
-	clr	a
-	addc	a,(_processOUTEP5_sloc1_1_0 + 1)
-	mov	(_processOUTEP5_sloc3_1_0 + 1),a
-	mov	r0,_processOUTEP5_sloc0_1_0
-	mov	ar1,r0
-	clr	a
-	add	a,_processOUTEP5_sloc2_1_0
+	mov	a,#0x02
+	add	a,r5
 	mov	_processOUTEP5_sloc2_1_0,a
-	mov	a,r1
-	addc	a,(_processOUTEP5_sloc2_1_0 + 1)
+	clr	a
+	addc	a,r6
 	mov	(_processOUTEP5_sloc2_1_0 + 1),a
+	mov	r1,_processOUTEP5_sloc0_1_0
+	mov	ar2,r1
+	clr	a
+	add	a,_processOUTEP5_sloc1_1_0
+	mov	_processOUTEP5_sloc1_1_0,a
+	mov	a,r2
+	addc	a,(_processOUTEP5_sloc1_1_0 + 1)
+	mov	(_processOUTEP5_sloc1_1_0 + 1),a
 	mov	dptr,#(_ep5 + 0x000c)
-	mov	a,_processOUTEP5_sloc2_1_0
+	mov	a,_processOUTEP5_sloc1_1_0
 	movx	@dptr,a
-	mov	a,(_processOUTEP5_sloc2_1_0 + 1)
+	mov	a,(_processOUTEP5_sloc1_1_0 + 1)
 	inc	dptr
 	movx	@dptr,a
-;	cc1110_spicom.c:395: loop =  (u16)*ptr++;
-	mov	dpl,_processOUTEP5_sloc3_1_0
-	mov	dph,(_processOUTEP5_sloc3_1_0 + 1)
+;	cc1110_spicom.c:403: loop =  (u16)*ptr++;
+	mov	dpl,_processOUTEP5_sloc2_1_0
+	mov	dph,(_processOUTEP5_sloc2_1_0 + 1)
 	movx	a,@dptr
-	mov	r1,a
-	mov	dpl,_processOUTEP5_sloc1_1_0
-	mov	dph,(_processOUTEP5_sloc1_1_0 + 1)
+	mov	r0,a
+	mov	dpl,r5
+	mov	dph,r6
 	inc	dptr
 	inc	dptr
-	mov	_processOUTEP5_loop_1_117,r1
+	inc	dptr
+	mov	_processOUTEP5_loop_1_117,r0
 	mov	(_processOUTEP5_loop_1_117 + 1),#0x00
-;	cc1110_spicom.c:396: loop += (u16)*ptr++ << 8;
+;	cc1110_spicom.c:404: loop += (u16)*ptr++ << 8;
 	movx	a,@dptr
-	mov	r1,a
+	mov	r2,a
 	clr	a
 	add	a,_processOUTEP5_loop_1_117
 	mov	_processOUTEP5_loop_1_117,a
-	mov	a,r1
+	mov	a,r2
 	addc	a,(_processOUTEP5_loop_1_117 + 1)
 	mov	(_processOUTEP5_loop_1_117 + 1),a
-;	cc1110_spicom.c:397: ptr = (__xdata u8*) loop;
+;	cc1110_spicom.c:405: ptr = (__xdata u8*) loop;
 	mov	_txdata_PARM_4,_processOUTEP5_loop_1_117
 	mov	(_txdata_PARM_4 + 1),(_processOUTEP5_loop_1_117 + 1)
-;	cc1110_spicom.c:399: txdata(ep5.OUTapp, ep5.OUTcmd, ep5.OUTbytesleft, ptr);
+;	cc1110_spicom.c:407: txdata(ep5.OUTapp, ep5.OUTcmd, ep5.OUTbytesleft, ptr);
 	mov	dptr,#(_ep5 + 0x000a)
 	movx	a,@dptr
-	mov	r1,a
+	mov	r2,a
 	mov	dptr,#(_ep5 + 0x000b)
 	movx	a,@dptr
 	mov	_txdata_PARM_2,a
-	mov	_txdata_PARM_3,_processOUTEP5_sloc2_1_0
-	mov	(_txdata_PARM_3 + 1),(_processOUTEP5_sloc2_1_0 + 1)
-	mov	dpl,r1
+	mov	_txdata_PARM_3,_processOUTEP5_sloc1_1_0
+	mov	(_txdata_PARM_3 + 1),(_processOUTEP5_sloc1_1_0 + 1)
+	mov	dpl,r2
 	lcall	_txdata
-;	cc1110_spicom.c:400: ep5.OUTbytesleft = 0;
+;	cc1110_spicom.c:408: ep5.OUTbytesleft = 0;
 	mov	dptr,#(_ep5 + 0x000c)
 	clr	a
 	movx	@dptr,a
 	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	cc1110_spicom.c:401: break;
+;	cc1110_spicom.c:409: break;
 	ljmp	00128$
-;	cc1110_spicom.c:403: case CMD_POKE:
+;	cc1110_spicom.c:411: case CMD_POKE:
 00104$:
-;	cc1110_spicom.c:404: loop =  *ptr++;
-	mov	dpl,r4
-	mov	dph,r5
-	mov	b,r6
+;	cc1110_spicom.c:412: loop =  *ptr++;
+	mov	dpl,r5
+	mov	dph,r6
+	mov	b,r7
 	lcall	__gptrget
-	mov	r1,a
-	mov	dpl,r4
-	mov	dph,r5
+	mov	r2,a
+	mov	dpl,r5
+	mov	dph,r6
 	inc	dptr
-	mov	_processOUTEP5_loop_1_117,r1
+	mov	_processOUTEP5_loop_1_117,r2
 	mov	(_processOUTEP5_loop_1_117 + 1),#0x00
-;	cc1110_spicom.c:405: loop += *ptr++ << 8;
+;	cc1110_spicom.c:413: loop += *ptr++ << 8;
 	movx	a,@dptr
-	mov	r1,a
+	mov	r2,a
 	mov	a,#0x02
-	add	a,r4
-	mov	_processOUTEP5_sloc3_1_0,a
+	add	a,r5
+	mov	_processOUTEP5_sloc2_1_0,a
 	clr	a
-	addc	a,r5
-	mov	(_processOUTEP5_sloc3_1_0 + 1),a
-	mov	ar0,r1
-	mov	ar1,r0
+	addc	a,r6
+	mov	(_processOUTEP5_sloc2_1_0 + 1),a
+	mov	ar1,r2
+	mov	ar2,r1
 	clr	a
 	add	a,_processOUTEP5_loop_1_117
 	mov	_processOUTEP5_loop_1_117,a
-	mov	a,r1
+	mov	a,r2
 	addc	a,(_processOUTEP5_loop_1_117 + 1)
 	mov	(_processOUTEP5_loop_1_117 + 1),a
-;	cc1110_spicom.c:406: ep5.dptr = (__xdata u8*) loop;
+;	cc1110_spicom.c:414: ep5.dptr = (__xdata u8*) loop;
 	mov	r0,_processOUTEP5_loop_1_117
-	mov	r1,(_processOUTEP5_loop_1_117 + 1)
+	mov	r2,(_processOUTEP5_loop_1_117 + 1)
 	mov	dptr,#(_ep5 + 0x0010)
 	mov	a,r0
 	movx	@dptr,a
-	mov	a,r1
+	mov	a,r2
 	inc	dptr
 	movx	@dptr,a
-;	cc1110_spicom.c:408: loop = ep5.OUTlen - 2;
+;	cc1110_spicom.c:416: loop = ep5.OUTlen - 2;
 	mov	dptr,#(_ep5 + 0x0008)
 	movx	a,@dptr
-	mov	r0,a
+	mov	r1,a
 	inc	dptr
 	movx	a,@dptr
-	mov	r1,a
-	mov	a,r0
+	mov	r2,a
+	mov	a,r1
 	add	a,#0xFE
 	mov	_processOUTEP5_loop_1_117,a
-	mov	a,r1
+	mov	a,r2
 	addc	a,#0xFF
 	mov	(_processOUTEP5_loop_1_117 + 1),a
-	mov	_processOUTEP5_sloc2_1_0,_processOUTEP5_loop_1_117
-	mov	(_processOUTEP5_sloc2_1_0 + 1),(_processOUTEP5_loop_1_117 + 1)
+	mov	_processOUTEP5_sloc1_1_0,_processOUTEP5_loop_1_117
+	mov	(_processOUTEP5_sloc1_1_0 + 1),(_processOUTEP5_loop_1_117 + 1)
 00138$:
-;	cc1110_spicom.c:410: for (;loop>0;loop--)
-	mov	a,_processOUTEP5_sloc2_1_0
-	orl	a,(_processOUTEP5_sloc2_1_0 + 1)
+;	cc1110_spicom.c:418: for (;loop>0;loop--)
+	mov	a,_processOUTEP5_sloc1_1_0
+	orl	a,(_processOUTEP5_sloc1_1_0 + 1)
 	jz	00105$
-;	cc1110_spicom.c:412: *ep5.dptr++ = *ptr++;
+;	cc1110_spicom.c:420: *ep5.dptr++ = *ptr++;
 	mov	dptr,#(_ep5 + 0x0010)
 	movx	a,@dptr
-	mov	_processOUTEP5_sloc1_1_0,a
+	mov	_processOUTEP5_sloc0_1_0,a
 	inc	dptr
 	movx	a,@dptr
-	mov	(_processOUTEP5_sloc1_1_0 + 1),a
+	mov	(_processOUTEP5_sloc0_1_0 + 1),a
 	mov	a,#0x01
-	add	a,_processOUTEP5_sloc1_1_0
-	mov	r0,a
+	add	a,_processOUTEP5_sloc0_1_0
+	mov	r1,a
 	clr	a
-	addc	a,(_processOUTEP5_sloc1_1_0 + 1)
-	mov	r1,a
+	addc	a,(_processOUTEP5_sloc0_1_0 + 1)
+	mov	r2,a
 	mov	dptr,#(_ep5 + 0x0010)
-	mov	a,r0
-	movx	@dptr,a
 	mov	a,r1
+	movx	@dptr,a
+	mov	a,r2
 	inc	dptr
 	movx	@dptr,a
-	mov	dpl,_processOUTEP5_sloc3_1_0
-	mov	dph,(_processOUTEP5_sloc3_1_0 + 1)
+	mov	dpl,_processOUTEP5_sloc2_1_0
+	mov	dph,(_processOUTEP5_sloc2_1_0 + 1)
 	movx	a,@dptr
-	mov	r1,a
+	mov	r2,a
 	inc	dptr
-	mov	_processOUTEP5_sloc3_1_0,dpl
-	mov	(_processOUTEP5_sloc3_1_0 + 1),dph
-	mov	dpl,_processOUTEP5_sloc1_1_0
-	mov	dph,(_processOUTEP5_sloc1_1_0 + 1)
-	mov	a,r1
+	mov	_processOUTEP5_sloc2_1_0,dpl
+	mov	(_processOUTEP5_sloc2_1_0 + 1),dph
+	mov	dpl,_processOUTEP5_sloc0_1_0
+	mov	dph,(_processOUTEP5_sloc0_1_0 + 1)
+	mov	a,r2
 	movx	@dptr,a
-;	cc1110_spicom.c:410: for (;loop>0;loop--)
-	dec	_processOUTEP5_sloc2_1_0
+;	cc1110_spicom.c:418: for (;loop>0;loop--)
+	dec	_processOUTEP5_sloc1_1_0
 	mov	a,#0xFF
-	cjne	a,_processOUTEP5_sloc2_1_0,00207$
-	dec	(_processOUTEP5_sloc2_1_0 + 1)
-00207$:
+	cjne	a,_processOUTEP5_sloc1_1_0,00208$
+	dec	(_processOUTEP5_sloc1_1_0 + 1)
+00208$:
 	sjmp	00138$
 00105$:
-;	cc1110_spicom.c:416: txdata(ep5.OUTapp, ep5.OUTcmd, 2, (__xdata u8*)&(ep5.OUTbytesleft));
+;	cc1110_spicom.c:424: txdata(ep5.OUTapp, ep5.OUTcmd, 2, (__xdata u8*)&(ep5.OUTbytesleft));
 	mov	dptr,#(_ep5 + 0x000a)
 	movx	a,@dptr
-	mov	r1,a
+	mov	r2,a
 	mov	dptr,#(_ep5 + 0x000b)
 	movx	a,@dptr
 	mov	_txdata_PARM_2,a
@@ -2268,144 +2286,147 @@ _processOUTEP5:
 	mov	(_txdata_PARM_4 + 1),#((_ep5 + 0x000c) >> 8)
 	mov	_txdata_PARM_3,#0x02
 	mov	(_txdata_PARM_3 + 1),#0x00
-	mov	dpl,r1
+	mov	dpl,r2
 	lcall	_txdata
-;	cc1110_spicom.c:417: break;
+;	cc1110_spicom.c:425: break;
 	ljmp	00128$
-;	cc1110_spicom.c:419: case CMD_POKE_REG:
+;	cc1110_spicom.c:427: case CMD_POKE_REG:
 00106$:
-;	cc1110_spicom.c:420: if (!(ep5.flags & EP_OUTBUF_CONTINUED))
-	mov	a,r7
-	jb	acc.2,00108$
-;	cc1110_spicom.c:422: loop =  *ptr++;
-	mov	dpl,r4
-	mov	dph,r5
-	mov	b,r6
-	lcall	__gptrget
-	mov	r1,a
-	mov	dpl,r4
-	mov	dph,r5
-	inc	dptr
-	mov	_processOUTEP5_loop_1_117,r1
-	mov	(_processOUTEP5_loop_1_117 + 1),#0x00
-;	cc1110_spicom.c:423: loop += *ptr++ << 8;
+;	cc1110_spicom.c:428: if (!(ep5.flags & EP_OUTBUF_CONTINUED))
+	mov	dptr,#(_ep5 + 0x000e)
 	movx	a,@dptr
-	mov	r1,a
+	mov	r2,a
+	jb	acc.2,00108$
+;	cc1110_spicom.c:430: loop =  *ptr++;
+	mov	dpl,r5
+	mov	dph,r6
+	mov	b,r7
+	lcall	__gptrget
+	mov	r2,a
+	mov	dpl,r5
+	mov	dph,r6
+	inc	dptr
+	mov	_processOUTEP5_loop_1_117,r2
+	mov	(_processOUTEP5_loop_1_117 + 1),#0x00
+;	cc1110_spicom.c:431: loop += *ptr++ << 8;
+	movx	a,@dptr
+	mov	r2,a
 	mov	dptr,#_processOUTEP5_ptr_1_117
 	mov	a,#0x02
-	add	a,r4
+	add	a,r5
 	movx	@dptr,a
 	clr	a
-	addc	a,r5
+	addc	a,r6
 	inc	dptr
 	movx	@dptr,a
-	mov	ar0,r1
-	mov	ar1,r0
+	mov	ar1,r2
+	mov	ar2,r1
 	clr	a
+	mov	r1,a
 	add	a,_processOUTEP5_loop_1_117
 	mov	_processOUTEP5_loop_1_117,a
-	mov	a,r1
+	mov	a,r2
 	addc	a,(_processOUTEP5_loop_1_117 + 1)
 	mov	(_processOUTEP5_loop_1_117 + 1),a
-;	cc1110_spicom.c:424: ep5.dptr = (__xdata u8*) loop;
+;	cc1110_spicom.c:432: ep5.dptr = (__xdata u8*) loop;
 	mov	r0,_processOUTEP5_loop_1_117
-	mov	r1,(_processOUTEP5_loop_1_117 + 1)
+	mov	r2,(_processOUTEP5_loop_1_117 + 1)
 	mov	dptr,#(_ep5 + 0x0010)
 	mov	a,r0
 	movx	@dptr,a
-	mov	a,r1
+	mov	a,r2
 	inc	dptr
 	movx	@dptr,a
 00108$:
-;	cc1110_spicom.c:428: loop = ep5.OUTbytesleft;
+;	cc1110_spicom.c:436: loop = ep5.OUTbytesleft;
 	mov	dptr,#(_ep5 + 0x000c)
 	movx	a,@dptr
-	mov	r0,a
+	mov	r1,a
 	inc	dptr
 	movx	a,@dptr
-	mov	r1,a
-	mov	_processOUTEP5_loop_1_117,r0
-	mov	(_processOUTEP5_loop_1_117 + 1),r1
-;	cc1110_spicom.c:429: if (loop > EP5OUT_MAX_PACKET_SIZE)
+	mov	r2,a
+	mov	_processOUTEP5_loop_1_117,r1
+	mov	(_processOUTEP5_loop_1_117 + 1),r2
+;	cc1110_spicom.c:437: if (loop > EP5OUT_MAX_PACKET_SIZE)
 	clr	c
 	mov	a,#0x40
 	subb	a,_processOUTEP5_loop_1_117
 	clr	a
 	subb	a,(_processOUTEP5_loop_1_117 + 1)
 	jnc	00110$
-;	cc1110_spicom.c:431: loop = EP5OUT_MAX_PACKET_SIZE;
+;	cc1110_spicom.c:439: loop = EP5OUT_MAX_PACKET_SIZE;
 	mov	_processOUTEP5_loop_1_117,#0x40
 	mov	(_processOUTEP5_loop_1_117 + 1),#0x00
 00110$:
-;	cc1110_spicom.c:434: ep5.OUTbytesleft -= loop;
-	mov	a,r0
+;	cc1110_spicom.c:442: ep5.OUTbytesleft -= loop;
+	mov	a,r1
 	clr	c
 	subb	a,_processOUTEP5_loop_1_117
-	mov	r0,a
-	mov	a,r1
-	subb	a,(_processOUTEP5_loop_1_117 + 1)
 	mov	r1,a
+	mov	a,r2
+	subb	a,(_processOUTEP5_loop_1_117 + 1)
+	mov	r2,a
 	mov	dptr,#(_ep5 + 0x000c)
-	mov	a,r0
-	movx	@dptr,a
 	mov	a,r1
+	movx	@dptr,a
+	mov	a,r2
 	inc	dptr
 	movx	@dptr,a
 	mov	dptr,#_processOUTEP5_ptr_1_117
-	movx	a,@dptr
-	mov	_processOUTEP5_sloc2_1_0,a
-	inc	dptr
-	movx	a,@dptr
-	mov	(_processOUTEP5_sloc2_1_0 + 1),a
-	mov	_processOUTEP5_sloc3_1_0,_processOUTEP5_loop_1_117
-	mov	(_processOUTEP5_sloc3_1_0 + 1),(_processOUTEP5_loop_1_117 + 1)
-00141$:
-;	cc1110_spicom.c:437: for (;loop>0;loop--)
-	mov	a,_processOUTEP5_sloc3_1_0
-	orl	a,(_processOUTEP5_sloc3_1_0 + 1)
-	jz	00111$
-;	cc1110_spicom.c:439: *ep5.dptr++ = *ptr++;
-	mov	dptr,#(_ep5 + 0x0010)
 	movx	a,@dptr
 	mov	_processOUTEP5_sloc1_1_0,a
 	inc	dptr
 	movx	a,@dptr
 	mov	(_processOUTEP5_sloc1_1_0 + 1),a
-	mov	a,#0x01
-	add	a,_processOUTEP5_sloc1_1_0
-	mov	r0,a
-	clr	a
-	addc	a,(_processOUTEP5_sloc1_1_0 + 1)
-	mov	r1,a
+	mov	_processOUTEP5_sloc2_1_0,_processOUTEP5_loop_1_117
+	mov	(_processOUTEP5_sloc2_1_0 + 1),(_processOUTEP5_loop_1_117 + 1)
+00141$:
+;	cc1110_spicom.c:445: for (;loop>0;loop--)
+	mov	a,_processOUTEP5_sloc2_1_0
+	orl	a,(_processOUTEP5_sloc2_1_0 + 1)
+	jz	00111$
+;	cc1110_spicom.c:447: *ep5.dptr++ = *ptr++;
 	mov	dptr,#(_ep5 + 0x0010)
-	mov	a,r0
-	movx	@dptr,a
-	mov	a,r1
-	inc	dptr
-	movx	@dptr,a
-	mov	dpl,_processOUTEP5_sloc2_1_0
-	mov	dph,(_processOUTEP5_sloc2_1_0 + 1)
 	movx	a,@dptr
-	mov	r1,a
+	mov	_processOUTEP5_sloc0_1_0,a
 	inc	dptr
-	mov	_processOUTEP5_sloc2_1_0,dpl
-	mov	(_processOUTEP5_sloc2_1_0 + 1),dph
+	movx	a,@dptr
+	mov	(_processOUTEP5_sloc0_1_0 + 1),a
+	mov	a,#0x01
+	add	a,_processOUTEP5_sloc0_1_0
+	mov	r1,a
+	clr	a
+	addc	a,(_processOUTEP5_sloc0_1_0 + 1)
+	mov	r2,a
+	mov	dptr,#(_ep5 + 0x0010)
+	mov	a,r1
+	movx	@dptr,a
+	mov	a,r2
+	inc	dptr
+	movx	@dptr,a
 	mov	dpl,_processOUTEP5_sloc1_1_0
 	mov	dph,(_processOUTEP5_sloc1_1_0 + 1)
-	mov	a,r1
+	movx	a,@dptr
+	mov	r2,a
+	inc	dptr
+	mov	_processOUTEP5_sloc1_1_0,dpl
+	mov	(_processOUTEP5_sloc1_1_0 + 1),dph
+	mov	dpl,_processOUTEP5_sloc0_1_0
+	mov	dph,(_processOUTEP5_sloc0_1_0 + 1)
+	mov	a,r2
 	movx	@dptr,a
-;	cc1110_spicom.c:437: for (;loop>0;loop--)
-	dec	_processOUTEP5_sloc3_1_0
+;	cc1110_spicom.c:445: for (;loop>0;loop--)
+	dec	_processOUTEP5_sloc2_1_0
 	mov	a,#0xFF
-	cjne	a,_processOUTEP5_sloc3_1_0,00211$
-	dec	(_processOUTEP5_sloc3_1_0 + 1)
-00211$:
+	cjne	a,_processOUTEP5_sloc2_1_0,00212$
+	dec	(_processOUTEP5_sloc2_1_0 + 1)
+00212$:
 	sjmp	00141$
 00111$:
-;	cc1110_spicom.c:442: txdata(ep5.OUTapp, ep5.OUTcmd, 2, (__xdata u8*)&(ep5.OUTbytesleft));
+;	cc1110_spicom.c:450: txdata(ep5.OUTapp, ep5.OUTcmd, 2, (__xdata u8*)&(ep5.OUTbytesleft));
 	mov	dptr,#(_ep5 + 0x000a)
 	movx	a,@dptr
-	mov	r1,a
+	mov	r2,a
 	mov	dptr,#(_ep5 + 0x000b)
 	movx	a,@dptr
 	mov	_txdata_PARM_2,a
@@ -2413,29 +2434,29 @@ _processOUTEP5:
 	mov	(_txdata_PARM_4 + 1),#((_ep5 + 0x000c) >> 8)
 	mov	_txdata_PARM_3,#0x02
 	mov	(_txdata_PARM_3 + 1),#0x00
-	mov	dpl,r1
+	mov	dpl,r2
 	lcall	_txdata
-;	cc1110_spicom.c:444: break;
+;	cc1110_spicom.c:452: break;
 	ljmp	00128$
-;	cc1110_spicom.c:445: case CMD_PING:
+;	cc1110_spicom.c:453: case CMD_PING:
 00112$:
-;	cc1110_spicom.c:446: blink(2,2);
+;	cc1110_spicom.c:454: blink(2,2);
 	setb	_P2_4
 	mov	dptr,#0x0002
+	push	ar7
 	push	ar6
 	push	ar5
-	push	ar4
 	lcall	_sleepMillis
 	clr	_P2_4
 	mov	dptr,#0x0002
 	lcall	_sleepMillis
-	pop	ar4
 	pop	ar5
 	pop	ar6
-;	cc1110_spicom.c:447: txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);
+	pop	ar7
+;	cc1110_spicom.c:455: txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);
 	mov	dptr,#(_ep5 + 0x000a)
 	movx	a,@dptr
-	mov	r1,a
+	mov	r2,a
 	mov	dptr,#(_ep5 + 0x000b)
 	movx	a,@dptr
 	mov	_txdata_PARM_2,a
@@ -2445,27 +2466,27 @@ _processOUTEP5:
 	inc	dptr
 	movx	a,@dptr
 	mov	(_txdata_PARM_3 + 1),a
-	mov	_txdata_PARM_4,r4
-	mov	(_txdata_PARM_4 + 1),r5
-	mov	dpl,r1
+	mov	_txdata_PARM_4,r5
+	mov	(_txdata_PARM_4 + 1),r6
+	mov	dpl,r2
 	lcall	_txdata
-;	cc1110_spicom.c:448: break;
+;	cc1110_spicom.c:456: break;
 	ljmp	00128$
-;	cc1110_spicom.c:450: case CMD_STATUS:
+;	cc1110_spicom.c:458: case CMD_STATUS:
 00113$:
-;	cc1110_spicom.c:451: txdata(ep5.OUTapp, ep5.OUTcmd, 13, (__xdata u8*)"UNIMPLEMENTED");
+;	cc1110_spicom.c:459: txdata(ep5.OUTapp, ep5.OUTcmd, 13, (__xdata u8*)"UNIMPLEMENTED");
 	mov	_txdata_PARM_4,#__str_0
 	mov	(_txdata_PARM_4 + 1),#(__str_0 >> 8)
-	mov	_txdata_PARM_2,_processOUTEP5_sloc2_1_0
+	mov	_txdata_PARM_2,r3
 	mov	_txdata_PARM_3,#0x0D
 	mov	(_txdata_PARM_3 + 1),#0x00
-	mov	dpl,_processOUTEP5_sloc3_1_0
+	mov	dpl,_processOUTEP5_sloc2_1_0
 	lcall	_txdata
-;	cc1110_spicom.c:453: break;
+;	cc1110_spicom.c:461: break;
 	ljmp	00128$
-;	cc1110_spicom.c:455: case CMD_GET_CLOCK:
+;	cc1110_spicom.c:463: case CMD_GET_CLOCK:
 00114$:
-;	cc1110_spicom.c:456: txdata(ep5.OUTapp, ep5.OUTcmd, 4, (__xdata u8*)clock);
+;	cc1110_spicom.c:464: txdata(ep5.OUTapp, ep5.OUTcmd, 4, (__xdata u8*)clock);
 	mov	dptr,#_clock
 	movx	a,@dptr
 	mov	r0,a
@@ -2478,95 +2499,95 @@ _processOUTEP5:
 	movx	a,@dptr
 	mov	_txdata_PARM_4,r0
 	mov	(_txdata_PARM_4 + 1),r1
-	mov	_txdata_PARM_2,_processOUTEP5_sloc2_1_0
+	mov	_txdata_PARM_2,r3
 	mov	_txdata_PARM_3,#0x04
 	mov	(_txdata_PARM_3 + 1),#0x00
-	mov	dpl,_processOUTEP5_sloc3_1_0
-	lcall	_txdata
-;	cc1110_spicom.c:457: break;
-	ljmp	00128$
-;	cc1110_spicom.c:459: case CMD_BUILDTYPE:
-00115$:
-;	cc1110_spicom.c:460: txdata(ep5.OUTapp, ep5.OUTcmd, sizeof(buildname), (__xdata u8*)&buildname[0]);
-	mov	_txdata_PARM_4,#_buildname
-	mov	(_txdata_PARM_4 + 1),#(_buildname >> 8)
-	mov	_txdata_PARM_2,_processOUTEP5_sloc2_1_0
-	mov	_txdata_PARM_3,#0x0F
-	mov	(_txdata_PARM_3 + 1),#0x00
-	mov	dpl,_processOUTEP5_sloc3_1_0
-	lcall	_txdata
-;	cc1110_spicom.c:461: break;
-	ljmp	00128$
-;	cc1110_spicom.c:463: case CMD_COMPILER:
-00116$:
-;	cc1110_spicom.c:464: txdata(ep5.OUTapp, ep5.OUTcmd, sizeof(sdccver), (__xdata u8*)&sdccver[0]);
-	mov	_txdata_PARM_4,#_sdccver
-	mov	(_txdata_PARM_4 + 1),#(_sdccver >> 8)
-	mov	_txdata_PARM_2,_processOUTEP5_sloc2_1_0
-	mov	_txdata_PARM_3,#0x09
-	mov	(_txdata_PARM_3 + 1),#0x00
-	mov	dpl,_processOUTEP5_sloc3_1_0
+	mov	dpl,_processOUTEP5_sloc2_1_0
 	lcall	_txdata
 ;	cc1110_spicom.c:465: break;
 	ljmp	00128$
-;	cc1110_spicom.c:467: case CMD_RFMODE:
+;	cc1110_spicom.c:467: case CMD_BUILDTYPE:
+00115$:
+;	cc1110_spicom.c:468: txdata(ep5.OUTapp, ep5.OUTcmd, sizeof(buildname), (__xdata u8*)&buildname[0]);
+	mov	_txdata_PARM_4,#_buildname
+	mov	(_txdata_PARM_4 + 1),#(_buildname >> 8)
+	mov	_txdata_PARM_2,r3
+	mov	_txdata_PARM_3,#0x0F
+	mov	(_txdata_PARM_3 + 1),#0x00
+	mov	dpl,_processOUTEP5_sloc2_1_0
+	lcall	_txdata
+;	cc1110_spicom.c:469: break;
+	ljmp	00128$
+;	cc1110_spicom.c:471: case CMD_COMPILER:
+00116$:
+;	cc1110_spicom.c:472: txdata(ep5.OUTapp, ep5.OUTcmd, sizeof(sdccver), (__xdata u8*)&sdccver[0]);
+	mov	_txdata_PARM_4,#_sdccver
+	mov	(_txdata_PARM_4 + 1),#(_sdccver >> 8)
+	mov	_txdata_PARM_2,r3
+	mov	_txdata_PARM_3,#0x09
+	mov	(_txdata_PARM_3 + 1),#0x00
+	mov	dpl,_processOUTEP5_sloc2_1_0
+	lcall	_txdata
+;	cc1110_spicom.c:473: break;
+	ljmp	00128$
+;	cc1110_spicom.c:475: case CMD_RFMODE:
 00117$:
-;	cc1110_spicom.c:468: switch (*ptr++)
-	mov	dpl,r4
-	mov	dph,r5
-	mov	b,r6
+;	cc1110_spicom.c:476: switch (*ptr++)
+	mov	dpl,r5
+	mov	dph,r6
+	mov	b,r7
 	lcall	__gptrget
-	mov	r3,a
+	mov	r4,a
 	mov	a,#0x01
-	add	a,r4
+	add	a,r5
 	mov	r1,a
 	clr	a
-	addc	a,r5
+	addc	a,r6
 	mov	r2,a
-	cjne	r3,#0x02,00212$
+	cjne	r4,#0x02,00213$
 	sjmp	00118$
-00212$:
-	cjne	r3,#0x03,00213$
-	sjmp	00120$
 00213$:
-;	cc1110_spicom.c:470: case RFST_SRX:
-	cjne	r3,#0x04,00121$
+	cjne	r4,#0x03,00214$
+	sjmp	00120$
+00214$:
+;	cc1110_spicom.c:478: case RFST_SRX:
+	cjne	r4,#0x04,00121$
 	sjmp	00119$
 00118$:
-;	cc1110_spicom.c:471: RxMode();
+;	cc1110_spicom.c:479: RxMode();
 	push	ar2
 	push	ar1
 	lcall	_RxMode
 	pop	ar1
 	pop	ar2
-;	cc1110_spicom.c:472: break;
-;	cc1110_spicom.c:473: case RFST_SIDLE:
+;	cc1110_spicom.c:480: break;
+;	cc1110_spicom.c:481: case RFST_SIDLE:
 	sjmp	00121$
 00119$:
-;	cc1110_spicom.c:474: LED = 0;
+;	cc1110_spicom.c:482: LED = 0;
 	clr	_P2_4
-;	cc1110_spicom.c:475: IdleMode();
+;	cc1110_spicom.c:483: IdleMode();
 	push	ar2
 	push	ar1
 	lcall	_IdleMode
 	pop	ar1
 	pop	ar2
-;	cc1110_spicom.c:476: break;
-;	cc1110_spicom.c:477: case RFST_STX:
+;	cc1110_spicom.c:484: break;
+;	cc1110_spicom.c:485: case RFST_STX:
 	sjmp	00121$
 00120$:
-;	cc1110_spicom.c:478: TxMode();
+;	cc1110_spicom.c:486: TxMode();
 	push	ar2
 	push	ar1
 	lcall	_TxMode
 	pop	ar1
 	pop	ar2
-;	cc1110_spicom.c:480: }
+;	cc1110_spicom.c:488: }
 00121$:
-;	cc1110_spicom.c:482: txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);
+;	cc1110_spicom.c:490: txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);
 	mov	dptr,#(_ep5 + 0x000a)
 	movx	a,@dptr
-	mov	r3,a
+	mov	r4,a
 	mov	dptr,#(_ep5 + 0x000b)
 	movx	a,@dptr
 	mov	_txdata_PARM_2,a
@@ -2578,26 +2599,26 @@ _processOUTEP5:
 	mov	(_txdata_PARM_3 + 1),a
 	mov	_txdata_PARM_4,r1
 	mov	(_txdata_PARM_4 + 1),r2
-	mov	dpl,r3
+	mov	dpl,r4
 	lcall	_txdata
-;	cc1110_spicom.c:483: break;
+;	cc1110_spicom.c:491: break;
 	ljmp	00128$
-;	cc1110_spicom.c:485: case CMD_PARTNUM:
+;	cc1110_spicom.c:493: case CMD_PARTNUM:
 00122$:
-;	cc1110_spicom.c:486: ep5.OUTbytesleft = 1;
+;	cc1110_spicom.c:494: ep5.OUTbytesleft = 1;
 	mov	dptr,#(_ep5 + 0x000c)
 	mov	a,#0x01
 	movx	@dptr,a
 	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	cc1110_spicom.c:488: ptr = (__xdata u8*) &PARTNUM;
+;	cc1110_spicom.c:496: ptr = (__xdata u8*) &PARTNUM;
 	mov	_txdata_PARM_4,#_PARTNUM
 	mov	(_txdata_PARM_4 + 1),#(_PARTNUM >> 8)
-;	cc1110_spicom.c:490: txdata(ep5.OUTapp, ep5.OUTcmd, ep5.OUTbytesleft, ptr);
+;	cc1110_spicom.c:498: txdata(ep5.OUTapp, ep5.OUTcmd, ep5.OUTbytesleft, ptr);
 	mov	dptr,#(_ep5 + 0x000a)
 	movx	a,@dptr
-	mov	r3,a
+	mov	r4,a
 	mov	dptr,#(_ep5 + 0x000b)
 	movx	a,@dptr
 	mov	_txdata_PARM_2,a
@@ -2607,24 +2628,24 @@ _processOUTEP5:
 	inc	dptr
 	movx	a,@dptr
 	mov	(_txdata_PARM_3 + 1),a
-	mov	dpl,r3
+	mov	dpl,r4
 	lcall	_txdata
-;	cc1110_spicom.c:491: ep5.OUTbytesleft = 0;
+;	cc1110_spicom.c:499: ep5.OUTbytesleft = 0;
 	mov	dptr,#(_ep5 + 0x000c)
 	clr	a
 	movx	@dptr,a
 	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	cc1110_spicom.c:492: break;
+;	cc1110_spicom.c:500: break;
 	ljmp	00128$
-;	cc1110_spicom.c:494: case CMD_RESET:
+;	cc1110_spicom.c:502: case CMD_RESET:
 00123$:
-;	cc1110_spicom.c:495: if (strncmp(ptr, "RESET_NOW", 9))
-	mov	ar2,r4
-	mov	ar3,r5
-	mov	ar1,r3
-	mov	r3,#0x00
+;	cc1110_spicom.c:503: if (strncmp(ptr, "RESET_NOW", 9))
+	mov	ar2,r5
+	mov	ar4,r6
+	mov	ar1,r4
+	mov	r4,#0x00
 	mov	dptr,#_strncmp_PARM_2
 	mov	a,#__str_1
 	movx	@dptr,a
@@ -2638,24 +2659,24 @@ _processOUTEP5:
 	mov	(_strncmp_PARM_3 + 1),#0x00
 	mov	dpl,r2
 	mov	dph,r1
-	mov	b,r3
+	mov	b,r4
+	push	ar7
 	push	ar6
 	push	ar5
-	push	ar4
 	lcall	_strncmp
 	mov	a,dpl
 	mov	b,dph
-	pop	ar4
 	pop	ar5
 	pop	ar6
+	pop	ar7
 	orl	a,b
 	jnz	00128$
-;	cc1110_spicom.c:499: WDCTL = 0x80;   // Watchdog ENABLE, Watchdog mode, 1s until reset
+;	cc1110_spicom.c:507: WDCTL = 0x80;   // Watchdog ENABLE, Watchdog mode, 1s until reset
 	mov	_WDCTL,#0x80
-;	cc1110_spicom.c:501: txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);
+;	cc1110_spicom.c:509: txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);
 	mov	dptr,#(_ep5 + 0x000a)
 	movx	a,@dptr
-	mov	r3,a
+	mov	r4,a
 	mov	dptr,#(_ep5 + 0x000b)
 	movx	a,@dptr
 	mov	_txdata_PARM_2,a
@@ -2665,79 +2686,80 @@ _processOUTEP5:
 	inc	dptr
 	movx	a,@dptr
 	mov	(_txdata_PARM_3 + 1),a
-	mov	_txdata_PARM_4,r4
-	mov	(_txdata_PARM_4 + 1),r5
-	mov	dpl,r3
+	mov	_txdata_PARM_4,r5
+	mov	(_txdata_PARM_4 + 1),r6
+	mov	dpl,r4
 	lcall	_txdata
-;	cc1110_spicom.c:502: break;
-;	cc1110_spicom.c:504: case CMD_CLEAR_CODES:
+;	cc1110_spicom.c:510: break;
+;	cc1110_spicom.c:512: case CMD_CLEAR_CODES:
 	sjmp	00128$
 00126$:
-;	cc1110_spicom.c:505: lastCode[0] = 0;
+;	cc1110_spicom.c:513: lastCode[0] = 0;
 	mov	dptr,#_lastCode
-;	cc1110_spicom.c:506: lastCode[1] = 0;
+;	cc1110_spicom.c:514: lastCode[1] = 0;
 	clr	a
 	movx	@dptr,a
 	mov	dptr,#(_lastCode + 0x0001)
 	movx	@dptr,a
-;	cc1110_spicom.c:508: appReturn(2, ptr);
+;	cc1110_spicom.c:516: appReturn(2, ptr);
 	mov	dptr,#_appReturn_PARM_2
-	mov	a,r4
-	movx	@dptr,a
 	mov	a,r5
+	movx	@dptr,a
+	mov	a,r6
 	inc	dptr
 	movx	@dptr,a
 	mov	dpl,#0x02
 	lcall	_appReturn
-;	cc1110_spicom.c:509: break;
-;	cc1110_spicom.c:511: default:
+;	cc1110_spicom.c:517: break;
+;	cc1110_spicom.c:519: default:
 	sjmp	00128$
 00127$:
-;	cc1110_spicom.c:512: txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);
+;	cc1110_spicom.c:520: txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);
 	mov	dptr,#(_ep5 + 0x0008)
 	movx	a,@dptr
 	mov	_txdata_PARM_3,a
 	inc	dptr
 	movx	a,@dptr
 	mov	(_txdata_PARM_3 + 1),a
-	mov	_txdata_PARM_2,_processOUTEP5_sloc2_1_0
-	mov	_txdata_PARM_4,r4
-	mov	(_txdata_PARM_4 + 1),r5
-	mov	dpl,_processOUTEP5_sloc3_1_0
+	mov	_txdata_PARM_2,r3
+	mov	_txdata_PARM_4,r5
+	mov	(_txdata_PARM_4 + 1),r6
+	mov	dpl,_processOUTEP5_sloc2_1_0
 	lcall	_txdata
-;	cc1110_spicom.c:513: }
+;	cc1110_spicom.c:521: }
 00128$:
-;	cc1110_spicom.c:515: ep5.flags &= ~EP_OUTBUF_WRITTEN; 
+;	cc1110_spicom.c:523: ep5.flags &= ~EP_OUTBUF_WRITTEN; 
 	mov	dptr,#(_ep5 + 0x000e)
 	movx	a,@dptr
 	anl	a,#0xFD
 	movx	@dptr,a
 	ret
 00135$:
-;	cc1110_spicom.c:519: if (cb_ep5)
+;	cc1110_spicom.c:527: if (cb_ep5)
 	mov	a,_cb_ep5
 	orl	a,(_cb_ep5 + 1)
 	jz	00132$
-;	cc1110_spicom.c:521: if (! cb_ep5())
+;	cc1110_spicom.c:529: if (! cb_ep5())
 	mov	dpl,_cb_ep5
 	mov	dph,(_cb_ep5 + 1)
 	lcall	__sdcc_call_dptr
-	mov	r5,dpl
-	mov	r6,dph
-	mov	a,r5
-	orl	a,r6
+	mov	r6,dpl
+	mov	r7,dph
+	mov	a,r6
+	orl	a,r7
 	jnz	00143$
-;	cc1110_spicom.c:525: ep5.flags &= ~EP_OUTBUF_WRITTEN; 
+;	cc1110_spicom.c:533: ep5.flags &= ~EP_OUTBUF_WRITTEN; 
 	mov	dptr,#(_ep5 + 0x000e)
 	movx	a,@dptr
 	anl	a,#0xFD
 	movx	@dptr,a
 	ret
 00132$:
-;	cc1110_spicom.c:530: ep5.flags &= ~EP_OUTBUF_WRITTEN; 
-	anl	ar7,#0xFD
+;	cc1110_spicom.c:538: ep5.flags &= ~EP_OUTBUF_WRITTEN; 
 	mov	dptr,#(_ep5 + 0x000e)
-	mov	a,r7
+	movx	a,@dptr
+	anl	a,#0xFD
+	mov	r7,a
 	movx	@dptr,a
 00143$:
 	ret

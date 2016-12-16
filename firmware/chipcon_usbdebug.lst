@@ -1,7 +1,7 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
                               3 ; Version 3.3.0 #8604 (Dec 30 2013) (Linux)
-                              4 ; This file was generated Wed Dec 14 17:38:39 2016
+                              4 ; This file was generated Fri Dec 16 14:02:34 2016
                               5 ;--------------------------------------------------------
                               6 	.module chipcon_usbdebug
                               7 	.optsdcc -mmcs51 --model-small

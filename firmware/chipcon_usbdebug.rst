@@ -1,7 +1,7 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
                               3 ; Version 3.3.0 #8604 (Dec 30 2013) (Linux)
-                              4 ; This file was generated Wed Dec 14 17:38:39 2016
+                              4 ; This file was generated Fri Dec 16 14:02:34 2016
                               5 ;--------------------------------------------------------
                               6 	.module chipcon_usbdebug
                               7 	.optsdcc -mmcs51 --model-small
@@ -1019,7 +1019,7 @@
                            1019 ;	-----------------------------------------
                            1020 ;	 function debugx
                            1021 ;	-----------------------------------------
-   212F                    1022 _debugx:
+   2147                    1022 _debugx:
                      0007  1023 	ar7 = 0x07
                      0006  1024 	ar6 = 0x06
                      0005  1025 	ar5 = 0x05
@@ -1028,49 +1028,49 @@
                      0002  1028 	ar2 = 0x02
                      0001  1029 	ar1 = 0x01
                      0000  1030 	ar0 = 0x00
-   212F AF 83         [24] 1031 	mov	r7,dph
-   2131 E5 82         [12] 1032 	mov	a,dpl
-   2133 90 F9 5E      [24] 1033 	mov	dptr,#_debugx_text_1_48
-   2136 F0            [24] 1034 	movx	@dptr,a
-   2137 EF            [12] 1035 	mov	a,r7
-   2138 A3            [24] 1036 	inc	dptr
-   2139 F0            [24] 1037 	movx	@dptr,a
+   2147 AF 83         [24] 1031 	mov	r7,dph
+   2149 E5 82         [12] 1032 	mov	a,dpl
+   214B 90 F9 5E      [24] 1033 	mov	dptr,#_debugx_text_1_48
+   214E F0            [24] 1034 	movx	@dptr,a
+   214F EF            [12] 1035 	mov	a,r7
+   2150 A3            [24] 1036 	inc	dptr
+   2151 F0            [24] 1037 	movx	@dptr,a
                            1038 ;	chipcon_usbdebug.c:10: __xdata u8* __xdata  ptr = text;
-   213A 90 F9 5E      [24] 1039 	mov	dptr,#_debugx_text_1_48
-   213D E0            [24] 1040 	movx	a,@dptr
-   213E FE            [12] 1041 	mov	r6,a
-   213F A3            [24] 1042 	inc	dptr
-   2140 E0            [24] 1043 	movx	a,@dptr
-   2141 FF            [12] 1044 	mov	r7,a
+   2152 90 F9 5E      [24] 1039 	mov	dptr,#_debugx_text_1_48
+   2155 E0            [24] 1040 	movx	a,@dptr
+   2156 FE            [12] 1041 	mov	r6,a
+   2157 A3            [24] 1042 	inc	dptr
+   2158 E0            [24] 1043 	movx	a,@dptr
+   2159 FF            [12] 1044 	mov	r7,a
                            1045 ;	chipcon_usbdebug.c:11: while (*ptr++ != 0)
-   2142 7C 00         [12] 1046 	mov	r4,#0x00
-   2144 7D 00         [12] 1047 	mov	r5,#0x00
-   2146 8E 02         [24] 1048 	mov	ar2,r6
-   2148 8F 03         [24] 1049 	mov	ar3,r7
-   214A                    1050 00101$:
-   214A 8A 82         [24] 1051 	mov	dpl,r2
-   214C 8B 83         [24] 1052 	mov	dph,r3
-   214E E0            [24] 1053 	movx	a,@dptr
-   214F F9            [12] 1054 	mov	r1,a
-   2150 A3            [24] 1055 	inc	dptr
-   2151 AA 82         [24] 1056 	mov	r2,dpl
-   2153 AB 83         [24] 1057 	mov	r3,dph
-   2155 E9            [12] 1058 	mov	a,r1
-   2156 60 07         [24] 1059 	jz	00103$
+   215A 7C 00         [12] 1046 	mov	r4,#0x00
+   215C 7D 00         [12] 1047 	mov	r5,#0x00
+   215E 8E 02         [24] 1048 	mov	ar2,r6
+   2160 8F 03         [24] 1049 	mov	ar3,r7
+   2162                    1050 00101$:
+   2162 8A 82         [24] 1051 	mov	dpl,r2
+   2164 8B 83         [24] 1052 	mov	dph,r3
+   2166 E0            [24] 1053 	movx	a,@dptr
+   2167 F9            [12] 1054 	mov	r1,a
+   2168 A3            [24] 1055 	inc	dptr
+   2169 AA 82         [24] 1056 	mov	r2,dpl
+   216B AB 83         [24] 1057 	mov	r3,dph
+   216D E9            [12] 1058 	mov	a,r1
+   216E 60 07         [24] 1059 	jz	00103$
                            1060 ;	chipcon_usbdebug.c:12: len ++;
-   2158 0C            [12] 1061 	inc	r4
-   2159 BC 00 EE      [24] 1062 	cjne	r4,#0x00,00101$
-   215C 0D            [12] 1063 	inc	r5
-   215D 80 EB         [24] 1064 	sjmp	00101$
-   215F                    1065 00103$:
+   2170 0C            [12] 1061 	inc	r4
+   2171 BC 00 EE      [24] 1062 	cjne	r4,#0x00,00101$
+   2174 0D            [12] 1063 	inc	r5
+   2175 80 EB         [24] 1064 	sjmp	00101$
+   2177                    1065 00103$:
                            1066 ;	chipcon_usbdebug.c:13: txdata(0xfe, 0xf0, len, (__xdata u8*)text);
-   215F 75 2E F0      [24] 1067 	mov	_txdata_PARM_2,#0xF0
-   2162 8C 2F         [24] 1068 	mov	_txdata_PARM_3,r4
-   2164 8D 30         [24] 1069 	mov	(_txdata_PARM_3 + 1),r5
-   2166 8E 31         [24] 1070 	mov	_txdata_PARM_4,r6
-   2168 8F 32         [24] 1071 	mov	(_txdata_PARM_4 + 1),r7
-   216A 75 82 FE      [24] 1072 	mov	dpl,#0xFE
-   216D 02 1C 0B      [24] 1073 	ljmp	_txdata
+   2177 75 2E F0      [24] 1067 	mov	_txdata_PARM_2,#0xF0
+   217A 8C 2F         [24] 1068 	mov	_txdata_PARM_3,r4
+   217C 8D 30         [24] 1069 	mov	(_txdata_PARM_3 + 1),r5
+   217E 8E 31         [24] 1070 	mov	_txdata_PARM_4,r6
+   2180 8F 32         [24] 1071 	mov	(_txdata_PARM_4 + 1),r7
+   2182 75 82 FE      [24] 1072 	mov	dpl,#0xFE
+   2185 02 1C 06      [24] 1073 	ljmp	_txdata
                            1074 ;------------------------------------------------------------
                            1075 ;Allocation info for local variables in function 'debug'
                            1076 ;------------------------------------------------------------
@@ -1082,51 +1082,51 @@
                            1082 ;	-----------------------------------------
                            1083 ;	 function debug
                            1084 ;	-----------------------------------------
-   2170                    1085 _debug:
-   2170 AF 83         [24] 1086 	mov	r7,dph
-   2172 E5 82         [12] 1087 	mov	a,dpl
-   2174 90 F9 60      [24] 1088 	mov	dptr,#_debug_text_1_50
-   2177 F0            [24] 1089 	movx	@dptr,a
-   2178 EF            [12] 1090 	mov	a,r7
-   2179 A3            [24] 1091 	inc	dptr
-   217A F0            [24] 1092 	movx	@dptr,a
+   2188                    1085 _debug:
+   2188 AF 83         [24] 1086 	mov	r7,dph
+   218A E5 82         [12] 1087 	mov	a,dpl
+   218C 90 F9 60      [24] 1088 	mov	dptr,#_debug_text_1_50
+   218F F0            [24] 1089 	movx	@dptr,a
+   2190 EF            [12] 1090 	mov	a,r7
+   2191 A3            [24] 1091 	inc	dptr
+   2192 F0            [24] 1092 	movx	@dptr,a
                            1093 ;	chipcon_usbdebug.c:19: __code u8* __xdata  ptr = text;
-   217B 90 F9 60      [24] 1094 	mov	dptr,#_debug_text_1_50
-   217E E0            [24] 1095 	movx	a,@dptr
-   217F FE            [12] 1096 	mov	r6,a
-   2180 A3            [24] 1097 	inc	dptr
-   2181 E0            [24] 1098 	movx	a,@dptr
-   2182 FF            [12] 1099 	mov	r7,a
+   2193 90 F9 60      [24] 1094 	mov	dptr,#_debug_text_1_50
+   2196 E0            [24] 1095 	movx	a,@dptr
+   2197 FE            [12] 1096 	mov	r6,a
+   2198 A3            [24] 1097 	inc	dptr
+   2199 E0            [24] 1098 	movx	a,@dptr
+   219A FF            [12] 1099 	mov	r7,a
                            1100 ;	chipcon_usbdebug.c:20: while (*ptr++ != 0)
-   2183 7C 00         [12] 1101 	mov	r4,#0x00
-   2185 7D 00         [12] 1102 	mov	r5,#0x00
-   2187 8E 02         [24] 1103 	mov	ar2,r6
-   2189 8F 03         [24] 1104 	mov	ar3,r7
-   218B                    1105 00101$:
-   218B 8A 82         [24] 1106 	mov	dpl,r2
-   218D 8B 83         [24] 1107 	mov	dph,r3
-   218F E4            [12] 1108 	clr	a
-   2190 93            [24] 1109 	movc	a,@a+dptr
-   2191 F9            [12] 1110 	mov	r1,a
-   2192 A3            [24] 1111 	inc	dptr
-   2193 AA 82         [24] 1112 	mov	r2,dpl
-   2195 AB 83         [24] 1113 	mov	r3,dph
-   2197 E9            [12] 1114 	mov	a,r1
-   2198 60 07         [24] 1115 	jz	00103$
+   219B 7C 00         [12] 1101 	mov	r4,#0x00
+   219D 7D 00         [12] 1102 	mov	r5,#0x00
+   219F 8E 02         [24] 1103 	mov	ar2,r6
+   21A1 8F 03         [24] 1104 	mov	ar3,r7
+   21A3                    1105 00101$:
+   21A3 8A 82         [24] 1106 	mov	dpl,r2
+   21A5 8B 83         [24] 1107 	mov	dph,r3
+   21A7 E4            [12] 1108 	clr	a
+   21A8 93            [24] 1109 	movc	a,@a+dptr
+   21A9 F9            [12] 1110 	mov	r1,a
+   21AA A3            [24] 1111 	inc	dptr
+   21AB AA 82         [24] 1112 	mov	r2,dpl
+   21AD AB 83         [24] 1113 	mov	r3,dph
+   21AF E9            [12] 1114 	mov	a,r1
+   21B0 60 07         [24] 1115 	jz	00103$
                            1116 ;	chipcon_usbdebug.c:21: len ++;
-   219A 0C            [12] 1117 	inc	r4
-   219B BC 00 ED      [24] 1118 	cjne	r4,#0x00,00101$
-   219E 0D            [12] 1119 	inc	r5
-   219F 80 EA         [24] 1120 	sjmp	00101$
-   21A1                    1121 00103$:
+   21B2 0C            [12] 1117 	inc	r4
+   21B3 BC 00 ED      [24] 1118 	cjne	r4,#0x00,00101$
+   21B6 0D            [12] 1119 	inc	r5
+   21B7 80 EA         [24] 1120 	sjmp	00101$
+   21B9                    1121 00103$:
                            1122 ;	chipcon_usbdebug.c:22: txdata(0xfe, 0xf0, len, (__xdata u8*)text);
-   21A1 8E 31         [24] 1123 	mov	_txdata_PARM_4,r6
-   21A3 8F 32         [24] 1124 	mov	(_txdata_PARM_4 + 1),r7
-   21A5 75 2E F0      [24] 1125 	mov	_txdata_PARM_2,#0xF0
-   21A8 8C 2F         [24] 1126 	mov	_txdata_PARM_3,r4
-   21AA 8D 30         [24] 1127 	mov	(_txdata_PARM_3 + 1),r5
-   21AC 75 82 FE      [24] 1128 	mov	dpl,#0xFE
-   21AF 02 1C 0B      [24] 1129 	ljmp	_txdata
+   21B9 8E 31         [24] 1123 	mov	_txdata_PARM_4,r6
+   21BB 8F 32         [24] 1124 	mov	(_txdata_PARM_4 + 1),r7
+   21BD 75 2E F0      [24] 1125 	mov	_txdata_PARM_2,#0xF0
+   21C0 8C 2F         [24] 1126 	mov	_txdata_PARM_3,r4
+   21C2 8D 30         [24] 1127 	mov	(_txdata_PARM_3 + 1),r5
+   21C4 75 82 FE      [24] 1128 	mov	dpl,#0xFE
+   21C7 02 1C 06      [24] 1129 	ljmp	_txdata
                            1130 ;------------------------------------------------------------
                            1131 ;Allocation info for local variables in function 'debughex'
                            1132 ;------------------------------------------------------------
@@ -1136,18 +1136,18 @@
                            1136 ;	-----------------------------------------
                            1137 ;	 function debughex
                            1138 ;	-----------------------------------------
-   21B2                    1139 _debughex:
-   21B2 E5 82         [12] 1140 	mov	a,dpl
-   21B4 90 F9 62      [24] 1141 	mov	dptr,#_debughex_num_1_52
-   21B7 F0            [24] 1142 	movx	@dptr,a
+   21CA                    1139 _debughex:
+   21CA E5 82         [12] 1140 	mov	a,dpl
+   21CC 90 F9 62      [24] 1141 	mov	dptr,#_debughex_num_1_52
+   21CF F0            [24] 1142 	movx	@dptr,a
                            1143 ;	chipcon_usbdebug.c:27: txdata(0xfe, DEBUG_CMD_HEX, 1, (__xdata u8*)&num);
-   21B8 75 31 62      [24] 1144 	mov	_txdata_PARM_4,#_debughex_num_1_52
-   21BB 75 32 F9      [24] 1145 	mov	(_txdata_PARM_4 + 1),#(_debughex_num_1_52 >> 8)
-   21BE 75 2E F1      [24] 1146 	mov	_txdata_PARM_2,#0xF1
-   21C1 75 2F 01      [24] 1147 	mov	_txdata_PARM_3,#0x01
-   21C4 75 30 00      [24] 1148 	mov	(_txdata_PARM_3 + 1),#0x00
-   21C7 75 82 FE      [24] 1149 	mov	dpl,#0xFE
-   21CA 02 1C 0B      [24] 1150 	ljmp	_txdata
+   21D0 75 31 62      [24] 1144 	mov	_txdata_PARM_4,#_debughex_num_1_52
+   21D3 75 32 F9      [24] 1145 	mov	(_txdata_PARM_4 + 1),#(_debughex_num_1_52 >> 8)
+   21D6 75 2E F1      [24] 1146 	mov	_txdata_PARM_2,#0xF1
+   21D9 75 2F 01      [24] 1147 	mov	_txdata_PARM_3,#0x01
+   21DC 75 30 00      [24] 1148 	mov	(_txdata_PARM_3 + 1),#0x00
+   21DF 75 82 FE      [24] 1149 	mov	dpl,#0xFE
+   21E2 02 1C 06      [24] 1150 	ljmp	_txdata
                            1151 ;------------------------------------------------------------
                            1152 ;Allocation info for local variables in function 'debughex16'
                            1153 ;------------------------------------------------------------
@@ -1157,22 +1157,22 @@
                            1157 ;	-----------------------------------------
                            1158 ;	 function debughex16
                            1159 ;	-----------------------------------------
-   21CD                    1160 _debughex16:
-   21CD AF 83         [24] 1161 	mov	r7,dph
-   21CF E5 82         [12] 1162 	mov	a,dpl
-   21D1 90 F9 63      [24] 1163 	mov	dptr,#_debughex16_num_1_54
-   21D4 F0            [24] 1164 	movx	@dptr,a
-   21D5 EF            [12] 1165 	mov	a,r7
-   21D6 A3            [24] 1166 	inc	dptr
-   21D7 F0            [24] 1167 	movx	@dptr,a
+   21E5                    1160 _debughex16:
+   21E5 AF 83         [24] 1161 	mov	r7,dph
+   21E7 E5 82         [12] 1162 	mov	a,dpl
+   21E9 90 F9 63      [24] 1163 	mov	dptr,#_debughex16_num_1_54
+   21EC F0            [24] 1164 	movx	@dptr,a
+   21ED EF            [12] 1165 	mov	a,r7
+   21EE A3            [24] 1166 	inc	dptr
+   21EF F0            [24] 1167 	movx	@dptr,a
                            1168 ;	chipcon_usbdebug.c:32: txdata(0xfe, DEBUG_CMD_HEX16, 2, (__xdata u8*)&num);
-   21D8 75 31 63      [24] 1169 	mov	_txdata_PARM_4,#_debughex16_num_1_54
-   21DB 75 32 F9      [24] 1170 	mov	(_txdata_PARM_4 + 1),#(_debughex16_num_1_54 >> 8)
-   21DE 75 2E F2      [24] 1171 	mov	_txdata_PARM_2,#0xF2
-   21E1 75 2F 02      [24] 1172 	mov	_txdata_PARM_3,#0x02
-   21E4 75 30 00      [24] 1173 	mov	(_txdata_PARM_3 + 1),#0x00
-   21E7 75 82 FE      [24] 1174 	mov	dpl,#0xFE
-   21EA 02 1C 0B      [24] 1175 	ljmp	_txdata
+   21F0 75 31 63      [24] 1169 	mov	_txdata_PARM_4,#_debughex16_num_1_54
+   21F3 75 32 F9      [24] 1170 	mov	(_txdata_PARM_4 + 1),#(_debughex16_num_1_54 >> 8)
+   21F6 75 2E F2      [24] 1171 	mov	_txdata_PARM_2,#0xF2
+   21F9 75 2F 02      [24] 1172 	mov	_txdata_PARM_3,#0x02
+   21FC 75 30 00      [24] 1173 	mov	(_txdata_PARM_3 + 1),#0x00
+   21FF 75 82 FE      [24] 1174 	mov	dpl,#0xFE
+   2202 02 1C 06      [24] 1175 	ljmp	_txdata
                            1176 ;------------------------------------------------------------
                            1177 ;Allocation info for local variables in function 'debughex32'
                            1178 ;------------------------------------------------------------
@@ -1182,31 +1182,31 @@
                            1182 ;	-----------------------------------------
                            1183 ;	 function debughex32
                            1184 ;	-----------------------------------------
-   21ED                    1185 _debughex32:
-   21ED AF 82         [24] 1186 	mov	r7,dpl
-   21EF AE 83         [24] 1187 	mov	r6,dph
-   21F1 AD F0         [24] 1188 	mov	r5,b
-   21F3 FC            [12] 1189 	mov	r4,a
-   21F4 90 F9 65      [24] 1190 	mov	dptr,#_debughex32_num_1_56
-   21F7 EF            [12] 1191 	mov	a,r7
-   21F8 F0            [24] 1192 	movx	@dptr,a
-   21F9 EE            [12] 1193 	mov	a,r6
-   21FA A3            [24] 1194 	inc	dptr
-   21FB F0            [24] 1195 	movx	@dptr,a
-   21FC ED            [12] 1196 	mov	a,r5
-   21FD A3            [24] 1197 	inc	dptr
-   21FE F0            [24] 1198 	movx	@dptr,a
-   21FF EC            [12] 1199 	mov	a,r4
-   2200 A3            [24] 1200 	inc	dptr
-   2201 F0            [24] 1201 	movx	@dptr,a
+   2205                    1185 _debughex32:
+   2205 AF 82         [24] 1186 	mov	r7,dpl
+   2207 AE 83         [24] 1187 	mov	r6,dph
+   2209 AD F0         [24] 1188 	mov	r5,b
+   220B FC            [12] 1189 	mov	r4,a
+   220C 90 F9 65      [24] 1190 	mov	dptr,#_debughex32_num_1_56
+   220F EF            [12] 1191 	mov	a,r7
+   2210 F0            [24] 1192 	movx	@dptr,a
+   2211 EE            [12] 1193 	mov	a,r6
+   2212 A3            [24] 1194 	inc	dptr
+   2213 F0            [24] 1195 	movx	@dptr,a
+   2214 ED            [12] 1196 	mov	a,r5
+   2215 A3            [24] 1197 	inc	dptr
+   2216 F0            [24] 1198 	movx	@dptr,a
+   2217 EC            [12] 1199 	mov	a,r4
+   2218 A3            [24] 1200 	inc	dptr
+   2219 F0            [24] 1201 	movx	@dptr,a
                            1202 ;	chipcon_usbdebug.c:37: txdata(0xfe, DEBUG_CMD_HEX32, 4, (__xdata u8*)&num);
-   2202 75 31 65      [24] 1203 	mov	_txdata_PARM_4,#_debughex32_num_1_56
-   2205 75 32 F9      [24] 1204 	mov	(_txdata_PARM_4 + 1),#(_debughex32_num_1_56 >> 8)
-   2208 75 2E F3      [24] 1205 	mov	_txdata_PARM_2,#0xF3
-   220B 75 2F 04      [24] 1206 	mov	_txdata_PARM_3,#0x04
-   220E 75 30 00      [24] 1207 	mov	(_txdata_PARM_3 + 1),#0x00
-   2211 75 82 FE      [24] 1208 	mov	dpl,#0xFE
-   2214 02 1C 0B      [24] 1209 	ljmp	_txdata
+   221A 75 31 65      [24] 1203 	mov	_txdata_PARM_4,#_debughex32_num_1_56
+   221D 75 32 F9      [24] 1204 	mov	(_txdata_PARM_4 + 1),#(_debughex32_num_1_56 >> 8)
+   2220 75 2E F3      [24] 1205 	mov	_txdata_PARM_2,#0xF3
+   2223 75 2F 04      [24] 1206 	mov	_txdata_PARM_3,#0x04
+   2226 75 30 00      [24] 1207 	mov	(_txdata_PARM_3 + 1),#0x00
+   2229 75 82 FE      [24] 1208 	mov	dpl,#0xFE
+   222C 02 1C 06      [24] 1209 	ljmp	_txdata
                            1210 	.area CSEG    (CODE)
                            1211 	.area CONST   (CODE)
                            1212 	.area XINIT   (CODE)

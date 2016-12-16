@@ -687,14 +687,14 @@ Symbol Table
     __sdcc_call_dptr                                               **** GX
  19 __str_0                                                        0018 R
  19 __str_1                                                        0026 R
- 18 _appReturn                                                     0353 GR
+ 18 _appReturn                                                     034A GR
   C _appReturn_PARM_2                                              03D1 GR
   C _appReturn_len_1_114                                           03D3 R
  19 _buildname                                                     0009 GR
   6 _cb_ep5                                                        000A GR
     _clock                                                         **** GX
   C _ep5                                                           03BC GR
- 18 _initUSB                                                       022D GR
+ 18 _initUSB                                                       0211 GR
   6 _input_head_idx                                                0001 GR
   6 _input_size                                                    0000 GR
   6 _input_tail_idx                                                0002 GR
@@ -703,50 +703,49 @@ Symbol Table
   6 _output_head_idx                                               0004 GR
   6 _output_size                                                   0003 GR
   6 _output_tail_idx                                               0005 GR
- 18 _p0IntHandler                                                  034A GR
- 18 _processOUTEP5                                                 0384 GR
+ 18 _p0IntHandler                                                  0341 GR
+ 18 _processOUTEP5                                                 037B GR
   6 _processOUTEP5_loop_1_117                                      0011 R
   C _processOUTEP5_ptr_1_117                                       03D4 R
   6 _processOUTEP5_sloc0_1_0                                       0013 R
-  6 _processOUTEP5_sloc1_1_0                                       0014 R
-  6 _processOUTEP5_sloc2_1_0                                       0016 R
-  6 _processOUTEP5_sloc3_1_0                                       0018 R
- 18 _registerCb_ep5                                                034C GR
+  6 _processOUTEP5_sloc1_1_0                                       0015 R
+  6 _processOUTEP5_sloc2_1_0                                       0017 R
+ 18 _registerCb_ep5                                                0343 GR
  18 _rx1_isr                                                       0000 GR
  19 _sdccver                                                       0000 GR
   6 _serial_data_available                                         0006 GR
   6 _slave_send_size                                               0009 GR
     _sleepMillis                                                   **** GX
   C _spi_input_buf                                                 0000 GR
+  6 _spi_mode                                                      0007 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051), page 13.
 
 Symbol Table
 
-  6 _spi_mode                                                      0007 GR
   C _spi_output_buf                                                00DC GR
     _strncmp                                                       **** GX
     _strncmp_PARM_2                                                **** GX
     _strncmp_PARM_3                                                **** GX
- 18 _tx1_isr                                                       0117 GR
- 18 _txdata                                                        0300 GR
+ 18 _tx1_isr                                                       00FB GR
+ 18 _txdata                                                        02F1 GR
   6 _txdata_PARM_2                                                 000C GR
   6 _txdata_PARM_3                                                 000D GR
   6 _txdata_PARM_4                                                 000F GR
- 18 _usbIntHandler                                                 0349 GR
- 18 _usbProcessEvents                                              0268 GR
+ 18 _usbIntHandler                                                 0340 GR
+ 18 _usbProcessEvents                                              0259 GR
   C _usb_ep5_OUTbuf                                                01B8 GR
- 18 _usb_up                                                        02FA GR
- 18 _vcom_disable                                                  0215 GR
- 18 _vcom_down                                                     02FD GR
- 18 _vcom_enable                                                   0201 GR
- 18 _vcom_flush                                                    0187 GR
- 18 _vcom_getchar                                                  01D6 GR
- 18 _vcom_pollchar                                                 01BF GR
- 18 _vcom_putchar                                                  0188 GR
- 18 _vcom_putstr                                                   02A2 GR
+ 18 _usb_up                                                        02EB GR
+ 18 _vcom_disable                                                  01F9 GR
+ 18 _vcom_down                                                     02EE GR
+ 18 _vcom_enable                                                   01E5 GR
+ 18 _vcom_flush                                                    016B GR
+ 18 _vcom_getchar                                                  01BA GR
+ 18 _vcom_pollchar                                                 01A3 GR
+ 18 _vcom_putchar                                                  016C GR
+ 18 _vcom_putstr                                                   0293 GR
   C _vcom_putstr_buff_1_98                                         03CE R
- 18 _vcom_readline                                                 0269 GR
- 18 _waitForUSBsetup                                               034B GR
+ 18 _vcom_readline                                                 025A GR
+ 18 _waitForUSBsetup                                               0342 GR
     a                                                           =  00E0 L
     a.0                                                         =  00E0 L
     a.1                                                         =  00E1 L
@@ -778,11 +777,11 @@ Symbol Table
     b.0                                                         =  00F0 L
     b.1                                                         =  00F1 L
     b.2                                                         =  00F2 L
+    b.3                                                         =  00F3 L
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051), page 14.
 
 Symbol Table
 
-    b.3                                                         =  00F3 L
     b.4                                                         =  00F4 L
     b.5                                                         =  00F5 L
     b.6                                                         =  00F6 L
@@ -838,11 +837,11 @@ Symbol Table
     p0.0                                                        =  0080 L
     p0.1                                                        =  0081 L
     p0.2                                                        =  0082 L
+    p0.3                                                        =  0083 L
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051), page 15.
 
 Symbol Table
 
-    p0.3                                                        =  0083 L
     p0.4                                                        =  0084 L
     p0.5                                                        =  0085 L
     p0.6                                                        =  0086 L
@@ -898,11 +897,11 @@ Symbol Table
     ri                                                          =  0098 L
     rs0                                                         =  00D3 L
     rs1                                                         =  00D4 L
+    rxd                                                         =  00B0 L
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Intel 8051), page 16.
 
 Symbol Table
 
-    rxd                                                         =  00B0 L
     sbuf                                                        =  0099 L
     scon                                                        =  0098 L
     scon.0                                                      =  0098 L
@@ -964,7 +963,7 @@ Area Table
    3 RSEG1                                      size    0   flags    8
    4 REG_BANK_0                                 size    8   flags    4
    5 BIT_BANK                                   size    1   flags    4
-   6 DSEG                                       size   1A   flags    0
+   6 DSEG                                       size   19   flags    0
    7 OSEG                                       size    0   flags    4
    8 ISEG                                       size    0   flags    0
    9 IABS                                       size    0   flags    8
@@ -982,7 +981,7 @@ Area Table
   15 GSINIT5                                    size    0   flags   20
   16 GSINIT                                     size   18   flags   20
   17 GSFINAL                                    size    0   flags   20
-  18 CSEG                                       size  824   flags   20
+  18 CSEG                                       size  832   flags   20
   19 CONST                                      size   30   flags   20
   1A XINIT                                      size    0   flags   20
   1B CABS                                       size    0   flags   28

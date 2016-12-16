@@ -52,7 +52,7 @@ C:   00000020  s__CODE
 C:   00000021  s_BIT_BANK                      
 C:   00000022  l_GSINIT3                       
 C:   0000002A  l_GSINIT4                       
-C:   0000003C  s_SSEG                          
+C:   0000003B  s_SSEG                          
 C:   0000007F  l_DSEG                          
 C:   0000008B  l_HOME                          
 C:   0000008B  s_GSINIT0                       
@@ -69,7 +69,7 @@ CABS                                00000000    00000000 =           0. bytes (A
 C:   0000008E  s_GSINIT2                       
 C:   00000098  s_GSINIT3                       
 C:   000000BA  s_GSINIT4                       
-C:   000000C4  l_SSEG                          
+C:   000000C5  l_SSEG                          
 C:   000000E4  s_GSINIT                        
 C:   000000E4  s_GSINIT5                       
 C:   00000100  l_IRAM                          
@@ -77,9 +77,9 @@ C:   00000101  s_GSFINAL
 C:   00000104  s_CSEG                          
 C:   000001D6  l_CONST                         
 C:   00000DE7  l_XSEG                          
-C:   000034CA  l_CSEG                          
-C:   000035CE  s_CONST                         
-C:   000037A4  s_XINIT                         
+C:   000034E2  l_CSEG                          
+C:   000035E6  s_CONST                         
+C:   000037BC  s_XINIT                         
 C:   0000F000  s_PSEG                          
 C:   0000F000  s_XSEG                          
 C:   0000FDE7  s_XISEG                         
@@ -697,11 +697,11 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-SSEG                                0000003C    000000C4 =         196. bytes (REL,OVR)
+SSEG                                0000003B    000000C5 =         197. bytes (REL,OVR)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     0000003C  __start__stack                     appFHSSNIC
+     0000003B  __start__stack                     appFHSSNIC
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
 Hexadecimal  [32-Bits]
@@ -876,7 +876,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                00000104    000034CA =       13514. bytes (REL,CON,CODE)
+CSEG                                00000104    000034E2 =       13538. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -907,122 +907,122 @@ C:   000017B5  _appHandleEP0                      appFHSSNIC
 C:   000017B9  _appInitRf                         appFHSSNIC
 C:   000018D3  _initBoard                         appFHSSNIC
 C:   000018D9  _main                              appFHSSNIC
-C:   0000190B  _rx1_isr                           cc1110_spicom
-C:   00001A22  _tx1_isr                           cc1110_spicom
-C:   00001A92  _vcom_flush                        cc1110_spicom
-C:   00001A93  _vcom_putchar                      cc1110_spicom
-C:   00001ACA  _vcom_pollchar                     cc1110_spicom
-C:   00001AE1  _vcom_getchar                      cc1110_spicom
-C:   00001B0C  _vcom_enable                       cc1110_spicom
-C:   00001B20  _vcom_disable                      cc1110_spicom
-C:   00001B38  _initUSB                           cc1110_spicom
-C:   00001B73  _usbProcessEvents                  cc1110_spicom
-C:   00001B74  _vcom_readline                     cc1110_spicom
-C:   00001BAD  _vcom_putstr                       cc1110_spicom
-C:   00001C05  _usb_up                            cc1110_spicom
-C:   00001C08  _vcom_down                         cc1110_spicom
-C:   00001C0B  _txdata                            cc1110_spicom
-C:   00001C54  _usbIntHandler                     cc1110_spicom
-C:   00001C55  _p0IntHandler                      cc1110_spicom
-C:   00001C56  _waitForUSBsetup                   cc1110_spicom
-C:   00001C57  _registerCb_ep5                    cc1110_spicom
-C:   00001C5E  _appReturn                         cc1110_spicom
-C:   00001C8F  _processOUTEP5                     cc1110_spicom
-C:   0000212F  _debugx                            chipcon_usbdebug
-C:   00002170  _debug                             chipcon_usbdebug
+C:   00001915  _rx1_isr                           cc1110_spicom
+C:   00001A10  _tx1_isr                           cc1110_spicom
+C:   00001A80  _vcom_flush                        cc1110_spicom
+C:   00001A81  _vcom_putchar                      cc1110_spicom
+C:   00001AB8  _vcom_pollchar                     cc1110_spicom
+C:   00001ACF  _vcom_getchar                      cc1110_spicom
+C:   00001AFA  _vcom_enable                       cc1110_spicom
+C:   00001B0E  _vcom_disable                      cc1110_spicom
+C:   00001B26  _initUSB                           cc1110_spicom
+C:   00001B6E  _usbProcessEvents                  cc1110_spicom
+C:   00001B6F  _vcom_readline                     cc1110_spicom
+C:   00001BA8  _vcom_putstr                       cc1110_spicom
+C:   00001C00  _usb_up                            cc1110_spicom
+C:   00001C03  _vcom_down                         cc1110_spicom
+C:   00001C06  _txdata                            cc1110_spicom
+C:   00001C55  _usbIntHandler                     cc1110_spicom
+C:   00001C56  _p0IntHandler                      cc1110_spicom
+C:   00001C57  _waitForUSBsetup                   cc1110_spicom
+C:   00001C58  _registerCb_ep5                    cc1110_spicom
+C:   00001C5F  _appReturn                         cc1110_spicom
+C:   00001C90  _processOUTEP5                     cc1110_spicom
+C:   00002147  _debugx                            chipcon_usbdebug
+C:   00002188  _debug                             chipcon_usbdebug
 ASxxxx Linker V03.00 + NoICE + sdld,  page 29.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                00000104    000034CA =       13514. bytes (REL,CON,CODE)
+CSEG                                00000104    000034E2 =       13538. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   000021B2  _debughex                          chipcon_usbdebug
-C:   000021CD  _debughex16                        chipcon_usbdebug
-C:   000021ED  _debughex32                        chipcon_usbdebug
-C:   00002217  _initDMA                           chipcon_dma
-C:   00002241  _getDMA                            chipcon_dma
-C:   00002261  _setFreq                           cc1111rf
-C:   000022D1  _resetRFSTATE                      cc1111rf
-C:   000022F6  _RxMode                            cc1111rf
-C:   00002313  _TxMode                            cc1111rf
-C:   0000233A  _IdleMode                          cc1111rf
-C:   00002371  _init_RF                           cc1111rf
-C:   000023D0  _waitRSSI                          cc1111rf
-C:   00002405  _transmit                          cc1111rf
-C:   00002724  _startRX                           cc1111rf
-C:   00002775  _RepeaterStart                     cc1111rf
-C:   0000277C  _RepeaterStop                      cc1111rf
-C:   00002782  _rfTxRxIntHandler                  cc1111rf
-C:   00002A96  _rfIntHandler                      cc1111rf
-C:   00002CF6  _byte_shuffle                      cc1111rf
-C:   00002D4B  _sleepMillis                       global
-C:   00002D73  _sleepMicros                       global
-C:   00002D92  _blink_binary_baby_lsb             global
-C:   00002E12  _strncmp                           global
-C:   00002E95  _clock_init                        global
-C:   00002EC1  _io_init                           global
-C:   00002ED7  _t1IntHandler                      global
-C:   00002EFE  _initAES                           cc1111_aes
-C:   00002FF9  _setAES                            cc1111_aes
-C:   00003051  _padAES                            cc1111_aes
-C:   0000308B  _encAES                            cc1111_aes
-C:   000030D4  _decAES                            cc1111_aes
-C:   0000311E  _doAES                             cc1111_aes
-C:   00003210  ___fsmul                           _fsmul
-C:   000032B3  fsgetargs                          _fsget2args
-C:   000032E1  fs_normalize_a                     _fsnormalize
-C:   00003314  _memset                            _memset
-C:   00003333  _memcpy                            _memcpy
-C:   00003388  ___ulong2fs                        _ulong2fs
-C:   00003391  ulong2fs_doit                      _ulong2fs
-C:   0000339B  ___fs2ulong                        _fs2ulong
-C:   0000339D  fs2ulong_begin                     _fs2ulong
-C:   000033C2  fsgetarg                           _fsget1arg
-C:   000033D4  __gptrput                          _gptrput
-C:   000033EF  __mulint                           _mulint
-C:   000033EF  __mulint_dummy                     _mulint
-C:   0000340C  __moduint                          _moduint
-C:   00003459  fs_round_and_return                _fsreturnval
-C:   00003471  fs_zerocheck_return                _fsreturnval
-C:   0000347A  fs_return_zero                     _fsreturnval
-C:   00003482  fs_direct_return                   _fsreturnval
-C:   00003490  fs_return_inf                      _fsreturnval
+C:   000021CA  _debughex                          chipcon_usbdebug
+C:   000021E5  _debughex16                        chipcon_usbdebug
+C:   00002205  _debughex32                        chipcon_usbdebug
+C:   0000222F  _initDMA                           chipcon_dma
+C:   00002259  _getDMA                            chipcon_dma
+C:   00002279  _setFreq                           cc1111rf
+C:   000022E9  _resetRFSTATE                      cc1111rf
+C:   0000230E  _RxMode                            cc1111rf
+C:   0000232B  _TxMode                            cc1111rf
+C:   00002352  _IdleMode                          cc1111rf
+C:   00002389  _init_RF                           cc1111rf
+C:   000023E8  _waitRSSI                          cc1111rf
+C:   0000241D  _transmit                          cc1111rf
+C:   0000273C  _startRX                           cc1111rf
+C:   0000278D  _RepeaterStart                     cc1111rf
+C:   00002794  _RepeaterStop                      cc1111rf
+C:   0000279A  _rfTxRxIntHandler                  cc1111rf
+C:   00002AAE  _rfIntHandler                      cc1111rf
+C:   00002D0E  _byte_shuffle                      cc1111rf
+C:   00002D63  _sleepMillis                       global
+C:   00002D8B  _sleepMicros                       global
+C:   00002DAA  _blink_binary_baby_lsb             global
+C:   00002E2A  _strncmp                           global
+C:   00002EAD  _clock_init                        global
+C:   00002ED9  _io_init                           global
+C:   00002EEF  _t1IntHandler                      global
+C:   00002F16  _initAES                           cc1111_aes
+C:   00003011  _setAES                            cc1111_aes
+C:   00003069  _padAES                            cc1111_aes
+C:   000030A3  _encAES                            cc1111_aes
+C:   000030EC  _decAES                            cc1111_aes
+C:   00003136  _doAES                             cc1111_aes
+C:   00003228  ___fsmul                           _fsmul
+C:   000032CB  fsgetargs                          _fsget2args
+C:   000032F9  fs_normalize_a                     _fsnormalize
+C:   0000332C  _memset                            _memset
+C:   0000334B  _memcpy                            _memcpy
+C:   000033A0  ___ulong2fs                        _ulong2fs
+C:   000033A9  ulong2fs_doit                      _ulong2fs
+C:   000033B3  ___fs2ulong                        _fs2ulong
+C:   000033B5  fs2ulong_begin                     _fs2ulong
+C:   000033DA  fsgetarg                           _fsget1arg
+C:   000033EC  __gptrput                          _gptrput
+C:   00003407  __mulint                           _mulint
+C:   00003407  __mulint_dummy                     _mulint
+C:   00003424  __moduint                          _moduint
+C:   00003471  fs_round_and_return                _fsreturnval
+C:   00003489  fs_zerocheck_return                _fsreturnval
+C:   00003492  fs_return_zero                     _fsreturnval
+C:   0000349A  fs_direct_return                   _fsreturnval
+C:   000034A8  fs_return_inf                      _fsreturnval
 ASxxxx Linker V03.00 + NoICE + sdld,  page 30.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                00000104    000034CA =       13514. bytes (REL,CON,CODE)
+CSEG                                00000104    000034E2 =       13538. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   0000349D  fs_return_nan                      _fsreturnval
-C:   000034A8  ___fsdiv                           _fsdiv
-C:   0000356B  __gptrget                          _gptrget
-C:   00003587  fs_rshift_a                        _fsrshift
-C:   000035CA  __sdcc_external_startup            _startup
+C:   000034B5  fs_return_nan                      _fsreturnval
+C:   000034C0  ___fsdiv                           _fsdiv
+C:   00003583  __gptrget                          _gptrget
+C:   0000359F  fs_rshift_a                        _fsrshift
+C:   000035E2  __sdcc_external_startup            _startup
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 31.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CONST                               000035CE    000001D6 =         470. bytes (REL,CON,CODE)
+CONST                               000035E6    000001D6 =         470. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00003774  _sdccver                           cc1110_spicom
-C:   0000377D  _buildname                         cc1110_spicom
+C:   0000378C  _sdccver                           cc1110_spicom
+C:   00003795  _buildname                         cc1110_spicom
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 32.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-XINIT                               000037A4    00000017 =          23. bytes (REL,CON,CODE)
+XINIT                               000037BC    00000017 =          23. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------

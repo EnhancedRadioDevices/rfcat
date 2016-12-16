@@ -69,6 +69,11 @@ void t2IntHandler(void) __interrupt T2_VECTOR;
 void t3IntHandler(void) __interrupt T3_VECTOR;
 int appHandleEP5();
 
+#ifdef EXPLORER
+void rx1_isr(void) __interrupt URX1_VECTOR;
+void tx1_isr(void) __interrupt UTX1_VECTOR;
+#endif
+
 /**************************** PHY LAYER *****************************/
 
 void PHY_set_channel(__xdata u16 chan)
@@ -1354,8 +1359,12 @@ void initBoard(void)
 void main (void)
 {
     initBoard();
+	LED_GREEN = 1;
+	LED_RED = 1;
     initDMA();  // do this early so peripherals that use DMA can allocate channels correctly
-    initAES();
+    LED_RED = 0;
+	initAES();
+	LED_GREEN = 0;
     initUSB();
     init_RF();
     appMainInit();
@@ -1367,6 +1376,8 @@ void main (void)
     waitForUSBsetup();
 
     REALLYFASTBLINK();
+
+    LED_GREEN = 1;
 
     while (1)
     {  

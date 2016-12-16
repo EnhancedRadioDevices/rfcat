@@ -1,7 +1,7 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
                               3 ; Version 3.3.0 #8604 (Dec 30 2013) (Linux)
-                              4 ; This file was generated Wed Dec 14 17:38:39 2016
+                              4 ; This file was generated Fri Dec 16 14:02:33 2016
                               5 ;--------------------------------------------------------
                               6 	.module global
                               7 	.optsdcc -mmcs51 --model-small
@@ -1033,7 +1033,7 @@
                            1033 ;	-----------------------------------------
                            1034 ;	 function sleepMillis
                            1035 ;	-----------------------------------------
-   2D4B                    1036 _sleepMillis:
+   2D63                    1036 _sleepMillis:
                      0007  1037 	ar7 = 0x07
                      0006  1038 	ar6 = 0x06
                      0005  1039 	ar5 = 0x05
@@ -1042,37 +1042,37 @@
                      0002  1042 	ar2 = 0x02
                      0001  1043 	ar1 = 0x01
                      0000  1044 	ar0 = 0x00
-   2D4B AE 82         [24] 1045 	mov	r6,dpl
-   2D4D AF 83         [24] 1046 	mov	r7,dph
+   2D63 AE 82         [24] 1045 	mov	r6,dpl
+   2D65 AF 83         [24] 1046 	mov	r7,dph
                            1047 ;	global.c:12: while (--ms > 0) 
-   2D4F                    1048 00102$:
-   2D4F 1E            [12] 1049 	dec	r6
-   2D50 BE FF 01      [24] 1050 	cjne	r6,#0xFF,00124$
-   2D53 1F            [12] 1051 	dec	r7
-   2D54                    1052 00124$:
-   2D54 C3            [12] 1053 	clr	c
-   2D55 E4            [12] 1054 	clr	a
-   2D56 9E            [12] 1055 	subb	a,r6
-   2D57 E4            [12] 1056 	clr	a
-   2D58 64 80         [12] 1057 	xrl	a,#0x80
-   2D5A 8F F0         [24] 1058 	mov	b,r7
-   2D5C 63 F0 80      [24] 1059 	xrl	b,#0x80
-   2D5F 95 F0         [12] 1060 	subb	a,b
-   2D61 50 0F         [24] 1061 	jnc	00108$
+   2D67                    1048 00102$:
+   2D67 1E            [12] 1049 	dec	r6
+   2D68 BE FF 01      [24] 1050 	cjne	r6,#0xFF,00124$
+   2D6B 1F            [12] 1051 	dec	r7
+   2D6C                    1052 00124$:
+   2D6C C3            [12] 1053 	clr	c
+   2D6D E4            [12] 1054 	clr	a
+   2D6E 9E            [12] 1055 	subb	a,r6
+   2D6F E4            [12] 1056 	clr	a
+   2D70 64 80         [12] 1057 	xrl	a,#0x80
+   2D72 8F F0         [24] 1058 	mov	b,r7
+   2D74 63 F0 80      [24] 1059 	xrl	b,#0x80
+   2D77 95 F0         [12] 1060 	subb	a,b
+   2D79 50 0F         [24] 1061 	jnc	00108$
                            1062 ;	global.c:14: for (j=0; j<SLEEPTIMER;j++); // about 1 millisecond
-   2D63 7C 4C         [12] 1063 	mov	r4,#0x4C
-   2D65 7D 04         [12] 1064 	mov	r5,#0x04
-   2D67                    1065 00107$:
-   2D67 1C            [12] 1066 	dec	r4
-   2D68 BC FF 01      [24] 1067 	cjne	r4,#0xFF,00126$
-   2D6B 1D            [12] 1068 	dec	r5
-   2D6C                    1069 00126$:
-   2D6C EC            [12] 1070 	mov	a,r4
-   2D6D 4D            [12] 1071 	orl	a,r5
-   2D6E 70 F7         [24] 1072 	jnz	00107$
-   2D70 80 DD         [24] 1073 	sjmp	00102$
-   2D72                    1074 00108$:
-   2D72 22            [24] 1075 	ret
+   2D7B 7C 4C         [12] 1063 	mov	r4,#0x4C
+   2D7D 7D 04         [12] 1064 	mov	r5,#0x04
+   2D7F                    1065 00107$:
+   2D7F 1C            [12] 1066 	dec	r4
+   2D80 BC FF 01      [24] 1067 	cjne	r4,#0xFF,00126$
+   2D83 1D            [12] 1068 	dec	r5
+   2D84                    1069 00126$:
+   2D84 EC            [12] 1070 	mov	a,r4
+   2D85 4D            [12] 1071 	orl	a,r5
+   2D86 70 F7         [24] 1072 	jnz	00107$
+   2D88 80 DD         [24] 1073 	sjmp	00102$
+   2D8A                    1074 00108$:
+   2D8A 22            [24] 1075 	ret
                            1076 ;------------------------------------------------------------
                            1077 ;Allocation info for local variables in function 'sleepMicros'
                            1078 ;------------------------------------------------------------
@@ -1082,31 +1082,31 @@
                            1082 ;	-----------------------------------------
                            1083 ;	 function sleepMicros
                            1084 ;	-----------------------------------------
-   2D73                    1085 _sleepMicros:
-   2D73 AE 82         [24] 1086 	mov	r6,dpl
+   2D8B                    1085 _sleepMicros:
+   2D8B AE 82         [24] 1086 	mov	r6,dpl
                            1087 ;	global.c:23: us *= PLATFORM_CLOCK_FREQ/11;
-   2D75 E5 83         [12] 1088 	mov	a,dph
-   2D77 CE            [12] 1089 	xch	a,r6
-   2D78 25 E0         [12] 1090 	add	a,acc
-   2D7A CE            [12] 1091 	xch	a,r6
-   2D7B 33            [12] 1092 	rlc	a
-   2D7C FF            [12] 1093 	mov	r7,a
+   2D8D E5 83         [12] 1088 	mov	a,dph
+   2D8F CE            [12] 1089 	xch	a,r6
+   2D90 25 E0         [12] 1090 	add	a,acc
+   2D92 CE            [12] 1091 	xch	a,r6
+   2D93 33            [12] 1092 	rlc	a
+   2D94 FF            [12] 1093 	mov	r7,a
                            1094 ;	global.c:24: while (--us > 0) ;
-   2D7D                    1095 00101$:
-   2D7D 1E            [12] 1096 	dec	r6
-   2D7E BE FF 01      [24] 1097 	cjne	r6,#0xFF,00110$
-   2D81 1F            [12] 1098 	dec	r7
-   2D82                    1099 00110$:
-   2D82 C3            [12] 1100 	clr	c
-   2D83 E4            [12] 1101 	clr	a
-   2D84 9E            [12] 1102 	subb	a,r6
-   2D85 E4            [12] 1103 	clr	a
-   2D86 64 80         [12] 1104 	xrl	a,#0x80
-   2D88 8F F0         [24] 1105 	mov	b,r7
-   2D8A 63 F0 80      [24] 1106 	xrl	b,#0x80
-   2D8D 95 F0         [12] 1107 	subb	a,b
-   2D8F 40 EC         [24] 1108 	jc	00101$
-   2D91 22            [24] 1109 	ret
+   2D95                    1095 00101$:
+   2D95 1E            [12] 1096 	dec	r6
+   2D96 BE FF 01      [24] 1097 	cjne	r6,#0xFF,00110$
+   2D99 1F            [12] 1098 	dec	r7
+   2D9A                    1099 00110$:
+   2D9A C3            [12] 1100 	clr	c
+   2D9B E4            [12] 1101 	clr	a
+   2D9C 9E            [12] 1102 	subb	a,r6
+   2D9D E4            [12] 1103 	clr	a
+   2D9E 64 80         [12] 1104 	xrl	a,#0x80
+   2DA0 8F F0         [24] 1105 	mov	b,r7
+   2DA2 63 F0 80      [24] 1106 	xrl	b,#0x80
+   2DA5 95 F0         [12] 1107 	subb	a,b
+   2DA7 40 EC         [24] 1108 	jc	00101$
+   2DA9 22            [24] 1109 	ret
                            1110 ;------------------------------------------------------------
                            1111 ;Allocation info for local variables in function 'blink_binary_baby_lsb'
                            1112 ;------------------------------------------------------------
@@ -1117,91 +1117,91 @@
                            1117 ;	-----------------------------------------
                            1118 ;	 function blink_binary_baby_lsb
                            1119 ;	-----------------------------------------
-   2D92                    1120 _blink_binary_baby_lsb:
-   2D92 AE 82         [24] 1121 	mov	r6,dpl
-   2D94 AF 83         [24] 1122 	mov	r7,dph
+   2DAA                    1120 _blink_binary_baby_lsb:
+   2DAA AE 82         [24] 1121 	mov	r6,dpl
+   2DAC AF 83         [24] 1122 	mov	r7,dph
                            1123 ;	global.c:29: LED = 1;
-   2D96 D2 A4         [12] 1124 	setb	_P2_4
+   2DAE D2 A4         [12] 1124 	setb	_P2_4
                            1125 ;	global.c:30: sleepMillis(1000);
-   2D98 90 03 E8      [24] 1126 	mov	dptr,#0x03E8
-   2D9B C0 07         [24] 1127 	push	ar7
-   2D9D C0 06         [24] 1128 	push	ar6
-   2D9F 12 2D 4B      [24] 1129 	lcall	_sleepMillis
+   2DB0 90 03 E8      [24] 1126 	mov	dptr,#0x03E8
+   2DB3 C0 07         [24] 1127 	push	ar7
+   2DB5 C0 06         [24] 1128 	push	ar6
+   2DB7 12 2D 63      [24] 1129 	lcall	_sleepMillis
                            1130 ;	global.c:31: LED = 0;
-   2DA2 C2 A4         [12] 1131 	clr	_P2_4
+   2DBA C2 A4         [12] 1131 	clr	_P2_4
                            1132 ;	global.c:32: sleepMillis(500);
-   2DA4 90 01 F4      [24] 1133 	mov	dptr,#0x01F4
-   2DA7 12 2D 4B      [24] 1134 	lcall	_sleepMillis
-   2DAA D0 06         [24] 1135 	pop	ar6
-   2DAC D0 07         [24] 1136 	pop	ar7
+   2DBC 90 01 F4      [24] 1133 	mov	dptr,#0x01F4
+   2DBF 12 2D 63      [24] 1134 	lcall	_sleepMillis
+   2DC2 D0 06         [24] 1135 	pop	ar6
+   2DC4 D0 07         [24] 1136 	pop	ar7
                            1137 ;	global.c:33: bits -= 1;          // 16 bit numbers needs to start on bit 15, etc....
-   2DAE 15 13         [12] 1138 	dec	_blink_binary_baby_lsb_PARM_2
-   2DB0 AD 13         [24] 1139 	mov	r5,_blink_binary_baby_lsb_PARM_2
-   2DB2                    1140 00106$:
+   2DC6 15 13         [12] 1138 	dec	_blink_binary_baby_lsb_PARM_2
+   2DC8 AD 13         [24] 1139 	mov	r5,_blink_binary_baby_lsb_PARM_2
+   2DCA                    1140 00106$:
                            1141 ;	global.c:35: for (; bits>=0; bits--)
-   2DB2 ED            [12] 1142 	mov	a,r5
-   2DB3 20 E7 54      [24] 1143 	jb	acc.7,00104$
+   2DCA ED            [12] 1142 	mov	a,r5
+   2DCB 20 E7 54      [24] 1143 	jb	acc.7,00104$
                            1144 ;	global.c:37: if (num & 1)
-   2DB6 EE            [12] 1145 	mov	a,r6
-   2DB7 30 E0 24      [24] 1146 	jnb	acc.0,00102$
+   2DCE EE            [12] 1145 	mov	a,r6
+   2DCF 30 E0 24      [24] 1146 	jnb	acc.0,00102$
                            1147 ;	global.c:39: sleepMillis(25);
-   2DBA 90 00 19      [24] 1148 	mov	dptr,#0x0019
-   2DBD C0 07         [24] 1149 	push	ar7
-   2DBF C0 06         [24] 1150 	push	ar6
-   2DC1 C0 05         [24] 1151 	push	ar5
-   2DC3 12 2D 4B      [24] 1152 	lcall	_sleepMillis
+   2DD2 90 00 19      [24] 1148 	mov	dptr,#0x0019
+   2DD5 C0 07         [24] 1149 	push	ar7
+   2DD7 C0 06         [24] 1150 	push	ar6
+   2DD9 C0 05         [24] 1151 	push	ar5
+   2DDB 12 2D 63      [24] 1152 	lcall	_sleepMillis
                            1153 ;	global.c:40: LED = 1;
-   2DC6 D2 A4         [12] 1154 	setb	_P2_4
+   2DDE D2 A4         [12] 1154 	setb	_P2_4
                            1155 ;	global.c:41: sleepMillis(550);
-   2DC8 90 02 26      [24] 1156 	mov	dptr,#0x0226
-   2DCB 12 2D 4B      [24] 1157 	lcall	_sleepMillis
+   2DE0 90 02 26      [24] 1156 	mov	dptr,#0x0226
+   2DE3 12 2D 63      [24] 1157 	lcall	_sleepMillis
                            1158 ;	global.c:42: LED = 0;
-   2DCE C2 A4         [12] 1159 	clr	_P2_4
+   2DE6 C2 A4         [12] 1159 	clr	_P2_4
                            1160 ;	global.c:43: sleepMillis(25);
-   2DD0 90 00 19      [24] 1161 	mov	dptr,#0x0019
-   2DD3 12 2D 4B      [24] 1162 	lcall	_sleepMillis
-   2DD6 D0 05         [24] 1163 	pop	ar5
-   2DD8 D0 06         [24] 1164 	pop	ar6
-   2DDA D0 07         [24] 1165 	pop	ar7
-   2DDC 80 22         [24] 1166 	sjmp	00103$
-   2DDE                    1167 00102$:
+   2DE8 90 00 19      [24] 1161 	mov	dptr,#0x0019
+   2DEB 12 2D 63      [24] 1162 	lcall	_sleepMillis
+   2DEE D0 05         [24] 1163 	pop	ar5
+   2DF0 D0 06         [24] 1164 	pop	ar6
+   2DF2 D0 07         [24] 1165 	pop	ar7
+   2DF4 80 22         [24] 1166 	sjmp	00103$
+   2DF6                    1167 00102$:
                            1168 ;	global.c:47: sleepMillis(275);
-   2DDE 90 01 13      [24] 1169 	mov	dptr,#0x0113
-   2DE1 C0 07         [24] 1170 	push	ar7
-   2DE3 C0 06         [24] 1171 	push	ar6
-   2DE5 C0 05         [24] 1172 	push	ar5
-   2DE7 12 2D 4B      [24] 1173 	lcall	_sleepMillis
+   2DF6 90 01 13      [24] 1169 	mov	dptr,#0x0113
+   2DF9 C0 07         [24] 1170 	push	ar7
+   2DFB C0 06         [24] 1171 	push	ar6
+   2DFD C0 05         [24] 1172 	push	ar5
+   2DFF 12 2D 63      [24] 1173 	lcall	_sleepMillis
                            1174 ;	global.c:48: LED = 1;
-   2DEA D2 A4         [12] 1175 	setb	_P2_4
+   2E02 D2 A4         [12] 1175 	setb	_P2_4
                            1176 ;	global.c:49: sleepMillis(50);
-   2DEC 90 00 32      [24] 1177 	mov	dptr,#0x0032
-   2DEF 12 2D 4B      [24] 1178 	lcall	_sleepMillis
+   2E04 90 00 32      [24] 1177 	mov	dptr,#0x0032
+   2E07 12 2D 63      [24] 1178 	lcall	_sleepMillis
                            1179 ;	global.c:50: LED = 0;
-   2DF2 C2 A4         [12] 1180 	clr	_P2_4
+   2E0A C2 A4         [12] 1180 	clr	_P2_4
                            1181 ;	global.c:51: sleepMillis(275);
-   2DF4 90 01 13      [24] 1182 	mov	dptr,#0x0113
-   2DF7 12 2D 4B      [24] 1183 	lcall	_sleepMillis
-   2DFA D0 05         [24] 1184 	pop	ar5
-   2DFC D0 06         [24] 1185 	pop	ar6
-   2DFE D0 07         [24] 1186 	pop	ar7
-   2E00                    1187 00103$:
+   2E0C 90 01 13      [24] 1182 	mov	dptr,#0x0113
+   2E0F 12 2D 63      [24] 1183 	lcall	_sleepMillis
+   2E12 D0 05         [24] 1184 	pop	ar5
+   2E14 D0 06         [24] 1185 	pop	ar6
+   2E16 D0 07         [24] 1186 	pop	ar7
+   2E18                    1187 00103$:
                            1188 ;	global.c:53: num = num >> 1;
-   2E00 EF            [12] 1189 	mov	a,r7
-   2E01 C3            [12] 1190 	clr	c
-   2E02 13            [12] 1191 	rrc	a
-   2E03 CE            [12] 1192 	xch	a,r6
-   2E04 13            [12] 1193 	rrc	a
-   2E05 CE            [12] 1194 	xch	a,r6
-   2E06 FF            [12] 1195 	mov	r7,a
+   2E18 EF            [12] 1189 	mov	a,r7
+   2E19 C3            [12] 1190 	clr	c
+   2E1A 13            [12] 1191 	rrc	a
+   2E1B CE            [12] 1192 	xch	a,r6
+   2E1C 13            [12] 1193 	rrc	a
+   2E1D CE            [12] 1194 	xch	a,r6
+   2E1E FF            [12] 1195 	mov	r7,a
                            1196 ;	global.c:35: for (; bits>=0; bits--)
-   2E07 1D            [12] 1197 	dec	r5
-   2E08 80 A8         [24] 1198 	sjmp	00106$
-   2E0A                    1199 00104$:
+   2E1F 1D            [12] 1197 	dec	r5
+   2E20 80 A8         [24] 1198 	sjmp	00106$
+   2E22                    1199 00104$:
                            1200 ;	global.c:55: LED = 0;
-   2E0A C2 A4         [12] 1201 	clr	_P2_4
+   2E22 C2 A4         [12] 1201 	clr	_P2_4
                            1202 ;	global.c:56: sleepMillis(1000);
-   2E0C 90 03 E8      [24] 1203 	mov	dptr,#0x03E8
-   2E0F 02 2D 4B      [24] 1204 	ljmp	_sleepMillis
+   2E24 90 03 E8      [24] 1203 	mov	dptr,#0x03E8
+   2E27 02 2D 63      [24] 1204 	ljmp	_sleepMillis
                            1205 ;------------------------------------------------------------
                            1206 ;Allocation info for local variables in function 'strncmp'
                            1207 ;------------------------------------------------------------
@@ -1215,105 +1215,105 @@
                            1215 ;	-----------------------------------------
                            1216 ;	 function strncmp
                            1217 ;	-----------------------------------------
-   2E12                    1218 _strncmp:
-   2E12 AF F0         [24] 1219 	mov	r7,b
-   2E14 AE 83         [24] 1220 	mov	r6,dph
-   2E16 E5 82         [12] 1221 	mov	a,dpl
-   2E18 90 FD BE      [24] 1222 	mov	dptr,#_strncmp_s1_1_58
-   2E1B F0            [24] 1223 	movx	@dptr,a
-   2E1C EE            [12] 1224 	mov	a,r6
-   2E1D A3            [24] 1225 	inc	dptr
-   2E1E F0            [24] 1226 	movx	@dptr,a
-   2E1F EF            [12] 1227 	mov	a,r7
-   2E20 A3            [24] 1228 	inc	dptr
-   2E21 F0            [24] 1229 	movx	@dptr,a
+   2E2A                    1218 _strncmp:
+   2E2A AF F0         [24] 1219 	mov	r7,b
+   2E2C AE 83         [24] 1220 	mov	r6,dph
+   2E2E E5 82         [12] 1221 	mov	a,dpl
+   2E30 90 FD BE      [24] 1222 	mov	dptr,#_strncmp_s1_1_58
+   2E33 F0            [24] 1223 	movx	@dptr,a
+   2E34 EE            [12] 1224 	mov	a,r6
+   2E35 A3            [24] 1225 	inc	dptr
+   2E36 F0            [24] 1226 	movx	@dptr,a
+   2E37 EF            [12] 1227 	mov	a,r7
+   2E38 A3            [24] 1228 	inc	dptr
+   2E39 F0            [24] 1229 	movx	@dptr,a
                            1230 ;	global.c:100: return 0;
-   2E22 90 FD BE      [24] 1231 	mov	dptr,#_strncmp_s1_1_58
-   2E25 E0            [24] 1232 	movx	a,@dptr
-   2E26 FD            [12] 1233 	mov	r5,a
-   2E27 A3            [24] 1234 	inc	dptr
-   2E28 E0            [24] 1235 	movx	a,@dptr
-   2E29 FE            [12] 1236 	mov	r6,a
-   2E2A A3            [24] 1237 	inc	dptr
-   2E2B E0            [24] 1238 	movx	a,@dptr
-   2E2C FF            [12] 1239 	mov	r7,a
-   2E2D 90 FD BB      [24] 1240 	mov	dptr,#_strncmp_PARM_2
-   2E30 E0            [24] 1241 	movx	a,@dptr
-   2E31 FA            [12] 1242 	mov	r2,a
-   2E32 A3            [24] 1243 	inc	dptr
-   2E33 E0            [24] 1244 	movx	a,@dptr
-   2E34 FB            [12] 1245 	mov	r3,a
-   2E35 A3            [24] 1246 	inc	dptr
-   2E36 E0            [24] 1247 	movx	a,@dptr
-   2E37 FC            [12] 1248 	mov	r4,a
-   2E38 A8 14         [24] 1249 	mov	r0,_strncmp_PARM_3
-   2E3A A9 15         [24] 1250 	mov	r1,(_strncmp_PARM_3 + 1)
-   2E3C                    1251 00105$:
+   2E3A 90 FD BE      [24] 1231 	mov	dptr,#_strncmp_s1_1_58
+   2E3D E0            [24] 1232 	movx	a,@dptr
+   2E3E FD            [12] 1233 	mov	r5,a
+   2E3F A3            [24] 1234 	inc	dptr
+   2E40 E0            [24] 1235 	movx	a,@dptr
+   2E41 FE            [12] 1236 	mov	r6,a
+   2E42 A3            [24] 1237 	inc	dptr
+   2E43 E0            [24] 1238 	movx	a,@dptr
+   2E44 FF            [12] 1239 	mov	r7,a
+   2E45 90 FD BB      [24] 1240 	mov	dptr,#_strncmp_PARM_2
+   2E48 E0            [24] 1241 	movx	a,@dptr
+   2E49 FA            [12] 1242 	mov	r2,a
+   2E4A A3            [24] 1243 	inc	dptr
+   2E4B E0            [24] 1244 	movx	a,@dptr
+   2E4C FB            [12] 1245 	mov	r3,a
+   2E4D A3            [24] 1246 	inc	dptr
+   2E4E E0            [24] 1247 	movx	a,@dptr
+   2E4F FC            [12] 1248 	mov	r4,a
+   2E50 A8 14         [24] 1249 	mov	r0,_strncmp_PARM_3
+   2E52 A9 15         [24] 1250 	mov	r1,(_strncmp_PARM_3 + 1)
+   2E54                    1251 00105$:
                            1252 ;	global.c:92: for (;n>0;n--)
-   2E3C E8            [12] 1253 	mov	a,r0
-   2E3D 49            [12] 1254 	orl	a,r1
-   2E3E 60 51         [24] 1255 	jz	00103$
+   2E54 E8            [12] 1253 	mov	a,r0
+   2E55 49            [12] 1254 	orl	a,r1
+   2E56 60 51         [24] 1255 	jz	00103$
                            1256 ;	global.c:94: tst = *s1 - *s2;
-   2E40 C0 00         [24] 1257 	push	ar0
-   2E42 C0 01         [24] 1258 	push	ar1
-   2E44 8D 82         [24] 1259 	mov	dpl,r5
-   2E46 8E 83         [24] 1260 	mov	dph,r6
-   2E48 8F F0         [24] 1261 	mov	b,r7
-   2E4A 12 35 6B      [24] 1262 	lcall	__gptrget
-   2E4D F9            [12] 1263 	mov	r1,a
-   2E4E 8A 82         [24] 1264 	mov	dpl,r2
-   2E50 8B 83         [24] 1265 	mov	dph,r3
-   2E52 8C F0         [24] 1266 	mov	b,r4
-   2E54 12 35 6B      [24] 1267 	lcall	__gptrget
-   2E57 F8            [12] 1268 	mov	r0,a
-   2E58 E9            [12] 1269 	mov	a,r1
-   2E59 C3            [12] 1270 	clr	c
-   2E5A 98            [12] 1271 	subb	a,r0
-   2E5B F5 16         [12] 1272 	mov	_strncmp_tst_1_59,a
+   2E58 C0 00         [24] 1257 	push	ar0
+   2E5A C0 01         [24] 1258 	push	ar1
+   2E5C 8D 82         [24] 1259 	mov	dpl,r5
+   2E5E 8E 83         [24] 1260 	mov	dph,r6
+   2E60 8F F0         [24] 1261 	mov	b,r7
+   2E62 12 35 83      [24] 1262 	lcall	__gptrget
+   2E65 F9            [12] 1263 	mov	r1,a
+   2E66 8A 82         [24] 1264 	mov	dpl,r2
+   2E68 8B 83         [24] 1265 	mov	dph,r3
+   2E6A 8C F0         [24] 1266 	mov	b,r4
+   2E6C 12 35 83      [24] 1267 	lcall	__gptrget
+   2E6F F8            [12] 1268 	mov	r0,a
+   2E70 E9            [12] 1269 	mov	a,r1
+   2E71 C3            [12] 1270 	clr	c
+   2E72 98            [12] 1271 	subb	a,r0
+   2E73 F5 16         [12] 1272 	mov	_strncmp_tst_1_59,a
                            1273 ;	global.c:95: if (tst)
-   2E5D D0 01         [24] 1274 	pop	ar1
-   2E5F D0 00         [24] 1275 	pop	ar0
-   2E61 E5 16         [12] 1276 	mov	a,_strncmp_tst_1_59
-   2E63 60 10         [24] 1277 	jz	00102$
+   2E75 D0 01         [24] 1274 	pop	ar1
+   2E77 D0 00         [24] 1275 	pop	ar0
+   2E79 E5 16         [12] 1276 	mov	a,_strncmp_tst_1_59
+   2E7B 60 10         [24] 1277 	jz	00102$
                            1278 ;	global.c:96: return tst;
-   2E65 E5 16         [12] 1279 	mov	a,_strncmp_tst_1_59
-   2E67 F5 17         [12] 1280 	mov	_strncmp_sloc0_1_0,a
-   2E69 33            [12] 1281 	rlc	a
-   2E6A 95 E0         [12] 1282 	subb	a,acc
-   2E6C F5 18         [12] 1283 	mov	(_strncmp_sloc0_1_0 + 1),a
-   2E6E 85 17 82      [24] 1284 	mov	dpl,_strncmp_sloc0_1_0
-   2E71 85 18 83      [24] 1285 	mov	dph,(_strncmp_sloc0_1_0 + 1)
-   2E74 22            [24] 1286 	ret
-   2E75                    1287 00102$:
+   2E7D E5 16         [12] 1279 	mov	a,_strncmp_tst_1_59
+   2E7F F5 17         [12] 1280 	mov	_strncmp_sloc0_1_0,a
+   2E81 33            [12] 1281 	rlc	a
+   2E82 95 E0         [12] 1282 	subb	a,acc
+   2E84 F5 18         [12] 1283 	mov	(_strncmp_sloc0_1_0 + 1),a
+   2E86 85 17 82      [24] 1284 	mov	dpl,_strncmp_sloc0_1_0
+   2E89 85 18 83      [24] 1285 	mov	dph,(_strncmp_sloc0_1_0 + 1)
+   2E8C 22            [24] 1286 	ret
+   2E8D                    1287 00102$:
                            1288 ;	global.c:97: s1++;
-   2E75 0D            [12] 1289 	inc	r5
-   2E76 BD 00 01      [24] 1290 	cjne	r5,#0x00,00122$
-   2E79 0E            [12] 1291 	inc	r6
-   2E7A                    1292 00122$:
-   2E7A 90 FD BE      [24] 1293 	mov	dptr,#_strncmp_s1_1_58
-   2E7D ED            [12] 1294 	mov	a,r5
-   2E7E F0            [24] 1295 	movx	@dptr,a
-   2E7F EE            [12] 1296 	mov	a,r6
-   2E80 A3            [24] 1297 	inc	dptr
-   2E81 F0            [24] 1298 	movx	@dptr,a
-   2E82 EF            [12] 1299 	mov	a,r7
-   2E83 A3            [24] 1300 	inc	dptr
-   2E84 F0            [24] 1301 	movx	@dptr,a
+   2E8D 0D            [12] 1289 	inc	r5
+   2E8E BD 00 01      [24] 1290 	cjne	r5,#0x00,00122$
+   2E91 0E            [12] 1291 	inc	r6
+   2E92                    1292 00122$:
+   2E92 90 FD BE      [24] 1293 	mov	dptr,#_strncmp_s1_1_58
+   2E95 ED            [12] 1294 	mov	a,r5
+   2E96 F0            [24] 1295 	movx	@dptr,a
+   2E97 EE            [12] 1296 	mov	a,r6
+   2E98 A3            [24] 1297 	inc	dptr
+   2E99 F0            [24] 1298 	movx	@dptr,a
+   2E9A EF            [12] 1299 	mov	a,r7
+   2E9B A3            [24] 1300 	inc	dptr
+   2E9C F0            [24] 1301 	movx	@dptr,a
                            1302 ;	global.c:98: s2++;
-   2E85 0A            [12] 1303 	inc	r2
-   2E86 BA 00 01      [24] 1304 	cjne	r2,#0x00,00123$
-   2E89 0B            [12] 1305 	inc	r3
-   2E8A                    1306 00123$:
+   2E9D 0A            [12] 1303 	inc	r2
+   2E9E BA 00 01      [24] 1304 	cjne	r2,#0x00,00123$
+   2EA1 0B            [12] 1305 	inc	r3
+   2EA2                    1306 00123$:
                            1307 ;	global.c:92: for (;n>0;n--)
-   2E8A 18            [12] 1308 	dec	r0
-   2E8B B8 FF 01      [24] 1309 	cjne	r0,#0xFF,00124$
-   2E8E 19            [12] 1310 	dec	r1
-   2E8F                    1311 00124$:
-   2E8F 80 AB         [24] 1312 	sjmp	00105$
-   2E91                    1313 00103$:
+   2EA2 18            [12] 1308 	dec	r0
+   2EA3 B8 FF 01      [24] 1309 	cjne	r0,#0xFF,00124$
+   2EA6 19            [12] 1310 	dec	r1
+   2EA7                    1311 00124$:
+   2EA7 80 AB         [24] 1312 	sjmp	00105$
+   2EA9                    1313 00103$:
                            1314 ;	global.c:100: return 0;
-   2E91 90 00 00      [24] 1315 	mov	dptr,#0x0000
-   2E94 22            [24] 1316 	ret
+   2EA9 90 00 00      [24] 1315 	mov	dptr,#0x0000
+   2EAC 22            [24] 1316 	ret
                            1317 ;------------------------------------------------------------
                            1318 ;Allocation info for local variables in function 'clock_init'
                            1319 ;------------------------------------------------------------
@@ -1321,40 +1321,40 @@
                            1321 ;	-----------------------------------------
                            1322 ;	 function clock_init
                            1323 ;	-----------------------------------------
-   2E95                    1324 _clock_init:
+   2EAD                    1324 _clock_init:
                            1325 ;	global.c:108: SLEEP &= ~SLEEP_OSC_PD;
-   2E95 AF BE         [24] 1326 	mov	r7,_SLEEP
-   2E97 74 FB         [12] 1327 	mov	a,#0xFB
-   2E99 5F            [12] 1328 	anl	a,r7
-   2E9A F5 BE         [12] 1329 	mov	_SLEEP,a
+   2EAD AF BE         [24] 1326 	mov	r7,_SLEEP
+   2EAF 74 FB         [12] 1327 	mov	a,#0xFB
+   2EB1 5F            [12] 1328 	anl	a,r7
+   2EB2 F5 BE         [12] 1329 	mov	_SLEEP,a
                            1330 ;	global.c:109: while( !(SLEEP & SLEEP_XOSC_S) );
-   2E9C                    1331 00101$:
-   2E9C E5 BE         [12] 1332 	mov	a,_SLEEP
-   2E9E 30 E6 FB      [24] 1333 	jnb	acc.6,00101$
+   2EB4                    1331 00101$:
+   2EB4 E5 BE         [12] 1332 	mov	a,_SLEEP
+   2EB6 30 E6 FB      [24] 1333 	jnb	acc.6,00101$
                            1334 ;	global.c:110: CLKCON = (CLKCON & ~(CLKCON_CLKSPD | CLKCON_OSC)) | CLKSPD_DIV_1;
-   2EA1 AF C6         [24] 1335 	mov	r7,_CLKCON
-   2EA3 74 B8         [12] 1336 	mov	a,#0xB8
-   2EA5 5F            [12] 1337 	anl	a,r7
-   2EA6 F5 C6         [12] 1338 	mov	_CLKCON,a
+   2EB9 AF C6         [24] 1335 	mov	r7,_CLKCON
+   2EBB 74 B8         [12] 1336 	mov	a,#0xB8
+   2EBD 5F            [12] 1337 	anl	a,r7
+   2EBE F5 C6         [12] 1338 	mov	_CLKCON,a
                            1339 ;	global.c:111: while (CLKCON & CLKCON_OSC);
-   2EA8                    1340 00104$:
-   2EA8 E5 C6         [12] 1341 	mov	a,_CLKCON
-   2EAA 20 E6 FB      [24] 1342 	jb	acc.6,00104$
+   2EC0                    1340 00104$:
+   2EC0 E5 C6         [12] 1341 	mov	a,_CLKCON
+   2EC2 20 E6 FB      [24] 1342 	jb	acc.6,00104$
                            1343 ;	global.c:112: SLEEP |= SLEEP_OSC_PD;
-   2EAD 43 BE 04      [24] 1344 	orl	_SLEEP,#0x04
+   2EC5 43 BE 04      [24] 1344 	orl	_SLEEP,#0x04
                            1345 ;	global.c:113: while (!IS_XOSC_STABLE());
-   2EB0                    1346 00107$:
-   2EB0 E5 BE         [12] 1347 	mov	a,_SLEEP
-   2EB2 30 E6 FB      [24] 1348 	jnb	acc.6,00107$
+   2EC8                    1346 00107$:
+   2EC8 E5 BE         [12] 1347 	mov	a,_SLEEP
+   2ECA 30 E6 FB      [24] 1348 	jnb	acc.6,00107$
                            1349 ;	global.c:119: CLKCON &= 0xc7;          //( ~ 0b00111000);  - clearing out TICKSPD  freq = 24mhz on cc1111, 26mhz on cc1110
-   2EB5 53 C6 C7      [24] 1350 	anl	_CLKCON,#0xC7
+   2ECD 53 C6 C7      [24] 1350 	anl	_CLKCON,#0xC7
                            1351 ;	global.c:121: T1CTL |= T1CTL_DIV_128;     // T1 running at 187.500 kHz
-   2EB8 43 E4 0C      [24] 1352 	orl	_T1CTL,#0x0C
+   2ED0 43 E4 0C      [24] 1352 	orl	_T1CTL,#0x0C
                            1353 ;	global.c:122: T1CTL |= T1CTL_MODE_FREERUN;
-   2EBB 43 E4 01      [24] 1354 	orl	_T1CTL,#0x01
+   2ED3 43 E4 01      [24] 1354 	orl	_T1CTL,#0x01
                            1355 ;	global.c:123: T1IE = 1;
-   2EBE D2 B9         [12] 1356 	setb	_T1IE
-   2EC0 22            [24] 1357 	ret
+   2ED6 D2 B9         [12] 1356 	setb	_T1IE
+   2ED8 22            [24] 1357 	ret
                            1358 ;------------------------------------------------------------
                            1359 ;Allocation info for local variables in function 'io_init'
                            1360 ;------------------------------------------------------------
@@ -1362,25 +1362,25 @@
                            1362 ;	-----------------------------------------
                            1363 ;	 function io_init
                            1364 ;	-----------------------------------------
-   2EC1                    1365 _io_init:
+   2ED9                    1365 _io_init:
                            1366 ;	global.c:172: IEN2&=~IEN2_WDTIE;
-   2EC1 AF 9A         [24] 1367 	mov	r7,_IEN2
-   2EC3 74 DF         [12] 1368 	mov	a,#0xDF
-   2EC5 5F            [12] 1369 	anl	a,r7
-   2EC6 F5 9A         [12] 1370 	mov	_IEN2,a
+   2ED9 AF 9A         [24] 1367 	mov	r7,_IEN2
+   2EDB 74 DF         [12] 1368 	mov	a,#0xDF
+   2EDD 5F            [12] 1369 	anl	a,r7
+   2EDE F5 9A         [12] 1370 	mov	_IEN2,a
                            1371 ;	global.c:173: IEN0&=~EA;
-   2EC8 A2 AF         [12] 1372 	mov	c,_EA
-   2ECA E4            [12] 1373 	clr	a
-   2ECB 33            [12] 1374 	rlc	a
-   2ECC F4            [12] 1375 	cpl	a
-   2ECD 52 A8         [12] 1376 	anl	_IEN0,a
+   2EE0 A2 AF         [12] 1372 	mov	c,_EA
+   2EE2 E4            [12] 1373 	clr	a
+   2EE3 33            [12] 1374 	rlc	a
+   2EE4 F4            [12] 1375 	cpl	a
+   2EE5 52 A8         [12] 1376 	anl	_IEN0,a
                            1377 ;	global.c:180: P2DIR |= BIT3|BIT4;
-   2ECF 43 FF 18      [24] 1378 	orl	_P2DIR,#0x18
+   2EE7 43 FF 18      [24] 1378 	orl	_P2DIR,#0x18
                            1379 ;	global.c:181: P2_3 = 0;
-   2ED2 C2 A3         [12] 1380 	clr	_P2_3
+   2EEA C2 A3         [12] 1380 	clr	_P2_3
                            1381 ;	global.c:182: P2_4 = 0;
-   2ED4 C2 A4         [12] 1382 	clr	_P2_4
-   2ED6 22            [24] 1383 	ret
+   2EEC C2 A4         [12] 1382 	clr	_P2_4
+   2EEE 22            [24] 1383 	ret
                            1384 ;------------------------------------------------------------
                            1385 ;Allocation info for local variables in function 't1IntHandler'
                            1386 ;------------------------------------------------------------
@@ -1388,33 +1388,33 @@
                            1388 ;	-----------------------------------------
                            1389 ;	 function t1IntHandler
                            1390 ;	-----------------------------------------
-   2ED7                    1391 _t1IntHandler:
-   2ED7 C0 E0         [24] 1392 	push	acc
-   2ED9 C0 82         [24] 1393 	push	dpl
-   2EDB C0 83         [24] 1394 	push	dph
-   2EDD C0 D0         [24] 1395 	push	psw
+   2EEF                    1391 _t1IntHandler:
+   2EEF C0 E0         [24] 1392 	push	acc
+   2EF1 C0 82         [24] 1393 	push	dpl
+   2EF3 C0 83         [24] 1394 	push	dph
+   2EF5 C0 D0         [24] 1395 	push	psw
                            1396 ;	global.c:221: clock ++;
-   2EDF 90 FD B7      [24] 1397 	mov	dptr,#_clock
-   2EE2 E0            [24] 1398 	movx	a,@dptr
-   2EE3 24 01         [12] 1399 	add	a,#0x01
-   2EE5 F0            [24] 1400 	movx	@dptr,a
-   2EE6 A3            [24] 1401 	inc	dptr
-   2EE7 E0            [24] 1402 	movx	a,@dptr
-   2EE8 34 00         [12] 1403 	addc	a,#0x00
-   2EEA F0            [24] 1404 	movx	@dptr,a
-   2EEB A3            [24] 1405 	inc	dptr
-   2EEC E0            [24] 1406 	movx	a,@dptr
-   2EED 34 00         [12] 1407 	addc	a,#0x00
-   2EEF F0            [24] 1408 	movx	@dptr,a
-   2EF0 A3            [24] 1409 	inc	dptr
-   2EF1 E0            [24] 1410 	movx	a,@dptr
-   2EF2 34 00         [12] 1411 	addc	a,#0x00
-   2EF4 F0            [24] 1412 	movx	@dptr,a
-   2EF5 D0 D0         [24] 1413 	pop	psw
-   2EF7 D0 83         [24] 1414 	pop	dph
-   2EF9 D0 82         [24] 1415 	pop	dpl
-   2EFB D0 E0         [24] 1416 	pop	acc
-   2EFD 32            [24] 1417 	reti
+   2EF7 90 FD B7      [24] 1397 	mov	dptr,#_clock
+   2EFA E0            [24] 1398 	movx	a,@dptr
+   2EFB 24 01         [12] 1399 	add	a,#0x01
+   2EFD F0            [24] 1400 	movx	@dptr,a
+   2EFE A3            [24] 1401 	inc	dptr
+   2EFF E0            [24] 1402 	movx	a,@dptr
+   2F00 34 00         [12] 1403 	addc	a,#0x00
+   2F02 F0            [24] 1404 	movx	@dptr,a
+   2F03 A3            [24] 1405 	inc	dptr
+   2F04 E0            [24] 1406 	movx	a,@dptr
+   2F05 34 00         [12] 1407 	addc	a,#0x00
+   2F07 F0            [24] 1408 	movx	@dptr,a
+   2F08 A3            [24] 1409 	inc	dptr
+   2F09 E0            [24] 1410 	movx	a,@dptr
+   2F0A 34 00         [12] 1411 	addc	a,#0x00
+   2F0C F0            [24] 1412 	movx	@dptr,a
+   2F0D D0 D0         [24] 1413 	pop	psw
+   2F0F D0 83         [24] 1414 	pop	dph
+   2F11 D0 82         [24] 1415 	pop	dpl
+   2F13 D0 E0         [24] 1416 	pop	acc
+   2F15 32            [24] 1417 	reti
                            1418 ;	eliminated unneeded mov psw,# (no regs used in bank)
                            1419 ;	eliminated unneeded push/pop b
                            1420 	.area CSEG    (CODE)
