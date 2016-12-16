@@ -20,6 +20,22 @@
 #include "cc1110_spicom.h"
 
 
+#ifdef SDCC
+  __code u8 sdccver[] = "SDCCv" QUOTE(SDCC);
+#else 
+  #ifdef __SDCC
+    __code u8 sdccver[] = "SDCCv" QUOTE(__SDCC);
+  #else
+    __code u8 sdccver[] = "NON-SDCC";
+  #endif
+#endif
+// BUILD_VERSION is passed in -D from Makefile
+
+__code u8 buildname[] = {
+    'E','X','P','L','O','R','E','R',' ','r',ASCII_LONG(BUILD_VERSION),'\x00',
+};
+
+
 volatile uint8_t __xdata spi_input_buf[SPI_BUF_LEN];
 volatile uint8_t input_size = 0;
 volatile uint8_t input_head_idx = 0;
@@ -113,12 +129,14 @@ void rx1_isr(void) __interrupt URX1_VECTOR {
     }
     if (slave_send_size == 0 && master_send_size == 0) {
         spi_mode = SPI_MODE_WAIT;
-        if (cb_ep5)
-        {
-            if(!cb_ep5()) {
-                // TODO: non-zero return may be needed later
-            }
-        }
+    }
+	
+	if (serial_data_available)
+    {
+		ep5.flags |= EP_OUTBUF_WRITTEN;
+		processOUTEP5();
+        // TODO: non-zero return may be needed later
+        serial_data_available = 0;
     }
   }
 }
@@ -268,6 +286,8 @@ void initUSB()
 
   IRCON2 &= ~BIT2; // Clear UTX1IF
   IEN2 |= BIT3;    // Enable UTX1IE interrupt
+  
+  spi_mode = SPI_MODE_WAIT;
 
 }
 
@@ -311,9 +331,10 @@ int txdata(u8 app, u8 cmd, u16 len, __xdata u8* dataptr)
     vcom_putchar(cmd);
     
     /* function from usb thing, only need data ptr */    
-    while (*dataptr) 
+    while (len > 0) //*dataptr) 
     {
-          vcom_putchar(*dataptr++);
+        vcom_putchar(*dataptr++);
+		len--;
     }
     vcom_putchar(0);
     vcom_flush();
@@ -349,4 +370,164 @@ void appReturn(__xdata u8 len, __xdata u8* __xdata  response)
 {
     ep5.flags &= ~EP_OUTBUF_WRITTEN;                       // this should be superfluous... but could be causing problems?
     txdata(ep5.OUTapp,ep5.OUTcmd, len, response);
+}
+
+void processOUTEP5(void)
+{
+    u16 loop;
+    __xdata u8* __xdata  ptr; 
+
+    // if the buffer is still being loaded or just plain empty, ignore this  (superfluous... may remove this check later)
+    if ((ep5.flags & EP_OUTBUF_WRITTEN) == 0)
+        return;
+
+    ptr = &ep5.OUTbuf[0];
+    // system application
+    if (ep5.OUTapp == 0xff)                                        
+    {
+
+        switch (ep5.OUTcmd)
+        {
+            case CMD_PEEK:
+                ep5.OUTbytesleft =  *ptr++;
+                ep5.OUTbytesleft += *ptr++ << 8;
+
+                loop =  (u16)*ptr++;
+                loop += (u16)*ptr++ << 8;
+                ptr = (__xdata u8*) loop;
+
+                txdata(ep5.OUTapp, ep5.OUTcmd, ep5.OUTbytesleft, ptr);
+                ep5.OUTbytesleft = 0;
+                break;
+
+            case CMD_POKE:
+                loop =  *ptr++;
+                loop += *ptr++ << 8;
+                ep5.dptr = (__xdata u8*) loop;
+
+                loop = ep5.OUTlen - 2;
+
+                for (;loop>0;loop--)
+                {
+                    *ep5.dptr++ = *ptr++;
+                }
+
+                //if (ep5.OUTbytesleft == 0)
+                txdata(ep5.OUTapp, ep5.OUTcmd, 2, (__xdata u8*)&(ep5.OUTbytesleft));
+                break;
+
+            case CMD_POKE_REG:
+                if (!(ep5.flags & EP_OUTBUF_CONTINUED))
+                {
+                    loop =  *ptr++;
+                    loop += *ptr++ << 8;
+                    ep5.dptr = (__xdata u8*) loop;
+                }
+                // FIXME: do we want to DMA here?
+                
+                loop = ep5.OUTbytesleft;
+                if (loop > EP5OUT_MAX_PACKET_SIZE)
+                {
+                    loop = EP5OUT_MAX_PACKET_SIZE;
+                }
+
+                ep5.OUTbytesleft -= loop;
+                //debughex16(loop);
+
+                for (;loop>0;loop--)
+                {
+                    *ep5.dptr++ = *ptr++;
+                }
+
+                txdata(ep5.OUTapp, ep5.OUTcmd, 2, (__xdata u8*)&(ep5.OUTbytesleft));
+
+                break;
+            case CMD_PING:
+                blink(2,2);
+                txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);
+                break;
+
+            case CMD_STATUS:
+                txdata(ep5.OUTapp, ep5.OUTcmd, 13, (__xdata u8*)"UNIMPLEMENTED");
+                // unimplemented
+                break;
+
+            case CMD_GET_CLOCK:
+                txdata(ep5.OUTapp, ep5.OUTcmd, 4, (__xdata u8*)clock);
+                break;
+
+            case CMD_BUILDTYPE:
+                txdata(ep5.OUTapp, ep5.OUTcmd, sizeof(buildname), (__xdata u8*)&buildname[0]);
+                break;
+
+            case CMD_COMPILER:
+                txdata(ep5.OUTapp, ep5.OUTcmd, sizeof(sdccver), (__xdata u8*)&sdccver[0]);
+                break;
+                
+            case CMD_RFMODE:
+                switch (*ptr++)
+                {
+                    case RFST_SRX:
+                        RxMode();
+                        break;
+                    case RFST_SIDLE:
+                        LED = 0;
+                        IdleMode();
+                        break;
+                    case RFST_STX:
+                        TxMode();
+                        break;
+                }
+                //appReturn(ep5.OUTlen,buf);
+                txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);
+                break;
+
+            case CMD_PARTNUM:
+                ep5.OUTbytesleft = 1;
+
+                ptr = (__xdata u8*) &PARTNUM;
+
+                txdata(ep5.OUTapp, ep5.OUTcmd, ep5.OUTbytesleft, ptr);
+                ep5.OUTbytesleft = 0;
+                break;
+
+            case CMD_RESET:
+                if (strncmp(ptr, "RESET_NOW", 9))
+                    break;   //didn't match the signature.  must have been an accident.
+
+                // implement a RESET by trigging the watchdog timer
+                WDCTL = 0x80;   // Watchdog ENABLE, Watchdog mode, 1s until reset
+
+                txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);
+                break;
+
+            case CMD_CLEAR_CODES:
+                lastCode[0] = 0;
+                lastCode[1] = 0;
+                //txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);   // FIXME: need to reorient all these to return LCE_NO_ERROR unless error.
+                appReturn(2, ptr);
+                break;
+
+            default:
+                txdata(ep5.OUTapp,ep5.OUTcmd,ep5.OUTlen,ptr);
+        }
+
+        ep5.flags &= ~EP_OUTBUF_WRITTEN; 
+    }
+    else
+    {
+        if (cb_ep5)
+        {
+            if (! cb_ep5())
+            {
+                // if the callback returns 0, we're done.  
+                // if non-zero, we can't handle it right now, keep it around
+                ep5.flags &= ~EP_OUTBUF_WRITTEN; 
+            }
+        }
+        else
+        {
+            ep5.flags &= ~EP_OUTBUF_WRITTEN; 
+        }
+    }
 }

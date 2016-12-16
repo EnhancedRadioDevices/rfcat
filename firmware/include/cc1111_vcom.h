@@ -21,7 +21,10 @@
 #ifndef _USB_H_
 #define _USB_H_
 
-#include "cc1111.h"
+//#include "cc1111.h"
+#include <cc1110.h>
+#include "cc1110-ext.h"
+  
 #include "types.h"
 
 // External interface
