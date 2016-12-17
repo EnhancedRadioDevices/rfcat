@@ -52,7 +52,7 @@ Start by connecting your Intel Edison to your Explorer board. Get the spi_serial
 * install make
 * make sure both are in the path
 * cd into the "rfcat/firmware/" directory
-* "make explorerfw" will build the firmware for the Explorer board. you should see something like:
+* "make explorerfw" will build the firmware for the Explorer board
 * use ccprog to flash the ExplorerCat.hex firmware onto the CC1110
 
     ./ccprog -p 19,7,36 erase
@@ -60,7 +60,7 @@ Start by connecting your Intel Edison to your Explorer board. Get the spi_serial
 
 # INSTALLING - EDISON-SIDE
 
-Dependencies:  spi_serial
+Dependencies:  spi_serial (https://github.com/EnhancedRadioDevices/915MHzEdisonExplorer_SW)
 
 install rfcat onto your system.  on most linux systems, this will place rfcat and rfcat_server in /usr/local/bin/ and rflib into /usr/*/lib/python2.x/dist-packages
 installation is simple:
