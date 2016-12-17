@@ -1,7 +1,7 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
                               3 ; Version 3.3.0 #8604 (Dec 30 2013) (Linux)
-                              4 ; This file was generated Fri Dec 16 14:02:33 2016
+                              4 ; This file was generated Fri Dec 16 14:41:37 2016
                               5 ;--------------------------------------------------------
                               6 	.module cc1111rf
                               7 	.optsdcc -mmcs51 --model-small
@@ -1034,42 +1034,42 @@
                      DE26  1034 _USBF3	=	0xde26
                      DE28  1035 _USBF4	=	0xde28
                      DE2A  1036 _USBF5	=	0xde2a
-   F981                    1037 _rfRxCurrentBuffer::
-   F981                    1038 	.ds 1
-   F982                    1039 _rfrxbuf::
-   F982                    1040 	.ds 1024
-   FD82                    1041 _rfRxCounter::
-   FD82                    1042 	.ds 4
-   FD86                    1043 _rfRxProcessed::
-   FD86                    1044 	.ds 2
-   FD88                    1045 _rftxbuf::
-   FD88                    1046 	.ds 2
-   FD8A                    1047 _txTotal::
-   FD8A                    1048 	.ds 2
-   FD8C                    1049 _rf_status::
-   FD8C                    1050 	.ds 1
-   FD8D                    1051 _rf_MAC_timer::
-   FD8D                    1052 	.ds 2
-   FD8F                    1053 _rf_tLastRecv::
-   FD8F                    1054 	.ds 2
-   FD91                    1055 _macdata::
-   FD91                    1056 	.ds 21
-   FDA6                    1057 _transmit_PARM_2:
-   FDA6                    1058 	.ds 2
-   FDA8                    1059 _transmit_PARM_3:
-   FDA8                    1060 	.ds 2
-   FDAA                    1061 _transmit_PARM_4:
-   FDAA                    1062 	.ds 2
-   FDAC                    1063 _transmit_buf_1_96:
-   FDAC                    1064 	.ds 2
-   FDAE                    1065 _transmit_encoffset_1_97:
-   FDAE                    1066 	.ds 1
-   FDAF                    1067 _byte_shuffle_PARM_2:
-   FDAF                    1068 	.ds 2
-   FDB1                    1069 _byte_shuffle_PARM_3:
-   FDB1                    1070 	.ds 2
-   FDB3                    1071 _byte_shuffle_buf_1_146:
-   FDB3                    1072 	.ds 2
+   F9CD                    1037 _rfRxCurrentBuffer::
+   F9CD                    1038 	.ds 1
+   F9CE                    1039 _rfrxbuf::
+   F9CE                    1040 	.ds 1024
+   FDCE                    1041 _rfRxCounter::
+   FDCE                    1042 	.ds 4
+   FDD2                    1043 _rfRxProcessed::
+   FDD2                    1044 	.ds 2
+   FDD4                    1045 _rftxbuf::
+   FDD4                    1046 	.ds 2
+   FDD6                    1047 _txTotal::
+   FDD6                    1048 	.ds 2
+   FDD8                    1049 _rf_status::
+   FDD8                    1050 	.ds 1
+   FDD9                    1051 _rf_MAC_timer::
+   FDD9                    1052 	.ds 2
+   FDDB                    1053 _rf_tLastRecv::
+   FDDB                    1054 	.ds 2
+   FDDD                    1055 _macdata::
+   FDDD                    1056 	.ds 21
+   FDF2                    1057 _transmit_PARM_2:
+   FDF2                    1058 	.ds 2
+   FDF4                    1059 _transmit_PARM_3:
+   FDF4                    1060 	.ds 2
+   FDF6                    1061 _transmit_PARM_4:
+   FDF6                    1062 	.ds 2
+   FDF8                    1063 _transmit_buf_1_96:
+   FDF8                    1064 	.ds 2
+   FDFA                    1065 _transmit_encoffset_1_97:
+   FDFA                    1066 	.ds 1
+   FDFB                    1067 _byte_shuffle_PARM_2:
+   FDFB                    1068 	.ds 2
+   FDFD                    1069 _byte_shuffle_PARM_3:
+   FDFD                    1070 	.ds 2
+   FDFF                    1071 _byte_shuffle_buf_1_146:
+   FDFF                    1072 	.ds 2
                            1073 ;--------------------------------------------------------
                            1074 ; absolute external ram data
                            1075 ;--------------------------------------------------------
@@ -1078,36 +1078,36 @@
                            1078 ; external initialized ram data
                            1079 ;--------------------------------------------------------
                            1080 	.area XISEG   (XDATA)
-   FDE7                    1081 _rfRxInfMode::
-   FDE7                    1082 	.ds 1
-   FDE8                    1083 _rfRxTotalRXLen::
-   FDE8                    1084 	.ds 2
-   FDEA                    1085 _rfRxLargeLen::
-   FDEA                    1086 	.ds 2
-   FDEC                    1087 _rfTxCurBufIdx::
-   FDEC                    1088 	.ds 1
-   FDED                    1089 _rfTxBufCount::
-   FDED                    1090 	.ds 1
-   FDEE                    1091 _rfTxCounter::
-   FDEE                    1092 	.ds 2
-   FDF0                    1093 _rfTxRepeatCounter::
-   FDF0                    1094 	.ds 2
-   FDF2                    1095 _rfTxBufferEnd::
-   FDF2                    1096 	.ds 2
-   FDF4                    1097 _rfTxRepeatLen::
-   FDF4                    1098 	.ds 2
-   FDF6                    1099 _rfTxRepeatOffset::
-   FDF6                    1100 	.ds 2
-   FDF8                    1101 _rfTxTotalTXLen::
-   FDF8                    1102 	.ds 2
-   FDFA                    1103 _rfTxInfMode::
-   FDFA                    1104 	.ds 1
-   FDFB                    1105 _rfAESMode::
-   FDFB                    1106 	.ds 1
-   FDFC                    1107 _rfAmpMode::
-   FDFC                    1108 	.ds 1
-   FDFD                    1109 _bRepeatMode::
-   FDFD                    1110 	.ds 1
+   FE33                    1081 _rfRxInfMode::
+   FE33                    1082 	.ds 1
+   FE34                    1083 _rfRxTotalRXLen::
+   FE34                    1084 	.ds 2
+   FE36                    1085 _rfRxLargeLen::
+   FE36                    1086 	.ds 2
+   FE38                    1087 _rfTxCurBufIdx::
+   FE38                    1088 	.ds 1
+   FE39                    1089 _rfTxBufCount::
+   FE39                    1090 	.ds 1
+   FE3A                    1091 _rfTxCounter::
+   FE3A                    1092 	.ds 2
+   FE3C                    1093 _rfTxRepeatCounter::
+   FE3C                    1094 	.ds 2
+   FE3E                    1095 _rfTxBufferEnd::
+   FE3E                    1096 	.ds 2
+   FE40                    1097 _rfTxRepeatLen::
+   FE40                    1098 	.ds 2
+   FE42                    1099 _rfTxRepeatOffset::
+   FE42                    1100 	.ds 2
+   FE44                    1101 _rfTxTotalTXLen::
+   FE44                    1102 	.ds 2
+   FE46                    1103 _rfTxInfMode::
+   FE46                    1104 	.ds 1
+   FE47                    1105 _rfAESMode::
+   FE47                    1106 	.ds 1
+   FE48                    1107 _rfAmpMode::
+   FE48                    1108 	.ds 1
+   FE49                    1109 _bRepeatMode::
+   FE49                    1110 	.ds 1
                            1111 	.area HOME    (CODE)
                            1112 	.area GSINIT0 (CODE)
                            1113 	.area GSINIT1 (CODE)
@@ -1144,7 +1144,7 @@
                            1144 ;	-----------------------------------------
                            1145 ;	 function setFreq
                            1146 ;	-----------------------------------------
-   2279                    1147 _setFreq:
+   22E9                    1147 _setFreq:
                      0007  1148 	ar7 = 0x07
                      0006  1149 	ar6 = 0x06
                      0005  1150 	ar5 = 0x05
@@ -1154,67 +1154,67 @@
                      0001  1154 	ar1 = 0x01
                      0000  1155 	ar0 = 0x00
                            1156 ;	cc1111rf.c:61: num = freq * (0x10000 / 1000000.0) / PLATFORM_CLOCK_FREQ;
-   2279 12 33 A0      [24] 1157 	lcall	___ulong2fs
-   227C AC 82         [24] 1158 	mov	r4,dpl
-   227E AD 83         [24] 1159 	mov	r5,dph
-   2280 AE F0         [24] 1160 	mov	r6,b
-   2282 FF            [12] 1161 	mov	r7,a
-   2283 C0 04         [24] 1162 	push	ar4
-   2285 C0 05         [24] 1163 	push	ar5
-   2287 C0 06         [24] 1164 	push	ar6
-   2289 C0 07         [24] 1165 	push	ar7
-   228B 90 37 BD      [24] 1166 	mov	dptr,#0x37BD
-   228E 75 F0 86      [24] 1167 	mov	b,#0x86
-   2291 74 3D         [12] 1168 	mov	a,#0x3D
-   2293 12 32 28      [24] 1169 	lcall	___fsmul
-   2296 AC 82         [24] 1170 	mov	r4,dpl
-   2298 AD 83         [24] 1171 	mov	r5,dph
-   229A AE F0         [24] 1172 	mov	r6,b
-   229C FF            [12] 1173 	mov	r7,a
-   229D E5 81         [12] 1174 	mov	a,sp
-   229F 24 FC         [12] 1175 	add	a,#0xfc
-   22A1 F5 81         [12] 1176 	mov	sp,a
-   22A3 E4            [12] 1177 	clr	a
-   22A4 C0 E0         [24] 1178 	push	acc
-   22A6 C0 E0         [24] 1179 	push	acc
-   22A8 74 C0         [12] 1180 	mov	a,#0xC0
-   22AA C0 E0         [24] 1181 	push	acc
-   22AC 74 41         [12] 1182 	mov	a,#0x41
-   22AE C0 E0         [24] 1183 	push	acc
-   22B0 8C 82         [24] 1184 	mov	dpl,r4
-   22B2 8D 83         [24] 1185 	mov	dph,r5
-   22B4 8E F0         [24] 1186 	mov	b,r6
-   22B6 EF            [12] 1187 	mov	a,r7
-   22B7 12 34 C0      [24] 1188 	lcall	___fsdiv
-   22BA AC 82         [24] 1189 	mov	r4,dpl
-   22BC AD 83         [24] 1190 	mov	r5,dph
-   22BE AE F0         [24] 1191 	mov	r6,b
-   22C0 FF            [12] 1192 	mov	r7,a
-   22C1 E5 81         [12] 1193 	mov	a,sp
-   22C3 24 FC         [12] 1194 	add	a,#0xfc
-   22C5 F5 81         [12] 1195 	mov	sp,a
-   22C7 8C 82         [24] 1196 	mov	dpl,r4
-   22C9 8D 83         [24] 1197 	mov	dph,r5
-   22CB 8E F0         [24] 1198 	mov	b,r6
-   22CD EF            [12] 1199 	mov	a,r7
-   22CE 12 33 B3      [24] 1200 	lcall	___fs2ulong
-   22D1 AC 82         [24] 1201 	mov	r4,dpl
-   22D3 AD 83         [24] 1202 	mov	r5,dph
-   22D5 AE F0         [24] 1203 	mov	r6,b
+   22E9 12 34 10      [24] 1157 	lcall	___ulong2fs
+   22EC AC 82         [24] 1158 	mov	r4,dpl
+   22EE AD 83         [24] 1159 	mov	r5,dph
+   22F0 AE F0         [24] 1160 	mov	r6,b
+   22F2 FF            [12] 1161 	mov	r7,a
+   22F3 C0 04         [24] 1162 	push	ar4
+   22F5 C0 05         [24] 1163 	push	ar5
+   22F7 C0 06         [24] 1164 	push	ar6
+   22F9 C0 07         [24] 1165 	push	ar7
+   22FB 90 37 BD      [24] 1166 	mov	dptr,#0x37BD
+   22FE 75 F0 86      [24] 1167 	mov	b,#0x86
+   2301 74 3D         [12] 1168 	mov	a,#0x3D
+   2303 12 32 98      [24] 1169 	lcall	___fsmul
+   2306 AC 82         [24] 1170 	mov	r4,dpl
+   2308 AD 83         [24] 1171 	mov	r5,dph
+   230A AE F0         [24] 1172 	mov	r6,b
+   230C FF            [12] 1173 	mov	r7,a
+   230D E5 81         [12] 1174 	mov	a,sp
+   230F 24 FC         [12] 1175 	add	a,#0xfc
+   2311 F5 81         [12] 1176 	mov	sp,a
+   2313 E4            [12] 1177 	clr	a
+   2314 C0 E0         [24] 1178 	push	acc
+   2316 C0 E0         [24] 1179 	push	acc
+   2318 74 C0         [12] 1180 	mov	a,#0xC0
+   231A C0 E0         [24] 1181 	push	acc
+   231C 74 41         [12] 1182 	mov	a,#0x41
+   231E C0 E0         [24] 1183 	push	acc
+   2320 8C 82         [24] 1184 	mov	dpl,r4
+   2322 8D 83         [24] 1185 	mov	dph,r5
+   2324 8E F0         [24] 1186 	mov	b,r6
+   2326 EF            [12] 1187 	mov	a,r7
+   2327 12 35 30      [24] 1188 	lcall	___fsdiv
+   232A AC 82         [24] 1189 	mov	r4,dpl
+   232C AD 83         [24] 1190 	mov	r5,dph
+   232E AE F0         [24] 1191 	mov	r6,b
+   2330 FF            [12] 1192 	mov	r7,a
+   2331 E5 81         [12] 1193 	mov	a,sp
+   2333 24 FC         [12] 1194 	add	a,#0xfc
+   2335 F5 81         [12] 1195 	mov	sp,a
+   2337 8C 82         [24] 1196 	mov	dpl,r4
+   2339 8D 83         [24] 1197 	mov	dph,r5
+   233B 8E F0         [24] 1198 	mov	b,r6
+   233D EF            [12] 1199 	mov	a,r7
+   233E 12 34 23      [24] 1200 	lcall	___fs2ulong
+   2341 AC 82         [24] 1201 	mov	r4,dpl
+   2343 AD 83         [24] 1202 	mov	r5,dph
+   2345 AE F0         [24] 1203 	mov	r6,b
                            1204 ;	cc1111rf.c:62: FREQ2 = num >> 16;
-   22D7 90 DF 09      [24] 1205 	mov	dptr,#_FREQ2
-   22DA EE            [12] 1206 	mov	a,r6
-   22DB F0            [24] 1207 	movx	@dptr,a
+   2347 90 DF 09      [24] 1205 	mov	dptr,#_FREQ2
+   234A EE            [12] 1206 	mov	a,r6
+   234B F0            [24] 1207 	movx	@dptr,a
                            1208 ;	cc1111rf.c:63: FREQ1 = (num>>8) & 0xff;
-   22DC 8D 03         [24] 1209 	mov	ar3,r5
-   22DE 90 DF 0A      [24] 1210 	mov	dptr,#_FREQ1
-   22E1 EB            [12] 1211 	mov	a,r3
-   22E2 F0            [24] 1212 	movx	@dptr,a
+   234C 8D 03         [24] 1209 	mov	ar3,r5
+   234E 90 DF 0A      [24] 1210 	mov	dptr,#_FREQ1
+   2351 EB            [12] 1211 	mov	a,r3
+   2352 F0            [24] 1212 	movx	@dptr,a
                            1213 ;	cc1111rf.c:64: FREQ0 = num & 0xff;
-   22E3 90 DF 0B      [24] 1214 	mov	dptr,#_FREQ0
-   22E6 EC            [12] 1215 	mov	a,r4
-   22E7 F0            [24] 1216 	movx	@dptr,a
-   22E8 22            [24] 1217 	ret
+   2353 90 DF 0B      [24] 1214 	mov	dptr,#_FREQ0
+   2356 EC            [12] 1215 	mov	a,r4
+   2357 F0            [24] 1216 	movx	@dptr,a
+   2358 22            [24] 1217 	ret
                            1218 ;------------------------------------------------------------
                            1219 ;Allocation info for local variables in function 'resetRFSTATE'
                            1220 ;------------------------------------------------------------
@@ -1222,33 +1222,33 @@
                            1222 ;	-----------------------------------------
                            1223 ;	 function resetRFSTATE
                            1224 ;	-----------------------------------------
-   22E9                    1225 _resetRFSTATE:
+   2359                    1225 _resetRFSTATE:
                            1226 ;	cc1111rf.c:70: RFST = RFST_SIDLE; while ((MARCSTATE) != MARC_STATE_IDLE);
-   22E9 75 E1 04      [24] 1227 	mov	_RFST,#0x04
-   22EC                    1228 00101$:
-   22EC 90 DF 3B      [24] 1229 	mov	dptr,#_MARCSTATE
-   22EF E0            [24] 1230 	movx	a,@dptr
-   22F0 FF            [12] 1231 	mov	r7,a
-   22F1 BF 01 F8      [24] 1232 	cjne	r7,#0x01,00101$
+   2359 75 E1 04      [24] 1227 	mov	_RFST,#0x04
+   235C                    1228 00101$:
+   235C 90 DF 3B      [24] 1229 	mov	dptr,#_MARCSTATE
+   235F E0            [24] 1230 	movx	a,@dptr
+   2360 FF            [12] 1231 	mov	r7,a
+   2361 BF 01 F8      [24] 1232 	cjne	r7,#0x01,00101$
                            1233 ;	cc1111rf.c:72: RFST = rf_status;
-   22F4 90 FD 8C      [24] 1234 	mov	dptr,#_rf_status
-   22F7 E0            [24] 1235 	movx	a,@dptr
-   22F8 F5 E1         [12] 1236 	mov	_RFST,a
+   2364 90 FD D8      [24] 1234 	mov	dptr,#_rf_status
+   2367 E0            [24] 1235 	movx	a,@dptr
+   2368 F5 E1         [12] 1236 	mov	_RFST,a
                            1237 ;	cc1111rf.c:73: while (rf_status != RFST_SIDLE && MARCSTATE == MARC_STATE_IDLE)
-   22FA                    1238 00105$:
-   22FA 90 FD 8C      [24] 1239 	mov	dptr,#_rf_status
-   22FD E0            [24] 1240 	movx	a,@dptr
-   22FE FF            [12] 1241 	mov	r7,a
-   22FF BF 04 01      [24] 1242 	cjne	r7,#0x04,00124$
-   2302 22            [24] 1243 	ret
-   2303                    1244 00124$:
-   2303 90 DF 3B      [24] 1245 	mov	dptr,#_MARCSTATE
-   2306 E0            [24] 1246 	movx	a,@dptr
-   2307 FF            [12] 1247 	mov	r7,a
-   2308 BF 01 02      [24] 1248 	cjne	r7,#0x01,00125$
-   230B 80 ED         [24] 1249 	sjmp	00105$
-   230D                    1250 00125$:
-   230D 22            [24] 1251 	ret
+   236A                    1238 00105$:
+   236A 90 FD D8      [24] 1239 	mov	dptr,#_rf_status
+   236D E0            [24] 1240 	movx	a,@dptr
+   236E FF            [12] 1241 	mov	r7,a
+   236F BF 04 01      [24] 1242 	cjne	r7,#0x04,00124$
+   2372 22            [24] 1243 	ret
+   2373                    1244 00124$:
+   2373 90 DF 3B      [24] 1245 	mov	dptr,#_MARCSTATE
+   2376 E0            [24] 1246 	movx	a,@dptr
+   2377 FF            [12] 1247 	mov	r7,a
+   2378 BF 01 02      [24] 1248 	cjne	r7,#0x01,00125$
+   237B 80 ED         [24] 1249 	sjmp	00105$
+   237D                    1250 00125$:
+   237D 22            [24] 1251 	ret
                            1252 ;------------------------------------------------------------
                            1253 ;Allocation info for local variables in function 'RxMode'
                            1254 ;------------------------------------------------------------
@@ -1256,29 +1256,29 @@
                            1256 ;	-----------------------------------------
                            1257 ;	 function RxMode
                            1258 ;	-----------------------------------------
-   230E                    1259 _RxMode:
+   237E                    1259 _RxMode:
                            1260 ;	cc1111rf.c:80: if (rf_status != RFST_SRX)
-   230E 90 FD 8C      [24] 1261 	mov	dptr,#_rf_status
-   2311 E0            [24] 1262 	movx	a,@dptr
-   2312 FF            [12] 1263 	mov	r7,a
-   2313 BF 02 01      [24] 1264 	cjne	r7,#0x02,00108$
-   2316 22            [24] 1265 	ret
-   2317                    1266 00108$:
+   237E 90 FD D8      [24] 1261 	mov	dptr,#_rf_status
+   2381 E0            [24] 1262 	movx	a,@dptr
+   2382 FF            [12] 1263 	mov	r7,a
+   2383 BF 02 01      [24] 1264 	cjne	r7,#0x02,00108$
+   2386 22            [24] 1265 	ret
+   2387                    1266 00108$:
                            1267 ;	cc1111rf.c:82: MCSM1 &= 0xf0;
                            1268 ;	cc1111rf.c:83: MCSM1 |= 0x0f;
-   2317 90 DF 13      [24] 1269 	mov	dptr,#_MCSM1
-   231A E0            [24] 1270 	movx	a,@dptr
-   231B 54 F0         [12] 1271 	anl	a,#0xF0
-   231D F0            [24] 1272 	movx	@dptr,a
-   231E E0            [24] 1273 	movx	a,@dptr
-   231F 44 0F         [12] 1274 	orl	a,#0x0F
-   2321 F0            [24] 1275 	movx	@dptr,a
+   2387 90 DF 13      [24] 1269 	mov	dptr,#_MCSM1
+   238A E0            [24] 1270 	movx	a,@dptr
+   238B 54 F0         [12] 1271 	anl	a,#0xF0
+   238D F0            [24] 1272 	movx	@dptr,a
+   238E E0            [24] 1273 	movx	a,@dptr
+   238F 44 0F         [12] 1274 	orl	a,#0x0F
+   2391 F0            [24] 1275 	movx	@dptr,a
                            1276 ;	cc1111rf.c:84: rf_status = RFST_SRX;
-   2322 90 FD 8C      [24] 1277 	mov	dptr,#_rf_status
-   2325 74 02         [12] 1278 	mov	a,#0x02
-   2327 F0            [24] 1279 	movx	@dptr,a
+   2392 90 FD D8      [24] 1277 	mov	dptr,#_rf_status
+   2395 74 02         [12] 1278 	mov	a,#0x02
+   2397 F0            [24] 1279 	movx	@dptr,a
                            1280 ;	cc1111rf.c:86: startRX();
-   2328 02 27 3C      [24] 1281 	ljmp	_startRX
+   2398 02 27 AC      [24] 1281 	ljmp	_startRX
                            1282 ;------------------------------------------------------------
                            1283 ;Allocation info for local variables in function 'TxMode'
                            1284 ;------------------------------------------------------------
@@ -1286,36 +1286,36 @@
                            1286 ;	-----------------------------------------
                            1287 ;	 function TxMode
                            1288 ;	-----------------------------------------
-   232B                    1289 _TxMode:
+   239B                    1289 _TxMode:
                            1290 ;	cc1111rf.c:93: if (rf_status != RFST_STX)
-   232B 90 FD 8C      [24] 1291 	mov	dptr,#_rf_status
-   232E E0            [24] 1292 	movx	a,@dptr
-   232F FF            [12] 1293 	mov	r7,a
-   2330 BF 03 01      [24] 1294 	cjne	r7,#0x03,00117$
-   2333 22            [24] 1295 	ret
-   2334                    1296 00117$:
+   239B 90 FD D8      [24] 1291 	mov	dptr,#_rf_status
+   239E E0            [24] 1292 	movx	a,@dptr
+   239F FF            [12] 1293 	mov	r7,a
+   23A0 BF 03 01      [24] 1294 	cjne	r7,#0x03,00117$
+   23A3 22            [24] 1295 	ret
+   23A4                    1296 00117$:
                            1297 ;	cc1111rf.c:95: MCSM1 &= 0xf0;
                            1298 ;	cc1111rf.c:96: MCSM1 |= 0x0a;
-   2334 90 DF 13      [24] 1299 	mov	dptr,#_MCSM1
-   2337 E0            [24] 1300 	movx	a,@dptr
-   2338 54 F0         [12] 1301 	anl	a,#0xF0
-   233A F0            [24] 1302 	movx	@dptr,a
-   233B E0            [24] 1303 	movx	a,@dptr
-   233C FF            [12] 1304 	mov	r7,a
-   233D 44 0A         [12] 1305 	orl	a,#0x0A
-   233F F0            [24] 1306 	movx	@dptr,a
+   23A4 90 DF 13      [24] 1299 	mov	dptr,#_MCSM1
+   23A7 E0            [24] 1300 	movx	a,@dptr
+   23A8 54 F0         [12] 1301 	anl	a,#0xF0
+   23AA F0            [24] 1302 	movx	@dptr,a
+   23AB E0            [24] 1303 	movx	a,@dptr
+   23AC FF            [12] 1304 	mov	r7,a
+   23AD 44 0A         [12] 1305 	orl	a,#0x0A
+   23AF F0            [24] 1306 	movx	@dptr,a
                            1307 ;	cc1111rf.c:98: rf_status = RFST_STX;
-   2340 90 FD 8C      [24] 1308 	mov	dptr,#_rf_status
-   2343 74 03         [12] 1309 	mov	a,#0x03
-   2345 F0            [24] 1310 	movx	@dptr,a
+   23B0 90 FD D8      [24] 1308 	mov	dptr,#_rf_status
+   23B3 74 03         [12] 1309 	mov	a,#0x03
+   23B5 F0            [24] 1310 	movx	@dptr,a
                            1311 ;	cc1111rf.c:99: RFTX;
-   2346 75 E1 03      [24] 1312 	mov	_RFST,#0x03
-   2349                    1313 00101$:
-   2349 90 DF 3B      [24] 1314 	mov	dptr,#_MARCSTATE
-   234C E0            [24] 1315 	movx	a,@dptr
-   234D FF            [12] 1316 	mov	r7,a
-   234E BF 13 F8      [24] 1317 	cjne	r7,#0x13,00101$
-   2351 22            [24] 1318 	ret
+   23B6 75 E1 03      [24] 1312 	mov	_RFST,#0x03
+   23B9                    1313 00101$:
+   23B9 90 DF 3B      [24] 1314 	mov	dptr,#_MARCSTATE
+   23BC E0            [24] 1315 	movx	a,@dptr
+   23BD FF            [12] 1316 	mov	r7,a
+   23BE BF 13 F8      [24] 1317 	cjne	r7,#0x13,00101$
+   23C1 22            [24] 1318 	ret
                            1319 ;------------------------------------------------------------
                            1320 ;Allocation info for local variables in function 'IdleMode'
                            1321 ;------------------------------------------------------------
@@ -1323,46 +1323,46 @@
                            1323 ;	-----------------------------------------
                            1324 ;	 function IdleMode
                            1325 ;	-----------------------------------------
-   2352                    1326 _IdleMode:
+   23C2                    1326 _IdleMode:
                            1327 ;	cc1111rf.c:106: if (rf_status != RFST_SIDLE)
-   2352 90 FD 8C      [24] 1328 	mov	dptr,#_rf_status
-   2355 E0            [24] 1329 	movx	a,@dptr
-   2356 FF            [12] 1330 	mov	r7,a
-   2357 BF 04 01      [24] 1331 	cjne	r7,#0x04,00120$
-   235A 22            [24] 1332 	ret
-   235B                    1333 00120$:
+   23C2 90 FD D8      [24] 1328 	mov	dptr,#_rf_status
+   23C5 E0            [24] 1329 	movx	a,@dptr
+   23C6 FF            [12] 1330 	mov	r7,a
+   23C7 BF 04 01      [24] 1331 	cjne	r7,#0x04,00120$
+   23CA 22            [24] 1332 	ret
+   23CB                    1333 00120$:
                            1334 ;	cc1111rf.c:109: MCSM1 &= 0xf0;
-   235B 90 DF 13      [24] 1335 	mov	dptr,#_MCSM1
-   235E E0            [24] 1336 	movx	a,@dptr
-   235F 54 F0         [12] 1337 	anl	a,#0xF0
-   2361 F0            [24] 1338 	movx	@dptr,a
+   23CB 90 DF 13      [24] 1335 	mov	dptr,#_MCSM1
+   23CE E0            [24] 1336 	movx	a,@dptr
+   23CF 54 F0         [12] 1337 	anl	a,#0xF0
+   23D1 F0            [24] 1338 	movx	@dptr,a
                            1339 ;	cc1111rf.c:110: RFIM &= ~RFIF_IRQ_DONE;
-   2362 AF 91         [24] 1340 	mov	r7,_RFIM
-   2364 74 EF         [12] 1341 	mov	a,#0xEF
-   2366 5F            [12] 1342 	anl	a,r7
-   2367 F5 91         [12] 1343 	mov	_RFIM,a
+   23D2 AF 91         [24] 1340 	mov	r7,_RFIM
+   23D4 74 EF         [12] 1341 	mov	a,#0xEF
+   23D6 5F            [12] 1342 	anl	a,r7
+   23D7 F5 91         [12] 1343 	mov	_RFIM,a
                            1344 ;	cc1111rf.c:111: RFOFF;
-   2369 75 E1 04      [24] 1345 	mov	_RFST,#0x04
-   236C                    1346 00101$:
-   236C 90 DF 3B      [24] 1347 	mov	dptr,#_MARCSTATE
-   236F E0            [24] 1348 	movx	a,@dptr
-   2370 FF            [12] 1349 	mov	r7,a
-   2371 BF 01 F8      [24] 1350 	cjne	r7,#0x01,00101$
+   23D9 75 E1 04      [24] 1345 	mov	_RFST,#0x04
+   23DC                    1346 00101$:
+   23DC 90 DF 3B      [24] 1347 	mov	dptr,#_MARCSTATE
+   23DF E0            [24] 1348 	movx	a,@dptr
+   23E0 FF            [12] 1349 	mov	r7,a
+   23E1 BF 01 F8      [24] 1350 	cjne	r7,#0x01,00101$
                            1351 ;	cc1111rf.c:118: S1CON &= ~(S1CON_RFIF_0|S1CON_RFIF_1);  // clear RFIF interrupts
-   2374 AF 9B         [24] 1352 	mov	r7,_S1CON
-   2376 74 FC         [12] 1353 	mov	a,#0xFC
-   2378 5F            [12] 1354 	anl	a,r7
-   2379 F5 9B         [12] 1355 	mov	_S1CON,a
+   23E4 AF 9B         [24] 1352 	mov	r7,_S1CON
+   23E6 74 FC         [12] 1353 	mov	a,#0xFC
+   23E8 5F            [12] 1354 	anl	a,r7
+   23E9 F5 9B         [12] 1355 	mov	_S1CON,a
                            1356 ;	cc1111rf.c:119: RFIF &= ~RFIF_IRQ_DONE;
-   237B AF E9         [24] 1357 	mov	r7,_RFIF
-   237D 74 EF         [12] 1358 	mov	a,#0xEF
-   237F 5F            [12] 1359 	anl	a,r7
-   2380 F5 E9         [12] 1360 	mov	_RFIF,a
+   23EB AF E9         [24] 1357 	mov	r7,_RFIF
+   23ED 74 EF         [12] 1358 	mov	a,#0xEF
+   23EF 5F            [12] 1359 	anl	a,r7
+   23F0 F5 E9         [12] 1360 	mov	_RFIF,a
                            1361 ;	cc1111rf.c:121: rf_status = RFST_SIDLE;
-   2382 90 FD 8C      [24] 1362 	mov	dptr,#_rf_status
-   2385 74 04         [12] 1363 	mov	a,#0x04
-   2387 F0            [24] 1364 	movx	@dptr,a
-   2388 22            [24] 1365 	ret
+   23F2 90 FD D8      [24] 1362 	mov	dptr,#_rf_status
+   23F5 74 04         [12] 1363 	mov	a,#0x04
+   23F7 F0            [24] 1364 	movx	@dptr,a
+   23F8 22            [24] 1365 	ret
                            1366 ;------------------------------------------------------------
                            1367 ;Allocation info for local variables in function 'init_RF'
                            1368 ;------------------------------------------------------------
@@ -1370,71 +1370,71 @@
                            1370 ;	-----------------------------------------
                            1371 ;	 function init_RF
                            1372 ;	-----------------------------------------
-   2389                    1373 _init_RF:
+   23F9                    1373 _init_RF:
                            1374 ;	cc1111rf.c:133: rf_tLastRecv = 0;
-   2389 90 FD 8F      [24] 1375 	mov	dptr,#_rf_tLastRecv
-   238C E4            [12] 1376 	clr	a
-   238D F0            [24] 1377 	movx	@dptr,a
-   238E E4            [12] 1378 	clr	a
-   238F A3            [24] 1379 	inc	dptr
-   2390 F0            [24] 1380 	movx	@dptr,a
+   23F9 90 FD DB      [24] 1375 	mov	dptr,#_rf_tLastRecv
+   23FC E4            [12] 1376 	clr	a
+   23FD F0            [24] 1377 	movx	@dptr,a
+   23FE E4            [12] 1378 	clr	a
+   23FF A3            [24] 1379 	inc	dptr
+   2400 F0            [24] 1380 	movx	@dptr,a
                            1381 ;	cc1111rf.c:136: rfRxCounter[FIRST_BUFFER] = 0;
-   2391 90 FD 82      [24] 1382 	mov	dptr,#_rfRxCounter
-   2394 E4            [12] 1383 	clr	a
-   2395 F0            [24] 1384 	movx	@dptr,a
-   2396 E4            [12] 1385 	clr	a
-   2397 A3            [24] 1386 	inc	dptr
-   2398 F0            [24] 1387 	movx	@dptr,a
+   2401 90 FD CE      [24] 1382 	mov	dptr,#_rfRxCounter
+   2404 E4            [12] 1383 	clr	a
+   2405 F0            [24] 1384 	movx	@dptr,a
+   2406 E4            [12] 1385 	clr	a
+   2407 A3            [24] 1386 	inc	dptr
+   2408 F0            [24] 1387 	movx	@dptr,a
                            1388 ;	cc1111rf.c:137: rfRxCounter[SECOND_BUFFER] = 0;
-   2399 90 FD 84      [24] 1389 	mov	dptr,#(_rfRxCounter + 0x0002)
-   239C E4            [12] 1390 	clr	a
-   239D F0            [24] 1391 	movx	@dptr,a
-   239E E4            [12] 1392 	clr	a
-   239F A3            [24] 1393 	inc	dptr
-   23A0 F0            [24] 1394 	movx	@dptr,a
+   2409 90 FD D0      [24] 1389 	mov	dptr,#(_rfRxCounter + 0x0002)
+   240C E4            [12] 1390 	clr	a
+   240D F0            [24] 1391 	movx	@dptr,a
+   240E E4            [12] 1392 	clr	a
+   240F A3            [24] 1393 	inc	dptr
+   2410 F0            [24] 1394 	movx	@dptr,a
                            1395 ;	cc1111rf.c:150: CLKCON &= 0xc7;
-   23A1 53 C6 C7      [24] 1396 	anl	_CLKCON,#0xC7
+   2411 53 C6 C7      [24] 1396 	anl	_CLKCON,#0xC7
                            1397 ;	cc1111rf.c:152: T2PR = 0;
-   23A4 75 9D 00      [24] 1398 	mov	_T2PR,#0x00
+   2414 75 9D 00      [24] 1398 	mov	_T2PR,#0x00
                            1399 ;	cc1111rf.c:153: T2CTL |= T2CTL_TIP_64;  // 64, 128, 256, 1024
-   23A7 85 9E 9E      [24] 1400 	mov	_T2CTL,_T2CTL
+   2417 85 9E 9E      [24] 1400 	mov	_T2CTL,_T2CTL
                            1401 ;	cc1111rf.c:154: T2CTL |= T2CTL_TIG;
-   23AA 43 9E 04      [24] 1402 	orl	_T2CTL,#0x04
+   241A 43 9E 04      [24] 1402 	orl	_T2CTL,#0x04
                            1403 ;	cc1111rf.c:158: IP0 |= 0;       // grp0 is RF/RFTXRX/DMA
-   23AD 85 A9 A9      [24] 1404 	mov	_IP0,_IP0
+   241D 85 A9 A9      [24] 1404 	mov	_IP0,_IP0
                            1405 ;	cc1111rf.c:159: IP1 |= BIT0;
-   23B0 43 B9 01      [24] 1406 	orl	_IP1,#0x01
+   2420 43 B9 01      [24] 1406 	orl	_IP1,#0x01
                            1407 ;	cc1111rf.c:162: rf_status = RFST_SIDLE;
-   23B3 90 FD 8C      [24] 1408 	mov	dptr,#_rf_status
-   23B6 74 04         [12] 1409 	mov	a,#0x04
-   23B8 F0            [24] 1410 	movx	@dptr,a
+   2423 90 FD D8      [24] 1408 	mov	dptr,#_rf_status
+   2426 74 04         [12] 1409 	mov	a,#0x04
+   2428 F0            [24] 1410 	movx	@dptr,a
                            1411 ;	cc1111rf.c:171: memset(rfrxbuf,0,(BUFFER_AMOUNT * BUFFER_SIZE));
-   23B9 75 14 00      [24] 1412 	mov	_memset_PARM_2,#0x00
-   23BC 75 15 00      [24] 1413 	mov	_memset_PARM_3,#0x00
-   23BF 75 16 04      [24] 1414 	mov	(_memset_PARM_3 + 1),#0x04
-   23C2 90 F9 82      [24] 1415 	mov	dptr,#_rfrxbuf
-   23C5 75 F0 00      [24] 1416 	mov	b,#0x00
-   23C8 12 33 2C      [24] 1417 	lcall	_memset
+   2429 75 14 00      [24] 1412 	mov	_memset_PARM_2,#0x00
+   242C 75 15 00      [24] 1413 	mov	_memset_PARM_3,#0x00
+   242F 75 16 04      [24] 1414 	mov	(_memset_PARM_3 + 1),#0x04
+   2432 90 F9 CE      [24] 1415 	mov	dptr,#_rfrxbuf
+   2435 75 F0 00      [24] 1416 	mov	b,#0x00
+   2438 12 33 9C      [24] 1417 	lcall	_memset
                            1418 ;	cc1111rf.c:173: appInitRf();
-   23CB 12 17 B9      [24] 1419 	lcall	_appInitRf
+   243B 12 17 C9      [24] 1419 	lcall	_appInitRf
                            1420 ;	cc1111rf.c:176: RFTXRXIE = 1;                   // FIXME: should this be something that is enabled/disabled by usb?
-   23CE D2 A8         [12] 1421 	setb	_RFTXRXIE
+   243E D2 A8         [12] 1421 	setb	_RFTXRXIE
                            1422 ;	cc1111rf.c:177: RFIM = 0xd1;    // TXUNF, RXOVF, DONE, SFD  (SFD to mark time of receipt)
-   23D0 75 91 D1      [24] 1423 	mov	_RFIM,#0xD1
+   2440 75 91 D1      [24] 1423 	mov	_RFIM,#0xD1
                            1424 ;	cc1111rf.c:178: RFIF = 0;
-   23D3 75 E9 00      [24] 1425 	mov	_RFIF,#0x00
+   2443 75 E9 00      [24] 1425 	mov	_RFIF,#0x00
                            1426 ;	cc1111rf.c:179: rfif = 0;
-   23D6 75 0F 00      [24] 1427 	mov	_rfif,#0x00
+   2446 75 0F 00      [24] 1427 	mov	_rfif,#0x00
                            1428 ;	cc1111rf.c:180: IEN2 |= IEN2_RFIE;
-   23D9 43 9A 01      [24] 1429 	orl	_IEN2,#0x01
+   2449 43 9A 01      [24] 1429 	orl	_IEN2,#0x01
                            1430 ;	cc1111rf.c:183: RFOFF;
-   23DC 75 E1 04      [24] 1431 	mov	_RFST,#0x04
-   23DF                    1432 00101$:
-   23DF 90 DF 3B      [24] 1433 	mov	dptr,#_MARCSTATE
-   23E2 E0            [24] 1434 	movx	a,@dptr
-   23E3 FF            [12] 1435 	mov	r7,a
-   23E4 BF 01 F8      [24] 1436 	cjne	r7,#0x01,00101$
-   23E7 22            [24] 1437 	ret
+   244C 75 E1 04      [24] 1431 	mov	_RFST,#0x04
+   244F                    1432 00101$:
+   244F 90 DF 3B      [24] 1433 	mov	dptr,#_MARCSTATE
+   2452 E0            [24] 1434 	movx	a,@dptr
+   2453 FF            [12] 1435 	mov	r7,a
+   2454 BF 01 F8      [24] 1436 	cjne	r7,#0x01,00101$
+   2457 22            [24] 1437 	ret
                            1438 ;------------------------------------------------------------
                            1439 ;Allocation info for local variables in function 'waitRSSI'
                            1440 ;------------------------------------------------------------
@@ -1444,46 +1444,46 @@
                            1444 ;	-----------------------------------------
                            1445 ;	 function waitRSSI
                            1446 ;	-----------------------------------------
-   23E8                    1447 _waitRSSI:
+   2458                    1447 _waitRSSI:
                            1448 ;	cc1111rf.c:191: while(u16WaitTime < RSSI_TIMEOUT_US)
-   23E8 7E 00         [12] 1449 	mov	r6,#0x00
-   23EA 7F 00         [12] 1450 	mov	r7,#0x00
-   23EC                    1451 00104$:
-   23EC C3            [12] 1452 	clr	c
-   23ED EE            [12] 1453 	mov	a,r6
-   23EE 94 DC         [12] 1454 	subb	a,#0xDC
-   23F0 EF            [12] 1455 	mov	a,r7
-   23F1 94 05         [12] 1456 	subb	a,#0x05
-   23F3 50 24         [24] 1457 	jnc	00106$
+   2458 7E 00         [12] 1449 	mov	r6,#0x00
+   245A 7F 00         [12] 1450 	mov	r7,#0x00
+   245C                    1451 00104$:
+   245C C3            [12] 1452 	clr	c
+   245D EE            [12] 1453 	mov	a,r6
+   245E 94 DC         [12] 1454 	subb	a,#0xDC
+   2460 EF            [12] 1455 	mov	a,r7
+   2461 94 05         [12] 1456 	subb	a,#0x05
+   2463 50 24         [24] 1457 	jnc	00106$
                            1458 ;	cc1111rf.c:193: if(PKTSTATUS & (PKTSTATUS_CCA | PKTSTATUS_CS))
-   23F5 90 DF 3C      [24] 1459 	mov	dptr,#_PKTSTATUS
-   23F8 E0            [24] 1460 	movx	a,@dptr
-   23F9 FD            [12] 1461 	mov	r5,a
-   23FA 54 50         [12] 1462 	anl	a,#0x50
-   23FC 60 04         [24] 1463 	jz	00102$
+   2465 90 DF 3C      [24] 1459 	mov	dptr,#_PKTSTATUS
+   2468 E0            [24] 1460 	movx	a,@dptr
+   2469 FD            [12] 1461 	mov	r5,a
+   246A 54 50         [12] 1462 	anl	a,#0x50
+   246C 60 04         [24] 1463 	jz	00102$
                            1464 ;	cc1111rf.c:195: return 1;
-   23FE 90 00 01      [24] 1465 	mov	dptr,#0x0001
-   2401 22            [24] 1466 	ret
-   2402                    1467 00102$:
+   246E 90 00 01      [24] 1465 	mov	dptr,#0x0001
+   2471 22            [24] 1466 	ret
+   2472                    1467 00102$:
                            1468 ;	cc1111rf.c:199: sleepMicros(50);
-   2402 90 00 32      [24] 1469 	mov	dptr,#0x0032
-   2405 C0 07         [24] 1470 	push	ar7
-   2407 C0 06         [24] 1471 	push	ar6
-   2409 12 2D 8B      [24] 1472 	lcall	_sleepMicros
-   240C D0 06         [24] 1473 	pop	ar6
-   240E D0 07         [24] 1474 	pop	ar7
+   2472 90 00 32      [24] 1469 	mov	dptr,#0x0032
+   2475 C0 07         [24] 1470 	push	ar7
+   2477 C0 06         [24] 1471 	push	ar6
+   2479 12 2D FB      [24] 1472 	lcall	_sleepMicros
+   247C D0 06         [24] 1473 	pop	ar6
+   247E D0 07         [24] 1474 	pop	ar7
                            1475 ;	cc1111rf.c:200: u16WaitTime += 50;
-   2410 74 32         [12] 1476 	mov	a,#0x32
-   2412 2E            [12] 1477 	add	a,r6
-   2413 FE            [12] 1478 	mov	r6,a
-   2414 E4            [12] 1479 	clr	a
-   2415 3F            [12] 1480 	addc	a,r7
-   2416 FF            [12] 1481 	mov	r7,a
-   2417 80 D3         [24] 1482 	sjmp	00104$
-   2419                    1483 00106$:
+   2480 74 32         [12] 1476 	mov	a,#0x32
+   2482 2E            [12] 1477 	add	a,r6
+   2483 FE            [12] 1478 	mov	r6,a
+   2484 E4            [12] 1479 	clr	a
+   2485 3F            [12] 1480 	addc	a,r7
+   2486 FF            [12] 1481 	mov	r7,a
+   2487 80 D3         [24] 1482 	sjmp	00104$
+   2489                    1483 00106$:
                            1484 ;	cc1111rf.c:203: return 0;
-   2419 90 00 00      [24] 1485 	mov	dptr,#0x0000
-   241C 22            [24] 1486 	ret
+   2489 90 00 00      [24] 1485 	mov	dptr,#0x0000
+   248C 22            [24] 1486 	ret
                            1487 ;------------------------------------------------------------
                            1488 ;Allocation info for local variables in function 'transmit'
                            1489 ;------------------------------------------------------------
@@ -1500,577 +1500,577 @@
                            1500 ;	-----------------------------------------
                            1501 ;	 function transmit
                            1502 ;	-----------------------------------------
-   241D                    1503 _transmit:
-   241D AF 83         [24] 1504 	mov	r7,dph
-   241F E5 82         [12] 1505 	mov	a,dpl
-   2421 90 FD AC      [24] 1506 	mov	dptr,#_transmit_buf_1_96
-   2424 F0            [24] 1507 	movx	@dptr,a
-   2425 EF            [12] 1508 	mov	a,r7
-   2426 A3            [24] 1509 	inc	dptr
-   2427 F0            [24] 1510 	movx	@dptr,a
+   248D                    1503 _transmit:
+   248D AF 83         [24] 1504 	mov	r7,dph
+   248F E5 82         [12] 1505 	mov	a,dpl
+   2491 90 FD F8      [24] 1506 	mov	dptr,#_transmit_buf_1_96
+   2494 F0            [24] 1507 	movx	@dptr,a
+   2495 EF            [12] 1508 	mov	a,r7
+   2496 A3            [24] 1509 	inc	dptr
+   2497 F0            [24] 1510 	movx	@dptr,a
                            1511 ;	cc1111rf.c:217: __xdata u8 encoffset = 0;
-   2428 90 FD AE      [24] 1512 	mov	dptr,#_transmit_encoffset_1_97
-   242B E4            [12] 1513 	clr	a
-   242C F0            [24] 1514 	movx	@dptr,a
+   2498 90 FD FA      [24] 1512 	mov	dptr,#_transmit_encoffset_1_97
+   249B E4            [12] 1513 	clr	a
+   249C F0            [24] 1514 	movx	@dptr,a
                            1515 ;	cc1111rf.c:218: __xdata u8 original_pktlen = PKTLEN;
-   242D 90 DF 02      [24] 1516 	mov	dptr,#_PKTLEN
-   2430 E0            [24] 1517 	movx	a,@dptr
-   2431 FF            [12] 1518 	mov	r7,a
+   249D 90 DF 02      [24] 1516 	mov	dptr,#_PKTLEN
+   24A0 E0            [24] 1517 	movx	a,@dptr
+   24A1 FF            [12] 1518 	mov	r7,a
                            1519 ;	cc1111rf.c:220: while (MARCSTATE == MARC_STATE_TX)
-   2432                    1520 00101$:
-   2432 90 DF 3B      [24] 1521 	mov	dptr,#_MARCSTATE
-   2435 E0            [24] 1522 	movx	a,@dptr
-   2436 FE            [12] 1523 	mov	r6,a
-   2437 BE 13 09      [24] 1524 	cjne	r6,#0x13,00103$
+   24A2                    1520 00101$:
+   24A2 90 DF 3B      [24] 1521 	mov	dptr,#_MARCSTATE
+   24A5 E0            [24] 1522 	movx	a,@dptr
+   24A6 FE            [12] 1523 	mov	r6,a
+   24A7 BE 13 09      [24] 1524 	cjne	r6,#0x13,00103$
                            1525 ;	cc1111rf.c:222: LED = !LED;
-   243A A2 A4         [12] 1526 	mov	c,_P2_4
-   243C B3            [12] 1527 	cpl	c
-   243D 92 01         [24] 1528 	mov  _transmit_sloc0_1_0,c
-   243F 92 A4         [24] 1529 	mov	_P2_4,c
-   2441 80 EF         [24] 1530 	sjmp	00101$
-   2443                    1531 00103$:
+   24AA A2 A4         [12] 1526 	mov	c,_P2_4
+   24AC B3            [12] 1527 	cpl	c
+   24AD 92 01         [24] 1528 	mov  _transmit_sloc0_1_0,c
+   24AF 92 A4         [24] 1529 	mov	_P2_4,c
+   24B1 80 EF         [24] 1530 	sjmp	00101$
+   24B3                    1531 00103$:
                            1532 ;	cc1111rf.c:228: LED = 0;
-   2443 C2 A4         [12] 1533 	clr	_P2_4
+   24B3 C2 A4         [12] 1533 	clr	_P2_4
                            1534 ;	cc1111rf.c:231: rfTxInfMode = 0;
-   2445 90 FD FA      [24] 1535 	mov	dptr,#_rfTxInfMode
-   2448 E4            [12] 1536 	clr	a
-   2449 F0            [24] 1537 	movx	@dptr,a
+   24B5 90 FE 46      [24] 1535 	mov	dptr,#_rfTxInfMode
+   24B8 E4            [12] 1536 	clr	a
+   24B9 F0            [24] 1537 	movx	@dptr,a
                            1538 ;	cc1111rf.c:232: rfTxRepeatCounter = repeat;
-   244A 90 FD A8      [24] 1539 	mov	dptr,#_transmit_PARM_3
-   244D E0            [24] 1540 	movx	a,@dptr
-   244E FD            [12] 1541 	mov	r5,a
-   244F A3            [24] 1542 	inc	dptr
-   2450 E0            [24] 1543 	movx	a,@dptr
-   2451 FE            [12] 1544 	mov	r6,a
-   2452 90 FD F0      [24] 1545 	mov	dptr,#_rfTxRepeatCounter
-   2455 ED            [12] 1546 	mov	a,r5
-   2456 F0            [24] 1547 	movx	@dptr,a
-   2457 EE            [12] 1548 	mov	a,r6
-   2458 A3            [24] 1549 	inc	dptr
-   2459 F0            [24] 1550 	movx	@dptr,a
+   24BA 90 FD F4      [24] 1539 	mov	dptr,#_transmit_PARM_3
+   24BD E0            [24] 1540 	movx	a,@dptr
+   24BE FD            [12] 1541 	mov	r5,a
+   24BF A3            [24] 1542 	inc	dptr
+   24C0 E0            [24] 1543 	movx	a,@dptr
+   24C1 FE            [12] 1544 	mov	r6,a
+   24C2 90 FE 3C      [24] 1545 	mov	dptr,#_rfTxRepeatCounter
+   24C5 ED            [12] 1546 	mov	a,r5
+   24C6 F0            [24] 1547 	movx	@dptr,a
+   24C7 EE            [12] 1548 	mov	a,r6
+   24C8 A3            [24] 1549 	inc	dptr
+   24C9 F0            [24] 1550 	movx	@dptr,a
                            1551 ;	cc1111rf.c:233: rfTxRepeatOffset = offset;
-   245A 90 FD AA      [24] 1552 	mov	dptr,#_transmit_PARM_4
-   245D E0            [24] 1553 	movx	a,@dptr
-   245E FB            [12] 1554 	mov	r3,a
-   245F A3            [24] 1555 	inc	dptr
-   2460 E0            [24] 1556 	movx	a,@dptr
-   2461 FC            [12] 1557 	mov	r4,a
-   2462 90 FD F6      [24] 1558 	mov	dptr,#_rfTxRepeatOffset
-   2465 EB            [12] 1559 	mov	a,r3
-   2466 F0            [24] 1560 	movx	@dptr,a
-   2467 EC            [12] 1561 	mov	a,r4
-   2468 A3            [24] 1562 	inc	dptr
-   2469 F0            [24] 1563 	movx	@dptr,a
+   24CA 90 FD F6      [24] 1552 	mov	dptr,#_transmit_PARM_4
+   24CD E0            [24] 1553 	movx	a,@dptr
+   24CE FB            [12] 1554 	mov	r3,a
+   24CF A3            [24] 1555 	inc	dptr
+   24D0 E0            [24] 1556 	movx	a,@dptr
+   24D1 FC            [12] 1557 	mov	r4,a
+   24D2 90 FE 42      [24] 1558 	mov	dptr,#_rfTxRepeatOffset
+   24D5 EB            [12] 1559 	mov	a,r3
+   24D6 F0            [24] 1560 	movx	@dptr,a
+   24D7 EC            [12] 1561 	mov	a,r4
+   24D8 A3            [24] 1562 	inc	dptr
+   24D9 F0            [24] 1563 	movx	@dptr,a
                            1564 ;	cc1111rf.c:234: rfTxBufferEnd = len;
-   246A 90 FD A6      [24] 1565 	mov	dptr,#_transmit_PARM_2
-   246D E0            [24] 1566 	movx	a,@dptr
-   246E F9            [12] 1567 	mov	r1,a
-   246F A3            [24] 1568 	inc	dptr
-   2470 E0            [24] 1569 	movx	a,@dptr
-   2471 FA            [12] 1570 	mov	r2,a
-   2472 90 FD F2      [24] 1571 	mov	dptr,#_rfTxBufferEnd
-   2475 E9            [12] 1572 	mov	a,r1
-   2476 F0            [24] 1573 	movx	@dptr,a
-   2477 EA            [12] 1574 	mov	a,r2
-   2478 A3            [24] 1575 	inc	dptr
-   2479 F0            [24] 1576 	movx	@dptr,a
+   24DA 90 FD F2      [24] 1565 	mov	dptr,#_transmit_PARM_2
+   24DD E0            [24] 1566 	movx	a,@dptr
+   24DE F9            [12] 1567 	mov	r1,a
+   24DF A3            [24] 1568 	inc	dptr
+   24E0 E0            [24] 1569 	movx	a,@dptr
+   24E1 FA            [12] 1570 	mov	r2,a
+   24E2 90 FE 3E      [24] 1571 	mov	dptr,#_rfTxBufferEnd
+   24E5 E9            [12] 1572 	mov	a,r1
+   24E6 F0            [24] 1573 	movx	@dptr,a
+   24E7 EA            [12] 1574 	mov	a,r2
+   24E8 A3            [24] 1575 	inc	dptr
+   24E9 F0            [24] 1576 	movx	@dptr,a
                            1577 ;	cc1111rf.c:235: rfTxRepeatLen = len - offset;
-   247A 90 FD F4      [24] 1578 	mov	dptr,#_rfTxRepeatLen
-   247D E9            [12] 1579 	mov	a,r1
-   247E C3            [12] 1580 	clr	c
-   247F 9B            [12] 1581 	subb	a,r3
-   2480 F0            [24] 1582 	movx	@dptr,a
-   2481 EA            [12] 1583 	mov	a,r2
-   2482 9C            [12] 1584 	subb	a,r4
-   2483 A3            [24] 1585 	inc	dptr
-   2484 F0            [24] 1586 	movx	@dptr,a
+   24EA 90 FE 40      [24] 1578 	mov	dptr,#_rfTxRepeatLen
+   24ED E9            [12] 1579 	mov	a,r1
+   24EE C3            [12] 1580 	clr	c
+   24EF 9B            [12] 1581 	subb	a,r3
+   24F0 F0            [24] 1582 	movx	@dptr,a
+   24F1 EA            [12] 1583 	mov	a,r2
+   24F2 9C            [12] 1584 	subb	a,r4
+   24F3 A3            [24] 1585 	inc	dptr
+   24F4 F0            [24] 1586 	movx	@dptr,a
                            1587 ;	cc1111rf.c:237: rfTxTotalTXLen = len + (rfTxRepeatLen * repeat);
-   2485 90 FD F4      [24] 1588 	mov	dptr,#_rfTxRepeatLen
-   2488 E0            [24] 1589 	movx	a,@dptr
-   2489 FB            [12] 1590 	mov	r3,a
-   248A A3            [24] 1591 	inc	dptr
-   248B E0            [24] 1592 	movx	a,@dptr
-   248C FC            [12] 1593 	mov	r4,a
-   248D 8D 14         [24] 1594 	mov	__mulint_PARM_2,r5
-   248F 8E 15         [24] 1595 	mov	(__mulint_PARM_2 + 1),r6
-   2491 8B 82         [24] 1596 	mov	dpl,r3
-   2493 8C 83         [24] 1597 	mov	dph,r4
-   2495 C0 07         [24] 1598 	push	ar7
-   2497 C0 06         [24] 1599 	push	ar6
-   2499 C0 05         [24] 1600 	push	ar5
-   249B C0 02         [24] 1601 	push	ar2
-   249D C0 01         [24] 1602 	push	ar1
-   249F 12 34 07      [24] 1603 	lcall	__mulint
-   24A2 AB 82         [24] 1604 	mov	r3,dpl
-   24A4 AC 83         [24] 1605 	mov	r4,dph
-   24A6 D0 01         [24] 1606 	pop	ar1
-   24A8 D0 02         [24] 1607 	pop	ar2
-   24AA D0 05         [24] 1608 	pop	ar5
-   24AC D0 06         [24] 1609 	pop	ar6
-   24AE D0 07         [24] 1610 	pop	ar7
-   24B0 90 FD F8      [24] 1611 	mov	dptr,#_rfTxTotalTXLen
-   24B3 EB            [12] 1612 	mov	a,r3
-   24B4 29            [12] 1613 	add	a,r1
-   24B5 F0            [24] 1614 	movx	@dptr,a
-   24B6 EC            [12] 1615 	mov	a,r4
-   24B7 3A            [12] 1616 	addc	a,r2
-   24B8 A3            [24] 1617 	inc	dptr
-   24B9 F0            [24] 1618 	movx	@dptr,a
+   24F5 90 FE 40      [24] 1588 	mov	dptr,#_rfTxRepeatLen
+   24F8 E0            [24] 1589 	movx	a,@dptr
+   24F9 FB            [12] 1590 	mov	r3,a
+   24FA A3            [24] 1591 	inc	dptr
+   24FB E0            [24] 1592 	movx	a,@dptr
+   24FC FC            [12] 1593 	mov	r4,a
+   24FD 8D 14         [24] 1594 	mov	__mulint_PARM_2,r5
+   24FF 8E 15         [24] 1595 	mov	(__mulint_PARM_2 + 1),r6
+   2501 8B 82         [24] 1596 	mov	dpl,r3
+   2503 8C 83         [24] 1597 	mov	dph,r4
+   2505 C0 07         [24] 1598 	push	ar7
+   2507 C0 06         [24] 1599 	push	ar6
+   2509 C0 05         [24] 1600 	push	ar5
+   250B C0 02         [24] 1601 	push	ar2
+   250D C0 01         [24] 1602 	push	ar1
+   250F 12 34 77      [24] 1603 	lcall	__mulint
+   2512 AB 82         [24] 1604 	mov	r3,dpl
+   2514 AC 83         [24] 1605 	mov	r4,dph
+   2516 D0 01         [24] 1606 	pop	ar1
+   2518 D0 02         [24] 1607 	pop	ar2
+   251A D0 05         [24] 1608 	pop	ar5
+   251C D0 06         [24] 1609 	pop	ar6
+   251E D0 07         [24] 1610 	pop	ar7
+   2520 90 FE 44      [24] 1611 	mov	dptr,#_rfTxTotalTXLen
+   2523 EB            [12] 1612 	mov	a,r3
+   2524 29            [12] 1613 	add	a,r1
+   2525 F0            [24] 1614 	movx	@dptr,a
+   2526 EC            [12] 1615 	mov	a,r4
+   2527 3A            [12] 1616 	addc	a,r2
+   2528 A3            [24] 1617 	inc	dptr
+   2529 F0            [24] 1618 	movx	@dptr,a
                            1619 ;	cc1111rf.c:242: if(len == 0)
-   24BA E9            [12] 1620 	mov	a,r1
-   24BB 4A            [12] 1621 	orl	a,r2
-   24BC 70 5D         [24] 1622 	jnz	00118$
+   252A E9            [12] 1620 	mov	a,r1
+   252B 4A            [12] 1621 	orl	a,r2
+   252C 70 5D         [24] 1622 	jnz	00118$
                            1623 ;	cc1111rf.c:244: len = buf[0];
-   24BE 90 FD AC      [24] 1624 	mov	dptr,#_transmit_buf_1_96
-   24C1 E0            [24] 1625 	movx	a,@dptr
-   24C2 FB            [12] 1626 	mov	r3,a
-   24C3 A3            [24] 1627 	inc	dptr
-   24C4 E0            [24] 1628 	movx	a,@dptr
-   24C5 FC            [12] 1629 	mov	r4,a
-   24C6 8B 82         [24] 1630 	mov	dpl,r3
-   24C8 8C 83         [24] 1631 	mov	dph,r4
-   24CA E0            [24] 1632 	movx	a,@dptr
-   24CB F8            [12] 1633 	mov	r0,a
-   24CC 88 10         [24] 1634 	mov	_transmit_sloc1_1_0,r0
-   24CE 75 11 00      [24] 1635 	mov	(_transmit_sloc1_1_0 + 1),#0x00
-   24D1 90 FD A6      [24] 1636 	mov	dptr,#_transmit_PARM_2
-   24D4 E5 10         [12] 1637 	mov	a,_transmit_sloc1_1_0
-   24D6 F0            [24] 1638 	movx	@dptr,a
-   24D7 E5 11         [12] 1639 	mov	a,(_transmit_sloc1_1_0 + 1)
-   24D9 A3            [24] 1640 	inc	dptr
-   24DA F0            [24] 1641 	movx	@dptr,a
+   252E 90 FD F8      [24] 1624 	mov	dptr,#_transmit_buf_1_96
+   2531 E0            [24] 1625 	movx	a,@dptr
+   2532 FB            [12] 1626 	mov	r3,a
+   2533 A3            [24] 1627 	inc	dptr
+   2534 E0            [24] 1628 	movx	a,@dptr
+   2535 FC            [12] 1629 	mov	r4,a
+   2536 8B 82         [24] 1630 	mov	dpl,r3
+   2538 8C 83         [24] 1631 	mov	dph,r4
+   253A E0            [24] 1632 	movx	a,@dptr
+   253B F8            [12] 1633 	mov	r0,a
+   253C 88 10         [24] 1634 	mov	_transmit_sloc1_1_0,r0
+   253E 75 11 00      [24] 1635 	mov	(_transmit_sloc1_1_0 + 1),#0x00
+   2541 90 FD F2      [24] 1636 	mov	dptr,#_transmit_PARM_2
+   2544 E5 10         [12] 1637 	mov	a,_transmit_sloc1_1_0
+   2546 F0            [24] 1638 	movx	@dptr,a
+   2547 E5 11         [12] 1639 	mov	a,(_transmit_sloc1_1_0 + 1)
+   2549 A3            [24] 1640 	inc	dptr
+   254A F0            [24] 1641 	movx	@dptr,a
                            1642 ;	cc1111rf.c:246: switch (PKTCTRL0 & PKTCTRL0_LENGTH_CONFIG)
-   24DB 90 DF 04      [24] 1643 	mov	dptr,#_PKTCTRL0
-   24DE E0            [24] 1644 	movx	a,@dptr
-   24DF F8            [12] 1645 	mov	r0,a
-   24E0 53 00 03      [24] 1646 	anl	ar0,#0x03
-   24E3 B8 00 02      [24] 1647 	cjne	r0,#0x00,00214$
-   24E6 80 18         [24] 1648 	sjmp	00105$
-   24E8                    1649 00214$:
-   24E8 B8 01 02      [24] 1650 	cjne	r0,#0x01,00215$
-   24EB 80 03         [24] 1651 	sjmp	00216$
-   24ED                    1652 00215$:
-   24ED 02 25 A4      [24] 1653 	ljmp	00119$
-   24F0                    1654 00216$:
+   254B 90 DF 04      [24] 1643 	mov	dptr,#_PKTCTRL0
+   254E E0            [24] 1644 	movx	a,@dptr
+   254F F8            [12] 1645 	mov	r0,a
+   2550 53 00 03      [24] 1646 	anl	ar0,#0x03
+   2553 B8 00 02      [24] 1647 	cjne	r0,#0x00,00214$
+   2556 80 18         [24] 1648 	sjmp	00105$
+   2558                    1649 00214$:
+   2558 B8 01 02      [24] 1650 	cjne	r0,#0x01,00215$
+   255B 80 03         [24] 1651 	sjmp	00216$
+   255D                    1652 00215$:
+   255D 02 26 14      [24] 1653 	ljmp	00119$
+   2560                    1654 00216$:
                            1655 ;	cc1111rf.c:249: len++;  // we need to send the length byte too...
-   24F0 90 FD A6      [24] 1656 	mov	dptr,#_transmit_PARM_2
-   24F3 74 01         [12] 1657 	mov	a,#0x01
-   24F5 25 10         [12] 1658 	add	a,_transmit_sloc1_1_0
-   24F7 F0            [24] 1659 	movx	@dptr,a
-   24F8 E4            [12] 1660 	clr	a
-   24F9 35 11         [12] 1661 	addc	a,(_transmit_sloc1_1_0 + 1)
-   24FB A3            [24] 1662 	inc	dptr
-   24FC F0            [24] 1663 	movx	@dptr,a
+   2560 90 FD F2      [24] 1656 	mov	dptr,#_transmit_PARM_2
+   2563 74 01         [12] 1657 	mov	a,#0x01
+   2565 25 10         [12] 1658 	add	a,_transmit_sloc1_1_0
+   2567 F0            [24] 1659 	movx	@dptr,a
+   2568 E4            [12] 1660 	clr	a
+   2569 35 11         [12] 1661 	addc	a,(_transmit_sloc1_1_0 + 1)
+   256B A3            [24] 1662 	inc	dptr
+   256C F0            [24] 1663 	movx	@dptr,a
                            1664 ;	cc1111rf.c:250: break;
-   24FD 02 25 A4      [24] 1665 	ljmp	00119$
+   256D 02 26 14      [24] 1665 	ljmp	00119$
                            1666 ;	cc1111rf.c:251: case PKTCTRL0_LENGTH_CONFIG_FIX:
-   2500                    1667 00105$:
+   2570                    1667 00105$:
                            1668 ;	cc1111rf.c:252: buf++;  // skip sending the length byte
-   2500 90 FD AC      [24] 1669 	mov	dptr,#_transmit_buf_1_96
-   2503 74 01         [12] 1670 	mov	a,#0x01
-   2505 2B            [12] 1671 	add	a,r3
-   2506 F0            [24] 1672 	movx	@dptr,a
-   2507 E4            [12] 1673 	clr	a
-   2508 3C            [12] 1674 	addc	a,r4
-   2509 A3            [24] 1675 	inc	dptr
-   250A F0            [24] 1676 	movx	@dptr,a
+   2570 90 FD F8      [24] 1669 	mov	dptr,#_transmit_buf_1_96
+   2573 74 01         [12] 1670 	mov	a,#0x01
+   2575 2B            [12] 1671 	add	a,r3
+   2576 F0            [24] 1672 	movx	@dptr,a
+   2577 E4            [12] 1673 	clr	a
+   2578 3C            [12] 1674 	addc	a,r4
+   2579 A3            [24] 1675 	inc	dptr
+   257A F0            [24] 1676 	movx	@dptr,a
                            1677 ;	cc1111rf.c:253: PKTLEN= len;
-   250B 90 FD A6      [24] 1678 	mov	dptr,#_transmit_PARM_2
-   250E E0            [24] 1679 	movx	a,@dptr
-   250F FB            [12] 1680 	mov	r3,a
-   2510 A3            [24] 1681 	inc	dptr
-   2511 E0            [24] 1682 	movx	a,@dptr
-   2512 FC            [12] 1683 	mov	r4,a
-   2513 90 DF 02      [24] 1684 	mov	dptr,#_PKTLEN
-   2516 EB            [12] 1685 	mov	a,r3
-   2517 F0            [24] 1686 	movx	@dptr,a
+   257B 90 FD F2      [24] 1678 	mov	dptr,#_transmit_PARM_2
+   257E E0            [24] 1679 	movx	a,@dptr
+   257F FB            [12] 1680 	mov	r3,a
+   2580 A3            [24] 1681 	inc	dptr
+   2581 E0            [24] 1682 	movx	a,@dptr
+   2582 FC            [12] 1683 	mov	r4,a
+   2583 90 DF 02      [24] 1684 	mov	dptr,#_PKTLEN
+   2586 EB            [12] 1685 	mov	a,r3
+   2587 F0            [24] 1686 	movx	@dptr,a
                            1687 ;	cc1111rf.c:254: break;
-   2518 02 25 A4      [24] 1688 	ljmp	00119$
+   2588 02 26 14      [24] 1688 	ljmp	00119$
                            1689 ;	cc1111rf.c:257: }
-   251B                    1690 00118$:
+   258B                    1690 00118$:
                            1691 ;	cc1111rf.c:263: switch (PKTCTRL0 & PKTCTRL0_LENGTH_CONFIG)
-   251B 90 DF 04      [24] 1692 	mov	dptr,#_PKTCTRL0
-   251E E0            [24] 1693 	movx	a,@dptr
-   251F FC            [12] 1694 	mov	r4,a
-   2520 53 04 03      [24] 1695 	anl	ar4,#0x03
-   2523 BC 00 02      [24] 1696 	cjne	r4,#0x00,00217$
-   2526 80 46         [24] 1697 	sjmp	00109$
-   2528                    1698 00217$:
-   2528 BC 01 02      [24] 1699 	cjne	r4,#0x01,00218$
-   252B 80 03         [24] 1700 	sjmp	00219$
-   252D                    1701 00218$:
-   252D 02 25 A4      [24] 1702 	ljmp	00119$
-   2530                    1703 00219$:
+   258B 90 DF 04      [24] 1692 	mov	dptr,#_PKTCTRL0
+   258E E0            [24] 1693 	movx	a,@dptr
+   258F FC            [12] 1694 	mov	r4,a
+   2590 53 04 03      [24] 1695 	anl	ar4,#0x03
+   2593 BC 00 02      [24] 1696 	cjne	r4,#0x00,00217$
+   2596 80 46         [24] 1697 	sjmp	00109$
+   2598                    1698 00217$:
+   2598 BC 01 02      [24] 1699 	cjne	r4,#0x01,00218$
+   259B 80 03         [24] 1700 	sjmp	00219$
+   259D                    1701 00218$:
+   259D 02 26 14      [24] 1702 	ljmp	00119$
+   25A0                    1703 00219$:
                            1704 ;	cc1111rf.c:267: byte_shuffle(buf, len, 1);
-   2530 90 FD AC      [24] 1705 	mov	dptr,#_transmit_buf_1_96
-   2533 E0            [24] 1706 	movx	a,@dptr
-   2534 FB            [12] 1707 	mov	r3,a
-   2535 A3            [24] 1708 	inc	dptr
-   2536 E0            [24] 1709 	movx	a,@dptr
-   2537 FC            [12] 1710 	mov	r4,a
-   2538 90 FD AF      [24] 1711 	mov	dptr,#_byte_shuffle_PARM_2
-   253B E9            [12] 1712 	mov	a,r1
-   253C F0            [24] 1713 	movx	@dptr,a
-   253D EA            [12] 1714 	mov	a,r2
-   253E A3            [24] 1715 	inc	dptr
-   253F F0            [24] 1716 	movx	@dptr,a
-   2540 90 FD B1      [24] 1717 	mov	dptr,#_byte_shuffle_PARM_3
-   2543 74 01         [12] 1718 	mov	a,#0x01
-   2545 F0            [24] 1719 	movx	@dptr,a
-   2546 E4            [12] 1720 	clr	a
-   2547 A3            [24] 1721 	inc	dptr
-   2548 F0            [24] 1722 	movx	@dptr,a
-   2549 8B 82         [24] 1723 	mov	dpl,r3
-   254B 8C 83         [24] 1724 	mov	dph,r4
-   254D C0 07         [24] 1725 	push	ar7
-   254F C0 02         [24] 1726 	push	ar2
-   2551 C0 01         [24] 1727 	push	ar1
-   2553 12 2D 0E      [24] 1728 	lcall	_byte_shuffle
-   2556 D0 01         [24] 1729 	pop	ar1
-   2558 D0 02         [24] 1730 	pop	ar2
-   255A D0 07         [24] 1731 	pop	ar7
+   25A0 90 FD F8      [24] 1705 	mov	dptr,#_transmit_buf_1_96
+   25A3 E0            [24] 1706 	movx	a,@dptr
+   25A4 FB            [12] 1707 	mov	r3,a
+   25A5 A3            [24] 1708 	inc	dptr
+   25A6 E0            [24] 1709 	movx	a,@dptr
+   25A7 FC            [12] 1710 	mov	r4,a
+   25A8 90 FD FB      [24] 1711 	mov	dptr,#_byte_shuffle_PARM_2
+   25AB E9            [12] 1712 	mov	a,r1
+   25AC F0            [24] 1713 	movx	@dptr,a
+   25AD EA            [12] 1714 	mov	a,r2
+   25AE A3            [24] 1715 	inc	dptr
+   25AF F0            [24] 1716 	movx	@dptr,a
+   25B0 90 FD FD      [24] 1717 	mov	dptr,#_byte_shuffle_PARM_3
+   25B3 74 01         [12] 1718 	mov	a,#0x01
+   25B5 F0            [24] 1719 	movx	@dptr,a
+   25B6 E4            [12] 1720 	clr	a
+   25B7 A3            [24] 1721 	inc	dptr
+   25B8 F0            [24] 1722 	movx	@dptr,a
+   25B9 8B 82         [24] 1723 	mov	dpl,r3
+   25BB 8C 83         [24] 1724 	mov	dph,r4
+   25BD C0 07         [24] 1725 	push	ar7
+   25BF C0 02         [24] 1726 	push	ar2
+   25C1 C0 01         [24] 1727 	push	ar1
+   25C3 12 2D 7E      [24] 1728 	lcall	_byte_shuffle
+   25C6 D0 01         [24] 1729 	pop	ar1
+   25C8 D0 02         [24] 1730 	pop	ar2
+   25CA D0 07         [24] 1731 	pop	ar7
                            1732 ;	cc1111rf.c:268: buf[0] = (u8) len;
-   255C 90 FD AC      [24] 1733 	mov	dptr,#_transmit_buf_1_96
-   255F E0            [24] 1734 	movx	a,@dptr
-   2560 FB            [12] 1735 	mov	r3,a
-   2561 A3            [24] 1736 	inc	dptr
-   2562 E0            [24] 1737 	movx	a,@dptr
-   2563 FC            [12] 1738 	mov	r4,a
-   2564 89 00         [24] 1739 	mov	ar0,r1
-   2566 8B 82         [24] 1740 	mov	dpl,r3
-   2568 8C 83         [24] 1741 	mov	dph,r4
-   256A E8            [12] 1742 	mov	a,r0
-   256B F0            [24] 1743 	movx	@dptr,a
+   25CC 90 FD F8      [24] 1733 	mov	dptr,#_transmit_buf_1_96
+   25CF E0            [24] 1734 	movx	a,@dptr
+   25D0 FB            [12] 1735 	mov	r3,a
+   25D1 A3            [24] 1736 	inc	dptr
+   25D2 E0            [24] 1737 	movx	a,@dptr
+   25D3 FC            [12] 1738 	mov	r4,a
+   25D4 89 00         [24] 1739 	mov	ar0,r1
+   25D6 8B 82         [24] 1740 	mov	dpl,r3
+   25D8 8C 83         [24] 1741 	mov	dph,r4
+   25DA E8            [12] 1742 	mov	a,r0
+   25DB F0            [24] 1743 	movx	@dptr,a
                            1744 ;	cc1111rf.c:269: break;
                            1745 ;	cc1111rf.c:270: case PKTCTRL0_LENGTH_CONFIG_FIX:
-   256C 80 36         [24] 1746 	sjmp	00119$
-   256E                    1747 00109$:
+   25DC 80 36         [24] 1746 	sjmp	00119$
+   25DE                    1747 00109$:
                            1748 ;	cc1111rf.c:274: if(repeat)
-   256E ED            [12] 1749 	mov	a,r5
-   256F 4E            [12] 1750 	orl	a,r6
-   2570 60 2D         [24] 1751 	jz	00113$
+   25DE ED            [12] 1749 	mov	a,r5
+   25DF 4E            [12] 1750 	orl	a,r6
+   25E0 60 2D         [24] 1751 	jz	00113$
                            1752 ;	cc1111rf.c:278: PKTLEN = (u8) (rfTxTotalTXLen % 256);
-   2572 90 FD F8      [24] 1753 	mov	dptr,#_rfTxTotalTXLen
-   2575 E0            [24] 1754 	movx	a,@dptr
-   2576 FD            [12] 1755 	mov	r5,a
-   2577 A3            [24] 1756 	inc	dptr
-   2578 E0            [24] 1757 	movx	a,@dptr
-   2579 90 DF 02      [24] 1758 	mov	dptr,#_PKTLEN
-   257C ED            [12] 1759 	mov	a,r5
-   257D F0            [24] 1760 	movx	@dptr,a
+   25E2 90 FE 44      [24] 1753 	mov	dptr,#_rfTxTotalTXLen
+   25E5 E0            [24] 1754 	movx	a,@dptr
+   25E6 FD            [12] 1755 	mov	r5,a
+   25E7 A3            [24] 1756 	inc	dptr
+   25E8 E0            [24] 1757 	movx	a,@dptr
+   25E9 90 DF 02      [24] 1758 	mov	dptr,#_PKTLEN
+   25EC ED            [12] 1759 	mov	a,r5
+   25ED F0            [24] 1760 	movx	@dptr,a
                            1761 ;	cc1111rf.c:279: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
-   257E 90 DF 04      [24] 1762 	mov	dptr,#_PKTCTRL0
-   2581 E0            [24] 1763 	movx	a,@dptr
-   2582 54 FC         [12] 1764 	anl	a,#0xFC
-   2584 F0            [24] 1765 	movx	@dptr,a
+   25EE 90 DF 04      [24] 1762 	mov	dptr,#_PKTCTRL0
+   25F1 E0            [24] 1763 	movx	a,@dptr
+   25F2 54 FC         [12] 1764 	anl	a,#0xFC
+   25F4 F0            [24] 1765 	movx	@dptr,a
                            1766 ;	cc1111rf.c:281: if(rfTxTotalTXLen > RF_MAX_TX_BLOCK)
-   2585 90 FD F8      [24] 1767 	mov	dptr,#_rfTxTotalTXLen
-   2588 E0            [24] 1768 	movx	a,@dptr
-   2589 FD            [12] 1769 	mov	r5,a
-   258A A3            [24] 1770 	inc	dptr
-   258B E0            [24] 1771 	movx	a,@dptr
-   258C FE            [12] 1772 	mov	r6,a
-   258D 60 08         [24] 1773 	jz	00111$
+   25F5 90 FE 44      [24] 1767 	mov	dptr,#_rfTxTotalTXLen
+   25F8 E0            [24] 1768 	movx	a,@dptr
+   25F9 FD            [12] 1769 	mov	r5,a
+   25FA A3            [24] 1770 	inc	dptr
+   25FB E0            [24] 1771 	movx	a,@dptr
+   25FC FE            [12] 1772 	mov	r6,a
+   25FD 60 08         [24] 1773 	jz	00111$
                            1774 ;	cc1111rf.c:282: PKTCTRL0 |= PKTCTRL0_LENGTH_CONFIG_INF;
-   258F 90 DF 04      [24] 1775 	mov	dptr,#_PKTCTRL0
-   2592 E0            [24] 1776 	movx	a,@dptr
-   2593 FE            [12] 1777 	mov	r6,a
-   2594 44 02         [12] 1778 	orl	a,#0x02
-   2596 F0            [24] 1779 	movx	@dptr,a
-   2597                    1780 00111$:
+   25FF 90 DF 04      [24] 1775 	mov	dptr,#_PKTCTRL0
+   2602 E0            [24] 1776 	movx	a,@dptr
+   2603 FE            [12] 1777 	mov	r6,a
+   2604 44 02         [12] 1778 	orl	a,#0x02
+   2606 F0            [24] 1779 	movx	@dptr,a
+   2607                    1780 00111$:
                            1781 ;	cc1111rf.c:284: rfTxInfMode = 1;
-   2597 90 FD FA      [24] 1782 	mov	dptr,#_rfTxInfMode
-   259A 74 01         [12] 1783 	mov	a,#0x01
-   259C F0            [24] 1784 	movx	@dptr,a
-   259D 80 05         [24] 1785 	sjmp	00119$
-   259F                    1786 00113$:
+   2607 90 FE 46      [24] 1782 	mov	dptr,#_rfTxInfMode
+   260A 74 01         [12] 1783 	mov	a,#0x01
+   260C F0            [24] 1784 	movx	@dptr,a
+   260D 80 05         [24] 1785 	sjmp	00119$
+   260F                    1786 00113$:
                            1787 ;	cc1111rf.c:287: PKTLEN = len;
-   259F 90 DF 02      [24] 1788 	mov	dptr,#_PKTLEN
-   25A2 E9            [12] 1789 	mov	a,r1
-   25A3 F0            [24] 1790 	movx	@dptr,a
+   260F 90 DF 02      [24] 1788 	mov	dptr,#_PKTLEN
+   2612 E9            [12] 1789 	mov	a,r1
+   2613 F0            [24] 1790 	movx	@dptr,a
                            1791 ;	cc1111rf.c:291: }
-   25A4                    1792 00119$:
+   2614                    1792 00119$:
                            1793 ;	cc1111rf.c:296: RFTXRXIE = 1;
-   25A4 D2 A8         [12] 1794 	setb	_RFTXRXIE
+   2614 D2 A8         [12] 1794 	setb	_RFTXRXIE
                            1795 ;	cc1111rf.c:302: if(rfAESMode & AES_CRYPTO_OUT_ENABLE)
-   25A6 90 FD FB      [24] 1796 	mov	dptr,#_rfAESMode
-   25A9 E0            [24] 1797 	movx	a,@dptr
-   25AA FE            [12] 1798 	mov	r6,a
-   25AB 20 E3 03      [24] 1799 	jb	acc.3,00222$
-   25AE 02 26 D2      [24] 1800 	ljmp	00135$
-   25B1                    1801 00222$:
+   2616 90 FE 47      [24] 1796 	mov	dptr,#_rfAESMode
+   2619 E0            [24] 1797 	movx	a,@dptr
+   261A FE            [12] 1798 	mov	r6,a
+   261B 20 E3 03      [24] 1799 	jb	acc.3,00222$
+   261E 02 27 42      [24] 1800 	ljmp	00135$
+   2621                    1801 00222$:
                            1802 ;	cc1111rf.c:304: if((PKTCTRL0 & PKTCTRL0_LENGTH_CONFIG) == PKTCTRL0_LENGTH_CONFIG_VAR)
-   25B1 90 DF 04      [24] 1803 	mov	dptr,#_PKTCTRL0
-   25B4 E0            [24] 1804 	movx	a,@dptr
-   25B5 FE            [12] 1805 	mov	r6,a
-   25B6 53 06 03      [24] 1806 	anl	ar6,#0x03
-   25B9 BE 01 06      [24] 1807 	cjne	r6,#0x01,00121$
+   2621 90 DF 04      [24] 1803 	mov	dptr,#_PKTCTRL0
+   2624 E0            [24] 1804 	movx	a,@dptr
+   2625 FE            [12] 1805 	mov	r6,a
+   2626 53 06 03      [24] 1806 	anl	ar6,#0x03
+   2629 BE 01 06      [24] 1807 	cjne	r6,#0x01,00121$
                            1808 ;	cc1111rf.c:305: encoffset= 1;
-   25BC 90 FD AE      [24] 1809 	mov	dptr,#_transmit_encoffset_1_97
-   25BF 74 01         [12] 1810 	mov	a,#0x01
-   25C1 F0            [24] 1811 	movx	@dptr,a
-   25C2                    1812 00121$:
+   262C 90 FD FA      [24] 1809 	mov	dptr,#_transmit_encoffset_1_97
+   262F 74 01         [12] 1810 	mov	a,#0x01
+   2631 F0            [24] 1811 	movx	@dptr,a
+   2632                    1812 00121$:
                            1813 ;	cc1111rf.c:307: len= padAES(buf + encoffset, len);
-   25C2 90 FD AE      [24] 1814 	mov	dptr,#_transmit_encoffset_1_97
-   25C5 E0            [24] 1815 	movx	a,@dptr
-   25C6 FE            [12] 1816 	mov	r6,a
-   25C7 90 FD AC      [24] 1817 	mov	dptr,#_transmit_buf_1_96
-   25CA E0            [24] 1818 	movx	a,@dptr
-   25CB FC            [12] 1819 	mov	r4,a
-   25CC A3            [24] 1820 	inc	dptr
-   25CD E0            [24] 1821 	movx	a,@dptr
-   25CE FD            [12] 1822 	mov	r5,a
-   25CF EE            [12] 1823 	mov	a,r6
-   25D0 2C            [12] 1824 	add	a,r4
-   25D1 FA            [12] 1825 	mov	r2,a
-   25D2 E4            [12] 1826 	clr	a
-   25D3 3D            [12] 1827 	addc	a,r5
-   25D4 FB            [12] 1828 	mov	r3,a
-   25D5 90 FD A6      [24] 1829 	mov	dptr,#_transmit_PARM_2
-   25D8 E0            [24] 1830 	movx	a,@dptr
-   25D9 F8            [12] 1831 	mov	r0,a
-   25DA A3            [24] 1832 	inc	dptr
-   25DB E0            [24] 1833 	movx	a,@dptr
-   25DC F9            [12] 1834 	mov	r1,a
-   25DD 90 FD CD      [24] 1835 	mov	dptr,#_padAES_PARM_2
-   25E0 E8            [12] 1836 	mov	a,r0
-   25E1 F0            [24] 1837 	movx	@dptr,a
-   25E2 E9            [12] 1838 	mov	a,r1
-   25E3 A3            [24] 1839 	inc	dptr
-   25E4 F0            [24] 1840 	movx	@dptr,a
-   25E5 8A 82         [24] 1841 	mov	dpl,r2
-   25E7 8B 83         [24] 1842 	mov	dph,r3
-   25E9 C0 07         [24] 1843 	push	ar7
-   25EB C0 06         [24] 1844 	push	ar6
-   25ED C0 05         [24] 1845 	push	ar5
-   25EF C0 04         [24] 1846 	push	ar4
-   25F1 12 30 69      [24] 1847 	lcall	_padAES
-   25F4 AA 82         [24] 1848 	mov	r2,dpl
-   25F6 AB 83         [24] 1849 	mov	r3,dph
-   25F8 D0 04         [24] 1850 	pop	ar4
-   25FA D0 05         [24] 1851 	pop	ar5
-   25FC D0 06         [24] 1852 	pop	ar6
-   25FE D0 07         [24] 1853 	pop	ar7
+   2632 90 FD FA      [24] 1814 	mov	dptr,#_transmit_encoffset_1_97
+   2635 E0            [24] 1815 	movx	a,@dptr
+   2636 FE            [12] 1816 	mov	r6,a
+   2637 90 FD F8      [24] 1817 	mov	dptr,#_transmit_buf_1_96
+   263A E0            [24] 1818 	movx	a,@dptr
+   263B FC            [12] 1819 	mov	r4,a
+   263C A3            [24] 1820 	inc	dptr
+   263D E0            [24] 1821 	movx	a,@dptr
+   263E FD            [12] 1822 	mov	r5,a
+   263F EE            [12] 1823 	mov	a,r6
+   2640 2C            [12] 1824 	add	a,r4
+   2641 FA            [12] 1825 	mov	r2,a
+   2642 E4            [12] 1826 	clr	a
+   2643 3D            [12] 1827 	addc	a,r5
+   2644 FB            [12] 1828 	mov	r3,a
+   2645 90 FD F2      [24] 1829 	mov	dptr,#_transmit_PARM_2
+   2648 E0            [24] 1830 	movx	a,@dptr
+   2649 F8            [12] 1831 	mov	r0,a
+   264A A3            [24] 1832 	inc	dptr
+   264B E0            [24] 1833 	movx	a,@dptr
+   264C F9            [12] 1834 	mov	r1,a
+   264D 90 FE 19      [24] 1835 	mov	dptr,#_padAES_PARM_2
+   2650 E8            [12] 1836 	mov	a,r0
+   2651 F0            [24] 1837 	movx	@dptr,a
+   2652 E9            [12] 1838 	mov	a,r1
+   2653 A3            [24] 1839 	inc	dptr
+   2654 F0            [24] 1840 	movx	@dptr,a
+   2655 8A 82         [24] 1841 	mov	dpl,r2
+   2657 8B 83         [24] 1842 	mov	dph,r3
+   2659 C0 07         [24] 1843 	push	ar7
+   265B C0 06         [24] 1844 	push	ar6
+   265D C0 05         [24] 1845 	push	ar5
+   265F C0 04         [24] 1846 	push	ar4
+   2661 12 30 D9      [24] 1847 	lcall	_padAES
+   2664 AA 82         [24] 1848 	mov	r2,dpl
+   2666 AB 83         [24] 1849 	mov	r3,dph
+   2668 D0 04         [24] 1850 	pop	ar4
+   266A D0 05         [24] 1851 	pop	ar5
+   266C D0 06         [24] 1852 	pop	ar6
+   266E D0 07         [24] 1853 	pop	ar7
                            1854 ;	cc1111rf.c:309: if((rfAESMode & AES_CRYPTO_OUT_TYPE) == AES_CRYPTO_OUT_ENCRYPT)
-   2600 90 FD FB      [24] 1855 	mov	dptr,#_rfAESMode
-   2603 E0            [24] 1856 	movx	a,@dptr
-   2604 F9            [12] 1857 	mov	r1,a
-   2605 53 01 04      [24] 1858 	anl	ar1,#0x04
-   2608 B9 04 48      [24] 1859 	cjne	r1,#0x04,00123$
+   2670 90 FE 47      [24] 1855 	mov	dptr,#_rfAESMode
+   2673 E0            [24] 1856 	movx	a,@dptr
+   2674 F9            [12] 1857 	mov	r1,a
+   2675 53 01 04      [24] 1858 	anl	ar1,#0x04
+   2678 B9 04 48      [24] 1859 	cjne	r1,#0x04,00123$
                            1860 ;	cc1111rf.c:310: encAES(buf + encoffset, buf + encoffset, len, (rfAESMode & AES_CRYPTO_MODE));
-   260B C0 07         [24] 1861 	push	ar7
-   260D EE            [12] 1862 	mov	a,r6
-   260E 2C            [12] 1863 	add	a,r4
-   260F F8            [12] 1864 	mov	r0,a
-   2610 E4            [12] 1865 	clr	a
-   2611 3D            [12] 1866 	addc	a,r5
-   2612 F9            [12] 1867 	mov	r1,a
-   2613 90 FD FB      [24] 1868 	mov	dptr,#_rfAESMode
-   2616 E0            [24] 1869 	movx	a,@dptr
-   2617 FF            [12] 1870 	mov	r7,a
-   2618 53 07 F0      [24] 1871 	anl	ar7,#0xF0
-   261B 90 FD D1      [24] 1872 	mov	dptr,#_encAES_PARM_2
-   261E E8            [12] 1873 	mov	a,r0
-   261F F0            [24] 1874 	movx	@dptr,a
-   2620 E9            [12] 1875 	mov	a,r1
-   2621 A3            [24] 1876 	inc	dptr
-   2622 F0            [24] 1877 	movx	@dptr,a
-   2623 90 FD D3      [24] 1878 	mov	dptr,#_encAES_PARM_3
-   2626 EA            [12] 1879 	mov	a,r2
-   2627 F0            [24] 1880 	movx	@dptr,a
-   2628 EB            [12] 1881 	mov	a,r3
-   2629 A3            [24] 1882 	inc	dptr
-   262A F0            [24] 1883 	movx	@dptr,a
-   262B 90 FD D5      [24] 1884 	mov	dptr,#_encAES_PARM_4
-   262E EF            [12] 1885 	mov	a,r7
-   262F F0            [24] 1886 	movx	@dptr,a
-   2630 88 82         [24] 1887 	mov	dpl,r0
-   2632 89 83         [24] 1888 	mov	dph,r1
-   2634 C0 07         [24] 1889 	push	ar7
-   2636 C0 06         [24] 1890 	push	ar6
-   2638 C0 05         [24] 1891 	push	ar5
-   263A C0 04         [24] 1892 	push	ar4
-   263C C0 03         [24] 1893 	push	ar3
-   263E C0 02         [24] 1894 	push	ar2
-   2640 12 30 A3      [24] 1895 	lcall	_encAES
-   2643 D0 02         [24] 1896 	pop	ar2
-   2645 D0 03         [24] 1897 	pop	ar3
-   2647 D0 04         [24] 1898 	pop	ar4
-   2649 D0 05         [24] 1899 	pop	ar5
-   264B D0 06         [24] 1900 	pop	ar6
-   264D D0 07         [24] 1901 	pop	ar7
-   264F D0 07         [24] 1902 	pop	ar7
-   2651 80 46         [24] 1903 	sjmp	00124$
-   2653                    1904 00123$:
+   267B C0 07         [24] 1861 	push	ar7
+   267D EE            [12] 1862 	mov	a,r6
+   267E 2C            [12] 1863 	add	a,r4
+   267F F8            [12] 1864 	mov	r0,a
+   2680 E4            [12] 1865 	clr	a
+   2681 3D            [12] 1866 	addc	a,r5
+   2682 F9            [12] 1867 	mov	r1,a
+   2683 90 FE 47      [24] 1868 	mov	dptr,#_rfAESMode
+   2686 E0            [24] 1869 	movx	a,@dptr
+   2687 FF            [12] 1870 	mov	r7,a
+   2688 53 07 F0      [24] 1871 	anl	ar7,#0xF0
+   268B 90 FE 1D      [24] 1872 	mov	dptr,#_encAES_PARM_2
+   268E E8            [12] 1873 	mov	a,r0
+   268F F0            [24] 1874 	movx	@dptr,a
+   2690 E9            [12] 1875 	mov	a,r1
+   2691 A3            [24] 1876 	inc	dptr
+   2692 F0            [24] 1877 	movx	@dptr,a
+   2693 90 FE 1F      [24] 1878 	mov	dptr,#_encAES_PARM_3
+   2696 EA            [12] 1879 	mov	a,r2
+   2697 F0            [24] 1880 	movx	@dptr,a
+   2698 EB            [12] 1881 	mov	a,r3
+   2699 A3            [24] 1882 	inc	dptr
+   269A F0            [24] 1883 	movx	@dptr,a
+   269B 90 FE 21      [24] 1884 	mov	dptr,#_encAES_PARM_4
+   269E EF            [12] 1885 	mov	a,r7
+   269F F0            [24] 1886 	movx	@dptr,a
+   26A0 88 82         [24] 1887 	mov	dpl,r0
+   26A2 89 83         [24] 1888 	mov	dph,r1
+   26A4 C0 07         [24] 1889 	push	ar7
+   26A6 C0 06         [24] 1890 	push	ar6
+   26A8 C0 05         [24] 1891 	push	ar5
+   26AA C0 04         [24] 1892 	push	ar4
+   26AC C0 03         [24] 1893 	push	ar3
+   26AE C0 02         [24] 1894 	push	ar2
+   26B0 12 31 13      [24] 1895 	lcall	_encAES
+   26B3 D0 02         [24] 1896 	pop	ar2
+   26B5 D0 03         [24] 1897 	pop	ar3
+   26B7 D0 04         [24] 1898 	pop	ar4
+   26B9 D0 05         [24] 1899 	pop	ar5
+   26BB D0 06         [24] 1900 	pop	ar6
+   26BD D0 07         [24] 1901 	pop	ar7
+   26BF D0 07         [24] 1902 	pop	ar7
+   26C1 80 46         [24] 1903 	sjmp	00124$
+   26C3                    1904 00123$:
                            1905 ;	cc1111rf.c:312: decAES(buf + encoffset, buf + encoffset, len, (rfAESMode & AES_CRYPTO_MODE));
-   2653 C0 07         [24] 1906 	push	ar7
-   2655 EE            [12] 1907 	mov	a,r6
-   2656 2C            [12] 1908 	add	a,r4
-   2657 F8            [12] 1909 	mov	r0,a
-   2658 E4            [12] 1910 	clr	a
-   2659 3D            [12] 1911 	addc	a,r5
-   265A F9            [12] 1912 	mov	r1,a
-   265B 90 FD FB      [24] 1913 	mov	dptr,#_rfAESMode
-   265E E0            [24] 1914 	movx	a,@dptr
-   265F FF            [12] 1915 	mov	r7,a
-   2660 53 07 F0      [24] 1916 	anl	ar7,#0xF0
-   2663 90 FD D8      [24] 1917 	mov	dptr,#_decAES_PARM_2
-   2666 E8            [12] 1918 	mov	a,r0
-   2667 F0            [24] 1919 	movx	@dptr,a
-   2668 E9            [12] 1920 	mov	a,r1
-   2669 A3            [24] 1921 	inc	dptr
-   266A F0            [24] 1922 	movx	@dptr,a
-   266B 90 FD DA      [24] 1923 	mov	dptr,#_decAES_PARM_3
-   266E EA            [12] 1924 	mov	a,r2
-   266F F0            [24] 1925 	movx	@dptr,a
-   2670 EB            [12] 1926 	mov	a,r3
-   2671 A3            [24] 1927 	inc	dptr
-   2672 F0            [24] 1928 	movx	@dptr,a
-   2673 90 FD DC      [24] 1929 	mov	dptr,#_decAES_PARM_4
-   2676 EF            [12] 1930 	mov	a,r7
-   2677 F0            [24] 1931 	movx	@dptr,a
-   2678 88 82         [24] 1932 	mov	dpl,r0
-   267A 89 83         [24] 1933 	mov	dph,r1
-   267C C0 07         [24] 1934 	push	ar7
-   267E C0 06         [24] 1935 	push	ar6
-   2680 C0 05         [24] 1936 	push	ar5
-   2682 C0 04         [24] 1937 	push	ar4
-   2684 C0 03         [24] 1938 	push	ar3
-   2686 C0 02         [24] 1939 	push	ar2
-   2688 12 30 EC      [24] 1940 	lcall	_decAES
-   268B D0 02         [24] 1941 	pop	ar2
-   268D D0 03         [24] 1942 	pop	ar3
-   268F D0 04         [24] 1943 	pop	ar4
-   2691 D0 05         [24] 1944 	pop	ar5
-   2693 D0 06         [24] 1945 	pop	ar6
-   2695 D0 07         [24] 1946 	pop	ar7
+   26C3 C0 07         [24] 1906 	push	ar7
+   26C5 EE            [12] 1907 	mov	a,r6
+   26C6 2C            [12] 1908 	add	a,r4
+   26C7 F8            [12] 1909 	mov	r0,a
+   26C8 E4            [12] 1910 	clr	a
+   26C9 3D            [12] 1911 	addc	a,r5
+   26CA F9            [12] 1912 	mov	r1,a
+   26CB 90 FE 47      [24] 1913 	mov	dptr,#_rfAESMode
+   26CE E0            [24] 1914 	movx	a,@dptr
+   26CF FF            [12] 1915 	mov	r7,a
+   26D0 53 07 F0      [24] 1916 	anl	ar7,#0xF0
+   26D3 90 FE 24      [24] 1917 	mov	dptr,#_decAES_PARM_2
+   26D6 E8            [12] 1918 	mov	a,r0
+   26D7 F0            [24] 1919 	movx	@dptr,a
+   26D8 E9            [12] 1920 	mov	a,r1
+   26D9 A3            [24] 1921 	inc	dptr
+   26DA F0            [24] 1922 	movx	@dptr,a
+   26DB 90 FE 26      [24] 1923 	mov	dptr,#_decAES_PARM_3
+   26DE EA            [12] 1924 	mov	a,r2
+   26DF F0            [24] 1925 	movx	@dptr,a
+   26E0 EB            [12] 1926 	mov	a,r3
+   26E1 A3            [24] 1927 	inc	dptr
+   26E2 F0            [24] 1928 	movx	@dptr,a
+   26E3 90 FE 28      [24] 1929 	mov	dptr,#_decAES_PARM_4
+   26E6 EF            [12] 1930 	mov	a,r7
+   26E7 F0            [24] 1931 	movx	@dptr,a
+   26E8 88 82         [24] 1932 	mov	dpl,r0
+   26EA 89 83         [24] 1933 	mov	dph,r1
+   26EC C0 07         [24] 1934 	push	ar7
+   26EE C0 06         [24] 1935 	push	ar6
+   26F0 C0 05         [24] 1936 	push	ar5
+   26F2 C0 04         [24] 1937 	push	ar4
+   26F4 C0 03         [24] 1938 	push	ar3
+   26F6 C0 02         [24] 1939 	push	ar2
+   26F8 12 31 5C      [24] 1940 	lcall	_decAES
+   26FB D0 02         [24] 1941 	pop	ar2
+   26FD D0 03         [24] 1942 	pop	ar3
+   26FF D0 04         [24] 1943 	pop	ar4
+   2701 D0 05         [24] 1944 	pop	ar5
+   2703 D0 06         [24] 1945 	pop	ar6
+   2705 D0 07         [24] 1946 	pop	ar7
                            1947 ;	cc1111rf.c:426: return 1;
-   2697 D0 07         [24] 1948 	pop	ar7
+   2707 D0 07         [24] 1948 	pop	ar7
                            1949 ;	cc1111rf.c:312: decAES(buf + encoffset, buf + encoffset, len, (rfAESMode & AES_CRYPTO_MODE));
-   2699                    1950 00124$:
+   2709                    1950 00124$:
                            1951 ;	cc1111rf.c:314: if(encoffset)
-   2699 EE            [12] 1952 	mov	a,r6
-   269A 60 1E         [24] 1953 	jz	00132$
+   2709 EE            [12] 1952 	mov	a,r6
+   270A 60 1E         [24] 1953 	jz	00132$
                            1954 ;	cc1111rf.c:318: if((rfAESMode & AES_CRYPTO_MODE) == ENCCS_MODE_CBCMAC)
-   269C 90 FD FB      [24] 1955 	mov	dptr,#_rfAESMode
-   269F E0            [24] 1956 	movx	a,@dptr
-   26A0 FE            [12] 1957 	mov	r6,a
-   26A1 53 06 F0      [24] 1958 	anl	ar6,#0xF0
-   26A4 BE 50 09      [24] 1959 	cjne	r6,#0x50,00126$
+   270C 90 FE 47      [24] 1955 	mov	dptr,#_rfAESMode
+   270F E0            [24] 1956 	movx	a,@dptr
+   2710 FE            [12] 1957 	mov	r6,a
+   2711 53 06 F0      [24] 1958 	anl	ar6,#0xF0
+   2714 BE 50 09      [24] 1959 	cjne	r6,#0x50,00126$
                            1960 ;	cc1111rf.c:319: buf[0] = 16;
-   26A7 8C 82         [24] 1961 	mov	dpl,r4
-   26A9 8D 83         [24] 1962 	mov	dph,r5
-   26AB 74 10         [12] 1963 	mov	a,#0x10
-   26AD F0            [24] 1964 	movx	@dptr,a
-   26AE 80 22         [24] 1965 	sjmp	00135$
-   26B0                    1966 00126$:
+   2717 8C 82         [24] 1961 	mov	dpl,r4
+   2719 8D 83         [24] 1962 	mov	dph,r5
+   271B 74 10         [12] 1963 	mov	a,#0x10
+   271D F0            [24] 1964 	movx	@dptr,a
+   271E 80 22         [24] 1965 	sjmp	00135$
+   2720                    1966 00126$:
                            1967 ;	cc1111rf.c:321: buf[0] = (u8) len;
-   26B0 8A 06         [24] 1968 	mov	ar6,r2
-   26B2 8C 82         [24] 1969 	mov	dpl,r4
-   26B4 8D 83         [24] 1970 	mov	dph,r5
-   26B6 EE            [12] 1971 	mov	a,r6
-   26B7 F0            [24] 1972 	movx	@dptr,a
-   26B8 80 18         [24] 1973 	sjmp	00135$
-   26BA                    1974 00132$:
+   2720 8A 06         [24] 1968 	mov	ar6,r2
+   2722 8C 82         [24] 1969 	mov	dpl,r4
+   2724 8D 83         [24] 1970 	mov	dph,r5
+   2726 EE            [12] 1971 	mov	a,r6
+   2727 F0            [24] 1972 	movx	@dptr,a
+   2728 80 18         [24] 1973 	sjmp	00135$
+   272A                    1974 00132$:
                            1975 ;	cc1111rf.c:325: if((rfAESMode & AES_CRYPTO_MODE) == ENCCS_MODE_CBCMAC)
-   26BA 90 FD FB      [24] 1976 	mov	dptr,#_rfAESMode
-   26BD E0            [24] 1977 	movx	a,@dptr
-   26BE FE            [12] 1978 	mov	r6,a
-   26BF 53 06 F0      [24] 1979 	anl	ar6,#0xF0
-   26C2 BE 50 08      [24] 1980 	cjne	r6,#0x50,00129$
+   272A 90 FE 47      [24] 1976 	mov	dptr,#_rfAESMode
+   272D E0            [24] 1977 	movx	a,@dptr
+   272E FE            [12] 1978 	mov	r6,a
+   272F 53 06 F0      [24] 1979 	anl	ar6,#0xF0
+   2732 BE 50 08      [24] 1980 	cjne	r6,#0x50,00129$
                            1981 ;	cc1111rf.c:326: PKTLEN = 16;
-   26C5 90 DF 02      [24] 1982 	mov	dptr,#_PKTLEN
-   26C8 74 10         [12] 1983 	mov	a,#0x10
-   26CA F0            [24] 1984 	movx	@dptr,a
-   26CB 80 05         [24] 1985 	sjmp	00135$
-   26CD                    1986 00129$:
+   2735 90 DF 02      [24] 1982 	mov	dptr,#_PKTLEN
+   2738 74 10         [12] 1983 	mov	a,#0x10
+   273A F0            [24] 1984 	movx	@dptr,a
+   273B 80 05         [24] 1985 	sjmp	00135$
+   273D                    1986 00129$:
                            1987 ;	cc1111rf.c:328: PKTLEN = (u8) len;
-   26CD 90 DF 02      [24] 1988 	mov	dptr,#_PKTLEN
-   26D0 EA            [12] 1989 	mov	a,r2
-   26D1 F0            [24] 1990 	movx	@dptr,a
-   26D2                    1991 00135$:
+   273D 90 DF 02      [24] 1988 	mov	dptr,#_PKTLEN
+   2740 EA            [12] 1989 	mov	a,r2
+   2741 F0            [24] 1990 	movx	@dptr,a
+   2742                    1991 00135$:
                            1992 ;	cc1111rf.c:333: rftxbuf = buf;
-   26D2 90 FD AC      [24] 1993 	mov	dptr,#_transmit_buf_1_96
-   26D5 E0            [24] 1994 	movx	a,@dptr
-   26D6 FD            [12] 1995 	mov	r5,a
-   26D7 A3            [24] 1996 	inc	dptr
-   26D8 E0            [24] 1997 	movx	a,@dptr
-   26D9 FE            [12] 1998 	mov	r6,a
-   26DA 90 FD 88      [24] 1999 	mov	dptr,#_rftxbuf
-   26DD ED            [12] 2000 	mov	a,r5
-   26DE F0            [24] 2001 	movx	@dptr,a
-   26DF EE            [12] 2002 	mov	a,r6
-   26E0 A3            [24] 2003 	inc	dptr
-   26E1 F0            [24] 2004 	movx	@dptr,a
+   2742 90 FD F8      [24] 1993 	mov	dptr,#_transmit_buf_1_96
+   2745 E0            [24] 1994 	movx	a,@dptr
+   2746 FD            [12] 1995 	mov	r5,a
+   2747 A3            [24] 1996 	inc	dptr
+   2748 E0            [24] 1997 	movx	a,@dptr
+   2749 FE            [12] 1998 	mov	r6,a
+   274A 90 FD D4      [24] 1999 	mov	dptr,#_rftxbuf
+   274D ED            [12] 2000 	mov	a,r5
+   274E F0            [24] 2001 	movx	@dptr,a
+   274F EE            [12] 2002 	mov	a,r6
+   2750 A3            [24] 2003 	inc	dptr
+   2751 F0            [24] 2004 	movx	@dptr,a
                            2005 ;	cc1111rf.c:336: rfTxCounter = 0;
-   26E2 90 FD EE      [24] 2006 	mov	dptr,#_rfTxCounter
-   26E5 E4            [12] 2007 	clr	a
-   26E6 F0            [24] 2008 	movx	@dptr,a
-   26E7 E4            [12] 2009 	clr	a
-   26E8 A3            [24] 2010 	inc	dptr
-   26E9 F0            [24] 2011 	movx	@dptr,a
+   2752 90 FE 3A      [24] 2006 	mov	dptr,#_rfTxCounter
+   2755 E4            [12] 2007 	clr	a
+   2756 F0            [24] 2008 	movx	@dptr,a
+   2757 E4            [12] 2009 	clr	a
+   2758 A3            [24] 2010 	inc	dptr
+   2759 F0            [24] 2011 	movx	@dptr,a
                            2012 ;	cc1111rf.c:393: RFST = RFST_STX;
-   26EA 75 E1 03      [24] 2013 	mov	_RFST,#0x03
+   275A 75 E1 03      [24] 2013 	mov	_RFST,#0x03
                            2014 ;	cc1111rf.c:397: while (MARCSTATE != MARC_STATE_TX && --countdown)
-   26ED 7D 60         [12] 2015 	mov	r5,#0x60
-   26EF 7E EA         [12] 2016 	mov	r6,#0xEA
-   26F1                    2017 00137$:
-   26F1 90 DF 3B      [24] 2018 	mov	dptr,#_MARCSTATE
-   26F4 E0            [24] 2019 	movx	a,@dptr
-   26F5 FC            [12] 2020 	mov	r4,a
-   26F6 BC 13 02      [24] 2021 	cjne	r4,#0x13,00232$
-   26F9 80 12         [24] 2022 	sjmp	00139$
-   26FB                    2023 00232$:
-   26FB 1D            [12] 2024 	dec	r5
-   26FC BD FF 01      [24] 2025 	cjne	r5,#0xFF,00233$
-   26FF 1E            [12] 2026 	dec	r6
-   2700                    2027 00233$:
-   2700 ED            [12] 2028 	mov	a,r5
-   2701 4E            [12] 2029 	orl	a,r6
-   2702 60 09         [24] 2030 	jz	00139$
+   275D 7D 60         [12] 2015 	mov	r5,#0x60
+   275F 7E EA         [12] 2016 	mov	r6,#0xEA
+   2761                    2017 00137$:
+   2761 90 DF 3B      [24] 2018 	mov	dptr,#_MARCSTATE
+   2764 E0            [24] 2019 	movx	a,@dptr
+   2765 FC            [12] 2020 	mov	r4,a
+   2766 BC 13 02      [24] 2021 	cjne	r4,#0x13,00232$
+   2769 80 12         [24] 2022 	sjmp	00139$
+   276B                    2023 00232$:
+   276B 1D            [12] 2024 	dec	r5
+   276C BD FF 01      [24] 2025 	cjne	r5,#0xFF,00233$
+   276F 1E            [12] 2026 	dec	r6
+   2770                    2027 00233$:
+   2770 ED            [12] 2028 	mov	a,r5
+   2771 4E            [12] 2029 	orl	a,r6
+   2772 60 09         [24] 2030 	jz	00139$
                            2031 ;	cc1111rf.c:400: LED = !LED;
-   2704 A2 A4         [12] 2032 	mov	c,_P2_4
-   2706 B3            [12] 2033 	cpl	c
-   2707 92 01         [24] 2034 	mov  _transmit_sloc0_1_0,c
-   2709 92 A4         [24] 2035 	mov	_P2_4,c
-   270B 80 E4         [24] 2036 	sjmp	00137$
-   270D                    2037 00139$:
+   2774 A2 A4         [12] 2032 	mov	c,_P2_4
+   2776 B3            [12] 2033 	cpl	c
+   2777 92 01         [24] 2034 	mov  _transmit_sloc0_1_0,c
+   2779 92 A4         [24] 2035 	mov	_P2_4,c
+   277B 80 E4         [24] 2036 	sjmp	00137$
+   277D                    2037 00139$:
                            2038 ;	cc1111rf.c:406: LED = 1;
-   270D D2 A4         [12] 2039 	setb	_P2_4
+   277D D2 A4         [12] 2039 	setb	_P2_4
                            2040 ;	cc1111rf.c:407: if (!countdown)
-   270F ED            [12] 2041 	mov	a,r5
-   2710 4E            [12] 2042 	orl	a,r6
-   2711 70 06         [24] 2043 	jnz	00142$
+   277F ED            [12] 2041 	mov	a,r5
+   2780 4E            [12] 2042 	orl	a,r6
+   2781 70 06         [24] 2043 	jnz	00142$
                            2044 ;	cc1111rf.c:409: lastCode[1] = LCE_RFTX_NEVER_TX;
-   2713 90 FD B6      [24] 2045 	mov	dptr,#(_lastCode + 0x0001)
-   2716 74 13         [12] 2046 	mov	a,#0x13
-   2718 F0            [24] 2047 	movx	@dptr,a
+   2783 90 FE 02      [24] 2045 	mov	dptr,#(_lastCode + 0x0001)
+   2786 74 13         [12] 2046 	mov	a,#0x13
+   2788 F0            [24] 2047 	movx	@dptr,a
                            2048 ;	cc1111rf.c:412: while (MARCSTATE == MARC_STATE_TX)
-   2719                    2049 00142$:
-   2719 90 DF 3B      [24] 2050 	mov	dptr,#_MARCSTATE
-   271C E0            [24] 2051 	movx	a,@dptr
-   271D FE            [12] 2052 	mov	r6,a
-   271E BE 13 10      [24] 2053 	cjne	r6,#0x13,00144$
+   2789                    2049 00142$:
+   2789 90 DF 3B      [24] 2050 	mov	dptr,#_MARCSTATE
+   278C E0            [24] 2051 	movx	a,@dptr
+   278D FE            [12] 2052 	mov	r6,a
+   278E BE 13 10      [24] 2053 	cjne	r6,#0x13,00144$
                            2054 ;	cc1111rf.c:414: LED = !LED;
-   2721 A2 A4         [12] 2055 	mov	c,_P2_4
-   2723 B3            [12] 2056 	cpl	c
-   2724 92 01         [24] 2057 	mov  _transmit_sloc0_1_0,c
-   2726 92 A4         [24] 2058 	mov	_P2_4,c
+   2791 A2 A4         [12] 2055 	mov	c,_P2_4
+   2793 B3            [12] 2056 	cpl	c
+   2794 92 01         [24] 2057 	mov  _transmit_sloc0_1_0,c
+   2796 92 A4         [24] 2058 	mov	_P2_4,c
                            2059 ;	cc1111rf.c:416: usbProcessEvents();
-   2728 C0 07         [24] 2060 	push	ar7
-   272A 12 1B 6E      [24] 2061 	lcall	_usbProcessEvents
-   272D D0 07         [24] 2062 	pop	ar7
-   272F 80 E8         [24] 2063 	sjmp	00142$
-   2731                    2064 00144$:
+   2798 C0 07         [24] 2060 	push	ar7
+   279A 12 1B D8      [24] 2061 	lcall	_usbProcessEvents
+   279D D0 07         [24] 2062 	pop	ar7
+   279F 80 E8         [24] 2063 	sjmp	00142$
+   27A1                    2064 00144$:
                            2065 ;	cc1111rf.c:421: LED = 0;
-   2731 C2 A4         [12] 2066 	clr	_P2_4
+   27A1 C2 A4         [12] 2066 	clr	_P2_4
                            2067 ;	cc1111rf.c:424: PKTLEN = original_pktlen;
-   2733 90 DF 02      [24] 2068 	mov	dptr,#_PKTLEN
-   2736 EF            [12] 2069 	mov	a,r7
-   2737 F0            [24] 2070 	movx	@dptr,a
+   27A3 90 DF 02      [24] 2068 	mov	dptr,#_PKTLEN
+   27A6 EF            [12] 2069 	mov	a,r7
+   27A7 F0            [24] 2070 	movx	@dptr,a
                            2071 ;	cc1111rf.c:426: return 1;
-   2738 75 82 01      [24] 2072 	mov	dpl,#0x01
-   273B 22            [24] 2073 	ret
+   27A8 75 82 01      [24] 2072 	mov	dpl,#0x01
+   27AB 22            [24] 2073 	ret
                            2074 ;------------------------------------------------------------
                            2075 ;Allocation info for local variables in function 'startRX'
                            2076 ;------------------------------------------------------------
@@ -2078,62 +2078,62 @@
                            2078 ;	-----------------------------------------
                            2079 ;	 function startRX
                            2080 ;	-----------------------------------------
-   273C                    2081 _startRX:
+   27AC                    2081 _startRX:
                            2082 ;	cc1111rf.c:439: RFTXRXIE = 1;
-   273C D2 A8         [12] 2083 	setb	_RFTXRXIE
+   27AC D2 A8         [12] 2083 	setb	_RFTXRXIE
                            2084 ;	cc1111rf.c:443: memset(rfrxbuf,0,BUFFER_SIZE);
-   273E 75 14 00      [24] 2085 	mov	_memset_PARM_2,#0x00
-   2741 75 15 00      [24] 2086 	mov	_memset_PARM_3,#0x00
-   2744 75 16 02      [24] 2087 	mov	(_memset_PARM_3 + 1),#0x02
-   2747 90 F9 82      [24] 2088 	mov	dptr,#_rfrxbuf
-   274A 75 F0 00      [24] 2089 	mov	b,#0x00
-   274D 12 33 2C      [24] 2090 	lcall	_memset
+   27AE 75 14 00      [24] 2085 	mov	_memset_PARM_2,#0x00
+   27B1 75 15 00      [24] 2086 	mov	_memset_PARM_3,#0x00
+   27B4 75 16 02      [24] 2087 	mov	(_memset_PARM_3 + 1),#0x02
+   27B7 90 F9 CE      [24] 2088 	mov	dptr,#_rfrxbuf
+   27BA 75 F0 00      [24] 2089 	mov	b,#0x00
+   27BD 12 33 9C      [24] 2090 	lcall	_memset
                            2091 ;	cc1111rf.c:446: rfRxCounter[FIRST_BUFFER] = 0;
-   2750 90 FD 82      [24] 2092 	mov	dptr,#_rfRxCounter
-   2753 E4            [12] 2093 	clr	a
-   2754 F0            [24] 2094 	movx	@dptr,a
-   2755 E4            [12] 2095 	clr	a
-   2756 A3            [24] 2096 	inc	dptr
-   2757 F0            [24] 2097 	movx	@dptr,a
+   27C0 90 FD CE      [24] 2092 	mov	dptr,#_rfRxCounter
+   27C3 E4            [12] 2093 	clr	a
+   27C4 F0            [24] 2094 	movx	@dptr,a
+   27C5 E4            [12] 2095 	clr	a
+   27C6 A3            [24] 2096 	inc	dptr
+   27C7 F0            [24] 2097 	movx	@dptr,a
                            2098 ;	cc1111rf.c:447: rfRxCounter[SECOND_BUFFER] = 0;
-   2758 90 FD 84      [24] 2099 	mov	dptr,#(_rfRxCounter + 0x0002)
-   275B E4            [12] 2100 	clr	a
-   275C F0            [24] 2101 	movx	@dptr,a
-   275D E4            [12] 2102 	clr	a
-   275E A3            [24] 2103 	inc	dptr
-   275F F0            [24] 2104 	movx	@dptr,a
+   27C8 90 FD D0      [24] 2099 	mov	dptr,#(_rfRxCounter + 0x0002)
+   27CB E4            [12] 2100 	clr	a
+   27CC F0            [24] 2101 	movx	@dptr,a
+   27CD E4            [12] 2102 	clr	a
+   27CE A3            [24] 2103 	inc	dptr
+   27CF F0            [24] 2104 	movx	@dptr,a
                            2105 ;	cc1111rf.c:453: rfRxProcessed[FIRST_BUFFER] = RX_UNPROCESSED;
-   2760 90 FD 86      [24] 2106 	mov	dptr,#_rfRxProcessed
-   2763 E4            [12] 2107 	clr	a
-   2764 F0            [24] 2108 	movx	@dptr,a
+   27D0 90 FD D2      [24] 2106 	mov	dptr,#_rfRxProcessed
+   27D3 E4            [12] 2107 	clr	a
+   27D4 F0            [24] 2108 	movx	@dptr,a
                            2109 ;	cc1111rf.c:454: rfRxProcessed[SECOND_BUFFER] = RX_PROCESSED;
-   2765 90 FD 87      [24] 2110 	mov	dptr,#(_rfRxProcessed + 0x0001)
-   2768 74 01         [12] 2111 	mov	a,#0x01
-   276A F0            [24] 2112 	movx	@dptr,a
+   27D5 90 FD D3      [24] 2110 	mov	dptr,#(_rfRxProcessed + 0x0001)
+   27D8 74 01         [12] 2111 	mov	a,#0x01
+   27DA F0            [24] 2112 	movx	@dptr,a
                            2113 ;	cc1111rf.c:457: rfRxCurrentBuffer = 0;
-   276B 90 F9 81      [24] 2114 	mov	dptr,#_rfRxCurrentBuffer
-   276E E4            [12] 2115 	clr	a
-   276F F0            [24] 2116 	movx	@dptr,a
+   27DB 90 F9 CD      [24] 2114 	mov	dptr,#_rfRxCurrentBuffer
+   27DE E4            [12] 2115 	clr	a
+   27DF F0            [24] 2116 	movx	@dptr,a
                            2117 ;	cc1111rf.c:459: S1CON &= ~(S1CON_RFIF_0|S1CON_RFIF_1);
-   2770 AF 9B         [24] 2118 	mov	r7,_S1CON
-   2772 74 FC         [12] 2119 	mov	a,#0xFC
-   2774 5F            [12] 2120 	anl	a,r7
-   2775 F5 9B         [12] 2121 	mov	_S1CON,a
+   27E0 AF 9B         [24] 2118 	mov	r7,_S1CON
+   27E2 74 FC         [12] 2119 	mov	a,#0xFC
+   27E4 5F            [12] 2120 	anl	a,r7
+   27E5 F5 9B         [12] 2121 	mov	_S1CON,a
                            2122 ;	cc1111rf.c:460: RFIF &= ~RFIF_IRQ_DONE;
-   2777 AF E9         [24] 2123 	mov	r7,_RFIF
-   2779 74 EF         [12] 2124 	mov	a,#0xEF
-   277B 5F            [12] 2125 	anl	a,r7
-   277C F5 E9         [12] 2126 	mov	_RFIF,a
+   27E7 AF E9         [24] 2123 	mov	r7,_RFIF
+   27E9 74 EF         [12] 2124 	mov	a,#0xEF
+   27EB 5F            [12] 2125 	anl	a,r7
+   27EC F5 E9         [12] 2126 	mov	_RFIF,a
                            2127 ;	cc1111rf.c:493: RFRX;
-   277E 75 E1 02      [24] 2128 	mov	_RFST,#0x02
-   2781                    2129 00101$:
-   2781 90 DF 3B      [24] 2130 	mov	dptr,#_MARCSTATE
-   2784 E0            [24] 2131 	movx	a,@dptr
-   2785 FF            [12] 2132 	mov	r7,a
-   2786 BF 0D F8      [24] 2133 	cjne	r7,#0x0D,00101$
+   27EE 75 E1 02      [24] 2128 	mov	_RFST,#0x02
+   27F1                    2129 00101$:
+   27F1 90 DF 3B      [24] 2130 	mov	dptr,#_MARCSTATE
+   27F4 E0            [24] 2131 	movx	a,@dptr
+   27F5 FF            [12] 2132 	mov	r7,a
+   27F6 BF 0D F8      [24] 2133 	cjne	r7,#0x0D,00101$
                            2134 ;	cc1111rf.c:495: RFIM |= RFIF_IRQ_DONE;
-   2789 43 91 10      [24] 2135 	orl	_RFIM,#0x10
-   278C 22            [24] 2136 	ret
+   27F9 43 91 10      [24] 2135 	orl	_RFIM,#0x10
+   27FC 22            [24] 2136 	ret
                            2137 ;------------------------------------------------------------
                            2138 ;Allocation info for local variables in function 'RepeaterStart'
                            2139 ;------------------------------------------------------------
@@ -2141,12 +2141,12 @@
                            2141 ;	-----------------------------------------
                            2142 ;	 function RepeaterStart
                            2143 ;	-----------------------------------------
-   278D                    2144 _RepeaterStart:
+   27FD                    2144 _RepeaterStart:
                            2145 ;	cc1111rf.c:508: bRepeatMode = 1;
-   278D 90 FD FD      [24] 2146 	mov	dptr,#_bRepeatMode
-   2790 74 01         [12] 2147 	mov	a,#0x01
-   2792 F0            [24] 2148 	movx	@dptr,a
-   2793 22            [24] 2149 	ret
+   27FD 90 FE 49      [24] 2146 	mov	dptr,#_bRepeatMode
+   2800 74 01         [12] 2147 	mov	a,#0x01
+   2802 F0            [24] 2148 	movx	@dptr,a
+   2803 22            [24] 2149 	ret
                            2150 ;------------------------------------------------------------
                            2151 ;Allocation info for local variables in function 'RepeaterStop'
                            2152 ;------------------------------------------------------------
@@ -2154,12 +2154,12 @@
                            2154 ;	-----------------------------------------
                            2155 ;	 function RepeaterStop
                            2156 ;	-----------------------------------------
-   2794                    2157 _RepeaterStop:
+   2804                    2157 _RepeaterStop:
                            2158 ;	cc1111rf.c:513: bRepeatMode = 0;
-   2794 90 FD FD      [24] 2159 	mov	dptr,#_bRepeatMode
-   2797 E4            [12] 2160 	clr	a
-   2798 F0            [24] 2161 	movx	@dptr,a
-   2799 22            [24] 2162 	ret
+   2804 90 FE 49      [24] 2159 	mov	dptr,#_bRepeatMode
+   2807 E4            [12] 2160 	clr	a
+   2808 F0            [24] 2161 	movx	@dptr,a
+   2809 22            [24] 2162 	ret
                            2163 ;------------------------------------------------------------
                            2164 ;Allocation info for local variables in function 'rfTxRxIntHandler'
                            2165 ;------------------------------------------------------------
@@ -2167,560 +2167,560 @@
                            2167 ;	-----------------------------------------
                            2168 ;	 function rfTxRxIntHandler
                            2169 ;	-----------------------------------------
-   279A                    2170 _rfTxRxIntHandler:
-   279A C0 21         [24] 2171 	push	bits
-   279C C0 E0         [24] 2172 	push	acc
-   279E C0 F0         [24] 2173 	push	b
-   27A0 C0 82         [24] 2174 	push	dpl
-   27A2 C0 83         [24] 2175 	push	dph
-   27A4 C0 07         [24] 2176 	push	(0+7)
-   27A6 C0 06         [24] 2177 	push	(0+6)
-   27A8 C0 05         [24] 2178 	push	(0+5)
-   27AA C0 04         [24] 2179 	push	(0+4)
-   27AC C0 03         [24] 2180 	push	(0+3)
-   27AE C0 02         [24] 2181 	push	(0+2)
-   27B0 C0 01         [24] 2182 	push	(0+1)
-   27B2 C0 00         [24] 2183 	push	(0+0)
-   27B4 C0 D0         [24] 2184 	push	psw
-   27B6 75 D0 00      [24] 2185 	mov	psw,#0x00
+   280A                    2170 _rfTxRxIntHandler:
+   280A C0 21         [24] 2171 	push	bits
+   280C C0 E0         [24] 2172 	push	acc
+   280E C0 F0         [24] 2173 	push	b
+   2810 C0 82         [24] 2174 	push	dpl
+   2812 C0 83         [24] 2175 	push	dph
+   2814 C0 07         [24] 2176 	push	(0+7)
+   2816 C0 06         [24] 2177 	push	(0+6)
+   2818 C0 05         [24] 2178 	push	(0+5)
+   281A C0 04         [24] 2179 	push	(0+4)
+   281C C0 03         [24] 2180 	push	(0+3)
+   281E C0 02         [24] 2181 	push	(0+2)
+   2820 C0 01         [24] 2182 	push	(0+1)
+   2822 C0 00         [24] 2183 	push	(0+0)
+   2824 C0 D0         [24] 2184 	push	psw
+   2826 75 D0 00      [24] 2185 	mov	psw,#0x00
                            2186 ;	cc1111rf.c:527: lastCode[0] = LC_RFTXRX_VECTOR;
-   27B9 90 FD B5      [24] 2187 	mov	dptr,#_lastCode
-   27BC 74 11         [12] 2188 	mov	a,#0x11
-   27BE F0            [24] 2189 	movx	@dptr,a
+   2829 90 FE 01      [24] 2187 	mov	dptr,#_lastCode
+   282C 74 11         [12] 2188 	mov	a,#0x11
+   282E F0            [24] 2189 	movx	@dptr,a
                            2190 ;	cc1111rf.c:531: RFTXRXIF = 0;
-   27BF C2 89         [12] 2191 	clr	_RFTXRXIF
+   282F C2 89         [12] 2191 	clr	_RFTXRXIF
                            2192 ;	cc1111rf.c:533: if(MARCSTATE == MARC_STATE_RX)
-   27C1 90 DF 3B      [24] 2193 	mov	dptr,#_MARCSTATE
-   27C4 E0            [24] 2194 	movx	a,@dptr
-   27C5 FF            [12] 2195 	mov	r7,a
-   27C6 BF 0D 02      [24] 2196 	cjne	r7,#0x0D,00176$
-   27C9 80 03         [24] 2197 	sjmp	00177$
-   27CB                    2198 00176$:
-   27CB 02 28 D9      [24] 2199 	ljmp	00130$
-   27CE                    2200 00177$:
+   2831 90 DF 3B      [24] 2193 	mov	dptr,#_MARCSTATE
+   2834 E0            [24] 2194 	movx	a,@dptr
+   2835 FF            [12] 2195 	mov	r7,a
+   2836 BF 0D 02      [24] 2196 	cjne	r7,#0x0D,00176$
+   2839 80 03         [24] 2197 	sjmp	00177$
+   283B                    2198 00176$:
+   283B 02 29 49      [24] 2199 	ljmp	00130$
+   283E                    2200 00177$:
                            2201 ;	cc1111rf.c:536: LED = 1;
-   27CE D2 A4         [12] 2202 	setb	_P2_4
+   283E D2 A4         [12] 2202 	setb	_P2_4
                            2203 ;	cc1111rf.c:538: if(rfRxInfMode)
-   27D0 90 FD E7      [24] 2204 	mov	dptr,#_rfRxInfMode
-   27D3 E0            [24] 2205 	movx	a,@dptr
-   27D4 FF            [12] 2206 	mov	r7,a
-   27D5 60 27         [24] 2207 	jz	00104$
+   2840 90 FE 33      [24] 2204 	mov	dptr,#_rfRxInfMode
+   2843 E0            [24] 2205 	movx	a,@dptr
+   2844 FF            [12] 2206 	mov	r7,a
+   2845 60 27         [24] 2207 	jz	00104$
                            2208 ;	cc1111rf.c:539: if(rfRxTotalRXLen-- < 256)
-   27D7 90 FD E8      [24] 2209 	mov	dptr,#_rfRxTotalRXLen
-   27DA E0            [24] 2210 	movx	a,@dptr
-   27DB FE            [12] 2211 	mov	r6,a
-   27DC A3            [24] 2212 	inc	dptr
-   27DD E0            [24] 2213 	movx	a,@dptr
-   27DE FF            [12] 2214 	mov	r7,a
-   27DF 90 FD E8      [24] 2215 	mov	dptr,#_rfRxTotalRXLen
-   27E2 E0            [24] 2216 	movx	a,@dptr
-   27E3 24 FF         [12] 2217 	add	a,#0xFF
-   27E5 FC            [12] 2218 	mov	r4,a
-   27E6 A3            [24] 2219 	inc	dptr
-   27E7 E0            [24] 2220 	movx	a,@dptr
-   27E8 34 FF         [12] 2221 	addc	a,#0xFF
-   27EA FD            [12] 2222 	mov	r5,a
-   27EB 90 FD E8      [24] 2223 	mov	dptr,#_rfRxTotalRXLen
-   27EE EC            [12] 2224 	mov	a,r4
-   27EF F0            [24] 2225 	movx	@dptr,a
-   27F0 ED            [12] 2226 	mov	a,r5
-   27F1 A3            [24] 2227 	inc	dptr
-   27F2 F0            [24] 2228 	movx	@dptr,a
-   27F3 EF            [12] 2229 	mov	a,r7
-   27F4 70 08         [24] 2230 	jnz	00104$
+   2847 90 FE 34      [24] 2209 	mov	dptr,#_rfRxTotalRXLen
+   284A E0            [24] 2210 	movx	a,@dptr
+   284B FE            [12] 2211 	mov	r6,a
+   284C A3            [24] 2212 	inc	dptr
+   284D E0            [24] 2213 	movx	a,@dptr
+   284E FF            [12] 2214 	mov	r7,a
+   284F 90 FE 34      [24] 2215 	mov	dptr,#_rfRxTotalRXLen
+   2852 E0            [24] 2216 	movx	a,@dptr
+   2853 24 FF         [12] 2217 	add	a,#0xFF
+   2855 FC            [12] 2218 	mov	r4,a
+   2856 A3            [24] 2219 	inc	dptr
+   2857 E0            [24] 2220 	movx	a,@dptr
+   2858 34 FF         [12] 2221 	addc	a,#0xFF
+   285A FD            [12] 2222 	mov	r5,a
+   285B 90 FE 34      [24] 2223 	mov	dptr,#_rfRxTotalRXLen
+   285E EC            [12] 2224 	mov	a,r4
+   285F F0            [24] 2225 	movx	@dptr,a
+   2860 ED            [12] 2226 	mov	a,r5
+   2861 A3            [24] 2227 	inc	dptr
+   2862 F0            [24] 2228 	movx	@dptr,a
+   2863 EF            [12] 2229 	mov	a,r7
+   2864 70 08         [24] 2230 	jnz	00104$
                            2231 ;	cc1111rf.c:540: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
-   27F6 90 DF 04      [24] 2232 	mov	dptr,#_PKTCTRL0
-   27F9 E0            [24] 2233 	movx	a,@dptr
-   27FA FF            [12] 2234 	mov	r7,a
-   27FB 54 FC         [12] 2235 	anl	a,#0xFC
-   27FD F0            [24] 2236 	movx	@dptr,a
-   27FE                    2237 00104$:
+   2866 90 DF 04      [24] 2232 	mov	dptr,#_PKTCTRL0
+   2869 E0            [24] 2233 	movx	a,@dptr
+   286A FF            [12] 2234 	mov	r7,a
+   286B 54 FC         [12] 2235 	anl	a,#0xFC
+   286D F0            [24] 2236 	movx	@dptr,a
+   286E                    2237 00104$:
                            2238 ;	cc1111rf.c:541: rf_status = RFST_SRX;
-   27FE 90 FD 8C      [24] 2239 	mov	dptr,#_rf_status
-   2801 74 02         [12] 2240 	mov	a,#0x02
-   2803 F0            [24] 2241 	movx	@dptr,a
+   286E 90 FD D8      [24] 2239 	mov	dptr,#_rf_status
+   2871 74 02         [12] 2240 	mov	a,#0x02
+   2873 F0            [24] 2241 	movx	@dptr,a
                            2242 ;	cc1111rf.c:542: rfrxbuf[rfRxCurrentBuffer][rfRxCounter[rfRxCurrentBuffer]++] = RFD;
-   2804 90 F9 81      [24] 2243 	mov	dptr,#_rfRxCurrentBuffer
-   2807 E0            [24] 2244 	movx	a,@dptr
-   2808 25 E0         [12] 2245 	add	a,acc
-   280A FE            [12] 2246 	mov	r6,a
-   280B E4            [12] 2247 	clr	a
-   280C 24 82         [12] 2248 	add	a,#_rfrxbuf
-   280E FF            [12] 2249 	mov	r7,a
-   280F EE            [12] 2250 	mov	a,r6
-   2810 34 F9         [12] 2251 	addc	a,#(_rfrxbuf >> 8)
-   2812 FE            [12] 2252 	mov	r6,a
-   2813 90 F9 81      [24] 2253 	mov	dptr,#_rfRxCurrentBuffer
-   2816 E0            [24] 2254 	movx	a,@dptr
-   2817 75 F0 02      [24] 2255 	mov	b,#0x02
-   281A A4            [48] 2256 	mul	ab
-   281B 24 82         [12] 2257 	add	a,#_rfRxCounter
-   281D FC            [12] 2258 	mov	r4,a
-   281E 74 FD         [12] 2259 	mov	a,#(_rfRxCounter >> 8)
-   2820 35 F0         [12] 2260 	addc	a,b
-   2822 FD            [12] 2261 	mov	r5,a
-   2823 8C 82         [24] 2262 	mov	dpl,r4
-   2825 8D 83         [24] 2263 	mov	dph,r5
-   2827 E0            [24] 2264 	movx	a,@dptr
-   2828 FA            [12] 2265 	mov	r2,a
-   2829 A3            [24] 2266 	inc	dptr
-   282A E0            [24] 2267 	movx	a,@dptr
-   282B FB            [12] 2268 	mov	r3,a
-   282C 74 01         [12] 2269 	mov	a,#0x01
-   282E 2A            [12] 2270 	add	a,r2
-   282F F8            [12] 2271 	mov	r0,a
-   2830 E4            [12] 2272 	clr	a
-   2831 3B            [12] 2273 	addc	a,r3
-   2832 F9            [12] 2274 	mov	r1,a
-   2833 8C 82         [24] 2275 	mov	dpl,r4
-   2835 8D 83         [24] 2276 	mov	dph,r5
-   2837 E8            [12] 2277 	mov	a,r0
-   2838 F0            [24] 2278 	movx	@dptr,a
-   2839 E9            [12] 2279 	mov	a,r1
-   283A A3            [24] 2280 	inc	dptr
-   283B F0            [24] 2281 	movx	@dptr,a
-   283C EA            [12] 2282 	mov	a,r2
-   283D 2F            [12] 2283 	add	a,r7
-   283E F5 82         [12] 2284 	mov	dpl,a
-   2840 EB            [12] 2285 	mov	a,r3
-   2841 3E            [12] 2286 	addc	a,r6
-   2842 F5 83         [12] 2287 	mov	dph,a
-   2844 E5 D9         [12] 2288 	mov	a,_RFD
-   2846 F0            [24] 2289 	movx	@dptr,a
+   2874 90 F9 CD      [24] 2243 	mov	dptr,#_rfRxCurrentBuffer
+   2877 E0            [24] 2244 	movx	a,@dptr
+   2878 25 E0         [12] 2245 	add	a,acc
+   287A FE            [12] 2246 	mov	r6,a
+   287B E4            [12] 2247 	clr	a
+   287C 24 CE         [12] 2248 	add	a,#_rfrxbuf
+   287E FF            [12] 2249 	mov	r7,a
+   287F EE            [12] 2250 	mov	a,r6
+   2880 34 F9         [12] 2251 	addc	a,#(_rfrxbuf >> 8)
+   2882 FE            [12] 2252 	mov	r6,a
+   2883 90 F9 CD      [24] 2253 	mov	dptr,#_rfRxCurrentBuffer
+   2886 E0            [24] 2254 	movx	a,@dptr
+   2887 75 F0 02      [24] 2255 	mov	b,#0x02
+   288A A4            [48] 2256 	mul	ab
+   288B 24 CE         [12] 2257 	add	a,#_rfRxCounter
+   288D FC            [12] 2258 	mov	r4,a
+   288E 74 FD         [12] 2259 	mov	a,#(_rfRxCounter >> 8)
+   2890 35 F0         [12] 2260 	addc	a,b
+   2892 FD            [12] 2261 	mov	r5,a
+   2893 8C 82         [24] 2262 	mov	dpl,r4
+   2895 8D 83         [24] 2263 	mov	dph,r5
+   2897 E0            [24] 2264 	movx	a,@dptr
+   2898 FA            [12] 2265 	mov	r2,a
+   2899 A3            [24] 2266 	inc	dptr
+   289A E0            [24] 2267 	movx	a,@dptr
+   289B FB            [12] 2268 	mov	r3,a
+   289C 74 01         [12] 2269 	mov	a,#0x01
+   289E 2A            [12] 2270 	add	a,r2
+   289F F8            [12] 2271 	mov	r0,a
+   28A0 E4            [12] 2272 	clr	a
+   28A1 3B            [12] 2273 	addc	a,r3
+   28A2 F9            [12] 2274 	mov	r1,a
+   28A3 8C 82         [24] 2275 	mov	dpl,r4
+   28A5 8D 83         [24] 2276 	mov	dph,r5
+   28A7 E8            [12] 2277 	mov	a,r0
+   28A8 F0            [24] 2278 	movx	@dptr,a
+   28A9 E9            [12] 2279 	mov	a,r1
+   28AA A3            [24] 2280 	inc	dptr
+   28AB F0            [24] 2281 	movx	@dptr,a
+   28AC EA            [12] 2282 	mov	a,r2
+   28AD 2F            [12] 2283 	add	a,r7
+   28AE F5 82         [12] 2284 	mov	dpl,a
+   28B0 EB            [12] 2285 	mov	a,r3
+   28B1 3E            [12] 2286 	addc	a,r6
+   28B2 F5 83         [12] 2287 	mov	dph,a
+   28B4 E5 D9         [12] 2288 	mov	a,_RFD
+   28B6 F0            [24] 2289 	movx	@dptr,a
                            2290 ;	cc1111rf.c:543: if(rfRxCounter[rfRxCurrentBuffer] >= BUFFER_SIZE || rfRxCounter[rfRxCurrentBuffer] == 0)
-   2847 90 F9 81      [24] 2291 	mov	dptr,#_rfRxCurrentBuffer
-   284A E0            [24] 2292 	movx	a,@dptr
-   284B 75 F0 02      [24] 2293 	mov	b,#0x02
-   284E A4            [48] 2294 	mul	ab
-   284F 24 82         [12] 2295 	add	a,#_rfRxCounter
-   2851 F5 82         [12] 2296 	mov	dpl,a
-   2853 74 FD         [12] 2297 	mov	a,#(_rfRxCounter >> 8)
-   2855 35 F0         [12] 2298 	addc	a,b
-   2857 F5 83         [12] 2299 	mov	dph,a
-   2859 E0            [24] 2300 	movx	a,@dptr
-   285A FE            [12] 2301 	mov	r6,a
-   285B A3            [24] 2302 	inc	dptr
-   285C E0            [24] 2303 	movx	a,@dptr
-   285D FF            [12] 2304 	mov	r7,a
-   285E 54 FE         [12] 2305 	anl	a,#0xFE
-   2860 70 1A         [24] 2306 	jnz	00105$
-   2862 90 F9 81      [24] 2307 	mov	dptr,#_rfRxCurrentBuffer
-   2865 E0            [24] 2308 	movx	a,@dptr
-   2866 75 F0 02      [24] 2309 	mov	b,#0x02
-   2869 A4            [48] 2310 	mul	ab
-   286A 24 82         [12] 2311 	add	a,#_rfRxCounter
-   286C F5 82         [12] 2312 	mov	dpl,a
-   286E 74 FD         [12] 2313 	mov	a,#(_rfRxCounter >> 8)
-   2870 35 F0         [12] 2314 	addc	a,b
-   2872 F5 83         [12] 2315 	mov	dph,a
-   2874 E0            [24] 2316 	movx	a,@dptr
-   2875 FE            [12] 2317 	mov	r6,a
-   2876 A3            [24] 2318 	inc	dptr
-   2877 E0            [24] 2319 	movx	a,@dptr
-   2878 FF            [12] 2320 	mov	r7,a
-   2879 4E            [12] 2321 	orl	a,r6
-   287A 70 1A         [24] 2322 	jnz	00106$
-   287C                    2323 00105$:
+   28B7 90 F9 CD      [24] 2291 	mov	dptr,#_rfRxCurrentBuffer
+   28BA E0            [24] 2292 	movx	a,@dptr
+   28BB 75 F0 02      [24] 2293 	mov	b,#0x02
+   28BE A4            [48] 2294 	mul	ab
+   28BF 24 CE         [12] 2295 	add	a,#_rfRxCounter
+   28C1 F5 82         [12] 2296 	mov	dpl,a
+   28C3 74 FD         [12] 2297 	mov	a,#(_rfRxCounter >> 8)
+   28C5 35 F0         [12] 2298 	addc	a,b
+   28C7 F5 83         [12] 2299 	mov	dph,a
+   28C9 E0            [24] 2300 	movx	a,@dptr
+   28CA FE            [12] 2301 	mov	r6,a
+   28CB A3            [24] 2302 	inc	dptr
+   28CC E0            [24] 2303 	movx	a,@dptr
+   28CD FF            [12] 2304 	mov	r7,a
+   28CE 54 FE         [12] 2305 	anl	a,#0xFE
+   28D0 70 1A         [24] 2306 	jnz	00105$
+   28D2 90 F9 CD      [24] 2307 	mov	dptr,#_rfRxCurrentBuffer
+   28D5 E0            [24] 2308 	movx	a,@dptr
+   28D6 75 F0 02      [24] 2309 	mov	b,#0x02
+   28D9 A4            [48] 2310 	mul	ab
+   28DA 24 CE         [12] 2311 	add	a,#_rfRxCounter
+   28DC F5 82         [12] 2312 	mov	dpl,a
+   28DE 74 FD         [12] 2313 	mov	a,#(_rfRxCounter >> 8)
+   28E0 35 F0         [12] 2314 	addc	a,b
+   28E2 F5 83         [12] 2315 	mov	dph,a
+   28E4 E0            [24] 2316 	movx	a,@dptr
+   28E5 FE            [12] 2317 	mov	r6,a
+   28E6 A3            [24] 2318 	inc	dptr
+   28E7 E0            [24] 2319 	movx	a,@dptr
+   28E8 FF            [12] 2320 	mov	r7,a
+   28E9 4E            [12] 2321 	orl	a,r6
+   28EA 70 1A         [24] 2322 	jnz	00106$
+   28EC                    2323 00105$:
                            2324 ;	cc1111rf.c:545: rfRxCounter[rfRxCurrentBuffer] = BUFFER_SIZE-1;
-   287C 90 F9 81      [24] 2325 	mov	dptr,#_rfRxCurrentBuffer
-   287F E0            [24] 2326 	movx	a,@dptr
-   2880 FF            [12] 2327 	mov	r7,a
-   2881 75 F0 02      [24] 2328 	mov	b,#0x02
-   2884 A4            [48] 2329 	mul	ab
-   2885 24 82         [12] 2330 	add	a,#_rfRxCounter
-   2887 F5 82         [12] 2331 	mov	dpl,a
-   2889 74 FD         [12] 2332 	mov	a,#(_rfRxCounter >> 8)
-   288B 35 F0         [12] 2333 	addc	a,b
-   288D F5 83         [12] 2334 	mov	dph,a
-   288F 74 FF         [12] 2335 	mov	a,#0xFF
-   2891 F0            [24] 2336 	movx	@dptr,a
-   2892 74 01         [12] 2337 	mov	a,#0x01
-   2894 A3            [24] 2338 	inc	dptr
-   2895 F0            [24] 2339 	movx	@dptr,a
-   2896                    2340 00106$:
+   28EC 90 F9 CD      [24] 2325 	mov	dptr,#_rfRxCurrentBuffer
+   28EF E0            [24] 2326 	movx	a,@dptr
+   28F0 FF            [12] 2327 	mov	r7,a
+   28F1 75 F0 02      [24] 2328 	mov	b,#0x02
+   28F4 A4            [48] 2329 	mul	ab
+   28F5 24 CE         [12] 2330 	add	a,#_rfRxCounter
+   28F7 F5 82         [12] 2331 	mov	dpl,a
+   28F9 74 FD         [12] 2332 	mov	a,#(_rfRxCounter >> 8)
+   28FB 35 F0         [12] 2333 	addc	a,b
+   28FD F5 83         [12] 2334 	mov	dph,a
+   28FF 74 FF         [12] 2335 	mov	a,#0xFF
+   2901 F0            [24] 2336 	movx	@dptr,a
+   2902 74 01         [12] 2337 	mov	a,#0x01
+   2904 A3            [24] 2338 	inc	dptr
+   2905 F0            [24] 2339 	movx	@dptr,a
+   2906                    2340 00106$:
                            2341 ;	cc1111rf.c:548: if(!rfRxTotalRXLen && rfRxInfMode)
-   2896 90 FD E8      [24] 2342 	mov	dptr,#_rfRxTotalRXLen
-   2899 E0            [24] 2343 	movx	a,@dptr
-   289A FE            [12] 2344 	mov	r6,a
-   289B A3            [24] 2345 	inc	dptr
-   289C E0            [24] 2346 	movx	a,@dptr
-   289D FF            [12] 2347 	mov	r7,a
-   289E 4E            [12] 2348 	orl	a,r6
-   289F 60 03         [24] 2349 	jz	00184$
-   28A1 02 2A 91      [24] 2350 	ljmp	00132$
-   28A4                    2351 00184$:
-   28A4 90 FD E7      [24] 2352 	mov	dptr,#_rfRxInfMode
-   28A7 E0            [24] 2353 	movx	a,@dptr
-   28A8 FF            [12] 2354 	mov	r7,a
-   28A9 70 03         [24] 2355 	jnz	00185$
-   28AB 02 2A 91      [24] 2356 	ljmp	00132$
-   28AE                    2357 00185$:
+   2906 90 FE 34      [24] 2342 	mov	dptr,#_rfRxTotalRXLen
+   2909 E0            [24] 2343 	movx	a,@dptr
+   290A FE            [12] 2344 	mov	r6,a
+   290B A3            [24] 2345 	inc	dptr
+   290C E0            [24] 2346 	movx	a,@dptr
+   290D FF            [12] 2347 	mov	r7,a
+   290E 4E            [12] 2348 	orl	a,r6
+   290F 60 03         [24] 2349 	jz	00184$
+   2911 02 2B 01      [24] 2350 	ljmp	00132$
+   2914                    2351 00184$:
+   2914 90 FE 33      [24] 2352 	mov	dptr,#_rfRxInfMode
+   2917 E0            [24] 2353 	movx	a,@dptr
+   2918 FF            [12] 2354 	mov	r7,a
+   2919 70 03         [24] 2355 	jnz	00185$
+   291B 02 2B 01      [24] 2356 	ljmp	00132$
+   291E                    2357 00185$:
                            2358 ;	cc1111rf.c:550: rfRxTotalRXLen = rfRxLargeLen;
-   28AE 90 FD EA      [24] 2359 	mov	dptr,#_rfRxLargeLen
-   28B1 E0            [24] 2360 	movx	a,@dptr
-   28B2 FE            [12] 2361 	mov	r6,a
-   28B3 A3            [24] 2362 	inc	dptr
-   28B4 E0            [24] 2363 	movx	a,@dptr
-   28B5 FF            [12] 2364 	mov	r7,a
-   28B6 90 FD E8      [24] 2365 	mov	dptr,#_rfRxTotalRXLen
-   28B9 EE            [12] 2366 	mov	a,r6
-   28BA F0            [24] 2367 	movx	@dptr,a
-   28BB EF            [12] 2368 	mov	a,r7
-   28BC A3            [24] 2369 	inc	dptr
-   28BD F0            [24] 2370 	movx	@dptr,a
+   291E 90 FE 36      [24] 2359 	mov	dptr,#_rfRxLargeLen
+   2921 E0            [24] 2360 	movx	a,@dptr
+   2922 FE            [12] 2361 	mov	r6,a
+   2923 A3            [24] 2362 	inc	dptr
+   2924 E0            [24] 2363 	movx	a,@dptr
+   2925 FF            [12] 2364 	mov	r7,a
+   2926 90 FE 34      [24] 2365 	mov	dptr,#_rfRxTotalRXLen
+   2929 EE            [12] 2366 	mov	a,r6
+   292A F0            [24] 2367 	movx	@dptr,a
+   292B EF            [12] 2368 	mov	a,r7
+   292C A3            [24] 2369 	inc	dptr
+   292D F0            [24] 2370 	movx	@dptr,a
                            2371 ;	cc1111rf.c:551: PKTLEN = (u8) (rfRxTotalRXLen % 256);
-   28BE 90 FD E8      [24] 2372 	mov	dptr,#_rfRxTotalRXLen
-   28C1 E0            [24] 2373 	movx	a,@dptr
-   28C2 FE            [12] 2374 	mov	r6,a
-   28C3 A3            [24] 2375 	inc	dptr
-   28C4 E0            [24] 2376 	movx	a,@dptr
-   28C5 90 DF 02      [24] 2377 	mov	dptr,#_PKTLEN
-   28C8 EE            [12] 2378 	mov	a,r6
-   28C9 F0            [24] 2379 	movx	@dptr,a
+   292E 90 FE 34      [24] 2372 	mov	dptr,#_rfRxTotalRXLen
+   2931 E0            [24] 2373 	movx	a,@dptr
+   2932 FE            [12] 2374 	mov	r6,a
+   2933 A3            [24] 2375 	inc	dptr
+   2934 E0            [24] 2376 	movx	a,@dptr
+   2935 90 DF 02      [24] 2377 	mov	dptr,#_PKTLEN
+   2938 EE            [12] 2378 	mov	a,r6
+   2939 F0            [24] 2379 	movx	@dptr,a
                            2380 ;	cc1111rf.c:552: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
                            2381 ;	cc1111rf.c:553: PKTCTRL0 |= PKTCTRL0_LENGTH_CONFIG_INF;
-   28CA 90 DF 04      [24] 2382 	mov	dptr,#_PKTCTRL0
-   28CD E0            [24] 2383 	movx	a,@dptr
-   28CE 54 FC         [12] 2384 	anl	a,#0xFC
-   28D0 F0            [24] 2385 	movx	@dptr,a
-   28D1 E0            [24] 2386 	movx	a,@dptr
-   28D2 FF            [12] 2387 	mov	r7,a
-   28D3 44 02         [12] 2388 	orl	a,#0x02
-   28D5 F0            [24] 2389 	movx	@dptr,a
-   28D6 02 2A 91      [24] 2390 	ljmp	00132$
-   28D9                    2391 00130$:
+   293A 90 DF 04      [24] 2382 	mov	dptr,#_PKTCTRL0
+   293D E0            [24] 2383 	movx	a,@dptr
+   293E 54 FC         [12] 2384 	anl	a,#0xFC
+   2940 F0            [24] 2385 	movx	@dptr,a
+   2941 E0            [24] 2386 	movx	a,@dptr
+   2942 FF            [12] 2387 	mov	r7,a
+   2943 44 02         [12] 2388 	orl	a,#0x02
+   2945 F0            [24] 2389 	movx	@dptr,a
+   2946 02 2B 01      [24] 2390 	ljmp	00132$
+   2949                    2391 00130$:
                            2392 ;	cc1111rf.c:557: else if(MARCSTATE == MARC_STATE_TX)
-   28D9 90 DF 3B      [24] 2393 	mov	dptr,#_MARCSTATE
-   28DC E0            [24] 2394 	movx	a,@dptr
-   28DD FF            [12] 2395 	mov	r7,a
-   28DE BF 13 02      [24] 2396 	cjne	r7,#0x13,00186$
-   28E1 80 03         [24] 2397 	sjmp	00187$
-   28E3                    2398 00186$:
-   28E3 02 2A 91      [24] 2399 	ljmp	00132$
-   28E6                    2400 00187$:
+   2949 90 DF 3B      [24] 2393 	mov	dptr,#_MARCSTATE
+   294C E0            [24] 2394 	movx	a,@dptr
+   294D FF            [12] 2395 	mov	r7,a
+   294E BF 13 02      [24] 2396 	cjne	r7,#0x13,00186$
+   2951 80 03         [24] 2397 	sjmp	00187$
+   2953                    2398 00186$:
+   2953 02 2B 01      [24] 2399 	ljmp	00132$
+   2956                    2400 00187$:
                            2401 ;	cc1111rf.c:560: if (rfTxInfMode)
-   28E6 90 FD FA      [24] 2402 	mov	dptr,#_rfTxInfMode
-   28E9 E0            [24] 2403 	movx	a,@dptr
-   28EA FF            [12] 2404 	mov	r7,a
-   28EB 70 03         [24] 2405 	jnz	00188$
-   28ED 02 2A 22      [24] 2406 	ljmp	00125$
-   28F0                    2407 00188$:
+   2956 90 FE 46      [24] 2402 	mov	dptr,#_rfTxInfMode
+   2959 E0            [24] 2403 	movx	a,@dptr
+   295A FF            [12] 2404 	mov	r7,a
+   295B 70 03         [24] 2405 	jnz	00188$
+   295D 02 2A 92      [24] 2406 	ljmp	00125$
+   2960                    2407 00188$:
                            2408 ;	cc1111rf.c:567: macdata.tLastHop ++;
-   28F0 90 FD 9E      [24] 2409 	mov	dptr,#(_macdata + 0x000d)
-   28F3 E0            [24] 2410 	movx	a,@dptr
-   28F4 FE            [12] 2411 	mov	r6,a
-   28F5 A3            [24] 2412 	inc	dptr
-   28F6 E0            [24] 2413 	movx	a,@dptr
-   28F7 FF            [12] 2414 	mov	r7,a
-   28F8 0E            [12] 2415 	inc	r6
-   28F9 BE 00 01      [24] 2416 	cjne	r6,#0x00,00189$
-   28FC 0F            [12] 2417 	inc	r7
-   28FD                    2418 00189$:
-   28FD 90 FD 9E      [24] 2419 	mov	dptr,#(_macdata + 0x000d)
-   2900 EE            [12] 2420 	mov	a,r6
-   2901 F0            [24] 2421 	movx	@dptr,a
-   2902 EF            [12] 2422 	mov	a,r7
-   2903 A3            [24] 2423 	inc	dptr
-   2904 F0            [24] 2424 	movx	@dptr,a
+   2960 90 FD EA      [24] 2409 	mov	dptr,#(_macdata + 0x000d)
+   2963 E0            [24] 2410 	movx	a,@dptr
+   2964 FE            [12] 2411 	mov	r6,a
+   2965 A3            [24] 2412 	inc	dptr
+   2966 E0            [24] 2413 	movx	a,@dptr
+   2967 FF            [12] 2414 	mov	r7,a
+   2968 0E            [12] 2415 	inc	r6
+   2969 BE 00 01      [24] 2416 	cjne	r6,#0x00,00189$
+   296C 0F            [12] 2417 	inc	r7
+   296D                    2418 00189$:
+   296D 90 FD EA      [24] 2419 	mov	dptr,#(_macdata + 0x000d)
+   2970 EE            [12] 2420 	mov	a,r6
+   2971 F0            [24] 2421 	movx	@dptr,a
+   2972 EF            [12] 2422 	mov	a,r7
+   2973 A3            [24] 2423 	inc	dptr
+   2974 F0            [24] 2424 	movx	@dptr,a
                            2425 ;	cc1111rf.c:569: if (rfTxCounter == rfTxBufferEnd)
-   2905 90 FD EE      [24] 2426 	mov	dptr,#_rfTxCounter
-   2908 E0            [24] 2427 	movx	a,@dptr
-   2909 FE            [12] 2428 	mov	r6,a
-   290A A3            [24] 2429 	inc	dptr
-   290B E0            [24] 2430 	movx	a,@dptr
-   290C FF            [12] 2431 	mov	r7,a
-   290D 90 FD F2      [24] 2432 	mov	dptr,#_rfTxBufferEnd
-   2910 E0            [24] 2433 	movx	a,@dptr
-   2911 FC            [12] 2434 	mov	r4,a
-   2912 A3            [24] 2435 	inc	dptr
-   2913 E0            [24] 2436 	movx	a,@dptr
-   2914 FD            [12] 2437 	mov	r5,a
-   2915 EE            [12] 2438 	mov	a,r6
-   2916 B5 04 06      [24] 2439 	cjne	a,ar4,00190$
-   2919 EF            [12] 2440 	mov	a,r7
-   291A B5 05 02      [24] 2441 	cjne	a,ar5,00190$
-   291D 80 03         [24] 2442 	sjmp	00191$
-   291F                    2443 00190$:
-   291F 02 29 F6      [24] 2444 	ljmp	00121$
-   2922                    2445 00191$:
+   2975 90 FE 3A      [24] 2426 	mov	dptr,#_rfTxCounter
+   2978 E0            [24] 2427 	movx	a,@dptr
+   2979 FE            [12] 2428 	mov	r6,a
+   297A A3            [24] 2429 	inc	dptr
+   297B E0            [24] 2430 	movx	a,@dptr
+   297C FF            [12] 2431 	mov	r7,a
+   297D 90 FE 3E      [24] 2432 	mov	dptr,#_rfTxBufferEnd
+   2980 E0            [24] 2433 	movx	a,@dptr
+   2981 FC            [12] 2434 	mov	r4,a
+   2982 A3            [24] 2435 	inc	dptr
+   2983 E0            [24] 2436 	movx	a,@dptr
+   2984 FD            [12] 2437 	mov	r5,a
+   2985 EE            [12] 2438 	mov	a,r6
+   2986 B5 04 06      [24] 2439 	cjne	a,ar4,00190$
+   2989 EF            [12] 2440 	mov	a,r7
+   298A B5 05 02      [24] 2441 	cjne	a,ar5,00190$
+   298D 80 03         [24] 2442 	sjmp	00191$
+   298F                    2443 00190$:
+   298F 02 2A 66      [24] 2444 	ljmp	00121$
+   2992                    2445 00191$:
                            2446 ;	cc1111rf.c:571: if (rfTxRepeatCounter)
-   2922 90 FD F0      [24] 2447 	mov	dptr,#_rfTxRepeatCounter
-   2925 E0            [24] 2448 	movx	a,@dptr
-   2926 FE            [12] 2449 	mov	r6,a
-   2927 A3            [24] 2450 	inc	dptr
-   2928 E0            [24] 2451 	movx	a,@dptr
-   2929 FF            [12] 2452 	mov	r7,a
-   292A 4E            [12] 2453 	orl	a,r6
-   292B 60 37         [24] 2454 	jz	00118$
+   2992 90 FE 3C      [24] 2447 	mov	dptr,#_rfTxRepeatCounter
+   2995 E0            [24] 2448 	movx	a,@dptr
+   2996 FE            [12] 2449 	mov	r6,a
+   2997 A3            [24] 2450 	inc	dptr
+   2998 E0            [24] 2451 	movx	a,@dptr
+   2999 FF            [12] 2452 	mov	r7,a
+   299A 4E            [12] 2453 	orl	a,r6
+   299B 60 37         [24] 2454 	jz	00118$
                            2455 ;	cc1111rf.c:573: if(rfTxRepeatCounter != 0xff)
-   292D 90 FD F0      [24] 2456 	mov	dptr,#_rfTxRepeatCounter
-   2930 E0            [24] 2457 	movx	a,@dptr
-   2931 FE            [12] 2458 	mov	r6,a
-   2932 A3            [24] 2459 	inc	dptr
-   2933 E0            [24] 2460 	movx	a,@dptr
-   2934 FF            [12] 2461 	mov	r7,a
-   2935 BE FF 05      [24] 2462 	cjne	r6,#0xFF,00193$
-   2938 BF 00 02      [24] 2463 	cjne	r7,#0x00,00193$
-   293B 80 14         [24] 2464 	sjmp	00112$
-   293D                    2465 00193$:
+   299D 90 FE 3C      [24] 2456 	mov	dptr,#_rfTxRepeatCounter
+   29A0 E0            [24] 2457 	movx	a,@dptr
+   29A1 FE            [12] 2458 	mov	r6,a
+   29A2 A3            [24] 2459 	inc	dptr
+   29A3 E0            [24] 2460 	movx	a,@dptr
+   29A4 FF            [12] 2461 	mov	r7,a
+   29A5 BE FF 05      [24] 2462 	cjne	r6,#0xFF,00193$
+   29A8 BF 00 02      [24] 2463 	cjne	r7,#0x00,00193$
+   29AB 80 14         [24] 2464 	sjmp	00112$
+   29AD                    2465 00193$:
                            2466 ;	cc1111rf.c:574: rfTxRepeatCounter--;
-   293D 90 FD F0      [24] 2467 	mov	dptr,#_rfTxRepeatCounter
-   2940 E0            [24] 2468 	movx	a,@dptr
-   2941 24 FF         [12] 2469 	add	a,#0xFF
-   2943 FE            [12] 2470 	mov	r6,a
-   2944 A3            [24] 2471 	inc	dptr
-   2945 E0            [24] 2472 	movx	a,@dptr
-   2946 34 FF         [12] 2473 	addc	a,#0xFF
-   2948 FF            [12] 2474 	mov	r7,a
-   2949 90 FD F0      [24] 2475 	mov	dptr,#_rfTxRepeatCounter
-   294C EE            [12] 2476 	mov	a,r6
-   294D F0            [24] 2477 	movx	@dptr,a
-   294E EF            [12] 2478 	mov	a,r7
-   294F A3            [24] 2479 	inc	dptr
-   2950 F0            [24] 2480 	movx	@dptr,a
-   2951                    2481 00112$:
+   29AD 90 FE 3C      [24] 2467 	mov	dptr,#_rfTxRepeatCounter
+   29B0 E0            [24] 2468 	movx	a,@dptr
+   29B1 24 FF         [12] 2469 	add	a,#0xFF
+   29B3 FE            [12] 2470 	mov	r6,a
+   29B4 A3            [24] 2471 	inc	dptr
+   29B5 E0            [24] 2472 	movx	a,@dptr
+   29B6 34 FF         [12] 2473 	addc	a,#0xFF
+   29B8 FF            [12] 2474 	mov	r7,a
+   29B9 90 FE 3C      [24] 2475 	mov	dptr,#_rfTxRepeatCounter
+   29BC EE            [12] 2476 	mov	a,r6
+   29BD F0            [24] 2477 	movx	@dptr,a
+   29BE EF            [12] 2478 	mov	a,r7
+   29BF A3            [24] 2479 	inc	dptr
+   29C0 F0            [24] 2480 	movx	@dptr,a
+   29C1                    2481 00112$:
                            2482 ;	cc1111rf.c:575: rfTxCounter = rfTxRepeatOffset;
-   2951 90 FD F6      [24] 2483 	mov	dptr,#_rfTxRepeatOffset
-   2954 E0            [24] 2484 	movx	a,@dptr
-   2955 FE            [12] 2485 	mov	r6,a
-   2956 A3            [24] 2486 	inc	dptr
-   2957 E0            [24] 2487 	movx	a,@dptr
-   2958 FF            [12] 2488 	mov	r7,a
-   2959 90 FD EE      [24] 2489 	mov	dptr,#_rfTxCounter
-   295C EE            [12] 2490 	mov	a,r6
-   295D F0            [24] 2491 	movx	@dptr,a
-   295E EF            [12] 2492 	mov	a,r7
-   295F A3            [24] 2493 	inc	dptr
-   2960 F0            [24] 2494 	movx	@dptr,a
-   2961 02 29 F6      [24] 2495 	ljmp	00121$
-   2964                    2496 00118$:
+   29C1 90 FE 42      [24] 2483 	mov	dptr,#_rfTxRepeatOffset
+   29C4 E0            [24] 2484 	movx	a,@dptr
+   29C5 FE            [12] 2485 	mov	r6,a
+   29C6 A3            [24] 2486 	inc	dptr
+   29C7 E0            [24] 2487 	movx	a,@dptr
+   29C8 FF            [12] 2488 	mov	r7,a
+   29C9 90 FE 3A      [24] 2489 	mov	dptr,#_rfTxCounter
+   29CC EE            [12] 2490 	mov	a,r6
+   29CD F0            [24] 2491 	movx	@dptr,a
+   29CE EF            [12] 2492 	mov	a,r7
+   29CF A3            [24] 2493 	inc	dptr
+   29D0 F0            [24] 2494 	movx	@dptr,a
+   29D1 02 2A 66      [24] 2495 	ljmp	00121$
+   29D4                    2496 00118$:
                            2497 ;	cc1111rf.c:581: rftxbuf[(rfTxCurBufIdx * rfTxBufferEnd)] = BUFFER_AVAILABLE;
-   2964 90 FD F2      [24] 2498 	mov	dptr,#_rfTxBufferEnd
-   2967 E0            [24] 2499 	movx	a,@dptr
-   2968 F5 14         [12] 2500 	mov	__mulint_PARM_2,a
-   296A A3            [24] 2501 	inc	dptr
-   296B E0            [24] 2502 	movx	a,@dptr
-   296C F5 15         [12] 2503 	mov	(__mulint_PARM_2 + 1),a
-   296E 90 FD EC      [24] 2504 	mov	dptr,#_rfTxCurBufIdx
-   2971 E0            [24] 2505 	movx	a,@dptr
-   2972 FF            [12] 2506 	mov	r7,a
-   2973 7E 00         [12] 2507 	mov	r6,#0x00
-   2975 8F 82         [24] 2508 	mov	dpl,r7
-   2977 8E 83         [24] 2509 	mov	dph,r6
-   2979 12 34 07      [24] 2510 	lcall	__mulint
-   297C AE 82         [24] 2511 	mov	r6,dpl
-   297E AF 83         [24] 2512 	mov	r7,dph
-   2980 90 FD 88      [24] 2513 	mov	dptr,#_rftxbuf
-   2983 E0            [24] 2514 	movx	a,@dptr
-   2984 FC            [12] 2515 	mov	r4,a
-   2985 A3            [24] 2516 	inc	dptr
-   2986 E0            [24] 2517 	movx	a,@dptr
-   2987 FD            [12] 2518 	mov	r5,a
-   2988 EE            [12] 2519 	mov	a,r6
-   2989 2C            [12] 2520 	add	a,r4
-   298A F5 82         [12] 2521 	mov	dpl,a
-   298C EF            [12] 2522 	mov	a,r7
-   298D 3D            [12] 2523 	addc	a,r5
-   298E F5 83         [12] 2524 	mov	dph,a
-   2990 E4            [12] 2525 	clr	a
-   2991 F0            [24] 2526 	movx	@dptr,a
+   29D4 90 FE 3E      [24] 2498 	mov	dptr,#_rfTxBufferEnd
+   29D7 E0            [24] 2499 	movx	a,@dptr
+   29D8 F5 14         [12] 2500 	mov	__mulint_PARM_2,a
+   29DA A3            [24] 2501 	inc	dptr
+   29DB E0            [24] 2502 	movx	a,@dptr
+   29DC F5 15         [12] 2503 	mov	(__mulint_PARM_2 + 1),a
+   29DE 90 FE 38      [24] 2504 	mov	dptr,#_rfTxCurBufIdx
+   29E1 E0            [24] 2505 	movx	a,@dptr
+   29E2 FF            [12] 2506 	mov	r7,a
+   29E3 7E 00         [12] 2507 	mov	r6,#0x00
+   29E5 8F 82         [24] 2508 	mov	dpl,r7
+   29E7 8E 83         [24] 2509 	mov	dph,r6
+   29E9 12 34 77      [24] 2510 	lcall	__mulint
+   29EC AE 82         [24] 2511 	mov	r6,dpl
+   29EE AF 83         [24] 2512 	mov	r7,dph
+   29F0 90 FD D4      [24] 2513 	mov	dptr,#_rftxbuf
+   29F3 E0            [24] 2514 	movx	a,@dptr
+   29F4 FC            [12] 2515 	mov	r4,a
+   29F5 A3            [24] 2516 	inc	dptr
+   29F6 E0            [24] 2517 	movx	a,@dptr
+   29F7 FD            [12] 2518 	mov	r5,a
+   29F8 EE            [12] 2519 	mov	a,r6
+   29F9 2C            [12] 2520 	add	a,r4
+   29FA F5 82         [12] 2521 	mov	dpl,a
+   29FC EF            [12] 2522 	mov	a,r7
+   29FD 3D            [12] 2523 	addc	a,r5
+   29FE F5 83         [12] 2524 	mov	dph,a
+   2A00 E4            [12] 2525 	clr	a
+   2A01 F0            [24] 2526 	movx	@dptr,a
                            2527 ;	cc1111rf.c:583: if (++rfTxCurBufIdx == rfTxBufCount)
-   2992 90 FD EC      [24] 2528 	mov	dptr,#_rfTxCurBufIdx
-   2995 E0            [24] 2529 	movx	a,@dptr
-   2996 24 01         [12] 2530 	add	a,#0x01
-   2998 F0            [24] 2531 	movx	@dptr,a
-   2999 90 FD EC      [24] 2532 	mov	dptr,#_rfTxCurBufIdx
-   299C E0            [24] 2533 	movx	a,@dptr
-   299D FF            [12] 2534 	mov	r7,a
-   299E 90 FD ED      [24] 2535 	mov	dptr,#_rfTxBufCount
-   29A1 E0            [24] 2536 	movx	a,@dptr
-   29A2 FE            [12] 2537 	mov	r6,a
-   29A3 EF            [12] 2538 	mov	a,r7
-   29A4 B5 06 05      [24] 2539 	cjne	a,ar6,00114$
+   2A02 90 FE 38      [24] 2528 	mov	dptr,#_rfTxCurBufIdx
+   2A05 E0            [24] 2529 	movx	a,@dptr
+   2A06 24 01         [12] 2530 	add	a,#0x01
+   2A08 F0            [24] 2531 	movx	@dptr,a
+   2A09 90 FE 38      [24] 2532 	mov	dptr,#_rfTxCurBufIdx
+   2A0C E0            [24] 2533 	movx	a,@dptr
+   2A0D FF            [12] 2534 	mov	r7,a
+   2A0E 90 FE 39      [24] 2535 	mov	dptr,#_rfTxBufCount
+   2A11 E0            [24] 2536 	movx	a,@dptr
+   2A12 FE            [12] 2537 	mov	r6,a
+   2A13 EF            [12] 2538 	mov	a,r7
+   2A14 B5 06 05      [24] 2539 	cjne	a,ar6,00114$
                            2540 ;	cc1111rf.c:585: rfTxCurBufIdx = 0;
-   29A7 90 FD EC      [24] 2541 	mov	dptr,#_rfTxCurBufIdx
-   29AA E4            [12] 2542 	clr	a
-   29AB F0            [24] 2543 	movx	@dptr,a
-   29AC                    2544 00114$:
+   2A17 90 FE 38      [24] 2541 	mov	dptr,#_rfTxCurBufIdx
+   2A1A E4            [12] 2542 	clr	a
+   2A1B F0            [24] 2543 	movx	@dptr,a
+   2A1C                    2544 00114$:
                            2545 ;	cc1111rf.c:588: if (rftxbuf[(rfTxCurBufIdx * rfTxBufferEnd)] == BUFFER_AVAILABLE)
-   29AC 90 FD F2      [24] 2546 	mov	dptr,#_rfTxBufferEnd
-   29AF E0            [24] 2547 	movx	a,@dptr
-   29B0 F5 14         [12] 2548 	mov	__mulint_PARM_2,a
-   29B2 A3            [24] 2549 	inc	dptr
-   29B3 E0            [24] 2550 	movx	a,@dptr
-   29B4 F5 15         [12] 2551 	mov	(__mulint_PARM_2 + 1),a
-   29B6 90 FD EC      [24] 2552 	mov	dptr,#_rfTxCurBufIdx
-   29B9 E0            [24] 2553 	movx	a,@dptr
-   29BA FF            [12] 2554 	mov	r7,a
-   29BB 7E 00         [12] 2555 	mov	r6,#0x00
-   29BD 8F 82         [24] 2556 	mov	dpl,r7
-   29BF 8E 83         [24] 2557 	mov	dph,r6
-   29C1 12 34 07      [24] 2558 	lcall	__mulint
-   29C4 AE 82         [24] 2559 	mov	r6,dpl
-   29C6 AF 83         [24] 2560 	mov	r7,dph
-   29C8 90 FD 88      [24] 2561 	mov	dptr,#_rftxbuf
-   29CB E0            [24] 2562 	movx	a,@dptr
-   29CC FC            [12] 2563 	mov	r4,a
-   29CD A3            [24] 2564 	inc	dptr
-   29CE E0            [24] 2565 	movx	a,@dptr
-   29CF FD            [12] 2566 	mov	r5,a
-   29D0 EE            [12] 2567 	mov	a,r6
-   29D1 2C            [12] 2568 	add	a,r4
-   29D2 FE            [12] 2569 	mov	r6,a
-   29D3 EF            [12] 2570 	mov	a,r7
-   29D4 3D            [12] 2571 	addc	a,r5
-   29D5 FF            [12] 2572 	mov	r7,a
-   29D6 8E 82         [24] 2573 	mov	dpl,r6
-   29D8 8F 83         [24] 2574 	mov	dph,r7
-   29DA E0            [24] 2575 	movx	a,@dptr
-   29DB 70 10         [24] 2576 	jnz	00116$
+   2A1C 90 FE 3E      [24] 2546 	mov	dptr,#_rfTxBufferEnd
+   2A1F E0            [24] 2547 	movx	a,@dptr
+   2A20 F5 14         [12] 2548 	mov	__mulint_PARM_2,a
+   2A22 A3            [24] 2549 	inc	dptr
+   2A23 E0            [24] 2550 	movx	a,@dptr
+   2A24 F5 15         [12] 2551 	mov	(__mulint_PARM_2 + 1),a
+   2A26 90 FE 38      [24] 2552 	mov	dptr,#_rfTxCurBufIdx
+   2A29 E0            [24] 2553 	movx	a,@dptr
+   2A2A FF            [12] 2554 	mov	r7,a
+   2A2B 7E 00         [12] 2555 	mov	r6,#0x00
+   2A2D 8F 82         [24] 2556 	mov	dpl,r7
+   2A2F 8E 83         [24] 2557 	mov	dph,r6
+   2A31 12 34 77      [24] 2558 	lcall	__mulint
+   2A34 AE 82         [24] 2559 	mov	r6,dpl
+   2A36 AF 83         [24] 2560 	mov	r7,dph
+   2A38 90 FD D4      [24] 2561 	mov	dptr,#_rftxbuf
+   2A3B E0            [24] 2562 	movx	a,@dptr
+   2A3C FC            [12] 2563 	mov	r4,a
+   2A3D A3            [24] 2564 	inc	dptr
+   2A3E E0            [24] 2565 	movx	a,@dptr
+   2A3F FD            [12] 2566 	mov	r5,a
+   2A40 EE            [12] 2567 	mov	a,r6
+   2A41 2C            [12] 2568 	add	a,r4
+   2A42 FE            [12] 2569 	mov	r6,a
+   2A43 EF            [12] 2570 	mov	a,r7
+   2A44 3D            [12] 2571 	addc	a,r5
+   2A45 FF            [12] 2572 	mov	r7,a
+   2A46 8E 82         [24] 2573 	mov	dpl,r6
+   2A48 8F 83         [24] 2574 	mov	dph,r7
+   2A4A E0            [24] 2575 	movx	a,@dptr
+   2A4B 70 10         [24] 2576 	jnz	00116$
                            2577 ;	cc1111rf.c:591: macdata.mac_state = MAC_STATE_NONHOPPING;
-   29DD 90 FD 91      [24] 2578 	mov	dptr,#_macdata
-   29E0 E4            [12] 2579 	clr	a
-   29E1 F0            [24] 2580 	movx	@dptr,a
+   2A4D 90 FD DD      [24] 2578 	mov	dptr,#_macdata
+   2A50 E4            [12] 2579 	clr	a
+   2A51 F0            [24] 2580 	movx	@dptr,a
                            2581 ;	cc1111rf.c:592: lastCode[1] = LCE_DROPPED_PACKET;
-   29E2 90 FD B6      [24] 2582 	mov	dptr,#(_lastCode + 0x0001)
-   29E5 74 12         [12] 2583 	mov	a,#0x12
-   29E7 F0            [24] 2584 	movx	@dptr,a
+   2A52 90 FE 02      [24] 2582 	mov	dptr,#(_lastCode + 0x0001)
+   2A55 74 12         [12] 2583 	mov	a,#0x12
+   2A57 F0            [24] 2584 	movx	@dptr,a
                            2585 ;	cc1111rf.c:593: resetRFSTATE();
-   29E8 12 22 E9      [24] 2586 	lcall	_resetRFSTATE
+   2A58 12 23 59      [24] 2586 	lcall	_resetRFSTATE
                            2587 ;	cc1111rf.c:594: LED = 0;
-   29EB C2 A4         [12] 2588 	clr	_P2_4
-   29ED                    2589 00116$:
+   2A5B C2 A4         [12] 2588 	clr	_P2_4
+   2A5D                    2589 00116$:
                            2590 ;	cc1111rf.c:598: rfTxCounter = 1;
-   29ED 90 FD EE      [24] 2591 	mov	dptr,#_rfTxCounter
-   29F0 74 01         [12] 2592 	mov	a,#0x01
-   29F2 F0            [24] 2593 	movx	@dptr,a
-   29F3 E4            [12] 2594 	clr	a
-   29F4 A3            [24] 2595 	inc	dptr
-   29F5 F0            [24] 2596 	movx	@dptr,a
-   29F6                    2597 00121$:
+   2A5D 90 FE 3A      [24] 2591 	mov	dptr,#_rfTxCounter
+   2A60 74 01         [12] 2592 	mov	a,#0x01
+   2A62 F0            [24] 2593 	movx	@dptr,a
+   2A63 E4            [12] 2594 	clr	a
+   2A64 A3            [24] 2595 	inc	dptr
+   2A65 F0            [24] 2596 	movx	@dptr,a
+   2A66                    2597 00121$:
                            2598 ;	cc1111rf.c:602: if(rfTxTotalTXLen-- == 255)
-   29F6 90 FD F8      [24] 2599 	mov	dptr,#_rfTxTotalTXLen
-   29F9 E0            [24] 2600 	movx	a,@dptr
-   29FA FE            [12] 2601 	mov	r6,a
-   29FB A3            [24] 2602 	inc	dptr
-   29FC E0            [24] 2603 	movx	a,@dptr
-   29FD FF            [12] 2604 	mov	r7,a
-   29FE 90 FD F8      [24] 2605 	mov	dptr,#_rfTxTotalTXLen
-   2A01 E0            [24] 2606 	movx	a,@dptr
-   2A02 24 FF         [12] 2607 	add	a,#0xFF
-   2A04 FC            [12] 2608 	mov	r4,a
-   2A05 A3            [24] 2609 	inc	dptr
-   2A06 E0            [24] 2610 	movx	a,@dptr
-   2A07 34 FF         [12] 2611 	addc	a,#0xFF
-   2A09 FD            [12] 2612 	mov	r5,a
-   2A0A 90 FD F8      [24] 2613 	mov	dptr,#_rfTxTotalTXLen
-   2A0D EC            [12] 2614 	mov	a,r4
-   2A0E F0            [24] 2615 	movx	@dptr,a
-   2A0F ED            [12] 2616 	mov	a,r5
-   2A10 A3            [24] 2617 	inc	dptr
-   2A11 F0            [24] 2618 	movx	@dptr,a
-   2A12 BE FF 21      [24] 2619 	cjne	r6,#0xFF,00126$
-   2A15 BF 00 1E      [24] 2620 	cjne	r7,#0x00,00126$
+   2A66 90 FE 44      [24] 2599 	mov	dptr,#_rfTxTotalTXLen
+   2A69 E0            [24] 2600 	movx	a,@dptr
+   2A6A FE            [12] 2601 	mov	r6,a
+   2A6B A3            [24] 2602 	inc	dptr
+   2A6C E0            [24] 2603 	movx	a,@dptr
+   2A6D FF            [12] 2604 	mov	r7,a
+   2A6E 90 FE 44      [24] 2605 	mov	dptr,#_rfTxTotalTXLen
+   2A71 E0            [24] 2606 	movx	a,@dptr
+   2A72 24 FF         [12] 2607 	add	a,#0xFF
+   2A74 FC            [12] 2608 	mov	r4,a
+   2A75 A3            [24] 2609 	inc	dptr
+   2A76 E0            [24] 2610 	movx	a,@dptr
+   2A77 34 FF         [12] 2611 	addc	a,#0xFF
+   2A79 FD            [12] 2612 	mov	r5,a
+   2A7A 90 FE 44      [24] 2613 	mov	dptr,#_rfTxTotalTXLen
+   2A7D EC            [12] 2614 	mov	a,r4
+   2A7E F0            [24] 2615 	movx	@dptr,a
+   2A7F ED            [12] 2616 	mov	a,r5
+   2A80 A3            [24] 2617 	inc	dptr
+   2A81 F0            [24] 2618 	movx	@dptr,a
+   2A82 BE FF 21      [24] 2619 	cjne	r6,#0xFF,00126$
+   2A85 BF 00 1E      [24] 2620 	cjne	r7,#0x00,00126$
                            2621 ;	cc1111rf.c:604: PKTCTRL0 &= ~PKTCTRL0_LENGTH_CONFIG;
-   2A18 90 DF 04      [24] 2622 	mov	dptr,#_PKTCTRL0
-   2A1B E0            [24] 2623 	movx	a,@dptr
-   2A1C FF            [12] 2624 	mov	r7,a
-   2A1D 54 FC         [12] 2625 	anl	a,#0xFC
-   2A1F F0            [24] 2626 	movx	@dptr,a
-   2A20 80 14         [24] 2627 	sjmp	00126$
-   2A22                    2628 00125$:
+   2A88 90 DF 04      [24] 2622 	mov	dptr,#_PKTCTRL0
+   2A8B E0            [24] 2623 	movx	a,@dptr
+   2A8C FF            [12] 2624 	mov	r7,a
+   2A8D 54 FC         [12] 2625 	anl	a,#0xFC
+   2A8F F0            [24] 2626 	movx	@dptr,a
+   2A90 80 14         [24] 2627 	sjmp	00126$
+   2A92                    2628 00125$:
                            2629 ;	cc1111rf.c:611: rfTxTotalTXLen--;
-   2A22 90 FD F8      [24] 2630 	mov	dptr,#_rfTxTotalTXLen
-   2A25 E0            [24] 2631 	movx	a,@dptr
-   2A26 24 FF         [12] 2632 	add	a,#0xFF
-   2A28 FE            [12] 2633 	mov	r6,a
-   2A29 A3            [24] 2634 	inc	dptr
-   2A2A E0            [24] 2635 	movx	a,@dptr
-   2A2B 34 FF         [12] 2636 	addc	a,#0xFF
-   2A2D FF            [12] 2637 	mov	r7,a
-   2A2E 90 FD F8      [24] 2638 	mov	dptr,#_rfTxTotalTXLen
-   2A31 EE            [12] 2639 	mov	a,r6
-   2A32 F0            [24] 2640 	movx	@dptr,a
-   2A33 EF            [12] 2641 	mov	a,r7
-   2A34 A3            [24] 2642 	inc	dptr
-   2A35 F0            [24] 2643 	movx	@dptr,a
-   2A36                    2644 00126$:
+   2A92 90 FE 44      [24] 2630 	mov	dptr,#_rfTxTotalTXLen
+   2A95 E0            [24] 2631 	movx	a,@dptr
+   2A96 24 FF         [12] 2632 	add	a,#0xFF
+   2A98 FE            [12] 2633 	mov	r6,a
+   2A99 A3            [24] 2634 	inc	dptr
+   2A9A E0            [24] 2635 	movx	a,@dptr
+   2A9B 34 FF         [12] 2636 	addc	a,#0xFF
+   2A9D FF            [12] 2637 	mov	r7,a
+   2A9E 90 FE 44      [24] 2638 	mov	dptr,#_rfTxTotalTXLen
+   2AA1 EE            [12] 2639 	mov	a,r6
+   2AA2 F0            [24] 2640 	movx	@dptr,a
+   2AA3 EF            [12] 2641 	mov	a,r7
+   2AA4 A3            [24] 2642 	inc	dptr
+   2AA5 F0            [24] 2643 	movx	@dptr,a
+   2AA6                    2644 00126$:
                            2645 ;	cc1111rf.c:612: rf_status = RFST_STX;
-   2A36 90 FD 8C      [24] 2646 	mov	dptr,#_rf_status
-   2A39 74 03         [12] 2647 	mov	a,#0x03
-   2A3B F0            [24] 2648 	movx	@dptr,a
+   2AA6 90 FD D8      [24] 2646 	mov	dptr,#_rf_status
+   2AA9 74 03         [12] 2647 	mov	a,#0x03
+   2AAB F0            [24] 2648 	movx	@dptr,a
                            2649 ;	cc1111rf.c:614: RFD = rftxbuf[(rfTxCurBufIdx * rfTxBufferEnd) + rfTxCounter++];
-   2A3C 90 FD F2      [24] 2650 	mov	dptr,#_rfTxBufferEnd
-   2A3F E0            [24] 2651 	movx	a,@dptr
-   2A40 F5 14         [12] 2652 	mov	__mulint_PARM_2,a
-   2A42 A3            [24] 2653 	inc	dptr
-   2A43 E0            [24] 2654 	movx	a,@dptr
-   2A44 F5 15         [12] 2655 	mov	(__mulint_PARM_2 + 1),a
-   2A46 90 FD EC      [24] 2656 	mov	dptr,#_rfTxCurBufIdx
-   2A49 E0            [24] 2657 	movx	a,@dptr
-   2A4A FF            [12] 2658 	mov	r7,a
-   2A4B 7E 00         [12] 2659 	mov	r6,#0x00
-   2A4D 8F 82         [24] 2660 	mov	dpl,r7
-   2A4F 8E 83         [24] 2661 	mov	dph,r6
-   2A51 12 34 07      [24] 2662 	lcall	__mulint
-   2A54 AE 82         [24] 2663 	mov	r6,dpl
-   2A56 AF 83         [24] 2664 	mov	r7,dph
-   2A58 90 FD EE      [24] 2665 	mov	dptr,#_rfTxCounter
-   2A5B E0            [24] 2666 	movx	a,@dptr
-   2A5C FC            [12] 2667 	mov	r4,a
-   2A5D A3            [24] 2668 	inc	dptr
-   2A5E E0            [24] 2669 	movx	a,@dptr
-   2A5F FD            [12] 2670 	mov	r5,a
-   2A60 90 FD EE      [24] 2671 	mov	dptr,#_rfTxCounter
-   2A63 E0            [24] 2672 	movx	a,@dptr
-   2A64 24 01         [12] 2673 	add	a,#0x01
-   2A66 F0            [24] 2674 	movx	@dptr,a
-   2A67 A3            [24] 2675 	inc	dptr
-   2A68 E0            [24] 2676 	movx	a,@dptr
-   2A69 34 00         [12] 2677 	addc	a,#0x00
-   2A6B F0            [24] 2678 	movx	@dptr,a
-   2A6C EC            [12] 2679 	mov	a,r4
-   2A6D 2E            [12] 2680 	add	a,r6
-   2A6E FE            [12] 2681 	mov	r6,a
-   2A6F ED            [12] 2682 	mov	a,r5
-   2A70 3F            [12] 2683 	addc	a,r7
-   2A71 FF            [12] 2684 	mov	r7,a
-   2A72 90 FD 88      [24] 2685 	mov	dptr,#_rftxbuf
-   2A75 E0            [24] 2686 	movx	a,@dptr
-   2A76 FC            [12] 2687 	mov	r4,a
-   2A77 A3            [24] 2688 	inc	dptr
-   2A78 E0            [24] 2689 	movx	a,@dptr
-   2A79 FD            [12] 2690 	mov	r5,a
-   2A7A EE            [12] 2691 	mov	a,r6
-   2A7B 2C            [12] 2692 	add	a,r4
-   2A7C F5 82         [12] 2693 	mov	dpl,a
-   2A7E EF            [12] 2694 	mov	a,r7
-   2A7F 3D            [12] 2695 	addc	a,r5
-   2A80 F5 83         [12] 2696 	mov	dph,a
-   2A82 E0            [24] 2697 	movx	a,@dptr
-   2A83 F5 D9         [12] 2698 	mov	_RFD,a
+   2AAC 90 FE 3E      [24] 2650 	mov	dptr,#_rfTxBufferEnd
+   2AAF E0            [24] 2651 	movx	a,@dptr
+   2AB0 F5 14         [12] 2652 	mov	__mulint_PARM_2,a
+   2AB2 A3            [24] 2653 	inc	dptr
+   2AB3 E0            [24] 2654 	movx	a,@dptr
+   2AB4 F5 15         [12] 2655 	mov	(__mulint_PARM_2 + 1),a
+   2AB6 90 FE 38      [24] 2656 	mov	dptr,#_rfTxCurBufIdx
+   2AB9 E0            [24] 2657 	movx	a,@dptr
+   2ABA FF            [12] 2658 	mov	r7,a
+   2ABB 7E 00         [12] 2659 	mov	r6,#0x00
+   2ABD 8F 82         [24] 2660 	mov	dpl,r7
+   2ABF 8E 83         [24] 2661 	mov	dph,r6
+   2AC1 12 34 77      [24] 2662 	lcall	__mulint
+   2AC4 AE 82         [24] 2663 	mov	r6,dpl
+   2AC6 AF 83         [24] 2664 	mov	r7,dph
+   2AC8 90 FE 3A      [24] 2665 	mov	dptr,#_rfTxCounter
+   2ACB E0            [24] 2666 	movx	a,@dptr
+   2ACC FC            [12] 2667 	mov	r4,a
+   2ACD A3            [24] 2668 	inc	dptr
+   2ACE E0            [24] 2669 	movx	a,@dptr
+   2ACF FD            [12] 2670 	mov	r5,a
+   2AD0 90 FE 3A      [24] 2671 	mov	dptr,#_rfTxCounter
+   2AD3 E0            [24] 2672 	movx	a,@dptr
+   2AD4 24 01         [12] 2673 	add	a,#0x01
+   2AD6 F0            [24] 2674 	movx	@dptr,a
+   2AD7 A3            [24] 2675 	inc	dptr
+   2AD8 E0            [24] 2676 	movx	a,@dptr
+   2AD9 34 00         [12] 2677 	addc	a,#0x00
+   2ADB F0            [24] 2678 	movx	@dptr,a
+   2ADC EC            [12] 2679 	mov	a,r4
+   2ADD 2E            [12] 2680 	add	a,r6
+   2ADE FE            [12] 2681 	mov	r6,a
+   2ADF ED            [12] 2682 	mov	a,r5
+   2AE0 3F            [12] 2683 	addc	a,r7
+   2AE1 FF            [12] 2684 	mov	r7,a
+   2AE2 90 FD D4      [24] 2685 	mov	dptr,#_rftxbuf
+   2AE5 E0            [24] 2686 	movx	a,@dptr
+   2AE6 FC            [12] 2687 	mov	r4,a
+   2AE7 A3            [24] 2688 	inc	dptr
+   2AE8 E0            [24] 2689 	movx	a,@dptr
+   2AE9 FD            [12] 2690 	mov	r5,a
+   2AEA EE            [12] 2691 	mov	a,r6
+   2AEB 2C            [12] 2692 	add	a,r4
+   2AEC F5 82         [12] 2693 	mov	dpl,a
+   2AEE EF            [12] 2694 	mov	a,r7
+   2AEF 3D            [12] 2695 	addc	a,r5
+   2AF0 F5 83         [12] 2696 	mov	dph,a
+   2AF2 E0            [24] 2697 	movx	a,@dptr
+   2AF3 F5 D9         [12] 2698 	mov	_RFD,a
                            2699 ;	cc1111rf.c:615: txTotal++;
-   2A85 90 FD 8A      [24] 2700 	mov	dptr,#_txTotal
-   2A88 E0            [24] 2701 	movx	a,@dptr
-   2A89 24 01         [12] 2702 	add	a,#0x01
-   2A8B F0            [24] 2703 	movx	@dptr,a
-   2A8C A3            [24] 2704 	inc	dptr
-   2A8D E0            [24] 2705 	movx	a,@dptr
-   2A8E 34 00         [12] 2706 	addc	a,#0x00
-   2A90 F0            [24] 2707 	movx	@dptr,a
-   2A91                    2708 00132$:
-   2A91 D0 D0         [24] 2709 	pop	psw
-   2A93 D0 00         [24] 2710 	pop	(0+0)
-   2A95 D0 01         [24] 2711 	pop	(0+1)
-   2A97 D0 02         [24] 2712 	pop	(0+2)
-   2A99 D0 03         [24] 2713 	pop	(0+3)
-   2A9B D0 04         [24] 2714 	pop	(0+4)
-   2A9D D0 05         [24] 2715 	pop	(0+5)
-   2A9F D0 06         [24] 2716 	pop	(0+6)
-   2AA1 D0 07         [24] 2717 	pop	(0+7)
-   2AA3 D0 83         [24] 2718 	pop	dph
-   2AA5 D0 82         [24] 2719 	pop	dpl
-   2AA7 D0 F0         [24] 2720 	pop	b
-   2AA9 D0 E0         [24] 2721 	pop	acc
-   2AAB D0 21         [24] 2722 	pop	bits
-   2AAD 32            [24] 2723 	reti
+   2AF5 90 FD D6      [24] 2700 	mov	dptr,#_txTotal
+   2AF8 E0            [24] 2701 	movx	a,@dptr
+   2AF9 24 01         [12] 2702 	add	a,#0x01
+   2AFB F0            [24] 2703 	movx	@dptr,a
+   2AFC A3            [24] 2704 	inc	dptr
+   2AFD E0            [24] 2705 	movx	a,@dptr
+   2AFE 34 00         [12] 2706 	addc	a,#0x00
+   2B00 F0            [24] 2707 	movx	@dptr,a
+   2B01                    2708 00132$:
+   2B01 D0 D0         [24] 2709 	pop	psw
+   2B03 D0 00         [24] 2710 	pop	(0+0)
+   2B05 D0 01         [24] 2711 	pop	(0+1)
+   2B07 D0 02         [24] 2712 	pop	(0+2)
+   2B09 D0 03         [24] 2713 	pop	(0+3)
+   2B0B D0 04         [24] 2714 	pop	(0+4)
+   2B0D D0 05         [24] 2715 	pop	(0+5)
+   2B0F D0 06         [24] 2716 	pop	(0+6)
+   2B11 D0 07         [24] 2717 	pop	(0+7)
+   2B13 D0 83         [24] 2718 	pop	dph
+   2B15 D0 82         [24] 2719 	pop	dpl
+   2B17 D0 F0         [24] 2720 	pop	b
+   2B19 D0 E0         [24] 2721 	pop	acc
+   2B1B D0 21         [24] 2722 	pop	bits
+   2B1D 32            [24] 2723 	reti
                            2724 ;------------------------------------------------------------
                            2725 ;Allocation info for local variables in function 'rfIntHandler'
                            2726 ;------------------------------------------------------------
@@ -2730,422 +2730,422 @@
                            2730 ;	-----------------------------------------
                            2731 ;	 function rfIntHandler
                            2732 ;	-----------------------------------------
-   2AAE                    2733 _rfIntHandler:
-   2AAE C0 21         [24] 2734 	push	bits
-   2AB0 C0 E0         [24] 2735 	push	acc
-   2AB2 C0 F0         [24] 2736 	push	b
-   2AB4 C0 82         [24] 2737 	push	dpl
-   2AB6 C0 83         [24] 2738 	push	dph
-   2AB8 C0 07         [24] 2739 	push	(0+7)
-   2ABA C0 06         [24] 2740 	push	(0+6)
-   2ABC C0 05         [24] 2741 	push	(0+5)
-   2ABE C0 04         [24] 2742 	push	(0+4)
-   2AC0 C0 03         [24] 2743 	push	(0+3)
-   2AC2 C0 02         [24] 2744 	push	(0+2)
-   2AC4 C0 01         [24] 2745 	push	(0+1)
-   2AC6 C0 00         [24] 2746 	push	(0+0)
-   2AC8 C0 D0         [24] 2747 	push	psw
-   2ACA 75 D0 00      [24] 2748 	mov	psw,#0x00
+   2B1E                    2733 _rfIntHandler:
+   2B1E C0 21         [24] 2734 	push	bits
+   2B20 C0 E0         [24] 2735 	push	acc
+   2B22 C0 F0         [24] 2736 	push	b
+   2B24 C0 82         [24] 2737 	push	dpl
+   2B26 C0 83         [24] 2738 	push	dph
+   2B28 C0 07         [24] 2739 	push	(0+7)
+   2B2A C0 06         [24] 2740 	push	(0+6)
+   2B2C C0 05         [24] 2741 	push	(0+5)
+   2B2E C0 04         [24] 2742 	push	(0+4)
+   2B30 C0 03         [24] 2743 	push	(0+3)
+   2B32 C0 02         [24] 2744 	push	(0+2)
+   2B34 C0 01         [24] 2745 	push	(0+1)
+   2B36 C0 00         [24] 2746 	push	(0+0)
+   2B38 C0 D0         [24] 2747 	push	psw
+   2B3A 75 D0 00      [24] 2748 	mov	psw,#0x00
                            2749 ;	cc1111rf.c:621: u8 encoffset= 0;
-   2ACD 75 12 00      [24] 2750 	mov	_rfIntHandler_encoffset_1_136,#0x00
+   2B3D 75 12 00      [24] 2750 	mov	_rfIntHandler_encoffset_1_136,#0x00
                            2751 ;	cc1111rf.c:624: lastCode[0] = LC_RF_VECTOR;
-   2AD0 90 FD B5      [24] 2752 	mov	dptr,#_lastCode
-   2AD3 74 10         [12] 2753 	mov	a,#0x10
-   2AD5 F0            [24] 2754 	movx	@dptr,a
+   2B40 90 FE 01      [24] 2752 	mov	dptr,#_lastCode
+   2B43 74 10         [12] 2753 	mov	a,#0x10
+   2B45 F0            [24] 2754 	movx	@dptr,a
                            2755 ;	cc1111rf.c:625: S1CON &= ~(S1CON_RFIF_0 | S1CON_RFIF_1);
-   2AD6 AE 9B         [24] 2756 	mov	r6,_S1CON
-   2AD8 74 FC         [12] 2757 	mov	a,#0xFC
-   2ADA 5E            [12] 2758 	anl	a,r6
-   2ADB F5 9B         [12] 2759 	mov	_S1CON,a
+   2B46 AE 9B         [24] 2756 	mov	r6,_S1CON
+   2B48 74 FC         [12] 2757 	mov	a,#0xFC
+   2B4A 5E            [12] 2758 	anl	a,r6
+   2B4B F5 9B         [12] 2759 	mov	_S1CON,a
                            2760 ;	cc1111rf.c:628: rfif |= RFIF;
-   2ADD E5 E9         [12] 2761 	mov	a,_RFIF
-   2ADF 42 0F         [12] 2762 	orl	_rfif,a
+   2B4D E5 E9         [12] 2761 	mov	a,_RFIF
+   2B4F 42 0F         [12] 2762 	orl	_rfif,a
                            2763 ;	cc1111rf.c:630: if (RFIF & RFIF_IRQ_SFD)
-   2AE1 E5 E9         [12] 2764 	mov	a,_RFIF
-   2AE3 30 E0 20      [24] 2765 	jnb	acc.0,00102$
+   2B51 E5 E9         [12] 2764 	mov	a,_RFIF
+   2B53 30 E0 20      [24] 2765 	jnb	acc.0,00102$
                            2766 ;	cc1111rf.c:634: rf_tLastRecv = T2CT | (rf_MAC_timer << 8);
-   2AE6 90 FD 8D      [24] 2767 	mov	dptr,#_rf_MAC_timer
-   2AE9 E0            [24] 2768 	movx	a,@dptr
-   2AEA FD            [12] 2769 	mov	r5,a
-   2AEB A3            [24] 2770 	inc	dptr
-   2AEC E0            [24] 2771 	movx	a,@dptr
-   2AED 8D 06         [24] 2772 	mov	ar6,r5
-   2AEF 7D 00         [12] 2773 	mov	r5,#0x00
-   2AF1 AB 9C         [24] 2774 	mov	r3,_T2CT
-   2AF3 7C 00         [12] 2775 	mov	r4,#0x00
-   2AF5 90 FD 8F      [24] 2776 	mov	dptr,#_rf_tLastRecv
-   2AF8 ED            [12] 2777 	mov	a,r5
-   2AF9 4B            [12] 2778 	orl	a,r3
-   2AFA F0            [24] 2779 	movx	@dptr,a
-   2AFB EE            [12] 2780 	mov	a,r6
-   2AFC 4C            [12] 2781 	orl	a,r4
-   2AFD A3            [24] 2782 	inc	dptr
-   2AFE F0            [24] 2783 	movx	@dptr,a
+   2B56 90 FD D9      [24] 2767 	mov	dptr,#_rf_MAC_timer
+   2B59 E0            [24] 2768 	movx	a,@dptr
+   2B5A FD            [12] 2769 	mov	r5,a
+   2B5B A3            [24] 2770 	inc	dptr
+   2B5C E0            [24] 2771 	movx	a,@dptr
+   2B5D 8D 06         [24] 2772 	mov	ar6,r5
+   2B5F 7D 00         [12] 2773 	mov	r5,#0x00
+   2B61 AB 9C         [24] 2774 	mov	r3,_T2CT
+   2B63 7C 00         [12] 2775 	mov	r4,#0x00
+   2B65 90 FD DB      [24] 2776 	mov	dptr,#_rf_tLastRecv
+   2B68 ED            [12] 2777 	mov	a,r5
+   2B69 4B            [12] 2778 	orl	a,r3
+   2B6A F0            [24] 2779 	movx	@dptr,a
+   2B6B EE            [12] 2780 	mov	a,r6
+   2B6C 4C            [12] 2781 	orl	a,r4
+   2B6D A3            [24] 2782 	inc	dptr
+   2B6E F0            [24] 2783 	movx	@dptr,a
                            2784 ;	cc1111rf.c:635: RFIF &= ~RFIF_IRQ_SFD;
-   2AFF AE E9         [24] 2785 	mov	r6,_RFIF
-   2B01 74 FE         [12] 2786 	mov	a,#0xFE
-   2B03 5E            [12] 2787 	anl	a,r6
-   2B04 F5 E9         [12] 2788 	mov	_RFIF,a
-   2B06                    2789 00102$:
+   2B6F AE E9         [24] 2785 	mov	r6,_RFIF
+   2B71 74 FE         [12] 2786 	mov	a,#0xFE
+   2B73 5E            [12] 2787 	anl	a,r6
+   2B74 F5 E9         [12] 2788 	mov	_RFIF,a
+   2B76                    2789 00102$:
                            2790 ;	cc1111rf.c:640: if (RFIF & ( RFIF_IRQ_DONE | RFIF_IRQ_RXOVF | RFIF_IRQ_TIMEOUT ))
-   2B06 E5 E9         [12] 2791 	mov	a,_RFIF
-   2B08 54 70         [12] 2792 	anl	a,#0x70
-   2B0A 70 03         [24] 2793 	jnz	00152$
-   2B0C 02 2C AB      [24] 2794 	ljmp	00117$
-   2B0F                    2795 00152$:
+   2B76 E5 E9         [12] 2791 	mov	a,_RFIF
+   2B78 54 70         [12] 2792 	anl	a,#0x70
+   2B7A 70 03         [24] 2793 	jnz	00152$
+   2B7C 02 2D 1B      [24] 2794 	ljmp	00117$
+   2B7F                    2795 00152$:
                            2796 ;	cc1111rf.c:643: if(rf_status == RFST_STX)
-   2B0F 90 FD 8C      [24] 2797 	mov	dptr,#_rf_status
-   2B12 E0            [24] 2798 	movx	a,@dptr
-   2B13 FE            [12] 2799 	mov	r6,a
-   2B14 BE 03 0A      [24] 2800 	cjne	r6,#0x03,00114$
+   2B7F 90 FD D8      [24] 2797 	mov	dptr,#_rf_status
+   2B82 E0            [24] 2798 	movx	a,@dptr
+   2B83 FE            [12] 2799 	mov	r6,a
+   2B84 BE 03 0A      [24] 2800 	cjne	r6,#0x03,00114$
                            2801 ;	cc1111rf.c:649: rfif &= ~( RFIF_IRQ_DONE | RFIF_IRQ_RXOVF | RFIF_IRQ_TIMEOUT );
-   2B17 AE 0F         [24] 2802 	mov	r6,_rfif
-   2B19 74 8F         [12] 2803 	mov	a,#0x8F
-   2B1B 5E            [12] 2804 	anl	a,r6
-   2B1C F5 0F         [12] 2805 	mov	_rfif,a
-   2B1E 02 2C A4      [24] 2806 	ljmp	00115$
-   2B21                    2807 00114$:
+   2B87 AE 0F         [24] 2802 	mov	r6,_rfif
+   2B89 74 8F         [12] 2803 	mov	a,#0x8F
+   2B8B 5E            [12] 2804 	anl	a,r6
+   2B8C F5 0F         [12] 2805 	mov	_rfif,a
+   2B8E 02 2D 14      [24] 2806 	ljmp	00115$
+   2B91                    2807 00114$:
                            2808 ;	cc1111rf.c:655: if(rfRxProcessed[!rfRxCurrentBuffer] == RX_PROCESSED)
-   2B21 90 F9 81      [24] 2809 	mov	dptr,#_rfRxCurrentBuffer
-   2B24 E0            [24] 2810 	movx	a,@dptr
-   2B25 FE            [12] 2811 	mov	r6,a
-   2B26 B4 01 00      [24] 2812 	cjne	a,#0x01,00155$
-   2B29                    2813 00155$:
-   2B29 E4            [12] 2814 	clr	a
-   2B2A 33            [12] 2815 	rlc	a
-   2B2B 24 86         [12] 2816 	add	a,#_rfRxProcessed
-   2B2D F5 82         [12] 2817 	mov	dpl,a
-   2B2F E4            [12] 2818 	clr	a
-   2B30 34 FD         [12] 2819 	addc	a,#(_rfRxProcessed >> 8)
-   2B32 F5 83         [12] 2820 	mov	dph,a
-   2B34 E0            [24] 2821 	movx	a,@dptr
-   2B35 FE            [12] 2822 	mov	r6,a
-   2B36 BE 01 02      [24] 2823 	cjne	r6,#0x01,00156$
-   2B39 80 03         [24] 2824 	sjmp	00157$
-   2B3B                    2825 00156$:
-   2B3B 02 2C 76      [24] 2826 	ljmp	00111$
-   2B3E                    2827 00157$:
+   2B91 90 F9 CD      [24] 2809 	mov	dptr,#_rfRxCurrentBuffer
+   2B94 E0            [24] 2810 	movx	a,@dptr
+   2B95 FE            [12] 2811 	mov	r6,a
+   2B96 B4 01 00      [24] 2812 	cjne	a,#0x01,00155$
+   2B99                    2813 00155$:
+   2B99 E4            [12] 2814 	clr	a
+   2B9A 33            [12] 2815 	rlc	a
+   2B9B 24 D2         [12] 2816 	add	a,#_rfRxProcessed
+   2B9D F5 82         [12] 2817 	mov	dpl,a
+   2B9F E4            [12] 2818 	clr	a
+   2BA0 34 FD         [12] 2819 	addc	a,#(_rfRxProcessed >> 8)
+   2BA2 F5 83         [12] 2820 	mov	dph,a
+   2BA4 E0            [24] 2821 	movx	a,@dptr
+   2BA5 FE            [12] 2822 	mov	r6,a
+   2BA6 BE 01 02      [24] 2823 	cjne	r6,#0x01,00156$
+   2BA9 80 03         [24] 2824 	sjmp	00157$
+   2BAB                    2825 00156$:
+   2BAB 02 2C E6      [24] 2826 	ljmp	00111$
+   2BAE                    2827 00157$:
                            2828 ;	cc1111rf.c:660: if(rfAESMode & AES_CRYPTO_IN_ENABLE)
-   2B3E 90 FD FB      [24] 2829 	mov	dptr,#_rfAESMode
-   2B41 E0            [24] 2830 	movx	a,@dptr
-   2B42 FE            [12] 2831 	mov	r6,a
-   2B43 20 E1 03      [24] 2832 	jb	acc.1,00158$
-   2B46 02 2C 4C      [24] 2833 	ljmp	00109$
-   2B49                    2834 00158$:
+   2BAE 90 FE 47      [24] 2829 	mov	dptr,#_rfAESMode
+   2BB1 E0            [24] 2830 	movx	a,@dptr
+   2BB2 FE            [12] 2831 	mov	r6,a
+   2BB3 20 E1 03      [24] 2832 	jb	acc.1,00158$
+   2BB6 02 2C BC      [24] 2833 	ljmp	00109$
+   2BB9                    2834 00158$:
                            2835 ;	cc1111rf.c:662: if((PKTCTRL0 & PKTCTRL0_LENGTH_CONFIG) == PKTCTRL0_LENGTH_CONFIG_VAR)
-   2B49 90 DF 04      [24] 2836 	mov	dptr,#_PKTCTRL0
-   2B4C E0            [24] 2837 	movx	a,@dptr
-   2B4D FE            [12] 2838 	mov	r6,a
-   2B4E 53 06 03      [24] 2839 	anl	ar6,#0x03
-   2B51 BE 01 03      [24] 2840 	cjne	r6,#0x01,00104$
+   2BB9 90 DF 04      [24] 2836 	mov	dptr,#_PKTCTRL0
+   2BBC E0            [24] 2837 	movx	a,@dptr
+   2BBD FE            [12] 2838 	mov	r6,a
+   2BBE 53 06 03      [24] 2839 	anl	ar6,#0x03
+   2BC1 BE 01 03      [24] 2840 	cjne	r6,#0x01,00104$
                            2841 ;	cc1111rf.c:663: encoffset= 1;
-   2B54 75 12 01      [24] 2842 	mov	_rfIntHandler_encoffset_1_136,#0x01
-   2B57                    2843 00104$:
+   2BC4 75 12 01      [24] 2842 	mov	_rfIntHandler_encoffset_1_136,#0x01
+   2BC7                    2843 00104$:
                            2844 ;	cc1111rf.c:664: if((rfAESMode & AES_CRYPTO_IN_TYPE) == AES_CRYPTO_IN_ENCRYPT)
-   2B57 90 FD FB      [24] 2845 	mov	dptr,#_rfAESMode
-   2B5A E0            [24] 2846 	movx	a,@dptr
-   2B5B FE            [12] 2847 	mov	r6,a
-   2B5C 53 06 01      [24] 2848 	anl	ar6,#0x01
-   2B5F BE 01 76      [24] 2849 	cjne	r6,#0x01,00106$
+   2BC7 90 FE 47      [24] 2845 	mov	dptr,#_rfAESMode
+   2BCA E0            [24] 2846 	movx	a,@dptr
+   2BCB FE            [12] 2847 	mov	r6,a
+   2BCC 53 06 01      [24] 2848 	anl	ar6,#0x01
+   2BCF BE 01 76      [24] 2849 	cjne	r6,#0x01,00106$
                            2850 ;	cc1111rf.c:665: encAES(&rfrxbuf[rfRxCurrentBuffer][encoffset], &rfrxbuf[rfRxCurrentBuffer][encoffset], rfRxCounter[rfRxCurrentBuffer] - encoffset, (rfAESMode & AES_CRYPTO_MODE));
-   2B62 90 F9 81      [24] 2851 	mov	dptr,#_rfRxCurrentBuffer
-   2B65 E0            [24] 2852 	movx	a,@dptr
-   2B66 25 E0         [12] 2853 	add	a,acc
-   2B68 FD            [12] 2854 	mov	r5,a
-   2B69 E4            [12] 2855 	clr	a
-   2B6A 24 82         [12] 2856 	add	a,#_rfrxbuf
-   2B6C FE            [12] 2857 	mov	r6,a
-   2B6D ED            [12] 2858 	mov	a,r5
-   2B6E 34 F9         [12] 2859 	addc	a,#(_rfrxbuf >> 8)
-   2B70 FD            [12] 2860 	mov	r5,a
-   2B71 AB 12         [24] 2861 	mov	r3,_rfIntHandler_encoffset_1_136
-   2B73 7C 00         [12] 2862 	mov	r4,#0x00
-   2B75 EB            [12] 2863 	mov	a,r3
-   2B76 2E            [12] 2864 	add	a,r6
-   2B77 FE            [12] 2865 	mov	r6,a
-   2B78 EC            [12] 2866 	mov	a,r4
-   2B79 3D            [12] 2867 	addc	a,r5
-   2B7A FD            [12] 2868 	mov	r5,a
-   2B7B 90 F9 81      [24] 2869 	mov	dptr,#_rfRxCurrentBuffer
-   2B7E E0            [24] 2870 	movx	a,@dptr
-   2B7F F9            [12] 2871 	mov	r1,a
-   2B80 29            [12] 2872 	add	a,r1
-   2B81 FA            [12] 2873 	mov	r2,a
-   2B82 E4            [12] 2874 	clr	a
-   2B83 24 82         [12] 2875 	add	a,#_rfrxbuf
-   2B85 F9            [12] 2876 	mov	r1,a
-   2B86 EA            [12] 2877 	mov	a,r2
-   2B87 34 F9         [12] 2878 	addc	a,#(_rfrxbuf >> 8)
-   2B89 FA            [12] 2879 	mov	r2,a
-   2B8A EB            [12] 2880 	mov	a,r3
-   2B8B 29            [12] 2881 	add	a,r1
-   2B8C FB            [12] 2882 	mov	r3,a
-   2B8D EC            [12] 2883 	mov	a,r4
-   2B8E 3A            [12] 2884 	addc	a,r2
-   2B8F FC            [12] 2885 	mov	r4,a
-   2B90 90 F9 81      [24] 2886 	mov	dptr,#_rfRxCurrentBuffer
-   2B93 E0            [24] 2887 	movx	a,@dptr
-   2B94 75 F0 02      [24] 2888 	mov	b,#0x02
-   2B97 A4            [48] 2889 	mul	ab
-   2B98 24 82         [12] 2890 	add	a,#_rfRxCounter
-   2B9A F5 82         [12] 2891 	mov	dpl,a
-   2B9C 74 FD         [12] 2892 	mov	a,#(_rfRxCounter >> 8)
-   2B9E 35 F0         [12] 2893 	addc	a,b
-   2BA0 F5 83         [12] 2894 	mov	dph,a
-   2BA2 E0            [24] 2895 	movx	a,@dptr
-   2BA3 F9            [12] 2896 	mov	r1,a
-   2BA4 A3            [24] 2897 	inc	dptr
-   2BA5 E0            [24] 2898 	movx	a,@dptr
-   2BA6 FA            [12] 2899 	mov	r2,a
-   2BA7 A8 12         [24] 2900 	mov	r0,_rfIntHandler_encoffset_1_136
-   2BA9 7F 00         [12] 2901 	mov	r7,#0x00
-   2BAB E9            [12] 2902 	mov	a,r1
-   2BAC C3            [12] 2903 	clr	c
-   2BAD 98            [12] 2904 	subb	a,r0
-   2BAE F9            [12] 2905 	mov	r1,a
-   2BAF EA            [12] 2906 	mov	a,r2
-   2BB0 9F            [12] 2907 	subb	a,r7
-   2BB1 FA            [12] 2908 	mov	r2,a
-   2BB2 90 FD FB      [24] 2909 	mov	dptr,#_rfAESMode
-   2BB5 E0            [24] 2910 	movx	a,@dptr
-   2BB6 FF            [12] 2911 	mov	r7,a
-   2BB7 53 07 F0      [24] 2912 	anl	ar7,#0xF0
-   2BBA 90 FD D1      [24] 2913 	mov	dptr,#_encAES_PARM_2
-   2BBD EB            [12] 2914 	mov	a,r3
-   2BBE F0            [24] 2915 	movx	@dptr,a
-   2BBF EC            [12] 2916 	mov	a,r4
-   2BC0 A3            [24] 2917 	inc	dptr
-   2BC1 F0            [24] 2918 	movx	@dptr,a
-   2BC2 90 FD D3      [24] 2919 	mov	dptr,#_encAES_PARM_3
-   2BC5 E9            [12] 2920 	mov	a,r1
-   2BC6 F0            [24] 2921 	movx	@dptr,a
-   2BC7 EA            [12] 2922 	mov	a,r2
-   2BC8 A3            [24] 2923 	inc	dptr
-   2BC9 F0            [24] 2924 	movx	@dptr,a
-   2BCA 90 FD D5      [24] 2925 	mov	dptr,#_encAES_PARM_4
-   2BCD EF            [12] 2926 	mov	a,r7
-   2BCE F0            [24] 2927 	movx	@dptr,a
-   2BCF 8E 82         [24] 2928 	mov	dpl,r6
-   2BD1 8D 83         [24] 2929 	mov	dph,r5
-   2BD3 12 30 A3      [24] 2930 	lcall	_encAES
-   2BD6 80 74         [24] 2931 	sjmp	00109$
-   2BD8                    2932 00106$:
+   2BD2 90 F9 CD      [24] 2851 	mov	dptr,#_rfRxCurrentBuffer
+   2BD5 E0            [24] 2852 	movx	a,@dptr
+   2BD6 25 E0         [12] 2853 	add	a,acc
+   2BD8 FD            [12] 2854 	mov	r5,a
+   2BD9 E4            [12] 2855 	clr	a
+   2BDA 24 CE         [12] 2856 	add	a,#_rfrxbuf
+   2BDC FE            [12] 2857 	mov	r6,a
+   2BDD ED            [12] 2858 	mov	a,r5
+   2BDE 34 F9         [12] 2859 	addc	a,#(_rfrxbuf >> 8)
+   2BE0 FD            [12] 2860 	mov	r5,a
+   2BE1 AB 12         [24] 2861 	mov	r3,_rfIntHandler_encoffset_1_136
+   2BE3 7C 00         [12] 2862 	mov	r4,#0x00
+   2BE5 EB            [12] 2863 	mov	a,r3
+   2BE6 2E            [12] 2864 	add	a,r6
+   2BE7 FE            [12] 2865 	mov	r6,a
+   2BE8 EC            [12] 2866 	mov	a,r4
+   2BE9 3D            [12] 2867 	addc	a,r5
+   2BEA FD            [12] 2868 	mov	r5,a
+   2BEB 90 F9 CD      [24] 2869 	mov	dptr,#_rfRxCurrentBuffer
+   2BEE E0            [24] 2870 	movx	a,@dptr
+   2BEF F9            [12] 2871 	mov	r1,a
+   2BF0 29            [12] 2872 	add	a,r1
+   2BF1 FA            [12] 2873 	mov	r2,a
+   2BF2 E4            [12] 2874 	clr	a
+   2BF3 24 CE         [12] 2875 	add	a,#_rfrxbuf
+   2BF5 F9            [12] 2876 	mov	r1,a
+   2BF6 EA            [12] 2877 	mov	a,r2
+   2BF7 34 F9         [12] 2878 	addc	a,#(_rfrxbuf >> 8)
+   2BF9 FA            [12] 2879 	mov	r2,a
+   2BFA EB            [12] 2880 	mov	a,r3
+   2BFB 29            [12] 2881 	add	a,r1
+   2BFC FB            [12] 2882 	mov	r3,a
+   2BFD EC            [12] 2883 	mov	a,r4
+   2BFE 3A            [12] 2884 	addc	a,r2
+   2BFF FC            [12] 2885 	mov	r4,a
+   2C00 90 F9 CD      [24] 2886 	mov	dptr,#_rfRxCurrentBuffer
+   2C03 E0            [24] 2887 	movx	a,@dptr
+   2C04 75 F0 02      [24] 2888 	mov	b,#0x02
+   2C07 A4            [48] 2889 	mul	ab
+   2C08 24 CE         [12] 2890 	add	a,#_rfRxCounter
+   2C0A F5 82         [12] 2891 	mov	dpl,a
+   2C0C 74 FD         [12] 2892 	mov	a,#(_rfRxCounter >> 8)
+   2C0E 35 F0         [12] 2893 	addc	a,b
+   2C10 F5 83         [12] 2894 	mov	dph,a
+   2C12 E0            [24] 2895 	movx	a,@dptr
+   2C13 F9            [12] 2896 	mov	r1,a
+   2C14 A3            [24] 2897 	inc	dptr
+   2C15 E0            [24] 2898 	movx	a,@dptr
+   2C16 FA            [12] 2899 	mov	r2,a
+   2C17 A8 12         [24] 2900 	mov	r0,_rfIntHandler_encoffset_1_136
+   2C19 7F 00         [12] 2901 	mov	r7,#0x00
+   2C1B E9            [12] 2902 	mov	a,r1
+   2C1C C3            [12] 2903 	clr	c
+   2C1D 98            [12] 2904 	subb	a,r0
+   2C1E F9            [12] 2905 	mov	r1,a
+   2C1F EA            [12] 2906 	mov	a,r2
+   2C20 9F            [12] 2907 	subb	a,r7
+   2C21 FA            [12] 2908 	mov	r2,a
+   2C22 90 FE 47      [24] 2909 	mov	dptr,#_rfAESMode
+   2C25 E0            [24] 2910 	movx	a,@dptr
+   2C26 FF            [12] 2911 	mov	r7,a
+   2C27 53 07 F0      [24] 2912 	anl	ar7,#0xF0
+   2C2A 90 FE 1D      [24] 2913 	mov	dptr,#_encAES_PARM_2
+   2C2D EB            [12] 2914 	mov	a,r3
+   2C2E F0            [24] 2915 	movx	@dptr,a
+   2C2F EC            [12] 2916 	mov	a,r4
+   2C30 A3            [24] 2917 	inc	dptr
+   2C31 F0            [24] 2918 	movx	@dptr,a
+   2C32 90 FE 1F      [24] 2919 	mov	dptr,#_encAES_PARM_3
+   2C35 E9            [12] 2920 	mov	a,r1
+   2C36 F0            [24] 2921 	movx	@dptr,a
+   2C37 EA            [12] 2922 	mov	a,r2
+   2C38 A3            [24] 2923 	inc	dptr
+   2C39 F0            [24] 2924 	movx	@dptr,a
+   2C3A 90 FE 21      [24] 2925 	mov	dptr,#_encAES_PARM_4
+   2C3D EF            [12] 2926 	mov	a,r7
+   2C3E F0            [24] 2927 	movx	@dptr,a
+   2C3F 8E 82         [24] 2928 	mov	dpl,r6
+   2C41 8D 83         [24] 2929 	mov	dph,r5
+   2C43 12 31 13      [24] 2930 	lcall	_encAES
+   2C46 80 74         [24] 2931 	sjmp	00109$
+   2C48                    2932 00106$:
                            2933 ;	cc1111rf.c:667: decAES(&rfrxbuf[rfRxCurrentBuffer][encoffset], &rfrxbuf[rfRxCurrentBuffer][encoffset], rfRxCounter[rfRxCurrentBuffer] - encoffset, (rfAESMode & AES_CRYPTO_MODE));
-   2BD8 90 F9 81      [24] 2934 	mov	dptr,#_rfRxCurrentBuffer
-   2BDB E0            [24] 2935 	movx	a,@dptr
-   2BDC 25 E0         [12] 2936 	add	a,acc
-   2BDE FE            [12] 2937 	mov	r6,a
-   2BDF E4            [12] 2938 	clr	a
-   2BE0 24 82         [12] 2939 	add	a,#_rfrxbuf
-   2BE2 FF            [12] 2940 	mov	r7,a
-   2BE3 EE            [12] 2941 	mov	a,r6
-   2BE4 34 F9         [12] 2942 	addc	a,#(_rfrxbuf >> 8)
-   2BE6 FE            [12] 2943 	mov	r6,a
-   2BE7 AC 12         [24] 2944 	mov	r4,_rfIntHandler_encoffset_1_136
-   2BE9 7D 00         [12] 2945 	mov	r5,#0x00
-   2BEB EC            [12] 2946 	mov	a,r4
-   2BEC 2F            [12] 2947 	add	a,r7
-   2BED FF            [12] 2948 	mov	r7,a
-   2BEE ED            [12] 2949 	mov	a,r5
-   2BEF 3E            [12] 2950 	addc	a,r6
-   2BF0 FE            [12] 2951 	mov	r6,a
-   2BF1 90 F9 81      [24] 2952 	mov	dptr,#_rfRxCurrentBuffer
-   2BF4 E0            [24] 2953 	movx	a,@dptr
-   2BF5 25 E0         [12] 2954 	add	a,acc
-   2BF7 FA            [12] 2955 	mov	r2,a
-   2BF8 E4            [12] 2956 	clr	a
-   2BF9 24 82         [12] 2957 	add	a,#_rfrxbuf
-   2BFB FB            [12] 2958 	mov	r3,a
-   2BFC EA            [12] 2959 	mov	a,r2
-   2BFD 34 F9         [12] 2960 	addc	a,#(_rfrxbuf >> 8)
-   2BFF FA            [12] 2961 	mov	r2,a
-   2C00 EC            [12] 2962 	mov	a,r4
-   2C01 2B            [12] 2963 	add	a,r3
-   2C02 FC            [12] 2964 	mov	r4,a
-   2C03 ED            [12] 2965 	mov	a,r5
-   2C04 3A            [12] 2966 	addc	a,r2
-   2C05 FD            [12] 2967 	mov	r5,a
-   2C06 90 F9 81      [24] 2968 	mov	dptr,#_rfRxCurrentBuffer
-   2C09 E0            [24] 2969 	movx	a,@dptr
-   2C0A 75 F0 02      [24] 2970 	mov	b,#0x02
-   2C0D A4            [48] 2971 	mul	ab
-   2C0E 24 82         [12] 2972 	add	a,#_rfRxCounter
-   2C10 F5 82         [12] 2973 	mov	dpl,a
-   2C12 74 FD         [12] 2974 	mov	a,#(_rfRxCounter >> 8)
-   2C14 35 F0         [12] 2975 	addc	a,b
-   2C16 F5 83         [12] 2976 	mov	dph,a
-   2C18 E0            [24] 2977 	movx	a,@dptr
-   2C19 FA            [12] 2978 	mov	r2,a
-   2C1A A3            [24] 2979 	inc	dptr
-   2C1B E0            [24] 2980 	movx	a,@dptr
-   2C1C FB            [12] 2981 	mov	r3,a
-   2C1D A8 12         [24] 2982 	mov	r0,_rfIntHandler_encoffset_1_136
-   2C1F 79 00         [12] 2983 	mov	r1,#0x00
-   2C21 EA            [12] 2984 	mov	a,r2
-   2C22 C3            [12] 2985 	clr	c
-   2C23 98            [12] 2986 	subb	a,r0
-   2C24 FA            [12] 2987 	mov	r2,a
-   2C25 EB            [12] 2988 	mov	a,r3
-   2C26 99            [12] 2989 	subb	a,r1
-   2C27 FB            [12] 2990 	mov	r3,a
-   2C28 90 FD FB      [24] 2991 	mov	dptr,#_rfAESMode
-   2C2B E0            [24] 2992 	movx	a,@dptr
-   2C2C F9            [12] 2993 	mov	r1,a
-   2C2D 53 01 F0      [24] 2994 	anl	ar1,#0xF0
-   2C30 90 FD D8      [24] 2995 	mov	dptr,#_decAES_PARM_2
-   2C33 EC            [12] 2996 	mov	a,r4
-   2C34 F0            [24] 2997 	movx	@dptr,a
-   2C35 ED            [12] 2998 	mov	a,r5
-   2C36 A3            [24] 2999 	inc	dptr
-   2C37 F0            [24] 3000 	movx	@dptr,a
-   2C38 90 FD DA      [24] 3001 	mov	dptr,#_decAES_PARM_3
-   2C3B EA            [12] 3002 	mov	a,r2
-   2C3C F0            [24] 3003 	movx	@dptr,a
-   2C3D EB            [12] 3004 	mov	a,r3
-   2C3E A3            [24] 3005 	inc	dptr
-   2C3F F0            [24] 3006 	movx	@dptr,a
-   2C40 90 FD DC      [24] 3007 	mov	dptr,#_decAES_PARM_4
-   2C43 E9            [12] 3008 	mov	a,r1
-   2C44 F0            [24] 3009 	movx	@dptr,a
-   2C45 8F 82         [24] 3010 	mov	dpl,r7
-   2C47 8E 83         [24] 3011 	mov	dph,r6
-   2C49 12 30 EC      [24] 3012 	lcall	_decAES
-   2C4C                    3013 00109$:
+   2C48 90 F9 CD      [24] 2934 	mov	dptr,#_rfRxCurrentBuffer
+   2C4B E0            [24] 2935 	movx	a,@dptr
+   2C4C 25 E0         [12] 2936 	add	a,acc
+   2C4E FE            [12] 2937 	mov	r6,a
+   2C4F E4            [12] 2938 	clr	a
+   2C50 24 CE         [12] 2939 	add	a,#_rfrxbuf
+   2C52 FF            [12] 2940 	mov	r7,a
+   2C53 EE            [12] 2941 	mov	a,r6
+   2C54 34 F9         [12] 2942 	addc	a,#(_rfrxbuf >> 8)
+   2C56 FE            [12] 2943 	mov	r6,a
+   2C57 AC 12         [24] 2944 	mov	r4,_rfIntHandler_encoffset_1_136
+   2C59 7D 00         [12] 2945 	mov	r5,#0x00
+   2C5B EC            [12] 2946 	mov	a,r4
+   2C5C 2F            [12] 2947 	add	a,r7
+   2C5D FF            [12] 2948 	mov	r7,a
+   2C5E ED            [12] 2949 	mov	a,r5
+   2C5F 3E            [12] 2950 	addc	a,r6
+   2C60 FE            [12] 2951 	mov	r6,a
+   2C61 90 F9 CD      [24] 2952 	mov	dptr,#_rfRxCurrentBuffer
+   2C64 E0            [24] 2953 	movx	a,@dptr
+   2C65 25 E0         [12] 2954 	add	a,acc
+   2C67 FA            [12] 2955 	mov	r2,a
+   2C68 E4            [12] 2956 	clr	a
+   2C69 24 CE         [12] 2957 	add	a,#_rfrxbuf
+   2C6B FB            [12] 2958 	mov	r3,a
+   2C6C EA            [12] 2959 	mov	a,r2
+   2C6D 34 F9         [12] 2960 	addc	a,#(_rfrxbuf >> 8)
+   2C6F FA            [12] 2961 	mov	r2,a
+   2C70 EC            [12] 2962 	mov	a,r4
+   2C71 2B            [12] 2963 	add	a,r3
+   2C72 FC            [12] 2964 	mov	r4,a
+   2C73 ED            [12] 2965 	mov	a,r5
+   2C74 3A            [12] 2966 	addc	a,r2
+   2C75 FD            [12] 2967 	mov	r5,a
+   2C76 90 F9 CD      [24] 2968 	mov	dptr,#_rfRxCurrentBuffer
+   2C79 E0            [24] 2969 	movx	a,@dptr
+   2C7A 75 F0 02      [24] 2970 	mov	b,#0x02
+   2C7D A4            [48] 2971 	mul	ab
+   2C7E 24 CE         [12] 2972 	add	a,#_rfRxCounter
+   2C80 F5 82         [12] 2973 	mov	dpl,a
+   2C82 74 FD         [12] 2974 	mov	a,#(_rfRxCounter >> 8)
+   2C84 35 F0         [12] 2975 	addc	a,b
+   2C86 F5 83         [12] 2976 	mov	dph,a
+   2C88 E0            [24] 2977 	movx	a,@dptr
+   2C89 FA            [12] 2978 	mov	r2,a
+   2C8A A3            [24] 2979 	inc	dptr
+   2C8B E0            [24] 2980 	movx	a,@dptr
+   2C8C FB            [12] 2981 	mov	r3,a
+   2C8D A8 12         [24] 2982 	mov	r0,_rfIntHandler_encoffset_1_136
+   2C8F 79 00         [12] 2983 	mov	r1,#0x00
+   2C91 EA            [12] 2984 	mov	a,r2
+   2C92 C3            [12] 2985 	clr	c
+   2C93 98            [12] 2986 	subb	a,r0
+   2C94 FA            [12] 2987 	mov	r2,a
+   2C95 EB            [12] 2988 	mov	a,r3
+   2C96 99            [12] 2989 	subb	a,r1
+   2C97 FB            [12] 2990 	mov	r3,a
+   2C98 90 FE 47      [24] 2991 	mov	dptr,#_rfAESMode
+   2C9B E0            [24] 2992 	movx	a,@dptr
+   2C9C F9            [12] 2993 	mov	r1,a
+   2C9D 53 01 F0      [24] 2994 	anl	ar1,#0xF0
+   2CA0 90 FE 24      [24] 2995 	mov	dptr,#_decAES_PARM_2
+   2CA3 EC            [12] 2996 	mov	a,r4
+   2CA4 F0            [24] 2997 	movx	@dptr,a
+   2CA5 ED            [12] 2998 	mov	a,r5
+   2CA6 A3            [24] 2999 	inc	dptr
+   2CA7 F0            [24] 3000 	movx	@dptr,a
+   2CA8 90 FE 26      [24] 3001 	mov	dptr,#_decAES_PARM_3
+   2CAB EA            [12] 3002 	mov	a,r2
+   2CAC F0            [24] 3003 	movx	@dptr,a
+   2CAD EB            [12] 3004 	mov	a,r3
+   2CAE A3            [24] 3005 	inc	dptr
+   2CAF F0            [24] 3006 	movx	@dptr,a
+   2CB0 90 FE 28      [24] 3007 	mov	dptr,#_decAES_PARM_4
+   2CB3 E9            [12] 3008 	mov	a,r1
+   2CB4 F0            [24] 3009 	movx	@dptr,a
+   2CB5 8F 82         [24] 3010 	mov	dpl,r7
+   2CB7 8E 83         [24] 3011 	mov	dph,r6
+   2CB9 12 31 5C      [24] 3012 	lcall	_decAES
+   2CBC                    3013 00109$:
                            3014 ;	cc1111rf.c:671: rfRxCurrentBuffer ^= 1;
-   2C4C 90 F9 81      [24] 3015 	mov	dptr,#_rfRxCurrentBuffer
-   2C4F E0            [24] 3016 	movx	a,@dptr
-   2C50 64 01         [12] 3017 	xrl	a,#0x01
-   2C52 F0            [24] 3018 	movx	@dptr,a
+   2CBC 90 F9 CD      [24] 3015 	mov	dptr,#_rfRxCurrentBuffer
+   2CBF E0            [24] 3016 	movx	a,@dptr
+   2CC0 64 01         [12] 3017 	xrl	a,#0x01
+   2CC2 F0            [24] 3018 	movx	@dptr,a
                            3019 ;	cc1111rf.c:672: rfRxCounter[rfRxCurrentBuffer] = 0;
-   2C53 90 F9 81      [24] 3020 	mov	dptr,#_rfRxCurrentBuffer
-   2C56 E0            [24] 3021 	movx	a,@dptr
-   2C57 FF            [12] 3022 	mov	r7,a
-   2C58 75 F0 02      [24] 3023 	mov	b,#0x02
-   2C5B A4            [48] 3024 	mul	ab
-   2C5C 24 82         [12] 3025 	add	a,#_rfRxCounter
-   2C5E F5 82         [12] 3026 	mov	dpl,a
-   2C60 74 FD         [12] 3027 	mov	a,#(_rfRxCounter >> 8)
-   2C62 35 F0         [12] 3028 	addc	a,b
-   2C64 F5 83         [12] 3029 	mov	dph,a
-   2C66 E4            [12] 3030 	clr	a
-   2C67 F0            [24] 3031 	movx	@dptr,a
-   2C68 E4            [12] 3032 	clr	a
-   2C69 A3            [24] 3033 	inc	dptr
-   2C6A F0            [24] 3034 	movx	@dptr,a
+   2CC3 90 F9 CD      [24] 3020 	mov	dptr,#_rfRxCurrentBuffer
+   2CC6 E0            [24] 3021 	movx	a,@dptr
+   2CC7 FF            [12] 3022 	mov	r7,a
+   2CC8 75 F0 02      [24] 3023 	mov	b,#0x02
+   2CCB A4            [48] 3024 	mul	ab
+   2CCC 24 CE         [12] 3025 	add	a,#_rfRxCounter
+   2CCE F5 82         [12] 3026 	mov	dpl,a
+   2CD0 74 FD         [12] 3027 	mov	a,#(_rfRxCounter >> 8)
+   2CD2 35 F0         [12] 3028 	addc	a,b
+   2CD4 F5 83         [12] 3029 	mov	dph,a
+   2CD6 E4            [12] 3030 	clr	a
+   2CD7 F0            [24] 3031 	movx	@dptr,a
+   2CD8 E4            [12] 3032 	clr	a
+   2CD9 A3            [24] 3033 	inc	dptr
+   2CDA F0            [24] 3034 	movx	@dptr,a
                            3035 ;	cc1111rf.c:674: rfRxProcessed[FIRST_BUFFER] = RX_UNPROCESSED;
-   2C6B 90 FD 86      [24] 3036 	mov	dptr,#_rfRxProcessed
+   2CDB 90 FD D2      [24] 3036 	mov	dptr,#_rfRxProcessed
                            3037 ;	cc1111rf.c:675: rfRxProcessed[SECOND_BUFFER] = RX_UNPROCESSED;
-   2C6E E4            [12] 3038 	clr	a
-   2C6F F0            [24] 3039 	movx	@dptr,a
-   2C70 90 FD 87      [24] 3040 	mov	dptr,#(_rfRxProcessed + 0x0001)
-   2C73 F0            [24] 3041 	movx	@dptr,a
-   2C74 80 2C         [24] 3042 	sjmp	00112$
-   2C76                    3043 00111$:
+   2CDE E4            [12] 3038 	clr	a
+   2CDF F0            [24] 3039 	movx	@dptr,a
+   2CE0 90 FD D3      [24] 3040 	mov	dptr,#(_rfRxProcessed + 0x0001)
+   2CE3 F0            [24] 3041 	movx	@dptr,a
+   2CE4 80 2C         [24] 3042 	sjmp	00112$
+   2CE6                    3043 00111$:
                            3044 ;	cc1111rf.c:692: lastCode[1] = LCE_DROPPED_PACKET;
-   2C76 90 FD B6      [24] 3045 	mov	dptr,#(_lastCode + 0x0001)
-   2C79 74 12         [12] 3046 	mov	a,#0x12
-   2C7B F0            [24] 3047 	movx	@dptr,a
+   2CE6 90 FE 02      [24] 3045 	mov	dptr,#(_lastCode + 0x0001)
+   2CE9 74 12         [12] 3046 	mov	a,#0x12
+   2CEB F0            [24] 3047 	movx	@dptr,a
                            3048 ;	cc1111rf.c:693: LED = !LED;
-   2C7C A2 A4         [12] 3049 	mov	c,_P2_4
-   2C7E B3            [12] 3050 	cpl	c
-   2C7F 92 02         [24] 3051 	mov  _rfIntHandler_sloc0_1_0,c
-   2C81 92 A4         [24] 3052 	mov	_P2_4,c
+   2CEC A2 A4         [12] 3049 	mov	c,_P2_4
+   2CEE B3            [12] 3050 	cpl	c
+   2CEF 92 02         [24] 3051 	mov  _rfIntHandler_sloc0_1_0,c
+   2CF1 92 A4         [24] 3052 	mov	_P2_4,c
                            3053 ;	cc1111rf.c:694: rfRxCounter[rfRxCurrentBuffer] = 0;
-   2C83 90 F9 81      [24] 3054 	mov	dptr,#_rfRxCurrentBuffer
-   2C86 E0            [24] 3055 	movx	a,@dptr
-   2C87 FF            [12] 3056 	mov	r7,a
-   2C88 75 F0 02      [24] 3057 	mov	b,#0x02
-   2C8B A4            [48] 3058 	mul	ab
-   2C8C 24 82         [12] 3059 	add	a,#_rfRxCounter
-   2C8E F5 82         [12] 3060 	mov	dpl,a
-   2C90 74 FD         [12] 3061 	mov	a,#(_rfRxCounter >> 8)
-   2C92 35 F0         [12] 3062 	addc	a,b
-   2C94 F5 83         [12] 3063 	mov	dph,a
-   2C96 E4            [12] 3064 	clr	a
-   2C97 F0            [24] 3065 	movx	@dptr,a
-   2C98 E4            [12] 3066 	clr	a
-   2C99 A3            [24] 3067 	inc	dptr
-   2C9A F0            [24] 3068 	movx	@dptr,a
+   2CF3 90 F9 CD      [24] 3054 	mov	dptr,#_rfRxCurrentBuffer
+   2CF6 E0            [24] 3055 	movx	a,@dptr
+   2CF7 FF            [12] 3056 	mov	r7,a
+   2CF8 75 F0 02      [24] 3057 	mov	b,#0x02
+   2CFB A4            [48] 3058 	mul	ab
+   2CFC 24 CE         [12] 3059 	add	a,#_rfRxCounter
+   2CFE F5 82         [12] 3060 	mov	dpl,a
+   2D00 74 FD         [12] 3061 	mov	a,#(_rfRxCounter >> 8)
+   2D02 35 F0         [12] 3062 	addc	a,b
+   2D04 F5 83         [12] 3063 	mov	dph,a
+   2D06 E4            [12] 3064 	clr	a
+   2D07 F0            [24] 3065 	movx	@dptr,a
+   2D08 E4            [12] 3066 	clr	a
+   2D09 A3            [24] 3067 	inc	dptr
+   2D0A F0            [24] 3068 	movx	@dptr,a
                            3069 ;	cc1111rf.c:695: LED = !LED;
-   2C9B A2 A4         [12] 3070 	mov	c,_P2_4
-   2C9D B3            [12] 3071 	cpl	c
-   2C9E 92 02         [24] 3072 	mov  _rfIntHandler_sloc0_1_0,c
-   2CA0 92 A4         [24] 3073 	mov	_P2_4,c
-   2CA2                    3074 00112$:
+   2D0B A2 A4         [12] 3070 	mov	c,_P2_4
+   2D0D B3            [12] 3071 	cpl	c
+   2D0E 92 02         [24] 3072 	mov  _rfIntHandler_sloc0_1_0,c
+   2D10 92 A4         [24] 3073 	mov	_P2_4,c
+   2D12                    3074 00112$:
                            3075 ;	cc1111rf.c:698: LED = 0;
-   2CA2 C2 A4         [12] 3076 	clr	_P2_4
-   2CA4                    3077 00115$:
+   2D12 C2 A4         [12] 3076 	clr	_P2_4
+   2D14                    3077 00115$:
                            3078 ;	cc1111rf.c:700: RFIF &= ~(RFIF_IRQ_DONE | RFIF_IRQ_TIMEOUT);        // OVF needs to be handled next...
-   2CA4 AF E9         [24] 3079 	mov	r7,_RFIF
-   2CA6 74 CF         [12] 3080 	mov	a,#0xCF
-   2CA8 5F            [12] 3081 	anl	a,r7
-   2CA9 F5 E9         [12] 3082 	mov	_RFIF,a
-   2CAB                    3083 00117$:
+   2D14 AF E9         [24] 3079 	mov	r7,_RFIF
+   2D16 74 CF         [12] 3080 	mov	a,#0xCF
+   2D18 5F            [12] 3081 	anl	a,r7
+   2D19 F5 E9         [12] 3082 	mov	_RFIF,a
+   2D1B                    3083 00117$:
                            3084 ;	cc1111rf.c:704: if(RFIF & RFIF_IRQ_RXOVF)
-   2CAB E5 E9         [12] 3085 	mov	a,_RFIF
-   2CAD 30 E6 1E      [24] 3086 	jnb	acc.6,00119$
+   2D1B E5 E9         [12] 3085 	mov	a,_RFIF
+   2D1D 30 E6 1E      [24] 3086 	jnb	acc.6,00119$
                            3087 ;	cc1111rf.c:709: lastCode[1] = LCE_RF_RXOVF;
-   2CB0 90 FD B6      [24] 3088 	mov	dptr,#(_lastCode + 0x0001)
-   2CB3 74 10         [12] 3089 	mov	a,#0x10
-   2CB5 F0            [24] 3090 	movx	@dptr,a
+   2D20 90 FE 02      [24] 3088 	mov	dptr,#(_lastCode + 0x0001)
+   2D23 74 10         [12] 3089 	mov	a,#0x10
+   2D25 F0            [24] 3090 	movx	@dptr,a
                            3091 ;	cc1111rf.c:710: LED = !LED;
-   2CB6 A2 A4         [12] 3092 	mov	c,_P2_4
-   2CB8 B3            [12] 3093 	cpl	c
-   2CB9 92 02         [24] 3094 	mov  _rfIntHandler_sloc0_1_0,c
-   2CBB 92 A4         [24] 3095 	mov	_P2_4,c
+   2D26 A2 A4         [12] 3092 	mov	c,_P2_4
+   2D28 B3            [12] 3093 	cpl	c
+   2D29 92 02         [24] 3094 	mov  _rfIntHandler_sloc0_1_0,c
+   2D2B 92 A4         [24] 3095 	mov	_P2_4,c
                            3096 ;	cc1111rf.c:712: resetRFSTATE();
-   2CBD 12 22 E9      [24] 3097 	lcall	_resetRFSTATE
+   2D2D 12 23 59      [24] 3097 	lcall	_resetRFSTATE
                            3098 ;	cc1111rf.c:714: LED = !LED;
-   2CC0 A2 A4         [12] 3099 	mov	c,_P2_4
-   2CC2 B3            [12] 3100 	cpl	c
-   2CC3 92 02         [24] 3101 	mov  _rfIntHandler_sloc0_1_0,c
-   2CC5 92 A4         [24] 3102 	mov	_P2_4,c
+   2D30 A2 A4         [12] 3099 	mov	c,_P2_4
+   2D32 B3            [12] 3100 	cpl	c
+   2D33 92 02         [24] 3101 	mov  _rfIntHandler_sloc0_1_0,c
+   2D35 92 A4         [24] 3102 	mov	_P2_4,c
                            3103 ;	cc1111rf.c:715: RFIF &= ~RFIF_IRQ_RXOVF;
-   2CC7 AF E9         [24] 3104 	mov	r7,_RFIF
-   2CC9 74 BF         [12] 3105 	mov	a,#0xBF
-   2CCB 5F            [12] 3106 	anl	a,r7
-   2CCC F5 E9         [12] 3107 	mov	_RFIF,a
-   2CCE                    3108 00119$:
+   2D37 AF E9         [24] 3104 	mov	r7,_RFIF
+   2D39 74 BF         [12] 3105 	mov	a,#0xBF
+   2D3B 5F            [12] 3106 	anl	a,r7
+   2D3C F5 E9         [12] 3107 	mov	_RFIF,a
+   2D3E                    3108 00119$:
                            3109 ;	cc1111rf.c:718: if(RFIF & RFIF_IRQ_TXUNF)
-   2CCE E5 E9         [12] 3110 	mov	a,_RFIF
-   2CD0 30 E7 1E      [24] 3111 	jnb	acc.7,00122$
+   2D3E E5 E9         [12] 3110 	mov	a,_RFIF
+   2D40 30 E7 1E      [24] 3111 	jnb	acc.7,00122$
                            3112 ;	cc1111rf.c:721: lastCode[1] = LCE_RF_TXUNF;
-   2CD3 90 FD B6      [24] 3113 	mov	dptr,#(_lastCode + 0x0001)
-   2CD6 74 11         [12] 3114 	mov	a,#0x11
-   2CD8 F0            [24] 3115 	movx	@dptr,a
+   2D43 90 FE 02      [24] 3113 	mov	dptr,#(_lastCode + 0x0001)
+   2D46 74 11         [12] 3114 	mov	a,#0x11
+   2D48 F0            [24] 3115 	movx	@dptr,a
                            3116 ;	cc1111rf.c:722: LED = !LED;
-   2CD9 A2 A4         [12] 3117 	mov	c,_P2_4
-   2CDB B3            [12] 3118 	cpl	c
-   2CDC 92 02         [24] 3119 	mov  _rfIntHandler_sloc0_1_0,c
-   2CDE 92 A4         [24] 3120 	mov	_P2_4,c
+   2D49 A2 A4         [12] 3117 	mov	c,_P2_4
+   2D4B B3            [12] 3118 	cpl	c
+   2D4C 92 02         [24] 3119 	mov  _rfIntHandler_sloc0_1_0,c
+   2D4E 92 A4         [24] 3120 	mov	_P2_4,c
                            3121 ;	cc1111rf.c:724: resetRFSTATE();
-   2CE0 12 22 E9      [24] 3122 	lcall	_resetRFSTATE
+   2D50 12 23 59      [24] 3122 	lcall	_resetRFSTATE
                            3123 ;	cc1111rf.c:726: LED = !LED;
-   2CE3 A2 A4         [12] 3124 	mov	c,_P2_4
-   2CE5 B3            [12] 3125 	cpl	c
-   2CE6 92 02         [24] 3126 	mov  _rfIntHandler_sloc0_1_0,c
-   2CE8 92 A4         [24] 3127 	mov	_P2_4,c
+   2D53 A2 A4         [12] 3124 	mov	c,_P2_4
+   2D55 B3            [12] 3125 	cpl	c
+   2D56 92 02         [24] 3126 	mov  _rfIntHandler_sloc0_1_0,c
+   2D58 92 A4         [24] 3127 	mov	_P2_4,c
                            3128 ;	cc1111rf.c:728: RFIF &= ~RFIF_IRQ_TXUNF;
-   2CEA AF E9         [24] 3129 	mov	r7,_RFIF
-   2CEC 74 7F         [12] 3130 	mov	a,#0x7F
-   2CEE 5F            [12] 3131 	anl	a,r7
-   2CEF F5 E9         [12] 3132 	mov	_RFIF,a
-   2CF1                    3133 00122$:
-   2CF1 D0 D0         [24] 3134 	pop	psw
-   2CF3 D0 00         [24] 3135 	pop	(0+0)
-   2CF5 D0 01         [24] 3136 	pop	(0+1)
-   2CF7 D0 02         [24] 3137 	pop	(0+2)
-   2CF9 D0 03         [24] 3138 	pop	(0+3)
-   2CFB D0 04         [24] 3139 	pop	(0+4)
-   2CFD D0 05         [24] 3140 	pop	(0+5)
-   2CFF D0 06         [24] 3141 	pop	(0+6)
-   2D01 D0 07         [24] 3142 	pop	(0+7)
-   2D03 D0 83         [24] 3143 	pop	dph
-   2D05 D0 82         [24] 3144 	pop	dpl
-   2D07 D0 F0         [24] 3145 	pop	b
-   2D09 D0 E0         [24] 3146 	pop	acc
-   2D0B D0 21         [24] 3147 	pop	bits
-   2D0D 32            [24] 3148 	reti
+   2D5A AF E9         [24] 3129 	mov	r7,_RFIF
+   2D5C 74 7F         [12] 3130 	mov	a,#0x7F
+   2D5E 5F            [12] 3131 	anl	a,r7
+   2D5F F5 E9         [12] 3132 	mov	_RFIF,a
+   2D61                    3133 00122$:
+   2D61 D0 D0         [24] 3134 	pop	psw
+   2D63 D0 00         [24] 3135 	pop	(0+0)
+   2D65 D0 01         [24] 3136 	pop	(0+1)
+   2D67 D0 02         [24] 3137 	pop	(0+2)
+   2D69 D0 03         [24] 3138 	pop	(0+3)
+   2D6B D0 04         [24] 3139 	pop	(0+4)
+   2D6D D0 05         [24] 3140 	pop	(0+5)
+   2D6F D0 06         [24] 3141 	pop	(0+6)
+   2D71 D0 07         [24] 3142 	pop	(0+7)
+   2D73 D0 83         [24] 3143 	pop	dph
+   2D75 D0 82         [24] 3144 	pop	dpl
+   2D77 D0 F0         [24] 3145 	pop	b
+   2D79 D0 E0         [24] 3146 	pop	acc
+   2D7B D0 21         [24] 3147 	pop	bits
+   2D7D 32            [24] 3148 	reti
                            3149 ;------------------------------------------------------------
                            3150 ;Allocation info for local variables in function 'byte_shuffle'
                            3151 ;------------------------------------------------------------
@@ -3157,104 +3157,104 @@
                            3157 ;	-----------------------------------------
                            3158 ;	 function byte_shuffle
                            3159 ;	-----------------------------------------
-   2D0E                    3160 _byte_shuffle:
-   2D0E AF 83         [24] 3161 	mov	r7,dph
-   2D10 E5 82         [12] 3162 	mov	a,dpl
-   2D12 90 FD B3      [24] 3163 	mov	dptr,#_byte_shuffle_buf_1_146
-   2D15 F0            [24] 3164 	movx	@dptr,a
-   2D16 EF            [12] 3165 	mov	a,r7
-   2D17 A3            [24] 3166 	inc	dptr
-   2D18 F0            [24] 3167 	movx	@dptr,a
+   2D7E                    3160 _byte_shuffle:
+   2D7E AF 83         [24] 3161 	mov	r7,dph
+   2D80 E5 82         [12] 3162 	mov	a,dpl
+   2D82 90 FD FF      [24] 3163 	mov	dptr,#_byte_shuffle_buf_1_146
+   2D85 F0            [24] 3164 	movx	@dptr,a
+   2D86 EF            [12] 3165 	mov	a,r7
+   2D87 A3            [24] 3166 	inc	dptr
+   2D88 F0            [24] 3167 	movx	@dptr,a
                            3168 ;	cc1111rf.c:735: while(len--)
-   2D19 90 FD B1      [24] 3169 	mov	dptr,#_byte_shuffle_PARM_3
-   2D1C E0            [24] 3170 	movx	a,@dptr
-   2D1D FE            [12] 3171 	mov	r6,a
-   2D1E A3            [24] 3172 	inc	dptr
-   2D1F E0            [24] 3173 	movx	a,@dptr
-   2D20 FF            [12] 3174 	mov	r7,a
-   2D21 90 FD B3      [24] 3175 	mov	dptr,#_byte_shuffle_buf_1_146
-   2D24 E0            [24] 3176 	movx	a,@dptr
-   2D25 FC            [12] 3177 	mov	r4,a
-   2D26 A3            [24] 3178 	inc	dptr
-   2D27 E0            [24] 3179 	movx	a,@dptr
-   2D28 FD            [12] 3180 	mov	r5,a
-   2D29 90 FD AF      [24] 3181 	mov	dptr,#_byte_shuffle_PARM_2
-   2D2C E0            [24] 3182 	movx	a,@dptr
-   2D2D FA            [12] 3183 	mov	r2,a
-   2D2E A3            [24] 3184 	inc	dptr
-   2D2F E0            [24] 3185 	movx	a,@dptr
-   2D30 FB            [12] 3186 	mov	r3,a
-   2D31                    3187 00101$:
-   2D31 8A 00         [24] 3188 	mov	ar0,r2
-   2D33 8B 01         [24] 3189 	mov	ar1,r3
-   2D35 1A            [12] 3190 	dec	r2
-   2D36 BA FF 01      [24] 3191 	cjne	r2,#0xFF,00113$
-   2D39 1B            [12] 3192 	dec	r3
-   2D3A                    3193 00113$:
-   2D3A E8            [12] 3194 	mov	a,r0
-   2D3B 49            [12] 3195 	orl	a,r1
-   2D3C 60 24         [24] 3196 	jz	00104$
+   2D89 90 FD FD      [24] 3169 	mov	dptr,#_byte_shuffle_PARM_3
+   2D8C E0            [24] 3170 	movx	a,@dptr
+   2D8D FE            [12] 3171 	mov	r6,a
+   2D8E A3            [24] 3172 	inc	dptr
+   2D8F E0            [24] 3173 	movx	a,@dptr
+   2D90 FF            [12] 3174 	mov	r7,a
+   2D91 90 FD FF      [24] 3175 	mov	dptr,#_byte_shuffle_buf_1_146
+   2D94 E0            [24] 3176 	movx	a,@dptr
+   2D95 FC            [12] 3177 	mov	r4,a
+   2D96 A3            [24] 3178 	inc	dptr
+   2D97 E0            [24] 3179 	movx	a,@dptr
+   2D98 FD            [12] 3180 	mov	r5,a
+   2D99 90 FD FB      [24] 3181 	mov	dptr,#_byte_shuffle_PARM_2
+   2D9C E0            [24] 3182 	movx	a,@dptr
+   2D9D FA            [12] 3183 	mov	r2,a
+   2D9E A3            [24] 3184 	inc	dptr
+   2D9F E0            [24] 3185 	movx	a,@dptr
+   2DA0 FB            [12] 3186 	mov	r3,a
+   2DA1                    3187 00101$:
+   2DA1 8A 00         [24] 3188 	mov	ar0,r2
+   2DA3 8B 01         [24] 3189 	mov	ar1,r3
+   2DA5 1A            [12] 3190 	dec	r2
+   2DA6 BA FF 01      [24] 3191 	cjne	r2,#0xFF,00113$
+   2DA9 1B            [12] 3192 	dec	r3
+   2DAA                    3193 00113$:
+   2DAA E8            [12] 3194 	mov	a,r0
+   2DAB 49            [12] 3195 	orl	a,r1
+   2DAC 60 24         [24] 3196 	jz	00104$
                            3197 ;	cc1111rf.c:736: buf[len + offset] = buf[len];
-   2D3E EE            [12] 3198 	mov	a,r6
-   2D3F 2A            [12] 3199 	add	a,r2
-   2D40 F8            [12] 3200 	mov	r0,a
-   2D41 EF            [12] 3201 	mov	a,r7
-   2D42 3B            [12] 3202 	addc	a,r3
-   2D43 F9            [12] 3203 	mov	r1,a
-   2D44 E8            [12] 3204 	mov	a,r0
-   2D45 2C            [12] 3205 	add	a,r4
-   2D46 F8            [12] 3206 	mov	r0,a
-   2D47 E9            [12] 3207 	mov	a,r1
-   2D48 3D            [12] 3208 	addc	a,r5
-   2D49 F9            [12] 3209 	mov	r1,a
-   2D4A EA            [12] 3210 	mov	a,r2
-   2D4B 2C            [12] 3211 	add	a,r4
-   2D4C F5 82         [12] 3212 	mov	dpl,a
-   2D4E EB            [12] 3213 	mov	a,r3
-   2D4F 3D            [12] 3214 	addc	a,r5
-   2D50 F5 83         [12] 3215 	mov	dph,a
-   2D52 C0 06         [24] 3216 	push	ar6
-   2D54 C0 07         [24] 3217 	push	ar7
-   2D56 E0            [24] 3218 	movx	a,@dptr
-   2D57 88 82         [24] 3219 	mov	dpl,r0
-   2D59 89 83         [24] 3220 	mov	dph,r1
-   2D5B F0            [24] 3221 	movx	@dptr,a
-   2D5C D0 07         [24] 3222 	pop	ar7
-   2D5E D0 06         [24] 3223 	pop	ar6
-   2D60 80 CF         [24] 3224 	sjmp	00101$
-   2D62                    3225 00104$:
-   2D62 22            [24] 3226 	ret
+   2DAE EE            [12] 3198 	mov	a,r6
+   2DAF 2A            [12] 3199 	add	a,r2
+   2DB0 F8            [12] 3200 	mov	r0,a
+   2DB1 EF            [12] 3201 	mov	a,r7
+   2DB2 3B            [12] 3202 	addc	a,r3
+   2DB3 F9            [12] 3203 	mov	r1,a
+   2DB4 E8            [12] 3204 	mov	a,r0
+   2DB5 2C            [12] 3205 	add	a,r4
+   2DB6 F8            [12] 3206 	mov	r0,a
+   2DB7 E9            [12] 3207 	mov	a,r1
+   2DB8 3D            [12] 3208 	addc	a,r5
+   2DB9 F9            [12] 3209 	mov	r1,a
+   2DBA EA            [12] 3210 	mov	a,r2
+   2DBB 2C            [12] 3211 	add	a,r4
+   2DBC F5 82         [12] 3212 	mov	dpl,a
+   2DBE EB            [12] 3213 	mov	a,r3
+   2DBF 3D            [12] 3214 	addc	a,r5
+   2DC0 F5 83         [12] 3215 	mov	dph,a
+   2DC2 C0 06         [24] 3216 	push	ar6
+   2DC4 C0 07         [24] 3217 	push	ar7
+   2DC6 E0            [24] 3218 	movx	a,@dptr
+   2DC7 88 82         [24] 3219 	mov	dpl,r0
+   2DC9 89 83         [24] 3220 	mov	dph,r1
+   2DCB F0            [24] 3221 	movx	@dptr,a
+   2DCC D0 07         [24] 3222 	pop	ar7
+   2DCE D0 06         [24] 3223 	pop	ar6
+   2DD0 80 CF         [24] 3224 	sjmp	00101$
+   2DD2                    3225 00104$:
+   2DD2 22            [24] 3226 	ret
                            3227 	.area CSEG    (CODE)
                            3228 	.area CONST   (CODE)
                            3229 	.area XINIT   (CODE)
-   37BC                    3230 __xinit__rfRxInfMode:
-   37BC 00                 3231 	.db #0x00	; 0
-   37BD                    3232 __xinit__rfRxTotalRXLen:
-   37BD 00 00              3233 	.byte #0x00,#0x00	; 0
-   37BF                    3234 __xinit__rfRxLargeLen:
-   37BF 00 00              3235 	.byte #0x00,#0x00	; 0
-   37C1                    3236 __xinit__rfTxCurBufIdx:
-   37C1 00                 3237 	.db #0x00	; 0
-   37C2                    3238 __xinit__rfTxBufCount:
-   37C2 01                 3239 	.db #0x01	; 1
-   37C3                    3240 __xinit__rfTxCounter:
-   37C3 00 00              3241 	.byte #0x00,#0x00	; 0
-   37C5                    3242 __xinit__rfTxRepeatCounter:
-   37C5 00 00              3243 	.byte #0x00,#0x00	; 0
-   37C7                    3244 __xinit__rfTxBufferEnd:
-   37C7 00 00              3245 	.byte #0x00,#0x00	; 0
-   37C9                    3246 __xinit__rfTxRepeatLen:
-   37C9 00 00              3247 	.byte #0x00,#0x00	; 0
-   37CB                    3248 __xinit__rfTxRepeatOffset:
-   37CB 00 00              3249 	.byte #0x00,#0x00	; 0
-   37CD                    3250 __xinit__rfTxTotalTXLen:
-   37CD 00 00              3251 	.byte #0x00,#0x00	; 0
-   37CF                    3252 __xinit__rfTxInfMode:
-   37CF 00                 3253 	.db #0x00	; 0
-   37D0                    3254 __xinit__rfAESMode:
-   37D0 00                 3255 	.db #0x00	; 0
-   37D1                    3256 __xinit__rfAmpMode:
-   37D1 00                 3257 	.db #0x00	; 0
-   37D2                    3258 __xinit__bRepeatMode:
-   37D2 00                 3259 	.db #0x00	; 0
+   382C                    3230 __xinit__rfRxInfMode:
+   382C 00                 3231 	.db #0x00	; 0
+   382D                    3232 __xinit__rfRxTotalRXLen:
+   382D 00 00              3233 	.byte #0x00,#0x00	; 0
+   382F                    3234 __xinit__rfRxLargeLen:
+   382F 00 00              3235 	.byte #0x00,#0x00	; 0
+   3831                    3236 __xinit__rfTxCurBufIdx:
+   3831 00                 3237 	.db #0x00	; 0
+   3832                    3238 __xinit__rfTxBufCount:
+   3832 01                 3239 	.db #0x01	; 1
+   3833                    3240 __xinit__rfTxCounter:
+   3833 00 00              3241 	.byte #0x00,#0x00	; 0
+   3835                    3242 __xinit__rfTxRepeatCounter:
+   3835 00 00              3243 	.byte #0x00,#0x00	; 0
+   3837                    3244 __xinit__rfTxBufferEnd:
+   3837 00 00              3245 	.byte #0x00,#0x00	; 0
+   3839                    3246 __xinit__rfTxRepeatLen:
+   3839 00 00              3247 	.byte #0x00,#0x00	; 0
+   383B                    3248 __xinit__rfTxRepeatOffset:
+   383B 00 00              3249 	.byte #0x00,#0x00	; 0
+   383D                    3250 __xinit__rfTxTotalTXLen:
+   383D 00 00              3251 	.byte #0x00,#0x00	; 0
+   383F                    3252 __xinit__rfTxInfMode:
+   383F 00                 3253 	.db #0x00	; 0
+   3840                    3254 __xinit__rfAESMode:
+   3840 00                 3255 	.db #0x00	; 0
+   3841                    3256 __xinit__rfAmpMode:
+   3841 00                 3257 	.db #0x00	; 0
+   3842                    3258 __xinit__bRepeatMode:
+   3842 00                 3259 	.db #0x00	; 0
                            3260 	.area CABS    (ABS,CODE)

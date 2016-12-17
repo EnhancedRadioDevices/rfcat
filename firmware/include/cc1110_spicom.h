@@ -27,7 +27,7 @@
 #include "types.h"
 #include <stdint.h>
 
-#define SPI_BUF_LEN 220 
+#define SPI_BUF_LEN 516
 
 /***************************************************************************
  * 

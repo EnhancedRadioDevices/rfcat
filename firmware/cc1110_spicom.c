@@ -36,25 +36,25 @@ __code u8 buildname[] = {
 };
 
 
-volatile uint8_t __xdata spi_input_buf[SPI_BUF_LEN];
-volatile uint8_t input_size = 0;
-volatile uint8_t input_head_idx = 0;
-volatile uint8_t input_tail_idx = 0;
+//volatile uint8_t __xdata spi_input_buf[SPI_BUF_LEN];
+volatile uint16_t input_size = 0;
+volatile uint16_t input_head_idx = 0;
+volatile uint16_t input_tail_idx = 0;
 
 volatile uint8_t __xdata spi_output_buf[SPI_BUF_LEN];
-volatile uint8_t output_size = 0;
-volatile uint8_t output_head_idx = 0;
-volatile uint8_t output_tail_idx = 0;
+volatile uint16_t output_size = 0;
+volatile uint16_t output_head_idx = 0;
+volatile uint16_t output_tail_idx = 0;
 
-volatile uint8_t serial_data_available;
+volatile uint16_t serial_data_available;
 
 #define SPI_MODE_WAIT 0
 #define SPI_MODE_SIZE 1
 #define SPI_MODE_XFER 2
 volatile uint8_t spi_mode;
 
-volatile uint8_t master_send_size = 0;
-volatile uint8_t slave_send_size = 0;
+volatile uint16_t master_send_size = 0;
+volatile uint16_t slave_send_size = 0;
 
 // USB simulation stuff
 __xdata u8  usb_ep5_OUTbuf[EP5OUT_BUFFER_SIZE];                   // these get pointed to by the above structure
@@ -197,20 +197,20 @@ void vcom_putchar(char c)
 
 char vcom_pollchar()
 {
-  if (serial_data_available == 0) {
+  //if (serial_data_available == 0) {
     return USB_READ_AGAIN;
-  }
-  return spi_input_buf[input_tail_idx];
+  //}
+  //return spi_input_buf[input_tail_idx];
 }
 
 char vcom_getchar()
 {
-  uint8_t s_data;
+  //uint8_t s_data;
   
-  if (serial_data_available == 0) {
+  //if (serial_data_available == 0) {
     return USB_READ_AGAIN;
-  }
-  
+  //}
+  /*
   s_data = spi_input_buf[input_tail_idx];
   input_tail_idx++;
   if (input_tail_idx >= SPI_BUF_LEN) {
@@ -220,7 +220,7 @@ char vcom_getchar()
   if (input_size == 0) {
     serial_data_available = 0;
   }
-  return s_data;
+  return s_data;*/
 }
 
 void vcom_enable()
@@ -336,6 +336,7 @@ int txdata(u8 app, u8 cmd, u16 len, __xdata u8* dataptr)
     vcom_putchar(app);
     vcom_putchar(cmd);
 	vcom_putchar((u8)len);
+	vcom_putchar((u8)len >> 8);
     
     /* function from usb thing, only need data ptr */    
     while (len > 0) //*dataptr) 
