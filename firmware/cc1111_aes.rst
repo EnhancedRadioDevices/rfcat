@@ -1,7 +1,7 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
                               3 ; Version 3.3.0 #8604 (Dec 30 2013) (Linux)
-                              4 ; This file was generated Wed Dec 14 17:38:39 2016
+                              4 ; This file was generated Fri Dec 16 14:41:37 2016
                               5 ;--------------------------------------------------------
                               6 	.module cc1111_aes
                               7 	.optsdcc -mmcs51 --model-small
@@ -995,54 +995,54 @@
                      DE26   995 _USBF3	=	0xde26
                      DE28   996 _USBF4	=	0xde28
                      DE2A   997 _USBF5	=	0xde2a
-   FDC1                     998 _aesdmai::
-   FDC1                     999 	.ds 2
-   FDC3                    1000 _aesdmao::
-   FDC3                    1001 	.ds 2
-   FDC5                    1002 _aesdmachani::
-   FDC5                    1003 	.ds 1
-   FDC6                    1004 _aesdmaarmi::
-   FDC6                    1005 	.ds 1
-   FDC7                    1006 _aesdmachano::
-   FDC7                    1007 	.ds 1
-   FDC8                    1008 _aesdmaarmo::
-   FDC8                    1009 	.ds 1
-   FDC9                    1010 _setAES_PARM_2:
-   FDC9                    1011 	.ds 1
-   FDCA                    1012 _setAES_PARM_3:
-   FDCA                    1013 	.ds 1
-   FDCB                    1014 _setAES_buf_1_56:
-   FDCB                    1015 	.ds 2
-   FDCD                    1016 _padAES_PARM_2:
-   FDCD                    1017 	.ds 2
-   FDCF                    1018 _padAES_buf_1_58:
-   FDCF                    1019 	.ds 2
-   FDD1                    1020 _encAES_PARM_2:
-   FDD1                    1021 	.ds 2
-   FDD3                    1022 _encAES_PARM_3:
-   FDD3                    1023 	.ds 2
-   FDD5                    1024 _encAES_PARM_4:
-   FDD5                    1025 	.ds 1
-   FDD6                    1026 _encAES_inbuf_1_60:
-   FDD6                    1027 	.ds 2
-   FDD8                    1028 _decAES_PARM_2:
-   FDD8                    1029 	.ds 2
-   FDDA                    1030 _decAES_PARM_3:
-   FDDA                    1031 	.ds 2
-   FDDC                    1032 _decAES_PARM_4:
-   FDDC                    1033 	.ds 1
-   FDDD                    1034 _decAES_inbuf_1_62:
-   FDDD                    1035 	.ds 2
-   FDDF                    1036 _doAES_PARM_2:
-   FDDF                    1037 	.ds 2
-   FDE1                    1038 _doAES_PARM_3:
-   FDE1                    1039 	.ds 2
-   FDE3                    1040 _doAES_PARM_4:
-   FDE3                    1041 	.ds 1
-   FDE4                    1042 _doAES_PARM_5:
-   FDE4                    1043 	.ds 1
-   FDE5                    1044 _doAES_inbuf_1_64:
-   FDE5                    1045 	.ds 2
+   FE0D                     998 _aesdmai::
+   FE0D                     999 	.ds 2
+   FE0F                    1000 _aesdmao::
+   FE0F                    1001 	.ds 2
+   FE11                    1002 _aesdmachani::
+   FE11                    1003 	.ds 1
+   FE12                    1004 _aesdmaarmi::
+   FE12                    1005 	.ds 1
+   FE13                    1006 _aesdmachano::
+   FE13                    1007 	.ds 1
+   FE14                    1008 _aesdmaarmo::
+   FE14                    1009 	.ds 1
+   FE15                    1010 _setAES_PARM_2:
+   FE15                    1011 	.ds 1
+   FE16                    1012 _setAES_PARM_3:
+   FE16                    1013 	.ds 1
+   FE17                    1014 _setAES_buf_1_56:
+   FE17                    1015 	.ds 2
+   FE19                    1016 _padAES_PARM_2:
+   FE19                    1017 	.ds 2
+   FE1B                    1018 _padAES_buf_1_58:
+   FE1B                    1019 	.ds 2
+   FE1D                    1020 _encAES_PARM_2:
+   FE1D                    1021 	.ds 2
+   FE1F                    1022 _encAES_PARM_3:
+   FE1F                    1023 	.ds 2
+   FE21                    1024 _encAES_PARM_4:
+   FE21                    1025 	.ds 1
+   FE22                    1026 _encAES_inbuf_1_60:
+   FE22                    1027 	.ds 2
+   FE24                    1028 _decAES_PARM_2:
+   FE24                    1029 	.ds 2
+   FE26                    1030 _decAES_PARM_3:
+   FE26                    1031 	.ds 2
+   FE28                    1032 _decAES_PARM_4:
+   FE28                    1033 	.ds 1
+   FE29                    1034 _decAES_inbuf_1_62:
+   FE29                    1035 	.ds 2
+   FE2B                    1036 _doAES_PARM_2:
+   FE2B                    1037 	.ds 2
+   FE2D                    1038 _doAES_PARM_3:
+   FE2D                    1039 	.ds 2
+   FE2F                    1040 _doAES_PARM_4:
+   FE2F                    1041 	.ds 1
+   FE30                    1042 _doAES_PARM_5:
+   FE30                    1043 	.ds 1
+   FE31                    1044 _doAES_inbuf_1_64:
+   FE31                    1045 	.ds 2
                            1046 ;--------------------------------------------------------
                            1047 ; absolute external ram data
                            1048 ;--------------------------------------------------------
@@ -1084,7 +1084,7 @@
                            1084 ;	-----------------------------------------
                            1085 ;	 function initAES
                            1086 ;	-----------------------------------------
-   2EFE                    1087 _initAES:
+   2F86                    1087 _initAES:
                      0007  1088 	ar7 = 0x07
                      0006  1089 	ar6 = 0x06
                      0005  1090 	ar5 = 0x05
@@ -1094,186 +1094,186 @@
                      0001  1094 	ar1 = 0x01
                      0000  1095 	ar0 = 0x00
                            1096 ;	cc1111_aes.c:18: aesdmachani= getDMA();                    // allocate a DMA channel
-   2EFE 12 22 41      [24] 1097 	lcall	_getDMA
-   2F01 AF 82         [24] 1098 	mov	r7,dpl
-   2F03 90 FD C5      [24] 1099 	mov	dptr,#_aesdmachani
-   2F06 EF            [12] 1100 	mov	a,r7
-   2F07 F0            [24] 1101 	movx	@dptr,a
+   2F86 12 22 C9      [24] 1097 	lcall	_getDMA
+   2F89 AF 82         [24] 1098 	mov	r7,dpl
+   2F8B 90 FE 11      [24] 1099 	mov	dptr,#_aesdmachani
+   2F8E EF            [12] 1100 	mov	a,r7
+   2F8F F0            [24] 1101 	movx	@dptr,a
                            1102 ;	cc1111_aes.c:19: aesdmaarmi= (DMAARM0 << aesdmachani);     // pre-calculate arming bit
-   2F08 8F F0         [24] 1103 	mov	b,r7
-   2F0A 05 F0         [12] 1104 	inc	b
-   2F0C 74 01         [12] 1105 	mov	a,#0x01
-   2F0E 80 02         [24] 1106 	sjmp	00105$
-   2F10                    1107 00103$:
-   2F10 25 E0         [12] 1108 	add	a,acc
-   2F12                    1109 00105$:
-   2F12 D5 F0 FB      [24] 1110 	djnz	b,00103$
-   2F15 90 FD C6      [24] 1111 	mov	dptr,#_aesdmaarmi
-   2F18 F0            [24] 1112 	movx	@dptr,a
+   2F90 8F F0         [24] 1103 	mov	b,r7
+   2F92 05 F0         [12] 1104 	inc	b
+   2F94 74 01         [12] 1105 	mov	a,#0x01
+   2F96 80 02         [24] 1106 	sjmp	00105$
+   2F98                    1107 00103$:
+   2F98 25 E0         [12] 1108 	add	a,acc
+   2F9A                    1109 00105$:
+   2F9A D5 F0 FB      [24] 1110 	djnz	b,00103$
+   2F9D 90 FE 12      [24] 1111 	mov	dptr,#_aesdmaarmi
+   2FA0 F0            [24] 1112 	movx	@dptr,a
                            1113 ;	cc1111_aes.c:20: aesdmai= &dma_configs[aesdmachani];       // point our DMA descriptor at allocated channel descriptor
-   2F19 EF            [12] 1114 	mov	a,r7
-   2F1A 75 F0 08      [24] 1115 	mov	b,#0x08
-   2F1D A4            [48] 1116 	mul	ab
-   2F1E 24 69         [12] 1117 	add	a,#_dma_configs
-   2F20 FE            [12] 1118 	mov	r6,a
-   2F21 74 F9         [12] 1119 	mov	a,#(_dma_configs >> 8)
-   2F23 35 F0         [12] 1120 	addc	a,b
-   2F25 FF            [12] 1121 	mov	r7,a
-   2F26 90 FD C1      [24] 1122 	mov	dptr,#_aesdmai
-   2F29 EE            [12] 1123 	mov	a,r6
-   2F2A F0            [24] 1124 	movx	@dptr,a
-   2F2B EF            [12] 1125 	mov	a,r7
-   2F2C A3            [24] 1126 	inc	dptr
-   2F2D F0            [24] 1127 	movx	@dptr,a
+   2FA1 EF            [12] 1114 	mov	a,r7
+   2FA2 75 F0 08      [24] 1115 	mov	b,#0x08
+   2FA5 A4            [48] 1116 	mul	ab
+   2FA6 24 B5         [12] 1117 	add	a,#_dma_configs
+   2FA8 FE            [12] 1118 	mov	r6,a
+   2FA9 74 F9         [12] 1119 	mov	a,#(_dma_configs >> 8)
+   2FAB 35 F0         [12] 1120 	addc	a,b
+   2FAD FF            [12] 1121 	mov	r7,a
+   2FAE 90 FE 0D      [24] 1122 	mov	dptr,#_aesdmai
+   2FB1 EE            [12] 1123 	mov	a,r6
+   2FB2 F0            [24] 1124 	movx	@dptr,a
+   2FB3 EF            [12] 1125 	mov	a,r7
+   2FB4 A3            [24] 1126 	inc	dptr
+   2FB5 F0            [24] 1127 	movx	@dptr,a
                            1128 ;	cc1111_aes.c:21: aesdmai->destAddrH = 0xdf;                // ENCDI == 0xdfb1 - AES Input SFR
-   2F2E 8E 82         [24] 1129 	mov	dpl,r6
-   2F30 8F 83         [24] 1130 	mov	dph,r7
-   2F32 A3            [24] 1131 	inc	dptr
-   2F33 A3            [24] 1132 	inc	dptr
-   2F34 74 DF         [12] 1133 	mov	a,#0xDF
-   2F36 F0            [24] 1134 	movx	@dptr,a
+   2FB6 8E 82         [24] 1129 	mov	dpl,r6
+   2FB8 8F 83         [24] 1130 	mov	dph,r7
+   2FBA A3            [24] 1131 	inc	dptr
+   2FBB A3            [24] 1132 	inc	dptr
+   2FBC 74 DF         [12] 1133 	mov	a,#0xDF
+   2FBE F0            [24] 1134 	movx	@dptr,a
                            1135 ;	cc1111_aes.c:22: aesdmai->destAddrL = 0xb1;
-   2F37 8E 82         [24] 1136 	mov	dpl,r6
-   2F39 8F 83         [24] 1137 	mov	dph,r7
-   2F3B A3            [24] 1138 	inc	dptr
-   2F3C A3            [24] 1139 	inc	dptr
-   2F3D A3            [24] 1140 	inc	dptr
-   2F3E 74 B1         [12] 1141 	mov	a,#0xB1
-   2F40 F0            [24] 1142 	movx	@dptr,a
+   2FBF 8E 82         [24] 1136 	mov	dpl,r6
+   2FC1 8F 83         [24] 1137 	mov	dph,r7
+   2FC3 A3            [24] 1138 	inc	dptr
+   2FC4 A3            [24] 1139 	inc	dptr
+   2FC5 A3            [24] 1140 	inc	dptr
+   2FC6 74 B1         [12] 1141 	mov	a,#0xB1
+   2FC8 F0            [24] 1142 	movx	@dptr,a
                            1143 ;	cc1111_aes.c:23: aesdmai->lenL = 16;                       // always 128 bit operations
-   2F41 8E 82         [24] 1144 	mov	dpl,r6
-   2F43 8F 83         [24] 1145 	mov	dph,r7
-   2F45 A3            [24] 1146 	inc	dptr
-   2F46 A3            [24] 1147 	inc	dptr
-   2F47 A3            [24] 1148 	inc	dptr
-   2F48 A3            [24] 1149 	inc	dptr
-   2F49 A3            [24] 1150 	inc	dptr
-   2F4A 74 10         [12] 1151 	mov	a,#0x10
-   2F4C F0            [24] 1152 	movx	@dptr,a
+   2FC9 8E 82         [24] 1144 	mov	dpl,r6
+   2FCB 8F 83         [24] 1145 	mov	dph,r7
+   2FCD A3            [24] 1146 	inc	dptr
+   2FCE A3            [24] 1147 	inc	dptr
+   2FCF A3            [24] 1148 	inc	dptr
+   2FD0 A3            [24] 1149 	inc	dptr
+   2FD1 A3            [24] 1150 	inc	dptr
+   2FD2 74 10         [12] 1151 	mov	a,#0x10
+   2FD4 F0            [24] 1152 	movx	@dptr,a
                            1153 ;	cc1111_aes.c:24: aesdmai->trig = DMA_CFG0_TRIGGER_ENC_DW;  // trigger when co-processor requests data
-   2F4D 74 06         [12] 1154 	mov	a,#0x06
-   2F4F 2E            [12] 1155 	add	a,r6
-   2F50 F5 82         [12] 1156 	mov	dpl,a
-   2F52 E4            [12] 1157 	clr	a
-   2F53 3F            [12] 1158 	addc	a,r7
-   2F54 F5 83         [12] 1159 	mov	dph,a
-   2F56 E0            [24] 1160 	movx	a,@dptr
-   2F57 54 E0         [12] 1161 	anl	a,#0xE0
-   2F59 44 1D         [12] 1162 	orl	a,#0x1D
-   2F5B F0            [24] 1163 	movx	@dptr,a
+   2FD5 74 06         [12] 1154 	mov	a,#0x06
+   2FD7 2E            [12] 1155 	add	a,r6
+   2FD8 F5 82         [12] 1156 	mov	dpl,a
+   2FDA E4            [12] 1157 	clr	a
+   2FDB 3F            [12] 1158 	addc	a,r7
+   2FDC F5 83         [12] 1159 	mov	dph,a
+   2FDE E0            [24] 1160 	movx	a,@dptr
+   2FDF 54 E0         [12] 1161 	anl	a,#0xE0
+   2FE1 44 1D         [12] 1162 	orl	a,#0x1D
+   2FE3 F0            [24] 1163 	movx	@dptr,a
                            1164 ;	cc1111_aes.c:25: aesdmai->srcInc = 1;
-   2F5C 74 07         [12] 1165 	mov	a,#0x07
-   2F5E 2E            [12] 1166 	add	a,r6
-   2F5F F5 82         [12] 1167 	mov	dpl,a
-   2F61 E4            [12] 1168 	clr	a
-   2F62 3F            [12] 1169 	addc	a,r7
-   2F63 F5 83         [12] 1170 	mov	dph,a
-   2F65 E0            [24] 1171 	movx	a,@dptr
-   2F66 54 3F         [12] 1172 	anl	a,#0x3F
-   2F68 44 40         [12] 1173 	orl	a,#0x40
-   2F6A F0            [24] 1174 	movx	@dptr,a
+   2FE4 74 07         [12] 1165 	mov	a,#0x07
+   2FE6 2E            [12] 1166 	add	a,r6
+   2FE7 F5 82         [12] 1167 	mov	dpl,a
+   2FE9 E4            [12] 1168 	clr	a
+   2FEA 3F            [12] 1169 	addc	a,r7
+   2FEB F5 83         [12] 1170 	mov	dph,a
+   2FED E0            [24] 1171 	movx	a,@dptr
+   2FEE 54 3F         [12] 1172 	anl	a,#0x3F
+   2FF0 44 40         [12] 1173 	orl	a,#0x40
+   2FF2 F0            [24] 1174 	movx	@dptr,a
                            1175 ;	cc1111_aes.c:26: aesdmai->priority = 1;
-   2F6B 74 07         [12] 1176 	mov	a,#0x07
-   2F6D 2E            [12] 1177 	add	a,r6
-   2F6E F5 82         [12] 1178 	mov	dpl,a
-   2F70 E4            [12] 1179 	clr	a
-   2F71 3F            [12] 1180 	addc	a,r7
-   2F72 F5 83         [12] 1181 	mov	dph,a
-   2F74 E0            [24] 1182 	movx	a,@dptr
-   2F75 54 FC         [12] 1183 	anl	a,#0xFC
-   2F77 44 01         [12] 1184 	orl	a,#0x01
-   2F79 F0            [24] 1185 	movx	@dptr,a
+   2FF3 74 07         [12] 1176 	mov	a,#0x07
+   2FF5 2E            [12] 1177 	add	a,r6
+   2FF6 F5 82         [12] 1178 	mov	dpl,a
+   2FF8 E4            [12] 1179 	clr	a
+   2FF9 3F            [12] 1180 	addc	a,r7
+   2FFA F5 83         [12] 1181 	mov	dph,a
+   2FFC E0            [24] 1182 	movx	a,@dptr
+   2FFD 54 FC         [12] 1183 	anl	a,#0xFC
+   2FFF 44 01         [12] 1184 	orl	a,#0x01
+   3001 F0            [24] 1185 	movx	@dptr,a
                            1186 ;	cc1111_aes.c:29: aesdmachano= getDMA();
-   2F7A 12 22 41      [24] 1187 	lcall	_getDMA
-   2F7D AF 82         [24] 1188 	mov	r7,dpl
-   2F7F 90 FD C7      [24] 1189 	mov	dptr,#_aesdmachano
-   2F82 EF            [12] 1190 	mov	a,r7
-   2F83 F0            [24] 1191 	movx	@dptr,a
+   3002 12 22 C9      [24] 1187 	lcall	_getDMA
+   3005 AF 82         [24] 1188 	mov	r7,dpl
+   3007 90 FE 13      [24] 1189 	mov	dptr,#_aesdmachano
+   300A EF            [12] 1190 	mov	a,r7
+   300B F0            [24] 1191 	movx	@dptr,a
                            1192 ;	cc1111_aes.c:30: aesdmaarmo= (DMAARM0 << aesdmachano);
-   2F84 8F F0         [24] 1193 	mov	b,r7
-   2F86 05 F0         [12] 1194 	inc	b
-   2F88 74 01         [12] 1195 	mov	a,#0x01
-   2F8A 80 02         [24] 1196 	sjmp	00108$
-   2F8C                    1197 00106$:
-   2F8C 25 E0         [12] 1198 	add	a,acc
-   2F8E                    1199 00108$:
-   2F8E D5 F0 FB      [24] 1200 	djnz	b,00106$
-   2F91 90 FD C8      [24] 1201 	mov	dptr,#_aesdmaarmo
-   2F94 F0            [24] 1202 	movx	@dptr,a
+   300C 8F F0         [24] 1193 	mov	b,r7
+   300E 05 F0         [12] 1194 	inc	b
+   3010 74 01         [12] 1195 	mov	a,#0x01
+   3012 80 02         [24] 1196 	sjmp	00108$
+   3014                    1197 00106$:
+   3014 25 E0         [12] 1198 	add	a,acc
+   3016                    1199 00108$:
+   3016 D5 F0 FB      [24] 1200 	djnz	b,00106$
+   3019 90 FE 14      [24] 1201 	mov	dptr,#_aesdmaarmo
+   301C F0            [24] 1202 	movx	@dptr,a
                            1203 ;	cc1111_aes.c:31: aesdmao= &dma_configs[aesdmachano];
-   2F95 EF            [12] 1204 	mov	a,r7
-   2F96 75 F0 08      [24] 1205 	mov	b,#0x08
-   2F99 A4            [48] 1206 	mul	ab
-   2F9A 24 69         [12] 1207 	add	a,#_dma_configs
-   2F9C FE            [12] 1208 	mov	r6,a
-   2F9D 74 F9         [12] 1209 	mov	a,#(_dma_configs >> 8)
-   2F9F 35 F0         [12] 1210 	addc	a,b
-   2FA1 FF            [12] 1211 	mov	r7,a
-   2FA2 90 FD C3      [24] 1212 	mov	dptr,#_aesdmao
-   2FA5 EE            [12] 1213 	mov	a,r6
-   2FA6 F0            [24] 1214 	movx	@dptr,a
-   2FA7 EF            [12] 1215 	mov	a,r7
-   2FA8 A3            [24] 1216 	inc	dptr
-   2FA9 F0            [24] 1217 	movx	@dptr,a
+   301D EF            [12] 1204 	mov	a,r7
+   301E 75 F0 08      [24] 1205 	mov	b,#0x08
+   3021 A4            [48] 1206 	mul	ab
+   3022 24 B5         [12] 1207 	add	a,#_dma_configs
+   3024 FE            [12] 1208 	mov	r6,a
+   3025 74 F9         [12] 1209 	mov	a,#(_dma_configs >> 8)
+   3027 35 F0         [12] 1210 	addc	a,b
+   3029 FF            [12] 1211 	mov	r7,a
+   302A 90 FE 0F      [24] 1212 	mov	dptr,#_aesdmao
+   302D EE            [12] 1213 	mov	a,r6
+   302E F0            [24] 1214 	movx	@dptr,a
+   302F EF            [12] 1215 	mov	a,r7
+   3030 A3            [24] 1216 	inc	dptr
+   3031 F0            [24] 1217 	movx	@dptr,a
                            1218 ;	cc1111_aes.c:32: aesdmao->srcAddrH = 0xdf;                 // ENCDO == 0xdfb2 - AES Output SFR
-   2FAA 8E 82         [24] 1219 	mov	dpl,r6
-   2FAC 8F 83         [24] 1220 	mov	dph,r7
-   2FAE 74 DF         [12] 1221 	mov	a,#0xDF
-   2FB0 F0            [24] 1222 	movx	@dptr,a
+   3032 8E 82         [24] 1219 	mov	dpl,r6
+   3034 8F 83         [24] 1220 	mov	dph,r7
+   3036 74 DF         [12] 1221 	mov	a,#0xDF
+   3038 F0            [24] 1222 	movx	@dptr,a
                            1223 ;	cc1111_aes.c:33: aesdmao->srcAddrL = 0xb2;
-   2FB1 8E 82         [24] 1224 	mov	dpl,r6
-   2FB3 8F 83         [24] 1225 	mov	dph,r7
-   2FB5 A3            [24] 1226 	inc	dptr
-   2FB6 74 B2         [12] 1227 	mov	a,#0xB2
-   2FB8 F0            [24] 1228 	movx	@dptr,a
+   3039 8E 82         [24] 1224 	mov	dpl,r6
+   303B 8F 83         [24] 1225 	mov	dph,r7
+   303D A3            [24] 1226 	inc	dptr
+   303E 74 B2         [12] 1227 	mov	a,#0xB2
+   3040 F0            [24] 1228 	movx	@dptr,a
                            1229 ;	cc1111_aes.c:34: aesdmao->lenL = 16;
-   2FB9 8E 82         [24] 1230 	mov	dpl,r6
-   2FBB 8F 83         [24] 1231 	mov	dph,r7
-   2FBD A3            [24] 1232 	inc	dptr
-   2FBE A3            [24] 1233 	inc	dptr
-   2FBF A3            [24] 1234 	inc	dptr
-   2FC0 A3            [24] 1235 	inc	dptr
-   2FC1 A3            [24] 1236 	inc	dptr
-   2FC2 74 10         [12] 1237 	mov	a,#0x10
-   2FC4 F0            [24] 1238 	movx	@dptr,a
+   3041 8E 82         [24] 1230 	mov	dpl,r6
+   3043 8F 83         [24] 1231 	mov	dph,r7
+   3045 A3            [24] 1232 	inc	dptr
+   3046 A3            [24] 1233 	inc	dptr
+   3047 A3            [24] 1234 	inc	dptr
+   3048 A3            [24] 1235 	inc	dptr
+   3049 A3            [24] 1236 	inc	dptr
+   304A 74 10         [12] 1237 	mov	a,#0x10
+   304C F0            [24] 1238 	movx	@dptr,a
                            1239 ;	cc1111_aes.c:35: aesdmao->trig = DMA_CFG0_TRIGGER_DNC_UP;  // trigger when co-processor signals upload ready
-   2FC5 74 06         [12] 1240 	mov	a,#0x06
-   2FC7 2E            [12] 1241 	add	a,r6
-   2FC8 F5 82         [12] 1242 	mov	dpl,a
-   2FCA E4            [12] 1243 	clr	a
-   2FCB 3F            [12] 1244 	addc	a,r7
-   2FCC F5 83         [12] 1245 	mov	dph,a
-   2FCE E0            [24] 1246 	movx	a,@dptr
-   2FCF 54 E0         [12] 1247 	anl	a,#0xE0
-   2FD1 44 1E         [12] 1248 	orl	a,#0x1E
-   2FD3 F0            [24] 1249 	movx	@dptr,a
+   304D 74 06         [12] 1240 	mov	a,#0x06
+   304F 2E            [12] 1241 	add	a,r6
+   3050 F5 82         [12] 1242 	mov	dpl,a
+   3052 E4            [12] 1243 	clr	a
+   3053 3F            [12] 1244 	addc	a,r7
+   3054 F5 83         [12] 1245 	mov	dph,a
+   3056 E0            [24] 1246 	movx	a,@dptr
+   3057 54 E0         [12] 1247 	anl	a,#0xE0
+   3059 44 1E         [12] 1248 	orl	a,#0x1E
+   305B F0            [24] 1249 	movx	@dptr,a
                            1250 ;	cc1111_aes.c:36: aesdmao->destInc = 1;
-   2FD4 74 07         [12] 1251 	mov	a,#0x07
-   2FD6 2E            [12] 1252 	add	a,r6
-   2FD7 F5 82         [12] 1253 	mov	dpl,a
-   2FD9 E4            [12] 1254 	clr	a
-   2FDA 3F            [12] 1255 	addc	a,r7
-   2FDB F5 83         [12] 1256 	mov	dph,a
-   2FDD E0            [24] 1257 	movx	a,@dptr
-   2FDE 54 CF         [12] 1258 	anl	a,#0xCF
-   2FE0 44 10         [12] 1259 	orl	a,#0x10
-   2FE2 F0            [24] 1260 	movx	@dptr,a
+   305C 74 07         [12] 1251 	mov	a,#0x07
+   305E 2E            [12] 1252 	add	a,r6
+   305F F5 82         [12] 1253 	mov	dpl,a
+   3061 E4            [12] 1254 	clr	a
+   3062 3F            [12] 1255 	addc	a,r7
+   3063 F5 83         [12] 1256 	mov	dph,a
+   3065 E0            [24] 1257 	movx	a,@dptr
+   3066 54 CF         [12] 1258 	anl	a,#0xCF
+   3068 44 10         [12] 1259 	orl	a,#0x10
+   306A F0            [24] 1260 	movx	@dptr,a
                            1261 ;	cc1111_aes.c:37: aesdmao->priority = 1;
-   2FE3 74 07         [12] 1262 	mov	a,#0x07
-   2FE5 2E            [12] 1263 	add	a,r6
-   2FE6 F5 82         [12] 1264 	mov	dpl,a
-   2FE8 E4            [12] 1265 	clr	a
-   2FE9 3F            [12] 1266 	addc	a,r7
-   2FEA F5 83         [12] 1267 	mov	dph,a
-   2FEC E0            [24] 1268 	movx	a,@dptr
-   2FED 54 FC         [12] 1269 	anl	a,#0xFC
-   2FEF 44 01         [12] 1270 	orl	a,#0x01
-   2FF1 F0            [24] 1271 	movx	@dptr,a
+   306B 74 07         [12] 1262 	mov	a,#0x07
+   306D 2E            [12] 1263 	add	a,r6
+   306E F5 82         [12] 1264 	mov	dpl,a
+   3070 E4            [12] 1265 	clr	a
+   3071 3F            [12] 1266 	addc	a,r7
+   3072 F5 83         [12] 1267 	mov	dph,a
+   3074 E0            [24] 1268 	movx	a,@dptr
+   3075 54 FC         [12] 1269 	anl	a,#0xFC
+   3077 44 01         [12] 1270 	orl	a,#0x01
+   3079 F0            [24] 1271 	movx	@dptr,a
                            1272 ;	cc1111_aes.c:40: IP0 |= BIT4;
-   2FF2 43 A9 10      [24] 1273 	orl	_IP0,#0x10
+   307A 43 A9 10      [24] 1273 	orl	_IP0,#0x10
                            1274 ;	cc1111_aes.c:41: IP1 |= BIT4;
-   2FF5 43 B9 10      [24] 1275 	orl	_IP1,#0x10
-   2FF8 22            [24] 1276 	ret
+   307D 43 B9 10      [24] 1275 	orl	_IP1,#0x10
+   3080 22            [24] 1276 	ret
                            1277 ;------------------------------------------------------------
                            1278 ;Allocation info for local variables in function 'setAES'
                            1279 ;------------------------------------------------------------
@@ -1285,72 +1285,72 @@
                            1285 ;	-----------------------------------------
                            1286 ;	 function setAES
                            1287 ;	-----------------------------------------
-   2FF9                    1288 _setAES:
-   2FF9 AF 83         [24] 1289 	mov	r7,dph
-   2FFB E5 82         [12] 1290 	mov	a,dpl
-   2FFD 90 FD CB      [24] 1291 	mov	dptr,#_setAES_buf_1_56
-   3000 F0            [24] 1292 	movx	@dptr,a
-   3001 EF            [12] 1293 	mov	a,r7
-   3002 A3            [24] 1294 	inc	dptr
-   3003 F0            [24] 1295 	movx	@dptr,a
+   3081                    1288 _setAES:
+   3081 AF 83         [24] 1289 	mov	r7,dph
+   3083 E5 82         [12] 1290 	mov	a,dpl
+   3085 90 FE 17      [24] 1291 	mov	dptr,#_setAES_buf_1_56
+   3088 F0            [24] 1292 	movx	@dptr,a
+   3089 EF            [12] 1293 	mov	a,r7
+   308A A3            [24] 1294 	inc	dptr
+   308B F0            [24] 1295 	movx	@dptr,a
                            1296 ;	cc1111_aes.c:48: while(!(ENCCS & ENCCS_RDY))
-   3004                    1297 00101$:
-   3004 E5 B3         [12] 1298 	mov	a,_ENCCS
-   3006 30 E3 FB      [24] 1299 	jnb	acc.3,00101$
+   308C                    1297 00101$:
+   308C E5 B3         [12] 1298 	mov	a,_ENCCS
+   308E 30 E3 FB      [24] 1299 	jnb	acc.3,00101$
                            1300 ;	cc1111_aes.c:52: aesdmai->srcAddrH = (u8) ((u16) buf >> 8);
-   3009 90 FD C1      [24] 1301 	mov	dptr,#_aesdmai
-   300C E0            [24] 1302 	movx	a,@dptr
-   300D FE            [12] 1303 	mov	r6,a
-   300E A3            [24] 1304 	inc	dptr
-   300F E0            [24] 1305 	movx	a,@dptr
-   3010 FF            [12] 1306 	mov	r7,a
-   3011 90 FD CB      [24] 1307 	mov	dptr,#_setAES_buf_1_56
-   3014 E0            [24] 1308 	movx	a,@dptr
-   3015 FC            [12] 1309 	mov	r4,a
-   3016 A3            [24] 1310 	inc	dptr
-   3017 E0            [24] 1311 	movx	a,@dptr
-   3018 FD            [12] 1312 	mov	r5,a
-   3019 8C 02         [24] 1313 	mov	ar2,r4
-   301B 8D 03         [24] 1314 	mov	ar3,r5
-   301D 8B 02         [24] 1315 	mov	ar2,r3
-   301F 8E 82         [24] 1316 	mov	dpl,r6
-   3021 8F 83         [24] 1317 	mov	dph,r7
-   3023 EA            [12] 1318 	mov	a,r2
-   3024 F0            [24] 1319 	movx	@dptr,a
+   3091 90 FE 0D      [24] 1301 	mov	dptr,#_aesdmai
+   3094 E0            [24] 1302 	movx	a,@dptr
+   3095 FE            [12] 1303 	mov	r6,a
+   3096 A3            [24] 1304 	inc	dptr
+   3097 E0            [24] 1305 	movx	a,@dptr
+   3098 FF            [12] 1306 	mov	r7,a
+   3099 90 FE 17      [24] 1307 	mov	dptr,#_setAES_buf_1_56
+   309C E0            [24] 1308 	movx	a,@dptr
+   309D FC            [12] 1309 	mov	r4,a
+   309E A3            [24] 1310 	inc	dptr
+   309F E0            [24] 1311 	movx	a,@dptr
+   30A0 FD            [12] 1312 	mov	r5,a
+   30A1 8C 02         [24] 1313 	mov	ar2,r4
+   30A3 8D 03         [24] 1314 	mov	ar3,r5
+   30A5 8B 02         [24] 1315 	mov	ar2,r3
+   30A7 8E 82         [24] 1316 	mov	dpl,r6
+   30A9 8F 83         [24] 1317 	mov	dph,r7
+   30AB EA            [12] 1318 	mov	a,r2
+   30AC F0            [24] 1319 	movx	@dptr,a
                            1320 ;	cc1111_aes.c:53: aesdmai->srcAddrL = (u8) ((u16) buf & 0xff);
-   3025 90 FD C1      [24] 1321 	mov	dptr,#_aesdmai
-   3028 E0            [24] 1322 	movx	a,@dptr
-   3029 FE            [12] 1323 	mov	r6,a
-   302A A3            [24] 1324 	inc	dptr
-   302B E0            [24] 1325 	movx	a,@dptr
-   302C FF            [12] 1326 	mov	r7,a
-   302D 8E 82         [24] 1327 	mov	dpl,r6
-   302F 8F 83         [24] 1328 	mov	dph,r7
-   3031 A3            [24] 1329 	inc	dptr
-   3032 7D 00         [12] 1330 	mov	r5,#0x00
-   3034 EC            [12] 1331 	mov	a,r4
-   3035 F0            [24] 1332 	movx	@dptr,a
+   30AD 90 FE 0D      [24] 1321 	mov	dptr,#_aesdmai
+   30B0 E0            [24] 1322 	movx	a,@dptr
+   30B1 FE            [12] 1323 	mov	r6,a
+   30B2 A3            [24] 1324 	inc	dptr
+   30B3 E0            [24] 1325 	movx	a,@dptr
+   30B4 FF            [12] 1326 	mov	r7,a
+   30B5 8E 82         [24] 1327 	mov	dpl,r6
+   30B7 8F 83         [24] 1328 	mov	dph,r7
+   30B9 A3            [24] 1329 	inc	dptr
+   30BA 7D 00         [12] 1330 	mov	r5,#0x00
+   30BC EC            [12] 1331 	mov	a,r4
+   30BD F0            [24] 1332 	movx	@dptr,a
                            1333 ;	cc1111_aes.c:54: DMAARM |= aesdmaarmi;
-   3036 90 FD C6      [24] 1334 	mov	dptr,#_aesdmaarmi
-   3039 E0            [24] 1335 	movx	a,@dptr
-   303A 42 D6         [12] 1336 	orl	_DMAARM,a
+   30BE 90 FE 12      [24] 1334 	mov	dptr,#_aesdmaarmi
+   30C1 E0            [24] 1335 	movx	a,@dptr
+   30C2 42 D6         [12] 1336 	orl	_DMAARM,a
                            1337 ;	cc1111_aes.c:55: NOP();
                            1338 ; nop; 
                            1339 ;	cc1111_aes.c:58: ENCCS = mode | command | ENCCS_ST;
-   303C 90 FD C9      [24] 1340 	mov	dptr,#_setAES_PARM_2
-   303F E0            [24] 1341 	movx	a,@dptr
-   3040 FF            [12] 1342 	mov	r7,a
-   3041 90 FD CA      [24] 1343 	mov	dptr,#_setAES_PARM_3
-   3044 E0            [24] 1344 	movx	a,@dptr
-   3045 FE            [12] 1345 	mov	r6,a
-   3046 4F            [12] 1346 	orl	a,r7
-   3047 44 01         [12] 1347 	orl	a,#0x01
-   3049 F5 B3         [12] 1348 	mov	_ENCCS,a
+   30C4 90 FE 15      [24] 1340 	mov	dptr,#_setAES_PARM_2
+   30C7 E0            [24] 1341 	movx	a,@dptr
+   30C8 FF            [12] 1342 	mov	r7,a
+   30C9 90 FE 16      [24] 1343 	mov	dptr,#_setAES_PARM_3
+   30CC E0            [24] 1344 	movx	a,@dptr
+   30CD FE            [12] 1345 	mov	r6,a
+   30CE 4F            [12] 1346 	orl	a,r7
+   30CF 44 01         [12] 1347 	orl	a,#0x01
+   30D1 F5 B3         [12] 1348 	mov	_ENCCS,a
                            1349 ;	cc1111_aes.c:61: while(!(ENCCS & ENCCS_RDY))
-   304B                    1350 00104$:
-   304B E5 B3         [12] 1351 	mov	a,_ENCCS
-   304D 30 E3 FB      [24] 1352 	jnb	acc.3,00104$
-   3050 22            [24] 1353 	ret
+   30D3                    1350 00104$:
+   30D3 E5 B3         [12] 1351 	mov	a,_ENCCS
+   30D5 30 E3 FB      [24] 1352 	jnb	acc.3,00104$
+   30D8 22            [24] 1353 	ret
                            1354 ;------------------------------------------------------------
                            1355 ;Allocation info for local variables in function 'padAES'
                            1356 ;------------------------------------------------------------
@@ -1361,52 +1361,52 @@
                            1361 ;	-----------------------------------------
                            1362 ;	 function padAES
                            1363 ;	-----------------------------------------
-   3051                    1364 _padAES:
-   3051 AF 83         [24] 1365 	mov	r7,dph
-   3053 E5 82         [12] 1366 	mov	a,dpl
-   3055 90 FD CF      [24] 1367 	mov	dptr,#_padAES_buf_1_58
-   3058 F0            [24] 1368 	movx	@dptr,a
-   3059 EF            [12] 1369 	mov	a,r7
-   305A A3            [24] 1370 	inc	dptr
-   305B F0            [24] 1371 	movx	@dptr,a
+   30D9                    1364 _padAES:
+   30D9 AF 83         [24] 1365 	mov	r7,dph
+   30DB E5 82         [12] 1366 	mov	a,dpl
+   30DD 90 FE 1B      [24] 1367 	mov	dptr,#_padAES_buf_1_58
+   30E0 F0            [24] 1368 	movx	@dptr,a
+   30E1 EF            [12] 1369 	mov	a,r7
+   30E2 A3            [24] 1370 	inc	dptr
+   30E3 F0            [24] 1371 	movx	@dptr,a
                            1372 ;	cc1111_aes.c:69: while(len % 16)
-   305C 90 FD CF      [24] 1373 	mov	dptr,#_padAES_buf_1_58
-   305F E0            [24] 1374 	movx	a,@dptr
-   3060 FE            [12] 1375 	mov	r6,a
-   3061 A3            [24] 1376 	inc	dptr
-   3062 E0            [24] 1377 	movx	a,@dptr
-   3063 FF            [12] 1378 	mov	r7,a
-   3064 90 FD CD      [24] 1379 	mov	dptr,#_padAES_PARM_2
-   3067 E0            [24] 1380 	movx	a,@dptr
-   3068 FC            [12] 1381 	mov	r4,a
-   3069 A3            [24] 1382 	inc	dptr
-   306A E0            [24] 1383 	movx	a,@dptr
-   306B FD            [12] 1384 	mov	r5,a
-   306C                    1385 00101$:
-   306C EC            [12] 1386 	mov	a,r4
-   306D 54 0F         [12] 1387 	anl	a,#0x0F
-   306F 60 15         [24] 1388 	jz	00103$
+   30E4 90 FE 1B      [24] 1373 	mov	dptr,#_padAES_buf_1_58
+   30E7 E0            [24] 1374 	movx	a,@dptr
+   30E8 FE            [12] 1375 	mov	r6,a
+   30E9 A3            [24] 1376 	inc	dptr
+   30EA E0            [24] 1377 	movx	a,@dptr
+   30EB FF            [12] 1378 	mov	r7,a
+   30EC 90 FE 19      [24] 1379 	mov	dptr,#_padAES_PARM_2
+   30EF E0            [24] 1380 	movx	a,@dptr
+   30F0 FC            [12] 1381 	mov	r4,a
+   30F1 A3            [24] 1382 	inc	dptr
+   30F2 E0            [24] 1383 	movx	a,@dptr
+   30F3 FD            [12] 1384 	mov	r5,a
+   30F4                    1385 00101$:
+   30F4 EC            [12] 1386 	mov	a,r4
+   30F5 54 0F         [12] 1387 	anl	a,#0x0F
+   30F7 60 15         [24] 1388 	jz	00103$
                            1389 ;	cc1111_aes.c:70: buf[len++]= '\0';
-   3071 8C 02         [24] 1390 	mov	ar2,r4
-   3073 8D 03         [24] 1391 	mov	ar3,r5
-   3075 0C            [12] 1392 	inc	r4
-   3076 BC 00 01      [24] 1393 	cjne	r4,#0x00,00114$
-   3079 0D            [12] 1394 	inc	r5
-   307A                    1395 00114$:
-   307A EA            [12] 1396 	mov	a,r2
-   307B 2E            [12] 1397 	add	a,r6
-   307C F5 82         [12] 1398 	mov	dpl,a
-   307E EB            [12] 1399 	mov	a,r3
-   307F 3F            [12] 1400 	addc	a,r7
-   3080 F5 83         [12] 1401 	mov	dph,a
-   3082 E4            [12] 1402 	clr	a
-   3083 F0            [24] 1403 	movx	@dptr,a
-   3084 80 E6         [24] 1404 	sjmp	00101$
-   3086                    1405 00103$:
+   30F9 8C 02         [24] 1390 	mov	ar2,r4
+   30FB 8D 03         [24] 1391 	mov	ar3,r5
+   30FD 0C            [12] 1392 	inc	r4
+   30FE BC 00 01      [24] 1393 	cjne	r4,#0x00,00114$
+   3101 0D            [12] 1394 	inc	r5
+   3102                    1395 00114$:
+   3102 EA            [12] 1396 	mov	a,r2
+   3103 2E            [12] 1397 	add	a,r6
+   3104 F5 82         [12] 1398 	mov	dpl,a
+   3106 EB            [12] 1399 	mov	a,r3
+   3107 3F            [12] 1400 	addc	a,r7
+   3108 F5 83         [12] 1401 	mov	dph,a
+   310A E4            [12] 1402 	clr	a
+   310B F0            [24] 1403 	movx	@dptr,a
+   310C 80 E6         [24] 1404 	sjmp	00101$
+   310E                    1405 00103$:
                            1406 ;	cc1111_aes.c:72: return len;
-   3086 8C 82         [24] 1407 	mov	dpl,r4
-   3088 8D 83         [24] 1408 	mov	dph,r5
-   308A 22            [24] 1409 	ret
+   310E 8C 82         [24] 1407 	mov	dpl,r4
+   3110 8D 83         [24] 1408 	mov	dph,r5
+   3112 22            [24] 1409 	ret
                            1410 ;------------------------------------------------------------
                            1411 ;Allocation info for local variables in function 'encAES'
                            1412 ;------------------------------------------------------------
@@ -1419,57 +1419,57 @@
                            1419 ;	-----------------------------------------
                            1420 ;	 function encAES
                            1421 ;	-----------------------------------------
-   308B                    1422 _encAES:
-   308B AF 83         [24] 1423 	mov	r7,dph
-   308D E5 82         [12] 1424 	mov	a,dpl
-   308F 90 FD D6      [24] 1425 	mov	dptr,#_encAES_inbuf_1_60
-   3092 F0            [24] 1426 	movx	@dptr,a
-   3093 EF            [12] 1427 	mov	a,r7
-   3094 A3            [24] 1428 	inc	dptr
-   3095 F0            [24] 1429 	movx	@dptr,a
+   3113                    1422 _encAES:
+   3113 AF 83         [24] 1423 	mov	r7,dph
+   3115 E5 82         [12] 1424 	mov	a,dpl
+   3117 90 FE 22      [24] 1425 	mov	dptr,#_encAES_inbuf_1_60
+   311A F0            [24] 1426 	movx	@dptr,a
+   311B EF            [12] 1427 	mov	a,r7
+   311C A3            [24] 1428 	inc	dptr
+   311D F0            [24] 1429 	movx	@dptr,a
                            1430 ;	cc1111_aes.c:78: doAES(inbuf, outbuf, len, ENCCS_CMD_ENC, mode);
-   3096 90 FD D6      [24] 1431 	mov	dptr,#_encAES_inbuf_1_60
-   3099 E0            [24] 1432 	movx	a,@dptr
-   309A FE            [12] 1433 	mov	r6,a
-   309B A3            [24] 1434 	inc	dptr
-   309C E0            [24] 1435 	movx	a,@dptr
-   309D FF            [12] 1436 	mov	r7,a
-   309E 90 FD D1      [24] 1437 	mov	dptr,#_encAES_PARM_2
-   30A1 E0            [24] 1438 	movx	a,@dptr
-   30A2 FC            [12] 1439 	mov	r4,a
-   30A3 A3            [24] 1440 	inc	dptr
-   30A4 E0            [24] 1441 	movx	a,@dptr
-   30A5 FD            [12] 1442 	mov	r5,a
-   30A6 90 FD D3      [24] 1443 	mov	dptr,#_encAES_PARM_3
-   30A9 E0            [24] 1444 	movx	a,@dptr
-   30AA FA            [12] 1445 	mov	r2,a
-   30AB A3            [24] 1446 	inc	dptr
-   30AC E0            [24] 1447 	movx	a,@dptr
-   30AD FB            [12] 1448 	mov	r3,a
-   30AE 90 FD D5      [24] 1449 	mov	dptr,#_encAES_PARM_4
-   30B1 E0            [24] 1450 	movx	a,@dptr
-   30B2 F9            [12] 1451 	mov	r1,a
-   30B3 90 FD DF      [24] 1452 	mov	dptr,#_doAES_PARM_2
-   30B6 EC            [12] 1453 	mov	a,r4
-   30B7 F0            [24] 1454 	movx	@dptr,a
-   30B8 ED            [12] 1455 	mov	a,r5
-   30B9 A3            [24] 1456 	inc	dptr
-   30BA F0            [24] 1457 	movx	@dptr,a
-   30BB 90 FD E1      [24] 1458 	mov	dptr,#_doAES_PARM_3
-   30BE EA            [12] 1459 	mov	a,r2
-   30BF F0            [24] 1460 	movx	@dptr,a
-   30C0 EB            [12] 1461 	mov	a,r3
-   30C1 A3            [24] 1462 	inc	dptr
-   30C2 F0            [24] 1463 	movx	@dptr,a
-   30C3 90 FD E3      [24] 1464 	mov	dptr,#_doAES_PARM_4
-   30C6 E4            [12] 1465 	clr	a
-   30C7 F0            [24] 1466 	movx	@dptr,a
-   30C8 90 FD E4      [24] 1467 	mov	dptr,#_doAES_PARM_5
-   30CB E9            [12] 1468 	mov	a,r1
-   30CC F0            [24] 1469 	movx	@dptr,a
-   30CD 8E 82         [24] 1470 	mov	dpl,r6
-   30CF 8F 83         [24] 1471 	mov	dph,r7
-   30D1 02 31 1E      [24] 1472 	ljmp	_doAES
+   311E 90 FE 22      [24] 1431 	mov	dptr,#_encAES_inbuf_1_60
+   3121 E0            [24] 1432 	movx	a,@dptr
+   3122 FE            [12] 1433 	mov	r6,a
+   3123 A3            [24] 1434 	inc	dptr
+   3124 E0            [24] 1435 	movx	a,@dptr
+   3125 FF            [12] 1436 	mov	r7,a
+   3126 90 FE 1D      [24] 1437 	mov	dptr,#_encAES_PARM_2
+   3129 E0            [24] 1438 	movx	a,@dptr
+   312A FC            [12] 1439 	mov	r4,a
+   312B A3            [24] 1440 	inc	dptr
+   312C E0            [24] 1441 	movx	a,@dptr
+   312D FD            [12] 1442 	mov	r5,a
+   312E 90 FE 1F      [24] 1443 	mov	dptr,#_encAES_PARM_3
+   3131 E0            [24] 1444 	movx	a,@dptr
+   3132 FA            [12] 1445 	mov	r2,a
+   3133 A3            [24] 1446 	inc	dptr
+   3134 E0            [24] 1447 	movx	a,@dptr
+   3135 FB            [12] 1448 	mov	r3,a
+   3136 90 FE 21      [24] 1449 	mov	dptr,#_encAES_PARM_4
+   3139 E0            [24] 1450 	movx	a,@dptr
+   313A F9            [12] 1451 	mov	r1,a
+   313B 90 FE 2B      [24] 1452 	mov	dptr,#_doAES_PARM_2
+   313E EC            [12] 1453 	mov	a,r4
+   313F F0            [24] 1454 	movx	@dptr,a
+   3140 ED            [12] 1455 	mov	a,r5
+   3141 A3            [24] 1456 	inc	dptr
+   3142 F0            [24] 1457 	movx	@dptr,a
+   3143 90 FE 2D      [24] 1458 	mov	dptr,#_doAES_PARM_3
+   3146 EA            [12] 1459 	mov	a,r2
+   3147 F0            [24] 1460 	movx	@dptr,a
+   3148 EB            [12] 1461 	mov	a,r3
+   3149 A3            [24] 1462 	inc	dptr
+   314A F0            [24] 1463 	movx	@dptr,a
+   314B 90 FE 2F      [24] 1464 	mov	dptr,#_doAES_PARM_4
+   314E E4            [12] 1465 	clr	a
+   314F F0            [24] 1466 	movx	@dptr,a
+   3150 90 FE 30      [24] 1467 	mov	dptr,#_doAES_PARM_5
+   3153 E9            [12] 1468 	mov	a,r1
+   3154 F0            [24] 1469 	movx	@dptr,a
+   3155 8E 82         [24] 1470 	mov	dpl,r6
+   3157 8F 83         [24] 1471 	mov	dph,r7
+   3159 02 31 A6      [24] 1472 	ljmp	_doAES
                            1473 ;------------------------------------------------------------
                            1474 ;Allocation info for local variables in function 'decAES'
                            1475 ;------------------------------------------------------------
@@ -1482,57 +1482,57 @@
                            1482 ;	-----------------------------------------
                            1483 ;	 function decAES
                            1484 ;	-----------------------------------------
-   30D4                    1485 _decAES:
-   30D4 AF 83         [24] 1486 	mov	r7,dph
-   30D6 E5 82         [12] 1487 	mov	a,dpl
-   30D8 90 FD DD      [24] 1488 	mov	dptr,#_decAES_inbuf_1_62
-   30DB F0            [24] 1489 	movx	@dptr,a
-   30DC EF            [12] 1490 	mov	a,r7
-   30DD A3            [24] 1491 	inc	dptr
-   30DE F0            [24] 1492 	movx	@dptr,a
+   315C                    1485 _decAES:
+   315C AF 83         [24] 1486 	mov	r7,dph
+   315E E5 82         [12] 1487 	mov	a,dpl
+   3160 90 FE 29      [24] 1488 	mov	dptr,#_decAES_inbuf_1_62
+   3163 F0            [24] 1489 	movx	@dptr,a
+   3164 EF            [12] 1490 	mov	a,r7
+   3165 A3            [24] 1491 	inc	dptr
+   3166 F0            [24] 1492 	movx	@dptr,a
                            1493 ;	cc1111_aes.c:84: doAES(inbuf, outbuf, len, ENCCS_CMD_DEC, mode);
-   30DF 90 FD DD      [24] 1494 	mov	dptr,#_decAES_inbuf_1_62
-   30E2 E0            [24] 1495 	movx	a,@dptr
-   30E3 FE            [12] 1496 	mov	r6,a
-   30E4 A3            [24] 1497 	inc	dptr
-   30E5 E0            [24] 1498 	movx	a,@dptr
-   30E6 FF            [12] 1499 	mov	r7,a
-   30E7 90 FD D8      [24] 1500 	mov	dptr,#_decAES_PARM_2
-   30EA E0            [24] 1501 	movx	a,@dptr
-   30EB FC            [12] 1502 	mov	r4,a
-   30EC A3            [24] 1503 	inc	dptr
-   30ED E0            [24] 1504 	movx	a,@dptr
-   30EE FD            [12] 1505 	mov	r5,a
-   30EF 90 FD DA      [24] 1506 	mov	dptr,#_decAES_PARM_3
-   30F2 E0            [24] 1507 	movx	a,@dptr
-   30F3 FA            [12] 1508 	mov	r2,a
-   30F4 A3            [24] 1509 	inc	dptr
-   30F5 E0            [24] 1510 	movx	a,@dptr
-   30F6 FB            [12] 1511 	mov	r3,a
-   30F7 90 FD DC      [24] 1512 	mov	dptr,#_decAES_PARM_4
-   30FA E0            [24] 1513 	movx	a,@dptr
-   30FB F9            [12] 1514 	mov	r1,a
-   30FC 90 FD DF      [24] 1515 	mov	dptr,#_doAES_PARM_2
-   30FF EC            [12] 1516 	mov	a,r4
-   3100 F0            [24] 1517 	movx	@dptr,a
-   3101 ED            [12] 1518 	mov	a,r5
-   3102 A3            [24] 1519 	inc	dptr
-   3103 F0            [24] 1520 	movx	@dptr,a
-   3104 90 FD E1      [24] 1521 	mov	dptr,#_doAES_PARM_3
-   3107 EA            [12] 1522 	mov	a,r2
-   3108 F0            [24] 1523 	movx	@dptr,a
-   3109 EB            [12] 1524 	mov	a,r3
-   310A A3            [24] 1525 	inc	dptr
-   310B F0            [24] 1526 	movx	@dptr,a
-   310C 90 FD E3      [24] 1527 	mov	dptr,#_doAES_PARM_4
-   310F 74 02         [12] 1528 	mov	a,#0x02
-   3111 F0            [24] 1529 	movx	@dptr,a
-   3112 90 FD E4      [24] 1530 	mov	dptr,#_doAES_PARM_5
-   3115 E9            [12] 1531 	mov	a,r1
-   3116 F0            [24] 1532 	movx	@dptr,a
-   3117 8E 82         [24] 1533 	mov	dpl,r6
-   3119 8F 83         [24] 1534 	mov	dph,r7
-   311B 02 31 1E      [24] 1535 	ljmp	_doAES
+   3167 90 FE 29      [24] 1494 	mov	dptr,#_decAES_inbuf_1_62
+   316A E0            [24] 1495 	movx	a,@dptr
+   316B FE            [12] 1496 	mov	r6,a
+   316C A3            [24] 1497 	inc	dptr
+   316D E0            [24] 1498 	movx	a,@dptr
+   316E FF            [12] 1499 	mov	r7,a
+   316F 90 FE 24      [24] 1500 	mov	dptr,#_decAES_PARM_2
+   3172 E0            [24] 1501 	movx	a,@dptr
+   3173 FC            [12] 1502 	mov	r4,a
+   3174 A3            [24] 1503 	inc	dptr
+   3175 E0            [24] 1504 	movx	a,@dptr
+   3176 FD            [12] 1505 	mov	r5,a
+   3177 90 FE 26      [24] 1506 	mov	dptr,#_decAES_PARM_3
+   317A E0            [24] 1507 	movx	a,@dptr
+   317B FA            [12] 1508 	mov	r2,a
+   317C A3            [24] 1509 	inc	dptr
+   317D E0            [24] 1510 	movx	a,@dptr
+   317E FB            [12] 1511 	mov	r3,a
+   317F 90 FE 28      [24] 1512 	mov	dptr,#_decAES_PARM_4
+   3182 E0            [24] 1513 	movx	a,@dptr
+   3183 F9            [12] 1514 	mov	r1,a
+   3184 90 FE 2B      [24] 1515 	mov	dptr,#_doAES_PARM_2
+   3187 EC            [12] 1516 	mov	a,r4
+   3188 F0            [24] 1517 	movx	@dptr,a
+   3189 ED            [12] 1518 	mov	a,r5
+   318A A3            [24] 1519 	inc	dptr
+   318B F0            [24] 1520 	movx	@dptr,a
+   318C 90 FE 2D      [24] 1521 	mov	dptr,#_doAES_PARM_3
+   318F EA            [12] 1522 	mov	a,r2
+   3190 F0            [24] 1523 	movx	@dptr,a
+   3191 EB            [12] 1524 	mov	a,r3
+   3192 A3            [24] 1525 	inc	dptr
+   3193 F0            [24] 1526 	movx	@dptr,a
+   3194 90 FE 2F      [24] 1527 	mov	dptr,#_doAES_PARM_4
+   3197 74 02         [12] 1528 	mov	a,#0x02
+   3199 F0            [24] 1529 	movx	@dptr,a
+   319A 90 FE 30      [24] 1530 	mov	dptr,#_doAES_PARM_5
+   319D E9            [12] 1531 	mov	a,r1
+   319E F0            [24] 1532 	movx	@dptr,a
+   319F 8E 82         [24] 1533 	mov	dpl,r6
+   31A1 8F 83         [24] 1534 	mov	dph,r7
+   31A3 02 31 A6      [24] 1535 	ljmp	_doAES
                            1536 ;------------------------------------------------------------
                            1537 ;Allocation info for local variables in function 'doAES'
                            1538 ;------------------------------------------------------------
@@ -1552,177 +1552,177 @@
                            1552 ;	-----------------------------------------
                            1553 ;	 function doAES
                            1554 ;	-----------------------------------------
-   311E                    1555 _doAES:
-   311E AF 83         [24] 1556 	mov	r7,dph
-   3120 E5 82         [12] 1557 	mov	a,dpl
-   3122 90 FD E5      [24] 1558 	mov	dptr,#_doAES_inbuf_1_64
-   3125 F0            [24] 1559 	movx	@dptr,a
-   3126 EF            [12] 1560 	mov	a,r7
-   3127 A3            [24] 1561 	inc	dptr
-   3128 F0            [24] 1562 	movx	@dptr,a
+   31A6                    1555 _doAES:
+   31A6 AF 83         [24] 1556 	mov	r7,dph
+   31A8 E5 82         [12] 1557 	mov	a,dpl
+   31AA 90 FE 31      [24] 1558 	mov	dptr,#_doAES_inbuf_1_64
+   31AD F0            [24] 1559 	movx	@dptr,a
+   31AE EF            [12] 1560 	mov	a,r7
+   31AF A3            [24] 1561 	inc	dptr
+   31B0 F0            [24] 1562 	movx	@dptr,a
                            1563 ;	cc1111_aes.c:93: while(!(ENCCS & ENCCS_RDY))
-   3129                    1564 00101$:
-   3129 E5 B3         [12] 1565 	mov	a,_ENCCS
-   312B 30 E3 FB      [24] 1566 	jnb	acc.3,00101$
+   31B1                    1564 00101$:
+   31B1 E5 B3         [12] 1565 	mov	a,_ENCCS
+   31B3 30 E3 FB      [24] 1566 	jnb	acc.3,00101$
                            1567 ;	cc1111_aes.c:96: for(bufp= 0 ; bufp < len ; bufp += 16)
-   312E 90 FD E5      [24] 1568 	mov	dptr,#_doAES_inbuf_1_64
-   3131 E0            [24] 1569 	movx	a,@dptr
-   3132 FE            [12] 1570 	mov	r6,a
-   3133 A3            [24] 1571 	inc	dptr
-   3134 E0            [24] 1572 	movx	a,@dptr
-   3135 FF            [12] 1573 	mov	r7,a
-   3136 90 FD DF      [24] 1574 	mov	dptr,#_doAES_PARM_2
-   3139 E0            [24] 1575 	movx	a,@dptr
-   313A F5 1A         [12] 1576 	mov	_doAES_sloc4_1_0,a
-   313C A3            [24] 1577 	inc	dptr
-   313D E0            [24] 1578 	movx	a,@dptr
-   313E F5 1B         [12] 1579 	mov	(_doAES_sloc4_1_0 + 1),a
-   3140 90 FD E4      [24] 1580 	mov	dptr,#_doAES_PARM_5
-   3143 E0            [24] 1581 	movx	a,@dptr
-   3144 FB            [12] 1582 	mov	r3,a
-   3145 74 50         [12] 1583 	mov	a,#0x50
-   3147 5B            [12] 1584 	anl	a,r3
-   3148 F5 19         [12] 1585 	mov	_doAES_sloc3_1_0,a
-   314A 90 FD E3      [24] 1586 	mov	dptr,#_doAES_PARM_4
-   314D E0            [24] 1587 	movx	a,@dptr
-   314E F9            [12] 1588 	mov	r1,a
-   314F 4B            [12] 1589 	orl	a,r3
-   3150 44 01         [12] 1590 	orl	a,#0x01
-   3152 FB            [12] 1591 	mov	r3,a
-   3153 74 01         [12] 1592 	mov	a,#0x01
-   3155 49            [12] 1593 	orl	a,r1
-   3156 F5 18         [12] 1594 	mov	_doAES_sloc2_1_0,a
-   3158 90 FD E1      [24] 1595 	mov	dptr,#_doAES_PARM_3
-   315B E0            [24] 1596 	movx	a,@dptr
-   315C F5 14         [12] 1597 	mov	_doAES_sloc0_1_0,a
-   315E A3            [24] 1598 	inc	dptr
-   315F E0            [24] 1599 	movx	a,@dptr
-   3160 F5 15         [12] 1600 	mov	(_doAES_sloc0_1_0 + 1),a
-   3162 E4            [12] 1601 	clr	a
-   3163 F5 16         [12] 1602 	mov	_doAES_sloc1_1_0,a
-   3165 F5 17         [12] 1603 	mov	(_doAES_sloc1_1_0 + 1),a
-   3167                    1604 00113$:
-   3167 C3            [12] 1605 	clr	c
-   3168 E5 16         [12] 1606 	mov	a,_doAES_sloc1_1_0
-   316A 95 14         [12] 1607 	subb	a,_doAES_sloc0_1_0
-   316C E5 17         [12] 1608 	mov	a,(_doAES_sloc1_1_0 + 1)
-   316E 95 15         [12] 1609 	subb	a,(_doAES_sloc0_1_0 + 1)
-   3170 40 01         [24] 1610 	jc	00143$
-   3172 22            [24] 1611 	ret
-   3173                    1612 00143$:
+   31B6 90 FE 31      [24] 1568 	mov	dptr,#_doAES_inbuf_1_64
+   31B9 E0            [24] 1569 	movx	a,@dptr
+   31BA FE            [12] 1570 	mov	r6,a
+   31BB A3            [24] 1571 	inc	dptr
+   31BC E0            [24] 1572 	movx	a,@dptr
+   31BD FF            [12] 1573 	mov	r7,a
+   31BE 90 FE 2B      [24] 1574 	mov	dptr,#_doAES_PARM_2
+   31C1 E0            [24] 1575 	movx	a,@dptr
+   31C2 F5 1A         [12] 1576 	mov	_doAES_sloc4_1_0,a
+   31C4 A3            [24] 1577 	inc	dptr
+   31C5 E0            [24] 1578 	movx	a,@dptr
+   31C6 F5 1B         [12] 1579 	mov	(_doAES_sloc4_1_0 + 1),a
+   31C8 90 FE 30      [24] 1580 	mov	dptr,#_doAES_PARM_5
+   31CB E0            [24] 1581 	movx	a,@dptr
+   31CC FB            [12] 1582 	mov	r3,a
+   31CD 74 50         [12] 1583 	mov	a,#0x50
+   31CF 5B            [12] 1584 	anl	a,r3
+   31D0 F5 19         [12] 1585 	mov	_doAES_sloc3_1_0,a
+   31D2 90 FE 2F      [24] 1586 	mov	dptr,#_doAES_PARM_4
+   31D5 E0            [24] 1587 	movx	a,@dptr
+   31D6 F9            [12] 1588 	mov	r1,a
+   31D7 4B            [12] 1589 	orl	a,r3
+   31D8 44 01         [12] 1590 	orl	a,#0x01
+   31DA FB            [12] 1591 	mov	r3,a
+   31DB 74 01         [12] 1592 	mov	a,#0x01
+   31DD 49            [12] 1593 	orl	a,r1
+   31DE F5 18         [12] 1594 	mov	_doAES_sloc2_1_0,a
+   31E0 90 FE 2D      [24] 1595 	mov	dptr,#_doAES_PARM_3
+   31E3 E0            [24] 1596 	movx	a,@dptr
+   31E4 F5 14         [12] 1597 	mov	_doAES_sloc0_1_0,a
+   31E6 A3            [24] 1598 	inc	dptr
+   31E7 E0            [24] 1599 	movx	a,@dptr
+   31E8 F5 15         [12] 1600 	mov	(_doAES_sloc0_1_0 + 1),a
+   31EA E4            [12] 1601 	clr	a
+   31EB F5 16         [12] 1602 	mov	_doAES_sloc1_1_0,a
+   31ED F5 17         [12] 1603 	mov	(_doAES_sloc1_1_0 + 1),a
+   31EF                    1604 00113$:
+   31EF C3            [12] 1605 	clr	c
+   31F0 E5 16         [12] 1606 	mov	a,_doAES_sloc1_1_0
+   31F2 95 14         [12] 1607 	subb	a,_doAES_sloc0_1_0
+   31F4 E5 17         [12] 1608 	mov	a,(_doAES_sloc1_1_0 + 1)
+   31F6 95 15         [12] 1609 	subb	a,(_doAES_sloc0_1_0 + 1)
+   31F8 40 01         [24] 1610 	jc	00143$
+   31FA 22            [24] 1611 	ret
+   31FB                    1612 00143$:
                            1613 ;	cc1111_aes.c:99: aesdmai->srcAddrH = (u8) ((u16) (inbuf + bufp) >> 8);
-   3173 C0 03         [24] 1614 	push	ar3
-   3175 90 FD C1      [24] 1615 	mov	dptr,#_aesdmai
-   3178 E0            [24] 1616 	movx	a,@dptr
-   3179 F8            [12] 1617 	mov	r0,a
-   317A A3            [24] 1618 	inc	dptr
-   317B E0            [24] 1619 	movx	a,@dptr
-   317C FB            [12] 1620 	mov	r3,a
-   317D E5 16         [12] 1621 	mov	a,_doAES_sloc1_1_0
-   317F 2E            [12] 1622 	add	a,r6
-   3180 F9            [12] 1623 	mov	r1,a
-   3181 E5 17         [12] 1624 	mov	a,(_doAES_sloc1_1_0 + 1)
-   3183 3F            [12] 1625 	addc	a,r7
-   3184 FA            [12] 1626 	mov	r2,a
-   3185 89 04         [24] 1627 	mov	ar4,r1
-   3187 8A 05         [24] 1628 	mov	ar5,r2
-   3189 8D 04         [24] 1629 	mov	ar4,r5
-   318B 88 82         [24] 1630 	mov	dpl,r0
-   318D 8B 83         [24] 1631 	mov	dph,r3
-   318F EC            [12] 1632 	mov	a,r4
-   3190 F0            [24] 1633 	movx	@dptr,a
+   31FB C0 03         [24] 1614 	push	ar3
+   31FD 90 FE 0D      [24] 1615 	mov	dptr,#_aesdmai
+   3200 E0            [24] 1616 	movx	a,@dptr
+   3201 F8            [12] 1617 	mov	r0,a
+   3202 A3            [24] 1618 	inc	dptr
+   3203 E0            [24] 1619 	movx	a,@dptr
+   3204 FB            [12] 1620 	mov	r3,a
+   3205 E5 16         [12] 1621 	mov	a,_doAES_sloc1_1_0
+   3207 2E            [12] 1622 	add	a,r6
+   3208 F9            [12] 1623 	mov	r1,a
+   3209 E5 17         [12] 1624 	mov	a,(_doAES_sloc1_1_0 + 1)
+   320B 3F            [12] 1625 	addc	a,r7
+   320C FA            [12] 1626 	mov	r2,a
+   320D 89 04         [24] 1627 	mov	ar4,r1
+   320F 8A 05         [24] 1628 	mov	ar5,r2
+   3211 8D 04         [24] 1629 	mov	ar4,r5
+   3213 88 82         [24] 1630 	mov	dpl,r0
+   3215 8B 83         [24] 1631 	mov	dph,r3
+   3217 EC            [12] 1632 	mov	a,r4
+   3218 F0            [24] 1633 	movx	@dptr,a
                            1634 ;	cc1111_aes.c:100: aesdmai->srcAddrL = (u8) ((u16) (inbuf + bufp) & 0xff);
-   3191 90 FD C1      [24] 1635 	mov	dptr,#_aesdmai
-   3194 E0            [24] 1636 	movx	a,@dptr
-   3195 FC            [12] 1637 	mov	r4,a
-   3196 A3            [24] 1638 	inc	dptr
-   3197 E0            [24] 1639 	movx	a,@dptr
-   3198 FD            [12] 1640 	mov	r5,a
-   3199 8C 82         [24] 1641 	mov	dpl,r4
-   319B 8D 83         [24] 1642 	mov	dph,r5
-   319D A3            [24] 1643 	inc	dptr
-   319E E9            [12] 1644 	mov	a,r1
-   319F F0            [24] 1645 	movx	@dptr,a
+   3219 90 FE 0D      [24] 1635 	mov	dptr,#_aesdmai
+   321C E0            [24] 1636 	movx	a,@dptr
+   321D FC            [12] 1637 	mov	r4,a
+   321E A3            [24] 1638 	inc	dptr
+   321F E0            [24] 1639 	movx	a,@dptr
+   3220 FD            [12] 1640 	mov	r5,a
+   3221 8C 82         [24] 1641 	mov	dpl,r4
+   3223 8D 83         [24] 1642 	mov	dph,r5
+   3225 A3            [24] 1643 	inc	dptr
+   3226 E9            [12] 1644 	mov	a,r1
+   3227 F0            [24] 1645 	movx	@dptr,a
                            1646 ;	cc1111_aes.c:101: aesdmao->destAddrH = (u8) ((u16) (outbuf + bufp) >> 8);
-   31A0 90 FD C3      [24] 1647 	mov	dptr,#_aesdmao
-   31A3 E0            [24] 1648 	movx	a,@dptr
-   31A4 FC            [12] 1649 	mov	r4,a
-   31A5 A3            [24] 1650 	inc	dptr
-   31A6 E0            [24] 1651 	movx	a,@dptr
-   31A7 FD            [12] 1652 	mov	r5,a
-   31A8 8C 82         [24] 1653 	mov	dpl,r4
-   31AA 8D 83         [24] 1654 	mov	dph,r5
-   31AC A3            [24] 1655 	inc	dptr
-   31AD A3            [24] 1656 	inc	dptr
-   31AE E5 16         [12] 1657 	mov	a,_doAES_sloc1_1_0
-   31B0 25 1A         [12] 1658 	add	a,_doAES_sloc4_1_0
-   31B2 FC            [12] 1659 	mov	r4,a
-   31B3 E5 17         [12] 1660 	mov	a,(_doAES_sloc1_1_0 + 1)
-   31B5 35 1B         [12] 1661 	addc	a,(_doAES_sloc4_1_0 + 1)
-   31B7 FD            [12] 1662 	mov	r5,a
-   31B8 8C 02         [24] 1663 	mov	ar2,r4
-   31BA 8D 03         [24] 1664 	mov	ar3,r5
-   31BC 8B 02         [24] 1665 	mov	ar2,r3
-   31BE EA            [12] 1666 	mov	a,r2
-   31BF F0            [24] 1667 	movx	@dptr,a
+   3228 90 FE 0F      [24] 1647 	mov	dptr,#_aesdmao
+   322B E0            [24] 1648 	movx	a,@dptr
+   322C FC            [12] 1649 	mov	r4,a
+   322D A3            [24] 1650 	inc	dptr
+   322E E0            [24] 1651 	movx	a,@dptr
+   322F FD            [12] 1652 	mov	r5,a
+   3230 8C 82         [24] 1653 	mov	dpl,r4
+   3232 8D 83         [24] 1654 	mov	dph,r5
+   3234 A3            [24] 1655 	inc	dptr
+   3235 A3            [24] 1656 	inc	dptr
+   3236 E5 16         [12] 1657 	mov	a,_doAES_sloc1_1_0
+   3238 25 1A         [12] 1658 	add	a,_doAES_sloc4_1_0
+   323A FC            [12] 1659 	mov	r4,a
+   323B E5 17         [12] 1660 	mov	a,(_doAES_sloc1_1_0 + 1)
+   323D 35 1B         [12] 1661 	addc	a,(_doAES_sloc4_1_0 + 1)
+   323F FD            [12] 1662 	mov	r5,a
+   3240 8C 02         [24] 1663 	mov	ar2,r4
+   3242 8D 03         [24] 1664 	mov	ar3,r5
+   3244 8B 02         [24] 1665 	mov	ar2,r3
+   3246 EA            [12] 1666 	mov	a,r2
+   3247 F0            [24] 1667 	movx	@dptr,a
                            1668 ;	cc1111_aes.c:102: aesdmao->destAddrL = (u8) ((u16) (outbuf + bufp) & 0xff);
-   31C0 90 FD C3      [24] 1669 	mov	dptr,#_aesdmao
-   31C3 E0            [24] 1670 	movx	a,@dptr
-   31C4 FA            [12] 1671 	mov	r2,a
-   31C5 A3            [24] 1672 	inc	dptr
-   31C6 E0            [24] 1673 	movx	a,@dptr
-   31C7 FB            [12] 1674 	mov	r3,a
-   31C8 8A 82         [24] 1675 	mov	dpl,r2
-   31CA 8B 83         [24] 1676 	mov	dph,r3
-   31CC A3            [24] 1677 	inc	dptr
-   31CD A3            [24] 1678 	inc	dptr
-   31CE A3            [24] 1679 	inc	dptr
-   31CF EC            [12] 1680 	mov	a,r4
-   31D0 F0            [24] 1681 	movx	@dptr,a
+   3248 90 FE 0F      [24] 1669 	mov	dptr,#_aesdmao
+   324B E0            [24] 1670 	movx	a,@dptr
+   324C FA            [12] 1671 	mov	r2,a
+   324D A3            [24] 1672 	inc	dptr
+   324E E0            [24] 1673 	movx	a,@dptr
+   324F FB            [12] 1674 	mov	r3,a
+   3250 8A 82         [24] 1675 	mov	dpl,r2
+   3252 8B 83         [24] 1676 	mov	dph,r3
+   3254 A3            [24] 1677 	inc	dptr
+   3255 A3            [24] 1678 	inc	dptr
+   3256 A3            [24] 1679 	inc	dptr
+   3257 EC            [12] 1680 	mov	a,r4
+   3258 F0            [24] 1681 	movx	@dptr,a
                            1682 ;	cc1111_aes.c:103: DMAARM |= (aesdmaarmi | aesdmaarmo);
-   31D1 90 FD C8      [24] 1683 	mov	dptr,#_aesdmaarmo
-   31D4 E0            [24] 1684 	movx	a,@dptr
-   31D5 FD            [12] 1685 	mov	r5,a
-   31D6 90 FD C6      [24] 1686 	mov	dptr,#_aesdmaarmi
-   31D9 E0            [24] 1687 	movx	a,@dptr
-   31DA FC            [12] 1688 	mov	r4,a
-   31DB 4D            [12] 1689 	orl	a,r5
-   31DC 42 D6         [12] 1690 	orl	_DMAARM,a
+   3259 90 FE 14      [24] 1683 	mov	dptr,#_aesdmaarmo
+   325C E0            [24] 1684 	movx	a,@dptr
+   325D FD            [12] 1685 	mov	r5,a
+   325E 90 FE 12      [24] 1686 	mov	dptr,#_aesdmaarmi
+   3261 E0            [24] 1687 	movx	a,@dptr
+   3262 FC            [12] 1688 	mov	r4,a
+   3263 4D            [12] 1689 	orl	a,r5
+   3264 42 D6         [12] 1690 	orl	_DMAARM,a
                            1691 ;	cc1111_aes.c:104: NOP(); NOP();
                            1692 ; nop; 
                            1693 ; nop; 
                            1694 ;	cc1111_aes.c:114: if((mode & ENCCS_MODE_CBCMAC) && bufp == len - 16)
-   31DE D0 03         [24] 1695 	pop	ar3
-   31E0 E5 19         [12] 1696 	mov	a,_doAES_sloc3_1_0
-   31E2 60 17         [24] 1697 	jz	00105$
-   31E4 E5 14         [12] 1698 	mov	a,_doAES_sloc0_1_0
-   31E6 24 F0         [12] 1699 	add	a,#0xF0
-   31E8 FC            [12] 1700 	mov	r4,a
-   31E9 E5 15         [12] 1701 	mov	a,(_doAES_sloc0_1_0 + 1)
-   31EB 34 FF         [12] 1702 	addc	a,#0xFF
-   31ED FD            [12] 1703 	mov	r5,a
-   31EE EC            [12] 1704 	mov	a,r4
-   31EF B5 16 09      [24] 1705 	cjne	a,_doAES_sloc1_1_0,00105$
-   31F2 ED            [12] 1706 	mov	a,r5
-   31F3 B5 17 05      [24] 1707 	cjne	a,(_doAES_sloc1_1_0 + 1),00105$
+   3266 D0 03         [24] 1695 	pop	ar3
+   3268 E5 19         [12] 1696 	mov	a,_doAES_sloc3_1_0
+   326A 60 17         [24] 1697 	jz	00105$
+   326C E5 14         [12] 1698 	mov	a,_doAES_sloc0_1_0
+   326E 24 F0         [12] 1699 	add	a,#0xF0
+   3270 FC            [12] 1700 	mov	r4,a
+   3271 E5 15         [12] 1701 	mov	a,(_doAES_sloc0_1_0 + 1)
+   3273 34 FF         [12] 1702 	addc	a,#0xFF
+   3275 FD            [12] 1703 	mov	r5,a
+   3276 EC            [12] 1704 	mov	a,r4
+   3277 B5 16 09      [24] 1705 	cjne	a,_doAES_sloc1_1_0,00105$
+   327A ED            [12] 1706 	mov	a,r5
+   327B B5 17 05      [24] 1707 	cjne	a,(_doAES_sloc1_1_0 + 1),00105$
                            1708 ;	cc1111_aes.c:115: ENCCS = ENCCS_MODE_CBC | command | ENCCS_ST;
-   31F6 85 18 B3      [24] 1709 	mov	_ENCCS,_doAES_sloc2_1_0
-   31F9 80 02         [24] 1710 	sjmp	00108$
-   31FB                    1711 00105$:
+   327E 85 18 B3      [24] 1709 	mov	_ENCCS,_doAES_sloc2_1_0
+   3281 80 02         [24] 1710 	sjmp	00108$
+   3283                    1711 00105$:
                            1712 ;	cc1111_aes.c:117: ENCCS = mode | command | ENCCS_ST;
-   31FB 8B B3         [24] 1713 	mov	_ENCCS,r3
+   3283 8B B3         [24] 1713 	mov	_ENCCS,r3
                            1714 ;	cc1111_aes.c:120: while(!(ENCCS & ENCCS_RDY))
-   31FD                    1715 00108$:
-   31FD E5 B3         [12] 1716 	mov	a,_ENCCS
-   31FF 30 E3 FB      [24] 1717 	jnb	acc.3,00108$
+   3285                    1715 00108$:
+   3285 E5 B3         [12] 1716 	mov	a,_ENCCS
+   3287 30 E3 FB      [24] 1717 	jnb	acc.3,00108$
                            1718 ;	cc1111_aes.c:96: for(bufp= 0 ; bufp < len ; bufp += 16)
-   3202 74 10         [12] 1719 	mov	a,#0x10
-   3204 25 16         [12] 1720 	add	a,_doAES_sloc1_1_0
-   3206 F5 16         [12] 1721 	mov	_doAES_sloc1_1_0,a
-   3208 E4            [12] 1722 	clr	a
-   3209 35 17         [12] 1723 	addc	a,(_doAES_sloc1_1_0 + 1)
-   320B F5 17         [12] 1724 	mov	(_doAES_sloc1_1_0 + 1),a
-   320D 02 31 67      [24] 1725 	ljmp	00113$
+   328A 74 10         [12] 1719 	mov	a,#0x10
+   328C 25 16         [12] 1720 	add	a,_doAES_sloc1_1_0
+   328E F5 16         [12] 1721 	mov	_doAES_sloc1_1_0,a
+   3290 E4            [12] 1722 	clr	a
+   3291 35 17         [12] 1723 	addc	a,(_doAES_sloc1_1_0 + 1)
+   3293 F5 17         [12] 1724 	mov	(_doAES_sloc1_1_0 + 1),a
+   3295 02 31 EF      [24] 1725 	ljmp	00113$
                            1726 	.area CSEG    (CODE)
                            1727 	.area CONST   (CODE)
                            1728 	.area XINIT   (CODE)
