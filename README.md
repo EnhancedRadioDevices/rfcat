@@ -46,13 +46,20 @@ this tool is created, maintained, and used primarily on linux.  make and sdcc mu
 
 Start by connecting your Intel Edison to your Explorer board. Get the spi_serial library installed (see Requirements above).
 
-## INSTALLATION
+## Building the CC1110 Firmware
+
+It should be possible to build the CC1110 firmware on the Edison itself, but I haven't gotten SDCC to build correctly. For now, the easiest thing to do is cross-compile on a linux machine and then copy the hex file over the Edison with SCP or something.
 
 * install sdcc
-* install make
-* make sure both are in the path
+
+    apt-get install sdcc
+
 * cd into the "rfcat/firmware/" directory
 * "make explorerfw" will build the firmware for the Explorer board
+
+## Installing CC1110 firmware onto the Explorer board
+
+* use scp or something similar to copy the firmware image onto your Edison
 * use ccprog to flash the ExplorerCat.hex firmware onto the CC1110
 
     ./ccprog -p 19,7,36 erase
