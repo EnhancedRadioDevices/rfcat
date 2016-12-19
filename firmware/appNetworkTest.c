@@ -7,6 +7,11 @@
 #ifdef VIRTUAL_COM
     #include "cc1111.h"
     #include "cc1111_vcom.h"
+#elif defined(EXPLORER)
+    //#include "cc1111.h"
+	#include <cc1110.h>
+    #include "cc1110-ext.h"
+    #include "cc1110_spicom.h"
 #else
     #include "cc1111usb.h"
 #endif
@@ -32,6 +37,10 @@
 
 
 
+#ifdef EXPLORER
+void rx1_isr(void) __interrupt URX1_VECTOR;
+void tx1_isr(void) __interrupt UTX1_VECTOR;
+#endif
 
 /*************************************************************************************************
  * Application Code - these first few functions are what should get overwritten for your app     *

@@ -29,6 +29,11 @@
     static __xdata tlv_t tlv_recv,tlv_send;
     static __xdata uiDataPtr = 0;
     static __xdata u8 uiStatus = STATUS_TAG;
+#elif defined(EXPLORER)
+    //#include "cc1111.h"
+	#include <cc1110.h>
+    #include "cc1110-ext.h"
+    #include "cc1110_spicom.h"
 #else
     #include "chipcon_usb.h"
 #endif
@@ -51,6 +56,10 @@
  * */
 
 
+#ifdef EXPLORER
+void rx1_isr(void) __interrupt URX1_VECTOR;
+void tx1_isr(void) __interrupt UTX1_VECTOR;
+#endif
 
 
 /*************************************************************************************************
